@@ -1,14 +1,60 @@
 import os
 pwd_menu = { #account list ant count
-    'name' : ['alex','tom','jerry','sylar'],
-    'pwd' : ['123456','1234567','12345678','123456789'],
-    'count' : ['0','0','0','0']
+    'alex' : ['123456',0],
+    'tom' : ['1234567',0],
+    'jerry' : ['12345678',0],
+    'sylar' : ['123456789',0]
 }
 print pwd_menu
-user_list = pwd_menu['name']
-logon_count = pwd_menu['count']
-print logon_count
+logon_flag = False
+lock_user = []
+file_name = r'E:/\python-file/\day1/\lock_list.txt'#choose file
+if os.path.exists(file_name) == True:
+    lock_read = file(file_name,'r').read()
+    lock_user = lock_read.split()
+    print lock_user
+for name_count in range(3):
+    user_name =raw_input("Please input you username:").strip()
+    if len(user_name) == 0:
+        continue
+    if user_name in lock_user:#username locked
+        print "You is locked"
+        logon_flag = True
+        break
+    if pwd_menu.has_key(user_name):
+        logon_count = int(pwd_menu[user_name][1])
+        print logon_count
+        for pwd_count in range(3):
+            user_pwd = str(raw_input("Please input you passwd:").strip())
+            print type(user_pwd)
+            logon_count += 1
+            print logon_count
+            if len(user_pwd) == 0:
+                continue
+            if user_pwd == str(pwd_menu[user_name][0]):
+                #while True:
+                print "Welcome logon"
 
+                '''else:
+                    logon_flag = True
+                    break'''
+    if logon_flag:
+        print "Logout,see you next time!"
+        break
+    if int(logon_count) == 3:
+        print "Lock this user!"
+        lock_user.append(user_name)
+        lock_file = open(file_name,'w')
+        lock_file.write(repr(lock_user))
+        lock_file.close()
+        print lock_user
+        break
+
+
+
+
+
+'''
 file_name = r'E:/\python-file/\day1/\logon_pwd.txt'#choose file
 if os.path.exists(file_name) == False:#file not exist,writ count
     logon_count = open(file_name,'w')
@@ -27,7 +73,7 @@ for logon_count in range(3):
     if user_name in user_list:
         user_count = user_list.index(user_name)####get user_count
 
-
+'''
 
 
 
