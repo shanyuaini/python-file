@@ -1,0 +1,37 @@
+git config #配置git
+git config --global alias.last 'log -1 HEAD'  #命令别名 git last = git log -1 HEAD
+
+git init   #初始化项目
+git clone https://github.com/sylarjiang/python-file.git #从仓库克隆
+git status #查看文件状态
+git add   #跟踪文件,加入暂存区
+vi .gitignore .* .*/  #忽略.开头的文件
+git diff  #查看暂存区
+git commit  #提交更新 -a 跳过使用暂存区 -m 添加备注
+git rm  #移除文件
+git mv #文件重命名
+git log #git 日志 gitk 图形日志
+	选项 说明
+	-p 按补丁格式显示每个更新之间的差异。
+	--stat 显示每次更新的文件修改统计信息。
+	--shortstat 只显示 --stat 中最后的行数修改添加移除统计。
+	--name-only 仅在提交信息后显示已修改的文件清单。
+	--name-status 显示新增、修改、删除的文件清单。
+	--abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。
+	--relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。
+	--graph 显示 ASCII 图形表示的分支合并历史。
+	--pretty 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。
+	-(n)    仅显示最近的 n 条提交
+	--since, --after 仅显示指定时间之后的提交。
+	--until, --before 仅显示指定时间之前的提交。
+	--author 仅显示指定作者相关的提交。
+	--committer 仅显示指定提交者相关的提交。
+git remote  #
+	-v # 查看仓库
+     add [remote-name] [url]  
+	 set [remote-name] [url]  
+	 fetch [remote-name]  #从仓库拉取数据.并不自动合并到本地
+	 push [remote-name] [branch-name] #推送本地到远程
+	 git tag  #打标签
+	 
+
