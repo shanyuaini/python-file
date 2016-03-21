@@ -1,0 +1,185 @@
+Python的设计哲学是“优雅”、“明确”、“简单”。Python开发者的哲学是“用一种方法，最好是只有一种方法来做一件事”。在设计Python语言时，如果面临多种选择，Python开发者一般会拒绝花俏的语法，而选择明确没有或者很少有歧义的语法。这些准则被称为“Python格言”。在Python解释器内运行import this可以获得完整的列表
+
+优美胜于丑陋（Python 以编写优美的代码为目标）
+明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）
+简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）
+复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）
+扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）
+间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）
+可读性很重要（优美的代码是可读的）
+即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）
+不要包容所有错误，除非你确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）
+当存在多种可能，不要尝试去猜测
+而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）
+虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）
+做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）
+如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）
+命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
+
+
+ PythonXY(Python 插件库版本)
+ portable python 免安装python可以在windows用
+ 
+ python
+ print "Hello World!" 
+ ####3.0写法 print ("Hello World")
+ 
+ 变量 .
+ 1,标识符的字一个字符必须是字母表中的字母,或者一个下划线
+ 2,标识符名称的其它部分可以由字母 ,下划线
+ 3,标识符严格区分字母大小写
+ name = "111"
+ name2 = name   
+ name = "222"
+ id(name),id(name2)
+ c = "111"
+ id(c)
+ #变量赋值 把name2的内存地址指向了,name当时指向的内存地址,当name赋值改变,就是重新开了一个内存地址,并不会影响name2.
+ 
+ 
+ 数据类型
+ 按特征划分
+ 数字类型:
+     整形:1,布尔型 2,长整型 3,标准整形
+	 非整形:1,双精度浮点型 2,复数  3,decimal(不是内建类型)
+ 序列类型:字符串(str),元组(tuple),列表(list)
+ 映像类型:字典(dict)
+ 集合类型:可变集合(set),不可变集合(frozenset)
+ 按可变性划分:
+ 可哈希的,不可变数据类型:数字类型,不可变集合(frozenset),字符串,元祖
+ 可变数据类型:字典,列表,可变集合
+ type()查看数据类型
+ age = int(age)  自动转换age字符转换为整形
+ 
+ python运算符 http://www.runoob.com/python/python-operators.html
+ 
+多行用3个单引号
+ 
+ name = "alex"
+ age = 35
+ print ''' Welcome to Python
+ I am %s
+ I am %s years old 
+ '''% (name, age)     ####在字符串中应用变量  %s标识引用的类型为字符串, %d表示应用整形  %f应用浮点 %.2f表示应用小数点后两位
+ 
+ import platform
+ dir(platform)
+ 
+ centos6安装python2.7  1,编译安装2,pyenv
+ user_interactive.py
+ 
+ 
+ 
+  if ... else ...python 中if,else 要加冒号
+ if(条件):
+	执行语句
+ elif(条件):
+	执行语句
+ else:
+	执行语句
+
+python中没有代码的关闭符,所以代码都是靠缩进来控制层级.同一级代码必须保持一致
+
+while (条件) :
+	执行语句
+	break/continue
+else:
+当while中执行成功,就可以break跳出,而不执行else.可以加入条件限制while的执行次数
+continue是在条件不成立的时候一直返回之前的while从头执行
+
+使用raw_input的时候,后缀.strip.去掉空格和回车后长度为0,通过判断输入的长度继续下一步.
+
+
+for (条件) in (条件):
+else:
+
+guess_num.py
+ 
+多重循环
+跳出循序可以用一个变量来判断程序的状态,然后break或者是continue
+
+列表:
+name_list = ["alex","eric","jack"]#列表赋值
+name_list[1]  #列表打印某个位置的值
+name_list.insert(2,"sylar") #在列表的位置2插入sylar,原来该位置的值会顺移
+name_list.apped("tom") #在列表最后附加tom
+name_list[1:4]  #从位置1到位置4中的值取出来, 截至位都不会取(顾前不顾后!)
+name_list[-1]  #最后一个位置
+name_list[-3:]   #最后三个位置
+name_list[:3]   #前三个位置
+name_list[1] = "ERIC"  #修改位置1的值
+name_list.remove("rain") #删除rain 如果列表内有同样的两个值,只会删除第一个.
+name_list.count("rain")  #统计一个列表里有几个相同的值.
+name_list.index("rain")  #返回这个值所在位置
+name_list.extend(name_list2)  #将两个列表组合
+name_list.sort()  #对列表按ASC表排序
+name_list.reverse()  #倒序
+
+for i in range(name_list.count("rain")):
+	name_list.remove("rain")
+
+multi-loop.py
+
+字典,可以组合列表使用
+格式
+data = {
+	'Key' : 'Value',
+	'Key3': 'Value3'
+}
+查看
+print data['Key']
+插入
+data['Key1'] = ['Value']
+修改
+data['Key'] =['Value']
+删除
+del data['Key']
+查看value
+for key in data:print key,data[key]
+for key,value in data.items(): print key,value #查看所有key的value效率低
+if data.has_key('Key2'):print data['Key2']  #print data.get['Key2']  #取一个不存在的值之前先判断key是否存在
+
+data[key1][key2][key3][0]多级字典
+
+
+ 
+作业一编写登录接口
+-输入用户名密码
+-认证成功后显示欢迎信息
+-输错三次后锁定,
+作业二 多级菜单
+-三级菜单
+可依次选择进入各子菜单不能用if判断
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
