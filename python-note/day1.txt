@@ -82,7 +82,8 @@ python中没有代码的关闭符,所以代码都是靠缩进来控制层级.同一级代码必须保持一致
 
 while (条件) :
 	执行语句
-	break/continue
+	break : 跳出整个循环
+	continue: 跳出本次循环,进入下一次循环
 else:
 当while中执行成功,就可以break跳出,而不执行else.可以加入条件限制while的执行次数
 continue是在条件不成立的时候一直返回之前的while从头执行
