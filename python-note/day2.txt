@@ -1,0 +1,42 @@
+字典不能直接存储到文件.
+PYC  #自解码文件
+PY解释器声明
+python运行原理 在python运行是会把.py文件交给生成一个自解码文件交给python虚拟机处理成机器能理解的二进制,机器去处理,逐行翻译解码.
+
+使用模块import os    #执行系统命令模块也可以用from os import system 
+
+import os #调用模块
+from os import system,popen   #直接指明调用某模块的方法
+from os import *   #not suggested 不建议,容易冲突.
+import multiprocessing as multi    #给调用的模块用别名
+导入second.py文件 import second
+sys.path 查看PY环境路径  ''表示当前路径,多个重名的模块,优先调用先找到的.
+sys.path.append(/home/sylar/) #将某个路径添加到环境变量.不会找子目录. 
+/local/lib/python2.7/dist-packages   #第三方模块存放位置这个位置将多个文件放到一个目录,import目录名,就可以递归查找子目录的模块
+所有的文件都是一个模块,所有的目录改造成一个包(包要递归查询,目录不会递归查询)
+在所有目录下加一个touch __init__.py文件,就任务是一个包,就可以引递归用了
+os.system("ipconfig") 
+
+
+enumerate枚举,打印索引值
+spilt #将字符串编程列表,用什么做区分
+name ="alex,eric,jack"
+name = name.split(",")
+
+
+
+input 输入变量要先申明变量类型.输入字符串的时候要加引号(加引号是申明输入的是字符串),
+#_*_coding:utf-8_*_  在py文件中输入中文
+
+
+
+
+
+
+
+
+
+
+
+
+
