@@ -59,23 +59,22 @@ pwd_menu ={
     'name' : ['alex','tom','jerry','sylar'],
     'passwd' : ['123456','1234567','12345678','123456789']
 }
-file_name = r'E:/\python-file/\day1/\lock_list.txt'
+file_name = 'lock_list.txt'
 lock_user = []
 lock_count = 0
-quit_flag = False
+quit_flag = False#做输入用户名这里的退出标记
 
-#读取被锁定用户文件,加载到锁定用户列表里
-
-if os.path.exists(file_name):
+if os.path.exists(file_name):#读取被锁定用户文件,加载到锁定用户列表里
     f = file(file_name)
     for line in f.readlines():
-        line = line.strip()   #取消文件中的空格和回车
-        line = line.split('\n')    #将字符改为列表
+        line = line.strip()   #取消文件中的空格
+        line = line.split('\n')    #将字符改为列表,以换行为分隔符
         lock_user.extend(line)      #这里使用组合两个列表
     f.close()
 
-
 for input_count in range(3):
+    if quit_flag == True: #如果有跳出标记,就退出
+        break
     input_name = raw_input("Please input you name: ").strip()
     if len(input_name) == 0:
         continue
@@ -84,7 +83,6 @@ for input_count in range(3):
         break
     else:#帐号不为空并没锁定就比对用户名
         if input_name in pwd_menu['name']:
-
             index = pwd_menu['name'].index(input_name) #取得用户名索引号
             for pwd_count in range(3):
                 input_pwd = raw_input("Please enter you pwd :").strip()
@@ -94,8 +92,6 @@ for input_count in range(3):
                     if logon_user == 'q':
                         quit_flag =True
                         break
-    if quit_flag == True:#做输入用户名这里的退出标记
-        break
     if lock_count >= 3: #如果密码输错3次,进行锁定用户
         if input_name in lock_user:
             break
@@ -105,8 +101,7 @@ for input_count in range(3):
             f = file(file_name,'w')
             for i in lock_user:
                 f.write(i)
-                f.write("\n") #使用换行给用户名做隔断
-                print i
+                f.write("\n") #使用换行给用户名做隔断,下次读取文件是做分隔符
             f.close()
             break
 
