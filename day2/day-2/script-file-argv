@@ -1,0 +1,46 @@
+#_*_coding:utf-8_*_
+#通过文件参数,自动修改文件字段linux
+'''
+import sys,os
+if len(input_file) <= 4:#
+
+    print "提示需要4个参数,老字段,新字段文件名 ./script-file-argv.py old_text new_text filename:"
+old_text,new_text = input_file[1],input_file[2] #需要替换的字段和文件名称
+file_name = input_file[3]
+f = file(file_name,'rb')
+new_file = file('.%s.bak'%file_name,'wb')
+for line in f.xreadlines():
+    new_file.write(line.replace(old_text,new_text))  #替换字段并写入新文件
+f.close()
+new_file.close()
+if '--bak' in input_file:
+    os.rename(file_name,'%s.bak'%file_name)
+    os.rename('.%s.bak'%file_name,file_name)
+else:
+    os.rename(new_file,file_name)
+'''
+
+'''windows
+'''
+import sys,os
+input_file = raw_input( "提示需要4个参数,老字段,新字段文件名 ./script-file-argv.py old_text new_text filename:").split()
+print input_file,type(input_file)
+if len(input_file) <= 4:#
+    old_text,new_text = input_file[0],input_file[1] #需要替换的字段和文件名称
+    print old_text,new_text
+file_name = input_file[2]
+f = file(file_name,'rb')
+new_file = file('.%s.bak'%file_name,'wb')
+for line in f.xreadlines():
+    new_file.write(line.replace(old_text,new_text))  #替换字段并写入新文件
+f.close()
+new_file.close()
+if '--bak' in input_file:
+    os.rename(file_name,'%s.bak'%file_name)
+    os.rename('.%s.bak'%file_name,file_name)
+else:
+    os.rename(new_file,file_name)
+
+
+
+

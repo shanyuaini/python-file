@@ -1,0 +1,2 @@
+protable python 免安装python开发环境
+#!/usr/bin/env python  #linux下直接运行python脚本需要在py文件首行声明
