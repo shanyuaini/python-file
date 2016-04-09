@@ -1,0 +1,7 @@
+Bike 2000
+Ipone 5800
+PC 8000
+MAC 14000
+Caffe 40
+Tea 20
+Cup 400
