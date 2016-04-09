@@ -6,7 +6,9 @@ def shop_list():#读取购物菜单
     filename = 'shopping.txt'
     f = file('shopping.txt','rb')
     menu = []
+    print f.readlines(),'\n--->',f.xreadlines()
     for line in f.xreadlines():
+
         line = line.strip().split()
         menu.append(line)
     for key in menu:
