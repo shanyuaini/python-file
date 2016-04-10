@@ -37,7 +37,7 @@ while break_flag != 'n':
             print i
         print '''共查询到%s条信息''' % search_count
         break_flag = Break_Flag()
-        print search_list
+
     else:
         print '没有找到你要查找的信息'
 f.close()

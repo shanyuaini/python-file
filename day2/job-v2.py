@@ -48,20 +48,20 @@ def price(salary,choice,menu):   #买一次返回一个余额
     else:
         print "你的余额不足,请重新选择"
         return salary
+print __file__
+if __name__ == '__main__':
+    balance = salary()
+    shopping_list = []
+    while True:
 
-
-balance = salary()
-shopping_list = []
-while True:
-
-    menu = shop_list()
-    choice = choice_judge()
-    if choice == 'q':
-        print shopping_list
-        break
-    balance = price(balance,choice,menu)
-    shopping_list.append(menu[choice])
-    print balance, shopping_list
+        menu = shop_list()
+        choice = choice_judge()
+        if choice == 'q':
+            print shopping_list
+            break
+        balance = price(balance,choice,menu)
+        shopping_list.append(menu[choice])
+        print balance, shopping_list
 
 
 
