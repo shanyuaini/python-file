@@ -1,0 +1,14 @@
+(lp0
+S'lisi'
+p1
+aI27
+aS'm'
+p2
+aV\u767d\u5bcc\u7f8e(lara)
+p3
+aVjava\u5f00\u53d1
+p4
+aI348000
+aI116
+aI444000
+a.
