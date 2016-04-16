@@ -1,0 +1,133 @@
+  
+log:
+
+	日志：历史日志
+
+	级别：
+
+	syslog: syslogd, klogd 
+
+	rsyslog: syslogd, klogd
+
+	facility: 设施，从功能或程序上对日志进行分类，并由专门的工具负责记录其日志
+		auth
+		authpriv
+		cron
+		daemon
+		kern
+		lpr
+		mail
+		mark
+		news
+		security (same as auth)
+		syslog
+		user
+		uucp
+		local0 through local7： 8 customed facility
+
+
+		通配机制：
+			*：所有
+			,: 列表
+			!: 取反
+
+	priority: 级别
+		debug
+		info
+		notice
+		warning, warn (same as warning)
+		err, error (same as err)
+		crit
+		alert
+		emerg, panic (same as emerg)
+
+	Target:
+		文件,如/var/log/messages
+		用户，*
+		日志服务器，@172.16.100.1
+		管道        | COMMAND
+
+	facitlity.priority			Target
+	mail.info 					/var/log/maillog
+	mail.=info        *
+	mail.!info
+	*.info
+	mail,news.info
+	
+	日志信息格式：
+		时间   主机   进程（PID)：事件
+
+	syslog: syslogd -r
+	rsyslog
+	syslog-ng
+
+
+	rsyslog: 
+		Why rsyslog?
+			Multi-threading
+			TCP, SSL, TLS, RELP
+			MySQL, PostgreSQL, Oracle and more
+			Filter any part of syslog message
+			Fully configurable output format
+			Suitable for enterprise-class relay chains
+
+	/etc/rsyslog.conf
+		rsyslogd
+		rklogd
+
+	日志收集、分析工具：
+
+	分析rsyslog产生的日志：
+		把日志记入mysql数据库
+		使用loganalyzer分析；
+
+	分httpd日志：
+		webanalyzer
+		awstats
+
+	日志放入MySQL数据库中：
+		/usr/share/doc/rsyslog*/
+
+	/etc/rsyslog.conf配置：
+	$ModLoad ommysql 
+
+	*.info :ommysql:127.0.0.1,Syslog,root,mypass
+	*.* :ommysql:172.16.100.1,Syslog,rsysloguser,rsyslogp@ss
+
+
+	$ModLoad imudp.so   # provides UDP syslog reception 
+	$UDPServerRun 514   # start a UDP syslog server at standard port 514 
+
+	以下操作，注意运行httpd的用户：
+	tar xvzf loganalyzer-3.6.4.tar.gz 
+	cd loganalyzer-3.6.4 
+	mv src/* /usr/local/apache/htdocs/syslog/ 
+	mv contrib/* /usr/local/apache/htdocs/syslog/ 
+	chmod u+x /usr/local/apache/htdocs/syslog/*.sh 
+	./configure.sh 
+	./secure.sh 
+	chmod 666 config.php 
+	chown -R daemon.daemon * 
+
+	登录web安装。 
+	http://ip地址/syslog 
+
+
+
+	rsyslog: facility.priority
+		日志记录：ommysql
+		日志服务器: imudp, imtcp
+		514
+
+		:ommysql:SERVER_IP,DATABASE,user,password
+
+		loganalyzer
+
+		webanalyzer
+
+	总结：
+		$ModLoad ommmysql 必须定义在Module一段中；
+		要安装rsyslog-mysql，并导入数据定义的脚本，/usr/share/doc/rsyslog-mysql/createDB.sql
+		# mysql < /usr/share/doc/rsyslog-mysql/createDB.sql
+
+

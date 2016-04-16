@@ -1,0 +1,514 @@
+iptables: 
+
+	Firewall: 工作在主机或网络边缘，对进出的报文按事先定义的规则进行检查，并且由匹配到的规则进行处理的一组硬件或软件，甚至可能是二者的结合。
+
+	网络层：网络层防火墙
+	应用层：网关
+
+	IDS:
+		HIDS: OSSEC
+		NISC: snort
+		Filesystem: tripware
+
+	IPS: IDS + Firewall
+
+	honeypot: 蜜罐
+
+	Nessus, nmap,
+
+	rootkit
+
+	乌云
+
+	iptables/netfilter: 网络层防火墙，连接追踪（状态检测）
+
+	ipfw, ipchains, iptables
+
+	iptables: 防火墙规则编写工具
+		netfilter： framework
+			hook_function
+
+		PREROUTING
+		INPUT
+		OUTPUT
+		FORWARD
+		POSTROUTING
+
+	过滤：筛选
+	NAT：Network Address Translation
+		DNAT
+		SNAT
+	mangle: 
+	raw:
+
+	FORWARD:
+		filter
+		mangle
+
+	INPUT: 
+		filter
+		mangle
+
+	OUTPUT:
+		filter
+		manage
+		nat
+
+	PREROUTING:
+		mangle
+		nat
+
+	POSTROUTING:
+		mangle
+		nat
+
+	四表：
+		filter, nat, mangle, raw
+
+	五链：
+		PREROUTING, INPUT, FORWARD, OUTPUT, POSTROUTING
+
+	表和链的对应关系：
+		filter:
+			INPUT, FORWARD, OUTPUT
+
+		nat:
+			PREROUTING, OUTPUT, POSTROUTING
+
+		mangle:
+			PREROUTING, INPUT, FORWARD, OUTPUT, POSTROUTING
+
+		raw: 
+
+	规则：检查条件，处理机制
+
+		通：默认为堵，只对能识别的进行放行
+		堵：默认为通，只对能误别的进行阻截
+
+	检查条件：
+		IP：SIP, DIP
+		TCP：SPORT, DPORT, Flags
+		UDP：SPORT, DPORT
+		ICMP：ICMP-TYPE
+
+	扩展机制：
+		time，string, state(connection-tracking)
+
+	处理机制：
+		DROP
+		REJECT
+		ACCEPT
+		SNAT
+		DNAT
+		RETURN
+		REDIRECT
+		LOG
+
+	INPUT:
+		filter
+		mangle
+
+	iptables/netfilter
+
+	iptables
+	链表操作
+		 iptables [-t table] -N chain		 	创建一条自定义的规则链
+		 iptables [-t table] -X [chain]		 	删除一条自定义的规则链
+		 iptables [-t table] -E old-chain-name new-chain-name		 	修改自义链名
+		 iptables [-t table] -P chain target		 	为链指定默认策略，指定默认规则
+		 iptables [-t table] {-F|-L|-Z} [chain [rulenum]] [options...]
+		 	-F: 清空链中的规则
+		 		规则有编号，在链中自上而下，从1开始；
+		 	-L: list，列出表中的所有规则；
+		 		-n: 数字格式显示IP和Port
+		 		-v: 以详细格式显示
+		 			 pkts bytes target     prot opt in     out     source               destination 
+		 			 	pkts: packets, 被本规则所匹配到的报文的个数；
+		 			 	bytes: 被本规则所匹配到的所有报文的大小之和，会执行单位换算；
+		 			 	target: 目标，即处理机制;
+		 			 	prot: 协议，一般为{TCP|UDP|ICMP}; 
+		 			 	opt: 可选项
+		 			 	in: 数据包的流入接口；
+		 			 	out: 数据包的流出接口；
+		 			 	source: 源地址；
+		 			 	destination: 目标地址；
+		 		-vv
+		 		-vvv
+		 		-x: exactly, 精确值，不执行单位换算；
+		 		--line-numbers: 显示各规则的行号；
+		 	-Z: zero, 清零
+	
+	iptables规则定义
+		 iptables [-t table] {-A|-D} chain rule-specification
+		-A： append, 附加一条规则
+			 rule-specification
+				匹配条件 -j 处理机制
+
+		 匹配条件：
+			通用匹配：
+				-s ：匹配原地址，可以IP，也可以网络地址；可以使用!操作符取反, ! 172.16.0.0/16; -s 相当于 --src, 或 --source
+				-d : 匹配目标地址
+				-p : 匹配协议，通常只使用{TCP|UDP|ICMP}三者之一；
+				-i ：数据报文流入的接口；通常只用于INPUT、FORWARD和PREROUTING
+				-o ：流出的接口；通常只用于OUTPUT、FORWARD和POSTROUTING
+					一般限制本地服务INPUT为-s目标网络,-d为本机 OUTPUT本机使用的服务-s为本机 -d为目标网络
+		保存规则：
+			service iptables save
+				规则会被保存至/etc/sysconfig/iptables文件中；
+				默认，start时也会读取此文件中的内容以设置规则；
+			# iptables-save > /path/to/some_rulefile
+			# iptables-restore < /path/from/some_rulefile
+
+
+		扩展匹配
+			隐含扩展: 使用-p {tcp|udp|icmp}指定某特定协议后，自动能够对协议进行的扩展
+				-p tcp
+					--dport m[-n] ：匹配的目标端口，可以是连续的多个端口；
+					--sport       ：       源
+					--tcp-flags rst,syn,ack,fin syn,ack    #rst,syn,ack,fin表示检查这4个标志位, 后面的syn,ack必须为1  
+						--syn:专门检查SYN相当于  --tcp-flags rst,syn,ack,fin syn
+
+						URG, PSH, RST, SYN, ACK, FIN  
+						ALL, NONE
+
+
+					放行来自于172.16.0.0/16网络的主机对本机ssh服务的请求；
+						iptables -t filter -A INPUT -s 172.16.0.0/16 -d 172.16.100.7 -p tcp --dport 22 -j ACCEPT
+						iptables -t filter -A OUTPUT -s 172.16.100.7 -d 172.16.0.0/16 -p tcp --sport 22 -j ACCEPT
+
+
+				-p udp
+					--dport
+					--sport
+
+					放行本机的tftp服务：
+						iptables -A INPUT -s 172.16.0.0/16 -d 172.16.100.7 -p udp --dport 69 -j ACCEPT
+						iptables -A OUTPUT -s 172.16.100.7 -d 172.16.0.0/16 -p udp --sport 69 -j ACCEPT
+
+					放行本机dns服务：
+						iptables -A INPUT -s 172.16.0.0/16 -d 172.16.100.7 -p udp --dport 53 -j ACCEPT  #请求本机的DNS
+						iptables -A OUTPUT -s 172.16.100.7 -d 172.16.0.0/16 -p udp --sport 53 -j ACCEPT
+
+						iptables -A OUTPUT -s 172.16.100.7 -p udp --dport 53 -j ACCEPT    #本机对外的DNS请求
+						iptables -A INPUT -d 172.16.100.7 -p udp --sport 53 -j ACCEPT
+
+				-p icmp
+					--icmp-type
+						8: ping请求
+						0：ping响应
+
+						例子：放行ping其它主机
+							iptables -A OUTPUT -s 172.16.100.7 -p icmp  --icmp-type 8 -j ACCEPT
+							iptables -A INPUT -d 172.16.100.7 -p icmp --icmp-type 0 -j ACCEPT
+
+
+
+
+	规则命令：
+		删除规则			iptables [-t table] -D chain rulenum
+		插入规则			iptables [-t table] -I chain [rulenum] rule-specification
+		替换指定规则			iptables [-t table] -R chain rulenum rule-specification
+		只显示指定链上的规则添加命令：			iptables [-t table] -S [chain [rulenum]]
+
+
+	显式扩展：必须要明确指定的扩展模块 iptables -ql iptables  /lib64/xtables  扩展模块
+		-m 扩展模块名称 --专用选项1 --专用选项2
+
+		multiport: 多端口匹配，一次指定多个(15个以内)离散端口 :表示区间范围比如1000:1010 表示1000-1010
+			--source-ports , --sports  port[,port|,port:port]
+			--destination-ports, --dports
+			--ports
+
+			例子：
+			iptables -I INPUT -d 172.16.100.7 -p tcp -m multiport --dports 22,80 -j ACCEPT
+			iptables -I OUTPUT -s 172.16.100.7 -p tcp -m multiport --sports 22,80 -j ACCEPT
+
+		iprange: ip地址范围
+			[!] --src-range from[-to]
+			[!] --dst-range from[-to]
+
+			例子：
+			iptables -A INPUT -d 172.16.100.7 -p tcp --dport 23 -m iprange --src-range 172.16.100.1-172.16.100.100 -j ACCEPT
+	    	iptables -A OUTPUT -s 172.16.100.7 -p tcp --sport 23 -m iprange --dst-range 172.16.100.1-172.16.100.100 -j ACCEPT
+
+	    time: 指定时间范围
+	    	--datestart YYYY[-MM[-DD[Thh[:mm[:ss]]]]]
+       		--datestop YYYY[-MM[-DD[Thh[:mm[:ss]]]]]
+
+       		--timestart hh:mm[:ss]
+            --timestop hh:mm[:ss]
+
+            [!] --weekdays day[,day...]
+
+            例子：
+            	iptables -A INPUT -d 172.16.100.7 -p tcp --dport 901 -m time --weekdays Mon,Tus,Wed,Thu,Fri --timestart 08:00:00 --time-stop 18:00:00 -j ACCEPT
+            	iptables -A OUTPUT -s 172.16.100.7 -p tcp --sport 901 -j ACCEPT
+
+        string: 字符串匹配
+        	--algo {bm|kmp}：字符匹配查找时使用算法
+        	--string "STRING":　要查找的字符串
+        	--hex-string “HEX-STRING”: 要查找的字符，先编码成16进制格式
+				iptables -A OUTPUT -s 172.16.100.7 -p tcp --sport 80 -m string --algo kmp --string "hello" -j ACCEPT
+			
+
+        connlimit: 每IP对指定服务的最大并发连接数；
+        	[!] --connlimit-above [n]    一般取反,表示不超出n个就放行
+				iptables -A INPUT -d 172.16.100.7 -p tcp --dport 80 -m connlimit-above 5 -j DROP
+        limit: 报文速率控制
+        	--limit #[/second|/minute|/hour|/day] 每个时间段的个数
+        	--limit-burst #最大峰值
+			iptables -A	INPUT -d 172.16.100.7 -p tcp --dport 80 -m limit 2/second --limit-burst 5 -j ACCEPT
+        	hping3: 防火墙压力测试 sectools.org网络工具排行
+			hping3 -c1000 -i u1000 172.16.100.7
+
+        state: 状态匹配
+        	ip_conntrack, nf_conntrack
+
+        	--state
+
+        		NEW  新建立连接
+        		ESTABLISHED 已建立的连接
+        		RELATED  相关联的连接
+        		INVALID 无效链接
+				#iptables的连接状态和tcp,ucp状态不一样
+
+    	调整连接追踪功能所能容纳的追踪的最大连接数：(前端网关尽量不要启用,如果使用必须调大)
+        	# cat /proc/sys/net/nf_conntrack_max         		定义了连接追踪的最大值，因此，建议按需调大此值；
+        	# cat /proc/net/nf_conntrack        		记录了当前追踪的所有连接
+        	# cat /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_established #追踪连接ESTABLISHED的超时时间
+
+
+        法则：
+        		1、对于进入的状态为ESTABLISHED都应该放行；
+        		2、对于出去的状态为ESTABLISHED都应该放行；
+        		3、严格检查进入的状态为NEW的连接；
+        		4、所有状态为INVALIED都应该拒绝；
+
+        如何放行工作于被动模式下的FTP服务？
+        		1、确保iptables加载ftp协议支持的模块：ip_nat_ftp, ip_conntrack_ftp
+        			编辑/etc/sysconfig/iptables-config文件，定义如下参数：
+        				IPTABLES_MODULES="ip_nat_ftp ip_conntrack_ftp"
+
+        		2、放行请求报文的RELATED和ESTABLISHED状态，放行响应报文的ESTABLISHED状态；
+
+        -j target
+        	RETURN: 返回调用链
+					iptables报文清洗
+						# iptables -N clean_in #新建一个clean_in链
+						# iptables -A clean_in -d 255.255.255.255 -p icmp -j DROP #目标地址为4个255的icmp 不响应ping一个广播地址探测广播地址
+						# iptables -A clean_in -d 172.16.255.255 -p icmp -j DROP  #
+						# iptables -A clean_in -p tcp ! --syn -m state --state NEW -j DROP #
+						# iptables -A clean_in -p tcp --tcp-flags ALL ALL -j DROP	#清洗恶意报文
+						# iptables -A clean_in -p tcp --tcp-flags ALL NONE -j DROP	#清晰恶意报文
+						# iptables -A clean_in -d 172.16.100.7 -m state --state INVALID -j DROP
+						# iptables -A clean_in -d 172.16.100.7 -j RETURN #将clean_in返回INPUT链
+
+
+						# iptables -A INPUT -d 172.16.100.7 -j clean_in #将所有报文发到clen_in清洗 也可以放在ESTABLISHED后面
+						# iptables -A INPUT  -i lo -j ACCEPT #
+						# iptables -A OUTPUT -o lo -j ACCEPT #
+
+
+
+
+       			启动服务时的最后一个服务通常是/etc/rc.d/rc.local (/etc/rc.local)，这事实上是一个脚本，但凡写在此脚本中的命令或脚本调用都在系统运行至此服务被执行；
+				iptables命令在设置时,不要直接修改配置文件,写在命令中,假如把自己挡在服务器之外,在配置命令之前写一个定时时间后servive iptables restart.同时可以iptables-save到另外一个文件(不保存到配置文件,以便出问题可以在不重启服务器的情况下可以重置iptables)
+
+
+
+	练习：INPUT和OUTPUT默认策略为DROP；
+
+	1、限制本地主机的web服务器在周一不允许访问；新请求的速率不能超过100个每秒；web服务器包含了admin字符串的页面不允许访问；web服务器仅允许响应报文离开本机；
+
+
+	2、在工作时间，即周一到周五的8:30-18:00，开放本机的ftp服务给172.16.0.0网络中的主机访问；数据下载请求的次数每分钟不得超过5个；
+
+
+	3、开放本机的ssh服务给172.16.x.1-172.16.x.100中的主机，x为你的座位号，新请求建立的速率一分钟不得超过2个；仅允许响应报文通过其服务端口离开本机；
+
+
+	4、拒绝TCP标志位全部为1及全部为0的报文访问本机；
+
+
+	5、允许本机ping别的主机；但不开放别的主机ping本机；
+
+
+
+
+
+	练习：判断下述规则的意义：
+	
+
+
+	# iptables -A INPUT  -i eth0 -m multiport -p tcp --dports 53,113,135,137,139,445 -j DROP
+	# iptables -A INPUT  -i eth0 -m multiport -p udp --dports 53,113,135,137,139,445 -j DROP
+	# iptables -A INPUT  -i eth0 -p udp --dport 1026 -j DROP
+
+
+	# iptables -A INPUT  -p icmp -m limit --limit 10/second -j ACCEPT
+
+
+
+
+	利用iptables的recent模块来抵御DOS攻击: 22，建立一个列表，保存有所有访问过指定的服务的客户端IP
+
+
+	ssh: 远程连接，
+
+	iptables -I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 3 -j DROP
+
+
+	iptables -I INPUT  -p tcp --dport 22 -m state --state NEW -m recent --set --name SSH
+	iptables -I INPUT  -p tcp --dport 22 -m state --state NEW -m recent --update --seconds 300 --hitcount 3 --name SSH -j LOG --log-prefix "SSH Attach: "
+	iptables -I INPUT  -p tcp --dport 22 -m state --state NEW -m recent --update --seconds 300 --hitcount 3 --name SSH -j DROP
+
+	1.利用connlimit模块将单IP的并发设置为3；会误杀使用NAT上网的用户，可以根据实际情况增大该值；
+
+	2.利用recent和state模块限制单IP在300s内只能与本机建立2个新连接。被限制五分钟后即可恢复访问。
+
+	下面对最后两句做一个说明：
+
+	1.第二句是记录访问tcp 22端口的新连接，记录名称为SSH
+	--set 记录数据包的来源IP，如果IP已经存在将更新已经存在的条目
+
+	2.第三句是指SSH记录中的IP，300s内发起超过3次连接则拒绝此IP的连接。
+	--update 是指每次建立连接都更新列表；
+	--seconds必须与--rcheck或者--update同时使用
+	--hitcount必须与--rcheck或者--update同时使用
+
+	3.iptables的记录：/proc/net/xt_recent/SSH
+
+
+	也可以使用下面的这句记录日志：
+	iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --update --name SSH --second 300 --hitcount 3 -j LOG --log-prefix "SSH Attack"
+
+
+2014.03.27
+	
+	FSM: Finite State Machine
+		客户端：closed --> syn_sent --> established ... --> fin_wait_1 --> find_wait_2 --> timewait (2MSL)
+		服务端：closed --> listen --> syn_rcvd --> established ... --> close_wait --> last_ack 
+
+	-m state: 追踪连接状态 (tcp, udp, icmp)
+		模板：
+			NEW
+			ESTABLISHED
+			RELATED
+			INVALID
+
+	iptables子命令：
+		规则：-A, -I, -D, -R
+		链：-N, -X, -F, -Z, -E, -P
+			通：DROP
+			堵：ACCEPT
+		显示：-L, -S
+			-L: 
+				-n, -v, -x, --line-numbers
+
+		规则定义：iptables -t table -A|-I|-R chain 匹配条件 -j target
+			匹配条件：
+				通用匹配：-s, -d, -i, -o, -p
+				扩展匹配
+					隐含扩展：
+						-p tcp
+							--sport, --dport, --tcp-flags
+							--syn
+						-p udp
+							--sport, --dport
+						-p icmp
+							--icmp-type
+								echo-request: 8
+								echo-reply: 0
+					显式扩展：
+						-m state
+							--state
+
+						-m multiport
+							--sports, --dports, --ports
+
+						-m iprange
+							--src-range, --dst-range
+
+						-m string
+							--algo {bm|kmp}, --string, --hex-string
+
+						-m connlimit
+							--connlimit-above 
+
+						-m limit
+							--limit n(/second|/minute|/hour|/day), --limit-burst 
+
+						-m time
+							--datestart, --datestop
+							--timestart, --timestop
+							--weekdays 
+
+			-j
+				ACCEPT, DROP, REJECT, LOG, REDIRECT, SNAT, DNAT, MASQUERADE, MARK, RETURN, 自定义链
+
+		四表：raw, mangle, nat, filter
+		五链：PREROUTING, INPUT, FORWARD, OUTPUT, POSTROUTING
+
+		iptables/netfilter
+
+		iptables-save, iptables-restore
+
+	主机防火墙：INPUT, OUTPUT
+	网络防火墙：FORWARD
+
+
+
+	路由：对于Linux主机来说，设定/proc/sys/net/ipv4/ip_forward的值为1，即为开启了路由功能；
+		路由表的生成：
+			静态：手动添加
+			动态：基于路由协议学习，RIP2, OSPF
+			iptables -P FORWARD DROP
+			iptables -A FORWARD -s 172.16.100.66 -d 192.168.20.12 -p tcp --dport 80 -j ACCEPT
+			iptables -A FORWARD -s 192.168.20.12 -d 192.168.20.12 -p tcp --sport 80 -j ACCEPT
+			iptables -A FORWARD -s 172.16.0.0/16 -d 192.168.20.0/24 -p tcp --dport 22 -j ACCEPT
+			iptables -A FORWARD -s 192.168.20.0/24 -d 172.16.0.0/16 -p tcp --dport 22 -j ACCEPT
+			
+			iptables -A FORWARD -m --state ESTABLISHED -j ACCEPT 
+			iptables -A FORWARD -d 192.168.20.12 -t tcp -m multiport --dport 22,80 -m state --state NEW -j ACCEPT
+			
+	NAT：网络地址转换
+		A：10
+		B：172.16-172.31
+		C：192.168.0-192.168.255
+
+		NAT: 过载技术
+			Basic NAT: 静态NAT；	
+			NAPT：动态NAT，网络地址端口转换；
+				源地址转换：SNAT，用于让内网主机访问互联网(相当于正向代理.将内网主机的请求源地址修改为能访问外网的网卡地址)
+				目标地址转换：DNAT，让互联网上主机访问本地内网中的某服务器上的服务，(发布,相当于反向代理)
+
+			iptables基于SNAT和DNAT这两个目标实现地址转换技术；
+				-j SNAT --to-source SIP  #转换成哪个源地址,一般是能访问互联网的地址
+					规则添加：POSTROUTING链
+					iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -j SNAT 
+					iptables -A FORWARD -d 172.16.0.0/16 -p tcp --sport 80 -m string --algo kmp --string "hello" -j REJECT #实现禁止访问带hello的网站页面
+				-j MASQUERADE #SNAT,自动寻找可以连接互联网的外网地址
+
+				-j DNAT --to-destination DIP[:PORT]
+					支持端口映射
+
+				例子：
+					# iptables -t nat -A PREROUTING -d 172.16.100.7 -p tcp --dport 22022 -j DNAT --to-destination 192.168.20.12:22
+
+		Proxy: 
+
+
+
+	作业：如何基于FORWARD链转发对内部ftp服务的访问？
+
+	iptables实现七层访问过滤：
+
+		模块：layer7
+			识别应用层协议
+
+		iptables/netfilter
+			iptables -m state, 
+			netfilter state
+
+		对内核中的netfilter，打补丁layer7，重新编译内核
+		对iptables打补丁，补上layer7模块，重新iptables

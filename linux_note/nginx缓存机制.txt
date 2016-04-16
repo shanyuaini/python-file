@@ -1,0 +1,76 @@
+nginx代理的缓存功能	
+	缓冲区设定
+	nginx在默认情况下在将其响应给客户端之前会尽可能地接收来upstream服务器的响应报文，它会将这些响应报文存暂存于本地并尽量一次性地响应给客户端。然而，在来自于客户端的请求或来自upsteam服务器的响应过多时，nginx会试图将之存储于本地磁盘中，这将大大降低nginx的性能。因此，在有着更多可用内存的场景中，应该将用于暂存这些报文的缓冲区调大至一个合理的值。
+
+		proxy_buffer_size size：设定用于暂存来自于upsteam服务器的第一个响应报文的缓冲区大小；
+		proxy_buffering on|off：启用缓冲upstream服务器的响应报文，否则，如果proxy_max_temp_file_size指令的值为0，来自upstream服务器的响应报文在接收到的那一刻将同步发送至客户端；一般情况下，启用proxy_buffering并将proxy_max_temp_file_size设定为0能够启用缓存响应报文的功能，并能够避免将其缓存至磁盘中；
+		proxy_buffers 8 4k|8k：用于缓冲来自upstream服务器的响应报文的缓冲区大小；几个缓冲区,每个多大.
+		
+	缓存
+
+nginx做为反向代理时，能够将来自upstream的响应缓存至本地，并在后续的客户端请求同样内容时直接从本地构造响应报文。缓存是写在磁盘,不使用内存做缓存.
+
+	proxy_cache zone|off：定义一个用于缓存的共享内存区域，其可被多个地方调用；缓存将遵从upstream服务器的响应报文首部中关于缓存的设定，如 "Expires"缓存多长时间、"Cache-Control: no-cache"、 "Cache-Control: max-age=XXX"最大缓存时间、"private"私有信息和"no-store" 等，但nginx在缓存时不会考虑响应报文的"Vary"首部。为了确保私有信息不被缓存，所有关于用户的私有信息可以upstream上通过"no-cache" or "max-age=0"来实现，也可在nginx设定proxy_cache_key必须包含用户特有数据如$cookie_xxx的方式实现，但最后这种方式在公共缓存上使用可能会有风险。因此，在响应报文中含有以下首部或指定标志的报文将不会被缓存。zone定义缓存在哪个位置的内存hash表,off不使用
+		Set-Cookie
+		Cache-Control containing "no-cache", "no-store", "private", or a "max-age" with a non-numeric or 0 value
+		Expires with a time in the past
+		X-Accel-Expires: 0
+		这些首部信息都不会缓存,所以有时候需要去修改首部,提高缓存命中率
+	proxy_cache_key：设定在存储及检索缓存时用于“键”的字符串，可以使用变量为其值，但使用不当时有可能会为同一个内容缓存多次；另外，将用户私有信息用于键可以避免将用户的私有信息返回给其它用户；
+	proxy_cache_lock：启用此项，可在缓存未命令中阻止多个相同的请求同时发往upstream，其生效范围为worker级别；
+	proxy_cache_lock_timeout：proxy_cache_lock功能的锁定时长；
+	proxy_cache_min_uses：某响应报文被缓存之前至少应该被请求的次数；
+	proxy_cache_path：定义一个用于保存缓存响应报文的目录，及一个保存缓存对象的键及响应元数据的共享内存区域(keys_zone=name:size)，其可选参数有：
+		levels：每级子目录名称的长度，有效值为1或2，每级之间使用冒号分隔，最多为3级；
+		inactive：非活动缓存项从缓存中剔除之前的最大缓存时长；
+		max_size：缓存空间大小的上限，当需要缓存的对象超出此空间限定时，缓存管理器将基于LRU算法对其进行清理；
+		loader_files：缓存加载器(cache_loader)的每次工作过程最多为多少个文件加载元数据；
+		loader_sleep：缓存加载器的每次迭代工作之后的睡眠时长；
+		loader_threashold：缓存加载器的最大睡眠时长；
+		例如：  proxy_cache_path  /data/nginx/cache/one    levels=1      keys_zone=one:10m; 指明磁盘那个位置创建缓存空间, 只有1级目录,区域名称one,大小10m
+				proxy_cache_path  /data/nginx/cache/two    levels=2:2    keys_zone=two:100m;  指明磁盘那个位置创建缓存空间, 只有1级目录,区域名称one,大小100m
+				proxy_cache_path  /data/nginx/cache/three  levels=1:1:2  keys_zone=three:1000m;		指明磁盘那个位置创建缓存空间, 只有1级目录,区域名称one,大小1000m
+	proxy_cache_use_stale：在无法联系到upstream服务器时的哪种情形下(如error、timeout或http_500等)让nginx使用本地缓存的过期的缓存对象直接响应客户端请求；其格式为：
+		proxy_cache_use_stale error | timeout | invalid_header | updating | http_500 | http_502 | http_503 | http_504 | http_404 | off (一般多用于500.502)
+	proxy_cache_valid [ code ...] time：用于为不同的响应设定不同时长的有效缓存时长，例如：proxy_cache_valid  200 302  10m;
+	proxy_cache_methods [GET HEAD POST]：为哪些请求方法启用缓存功能；
+	proxy_cache_bypass string：设定在哪种情形下，nginx将不从缓存中取数据；例如：
+		proxy_cache_bypass $cookie_nocache $arg_nocache $arg_comment;
+		 proxy_cache_bypass $http_pragma $http_authorization;
+
+				使用示例
+
+				http {
+					proxy_cache_path  /data/nginx/cache  levels=1:2    keys_zone=STATIC:10m
+														 inactive=24h  max_size=1g;
+					server {
+						location / {
+							proxy_pass             http://www.magedu.com;
+							proxy_set_header       Host $host;
+							proxy_cache            STATIC;
+							proxy_cache_valid      200  1d;
+							proxy_cache_valid	   301 302 10m;
+							proxy_cache_vaild 	   any 1m;
+							proxy_cache_use_stale  error timeout invalid_header updating
+												   http_500 http_502 http_503 http_504;
+						}
+					}
+				}		
+						
+					
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

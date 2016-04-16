@@ -1,0 +1,513 @@
+Linux HA Cluster:高可用集群.由一些主机按照不同的功能或需求,各自提供不同的服务.所达到特定的目的的主机集合,而一旦集群中某个主机或几台主机出现故障或其它原因不能提供服务的时候可能会造成整个集群所提供的服务失效,通过引入一种机制,来实现备用主机的自动接替故障主机所运行的服务或提供资源.
+	主机:集群中提供某些特定功能或资源的单个主机
+	服务:运行在不同主机上提供集群中某个功能的集合.
+	资源:为提供服务所必须的数据,主机,软件等,将不同的资源组织在一起才能提供服务
+	节点:提供特定服务的独立进程,或主机
+	主节点:正在提供服务的节点
+	备用节点:不直接提供服务,在发现主节点故障时,才按照规则切换为主节点,并能够延续主节点的属性.(例如,抢过VIP地址,LVS配置,提供主节点的服务和资源等)
+	集群事务信息层:在提供相同服务的主机上通过运行高可用集群基准层次(心跳信息传递层 ) 同等地位的进程不停发送心跳信息,一般节点数为3个以上通过组播网络发送信息.
+	
+	要做到提供高可用服务,软件必须要提供高可用功能的API通过软件调用来判断,
+	集群事务决策:判断由那个节点来提供服务.
+	
+	ha_aware:能够底层传递信息提供高可用服务
+	非ha_aware: http,ftp等软件不具备高可用服务.所以只能当作资源使用
+
+	高可用集群中，任何资源都不应该自行启动，而是由CRM管理启动与否；
+
+	CRM: Cluster Resources Manager 集群资源管理器,并将底层信息向上传递给真正提供用户服务的软件
+		LRM: Local Resources Manager  本地资源管理 执行CRM的决策
+		DC: Designated Coordinator:为不具备高可用的进程提供高可用功能控制软件,并进行管理各节点上的CRM
+	RA: resource agent 资源代理,能够接受CRM的管理,能够对资源进行控制,通常为脚本
+		{start|stop|restart|status}
+
+			status: 每个资源必须要能够输出
+				running: 运行
+				stopped: 停止 
+
+		failover: 失效转移，故障转移
+		failback: 失效转回，故障转回
+
+	Messaging Layer: 集群事务信息层
+		heartbeat v1, v2, v3
+		（OpenAIS）corosync
+		cman(cluster manager 红帽开发的)
+
+	CRM: 集群资源管理器层
+		heartbeat v1: haresources (配置接口：配置文件，文件名也叫haresources)
+		heartbeat v2: crm (各节点均运行进程crmd，配置接口：客户端crmsh(shell)，heartbeat-GUI)
+		heartbeat v3 = heartbeat + pacemaker + cluster-glue: 分割为3个软件,pacemaker是真正的集群资源管理器可以通过cluster-glue和corosync工作
+			pacemaker: 
+				配置接口：
+					CLI: crm(SuSE), pcs
+					GUI: hawk, LCMC, pacemaker-mgmt
+		cman + rgmanager:
+			resource group manager: Failover Domain 故障转移域.
+				配置接口：
+			RHCS: RedHat Cluster Suite
+				配置接口：Conga (完全生命周期的配置接口)
+
+	RA类型:
+		heartbeat legacy: heartbeat的传统类型
+		LSB：/etc/rc.d/init.d/*
+		OCF: Open Cluster Framework
+			provider: pacemaker  提供资源代理脚本的组织
+					  linbit
+		STONITH: 
+
+
+	 keepalived: 利用vrrp协议实现高可用集群,轻量级
+	 	应用场景
+		 	keepalived+ipvs
+		 	keepalived+haproxy
+
+	RHEL OR CentOS高可用集群解决方案：
+		5：
+			自带： RHCS(cman+rgmanager)
+			选用第三方：corosync+pacemaker, heartbeat(v1或v2), keepalived
+
+		6:
+			自带：RHCS(cman+rgmanager)
+				corosync+rgmanager
+				cman+pacemaker
+				heartbeat v3 + pacemaker
+				keepalived
+
+	应用方式：
+		做前端负载均衡器的高可用：keepalived
+		做大规模的高用集群：corosync(cman)+pacemaker
+	资源争用:由于心跳信息不通,可能出现多个相同配置的集群
+	资源隔离：避免一个集群因为可能分裂成为多个小集群的情况出现,所以做资源隔离.
+	brain-split:脑裂,集群分裂为多个集群的情况	votes,total,quarum(类似于负载均衡的权重概念),通过一定的机制,在集群分裂时由性能最好的一组机器继续提供集群服务,而其他机器就不再提供集群服务,同时可以使用电源交换机将不提供服务的主机强制下线.
+		节点级别：
+			STONITH:切断电源
+		资源级别：
+
+	HA节点数：大于2，且总数为奇数；以便于做资源隔离
+	  仲裁设备:节点偶数假如是2个,就设置一个ping节点,来判定哪个节点是存活的(一般为路由)的设备(ping node ,ping group),红帽使用的共享存储节点来判断,仲裁盘(qdisk)
+
+安装配置高可用集群：
+	1、节点名称：集群每个节点的名称都得能互相解析
+		/etc/hosts
+		hosts中主机名的正反解析结果必须跟“uname -n”的结果保持一致；cat /etc/sysconfig/network 和uname -n
+			172.16.100.6	node1.magedu.com	node1
+			172.16.100.7	node2.magedu.com	node2
+	2、时间必须得同步
+		使用网络时间服务器同步时间
+			1)自动到自建时间服务器同步时间
+			2)crontab -e   
+			  */5 * * * * /usr/sbin/ntpdate 172.16.0.1 &> /dev/null #简单的自动读取时间脚本,不建议使用,实验用
+
+	3、并非必须：各节点间能基于ssh密钥认证通信；
+			ssh-keygen -t -rsa -P ''  #id_rsa为私钥 id_rsa.pub为公钥
+			ssh-copy-id -i .ssh/id_rsa.pub root@node2.magedu.com
+			ssh node2.magedu.com 'date';date #通过密钥认证后查看两个机器的时间
+	
+	# yum install perl-TimeDate net-snmp-libs libnet PyXML
+	# rpm -ivh heartbeat-2.1.4-12.el6.x86_64.rpm heartbeat-pils-2.1.4-12.el6.x86_64.rpm heartbeat-stonith-2.1.4-12.el6.x86_64.rpm #pile底层信息库包(heartbeat2和6.5有冲突所以不能用yum安装) ldirectord LVS包   stonith 资源隔离包
+
+	heartbeat:　694/udp 心跳信息传递
+		心跳信息最好同时用内网和外网两张网卡都传递,以免内网网卡故障出现误判断
+
+
+cp /usr/share/doc/heartbeat-2/{authkeys,ha.cf,haresources} /etc/ha.d/
+ha.cf配置文件部分参数详解：
+
+	autojoin    none
+		#集群中的节点不会自动加入
+	logfile /var/log/ha-log
+		#指名heartbaet的日志存放位置
+		logfacility		local0 #日志服务器模式,要和/etc/rsyslog.conf对应
+	keepalive 2
+		#指定心跳使用间隔时间为2秒（即每两秒钟在eth1上发送一次广播）
+	deadtime 30
+		#指定备用节点在30秒内没有收到主节点的心跳信号后，则立即接管主节点的服务资源
+	warntime 10
+		#指定心跳延迟的时间为十秒。当10秒钟内备份节点不能接收到主节点的心跳信号时，就会往日志中写入一个警告日志，但此时不会切换服务 时间一般deadtime
+	initdead 120
+		#在某些系统上，系统启动或重启之后需要经过一段时间网络才能正常工作，该选项用于解决这种情况产生的时间间隔。取值至少为deadtime的两倍。
+	    
+	udpport 694
+		#设置广播通信使用的端口，694为默认使用的端口号。
+	baud    19200
+		#设置串行通信的波特率       
+	bcast   eth0        
+		# Linux  指明心跳使用以太网广播方式，并且是在eth0接口上进行广播。
+	#mcast eth0 225.0.0.1 694 1 0
+		#采用网卡eth0的Udp多播来组织心跳，一般在备用节点不止一台时使用。Bcast、ucast和mcast分别代表广播、单播和多播，是组织心跳的三种方式，任选其一即可。ifconfig 的MULTICAST表示支持多播,一般将所有heartbeat的第三多播地址改为一致255.0.100.1
+	#ucast eth0 192.168.1.2
+		#采用网卡eth0的udp单播来组织心跳，后面跟的IP地址应为双机对方的IP地址
+	auto_failback on
+		#用来定义当主节点恢复后，是否将服务自动切回，heartbeat的两台主机分别为主节点和备份节点。主节点在正常情况下占用资源并运行所有的服务，遇到故障时把资源交给备份节点并由备份节点运行服务。在该选项设为on的情况下，一旦主节点恢复运行，则自动获取资源并取代备份节点，如果该选项设置为off，那么当主节点恢复后，将变为备份节点，而原来的备份节点成为主节点
+	#stonith baytech /etc/ha.d/conf/stonith.baytech(仲裁设备)
+		# stonith的主要作用是使出现问题的节点从集群环境中脱离，进而释放集群资源，避免两个节点争用一个资源的情形发生。保证共享数据的安全性和完整性。
+	#watchdog /dev/watchdog
+		#该选项是可选配置，是通过Heartbeat来监控系统的运行状态。使用该特性，需要在内核中载入"softdog"内核模块，用来生成实际的设备文件，如果系统中没有这个内核模块，就需要指定此模块，重新编译内核。编译完成输入"insmod softdog"加载该模块。然后输入"grep misc /proc/devices"(应为10)，输入"cat /proc/misc |grep watchdog"(应为130)。最后，生成设备文件："mknod /dev/watchdog c 10 130" 。即可使用此功能
+	node node1.magedu.com  
+		#主节点主机名，可以通过命令“uanme –n”查看。
+	node node2.magedu.com  
+		#备用节点主机名
+	ping 192.168.12.237
+		#选择ping的节点，ping 节点选择的越好，HA集群就越强壮，可以选择固定的路由器作为ping节点，但是最好不要选择集群中的成员作为ping节点，ping节点仅仅用来测试网络连接
+	ping_group group1 192.168.12.120 192.168.12.237
+		#类似于ping  ping一组ip地址
+	apiauth pingd  gid=haclient uid=hacluster
+	respawn hacluster /usr/local/ha/lib/heartbeat/pingd -m 100 -d 5s
+		#该选项是可选配置，列出与heartbeat一起启动和关闭的进程，该进程一般是和heartbeat集成的插件，这些进程遇到故障可以自动重新启动。最常用的进程是pingd，此进程用于检测和监控网卡状态，需要配合ping语句指定的ping node来检测网络的连通性。其中hacluster表示启动pingd进程的身份。
+	
+	#下面的配置是关键，也就是激活crm管理，开始使用v2 style格式
+	crm respawn
+		#注意，还可以使用crm yes的写法，但这样写的话，如果后面的cib.xml配置有问题
+		#会导致heartbeat直接重启该服务器，所以，测试时建议使用respawn的写法
+	#下面是对传输的数据进行压缩，是可选项
+	compression     bz2 #压缩算法
+	compression_threshold 2 #大于2K才压缩
+
+	注意，v2 style不支持ipfail功能，须使用pingd代替
+
+	资源文件(/etc/ha.d/haresources)
+	node1   IPaddr::172.16.100.7/24/eth0/172.16.255.255   httpd #IPaddr表示资源脚本第一个IP是VIP和掩码,eth0是设备,最后是广播地址,默认去/etc/ha.d/resoure.d获取资源脚本./etc/rc.d/init.d的基本可以省略路径
+
+	认证文件(/etc/ha.d/authkeys)必须使用600或400 权限
+	auth 1
+	1 sha1 password    #1要和auth 1对应, 支持的 crc sha1 md5加密方式, 最好用openssl rand -hex 8 生成密码
+
+	
+
+	HTTPD等服务都要关闭,并且chkconfig httpd off让heartbeat来启动服务
+
+			node1
+				vi /etc/sysconfig/network
+				#hostname=node1.magedu.com
+				vi /etc/hosts
+				172.16.100.6	node1.magedu.com	node1
+				172.16.100.7	node2.magedu.com	node2
+				ssh-keygen -t -rsa -P ''  #id_rsa为私钥 id_rsa.pub为公钥
+				ssh-copy-id -i .ssh/id_rsa.pub root@node2.magedu.com  #将公钥发给node2
+				ssh node2.magedu.com 'date';date #通过密钥认证后查看两个机器的时间
+				yum install perl-TimeDate net-snmp-libs libnet PyXML
+				rpm -ivh heartbeat-2.1.4-12.el6.x86_64.rpm heartbeat-pils-2.1.4-12.el6.x86_64.rpm heartbeat-stonith-2.1.4-12.el6.x86_64.rpm
+				vi /etc/ha.d/haresources
+				#node1   IPaddr::172.16.100.7/24/eth0/172.16.255.255   httpd  #定义资源服务
+				vi /etc/ha.d/authkeys
+			node2 和node1做相似操作
+				
+
+
+			node3 NFS节点 172.16.100.9
+				mkdir /www/htdocs/
+				vim /etc/exports
+				#/www/htdocs 172.16.0.0/16(rw)
+				setfacl -m u:apache:rwx /www/htdocs/  #httpd的用户
+				vi /www/htdocs/index.html		
+				#
+				node1,node2添加node3资源
+				vim haresources
+				# node1.magedu.com   IPaddr::172.16.100.7/24/eth0/172.16.255.255 Filesystem::172.16.100.9:/www/htdocs::/var/www/html::nfs httpd
+				
+			/usr/share/heartbeat/hb_standby #将自己改为备用节点,可做测试用
+			/usr/share/heartbeat/hb_takeover #手动获取资源
+
+37.2 1206后面需补充
+组播IP地址
+
+	组播IP地址用于标识一个IP组播组。IANA（internet assigned number authority）把D类地址空间分配给IP组播，其范围是从224.0.0.0到239.255.255.255。如下图所示（二进制表示），IP组播地址前四位均为1110八位组⑴ 八位组⑵ 八位组⑶ 八位组⑷1110
+	XXXX XXXXXXXX XXXXXXXX XXXXXXXX组播组可以是永久的也可以是临时的。组播组地址中，有一部分由官方分配的，称为永久组播组。永久组播组保持不变的是它的ip地址，组中的成员构成可以发生变化。永久组播组中成员的数量都可以是任意的，甚至可以为零。那些没有保留下来供永久组播组使用的ip组播地址，可以被临时组播组利用。
+	224.0.0.0～224.0.0.255为预留的组播地址（永久组地址），地址224.0.0.0保留不做分配，其它地址供路由协议使用。
+	224.0.1.0～238.255.255.255为用户可用的组播地址（临时组地址），全网范围内有效。
+	239.0.0.0～239.255.255.255为本地管理组播地址，仅在特定的本地范围内有效。常用的预留组播地址列表如下：
+	224.0.0.0 基准地址（保留）
+	224.0.0.1 所有主机的地址
+	224.0.0.2 所有组播路由器的地址
+	224.0.0.3 不分配
+	224.0.0.4dvmrp（Distance Vector Multicast Routing Protocol，距离矢量组播路由协议）路由器
+	224.0.0.5 ospf（Open Shortest Path First，开放最短路径优先）路由器
+	224.0.0.6 ospf dr（Designated Router，指定路由器）
+	224.0.0.7 st (Shared Tree，共享树）路由器
+	224.0.0.8 st主机
+	224.0.0.9 rip-2路由器
+	224.0.0.10 Eigrp(Enhanced Interior Gateway Routing Protocol，增强网关内部路由线路协议）路由器　224.0.0.11 活动代理
+	224.0.0.12 dhcp服务器/中继代理
+	224.0.0.13 所有pim (Protocol Independent Multicast，协议无关组播）路由器
+	224.0.0.14 rsvp （Resource Reservation Protocol，资源预留协议）封装
+	224.0.0.15 所有cbt 路由器
+	224.0.0.16 指定sbm（Subnetwork Bandwidth Management，子网带宽管理）
+	224.0.0.17 所有sbms
+	224.0.0.18 vrrp（Virtual Router Redundancy Protocol，虚拟路由器冗余协议）
+	239.255.255.255 SSDP协议使用
+
+
+	HA集群的工作模型：
+		A/P: two nodes，工作于主备模型；
+		N-M：N>m, N个节点，M个服务；活动节点为N，备用N-M个
+		N-N: N个节点，N个服务；
+		A/A：双主模型；
+
+	资源转移的方式：
+		rgmanager: failover domain, priority
+		pacemaker: 
+			资源黏性：
+			资源约束（3种类型）：
+				位置约束：资源更倾向于哪个节点上；
+					inf: 无穷大
+					n: 
+					-n: 
+					-inf: 负无穷
+				排列约束：资源运行在同一节点的倾向性；
+					inf: 
+					-inf: 
+				顺序约束：资源启动次序及关闭次序；
+
+	例子：如何让web service中的三个资源：vip、httpd及filesystem运行于同一节点上？
+		1、排列约束；
+		2、资源组(resource group)；
+
+	如果节点不再是集群节点成员时，如何处理运行于当前节点的资源？
+		stopped
+		ignore
+		freeze
+		suicide
+
+	一个资源刚配置完成时，是否启动？
+		target-role?
+
+	RA类型：
+		heartbeat legacy
+		LSB
+		OCF
+		STONITH
+
+
+	资源类型：
+		primitive, native: 主资源，只能运行于一个节点
+		group: 组资源；
+		clone: 克隆资源；
+			总克隆数，每个节点最多可运行的克隆数；
+			stonith，cluster filesystem
+		master/slave: 主从资源
+
+	heartbeat v2使用crm作为集群资源管理器：需要在ha.cf中添加
+	crm on
+
+		crm通过mgmtd进程监听在5560/tcp
+
+		需要启动hb_gui的主机为hacluster用户添加密码，并使用其登录hb_gui
+
+		with quorum：满足法定票数
+		without quorum: 不满足法定票数
+
+
+	web service: 
+		vip: 172.16.100.20
+		httpd: 
+
+	web server:
+		vip: 172.16.100.21
+		httpd
+		nfs: /www/htdocs, /var/www/html
+
+	ipvs: 
+		vip
+		ipvsadm
+
+	总结：
+		1、配置HA服务：
+			服务组成：vip, service, store
+
+			服务内的所有资源应该同时运行同一个节点：
+				资源组
+				排列约束
+
+			hb_gui
+
+			资源约束：
+				Location
+					inf
+					-inf
+					100
+				Order
+
+				colocations
+					inf
+					-inf
+					100
+
+
+关ldirectord：
+
+	quiescent = yes|no
+
+	       If yes, then when real or failback servers are determined to be down, they are not actually removed from the kernel?. LVS table. Rather,
+	       their weight is set to zero which means that no new connections will be accepted.
+
+	       This has the side effect, that if the real server has persistent connections, new connections from any existing clients will continue to
+	       be routed to the real server, until the persistant timeout can expire. See ipvsadm for more information on persistant connections.
+
+	       This side-effect can be avoided by running the following:
+
+	       echo 1 > /proc/sys/net/ipv4/vs/expire_quiescent_template
+
+	       If the proc file isn?. present this probably means that the kernel doesn?. have lvs support, LVS support isn?. loaded, or the kernel is
+	       too old to have the proc file. Running ipvsadm as root should load LVS into the kernel if it is possible.
+
+	       If no, then the real or failback servers will be removed from the kernel?. LVS table. The default is yes.
+
+	       If defined in a virtual server section then the global value is overridden.
+
+	       Default: yes
+
+
+	checktype = connect|external|negotiate|off|on|ping|checktimeoutN
+
+	       Type of check to perform. Negotiate sends a request and matches a receive string. Connect only attemts to make a TCP/IP connection, thus
+	       the request and receive strings may be omitted.  If checktype is a number then negotiate and connect is combined so that after each N
+	       connect attempts one negotiate attempt is performed. This is useful to check often if a service answers and in much longer intervalls a
+	       negotiating check is done. Ping means that ICMP ping will be used to test the availability of real servers.  Ping is also used as the
+	       connect check for UDP services. Off means no checking will take place and no real or fallback servers will be activated.  On means no
+	       checking will take place and real servers will always be activated. Default is negotiate.
+
+	service = dns|ftp|http|https|imap|imaps|ldap|mysql|nntp|none|oracle|pgsql|pop|pops|radius|simpletcp|sip|smtp
+
+	       The type of service to monitor when using checktype=negotiate. None denotes a service that will not be monitored.
+
+	       simpletcp sends the request string to the server and tests it against the receive regexp. The other types of checks connect to the
+	       server using the specified protocol. Please see the request and receive sections for protocol specific information.
+
+	 virtualhost = "hostname"
+
+	       Used when using a negotiate check with HTTP or HTTPS. Sets the host header used in the HTTP request.  In the case of HTTPS this
+	       generally needs to match the common name of the SSL certificate. If not set then the host header will be derived from the request url
+	       for the real server if present.  As a last resort the IP address of the real server will be used.
+
+
+20140418
+
+回顾：
+	HA资源类型：
+		primitive, native
+		group
+		clone
+		master/slave
+
+	HA, RA类别：
+		heartbeat legacy 
+		LSB, /etc/init.d/*
+		OCF
+			provider: pacemaker, linbit
+		STONITH: 
+			clone
+
+	OpenAIS: 
+		Messaging Layer
+		Resource allocation (CRM, LRM, PE, TE, CIB)
+			haresources: haresources
+			crm: crm_sh, heartbeat-gui
+			pacemaker: crmsh, pcs
+			rgmanger: conga
+		Resource:
+			RA
+
+	Messaging Layer:
+		heartbeat, corosync, cman
+	Resource allocation:
+	Resource: 
+
+
+
+ansible: 
+	ansible <host-pattern> [-f forks] [-m module_name] [-a args]
+
+
+
+Corosync:
+
+	corosync: votes
+
+	corosync: votequorum
+
+	cman+corosync
+
+	cman+rgmanager, cman+pacemaker
+	corosync+pacemaker
+
+	配置集群全局属性：
+
+		a b c
+		a c
+		b c	
+
+
+web: vip, filesystem, httpd, 
+
+	配置示例：
+		crm(live)configure# show
+		node node1.magedu.com \
+			attributes standby="off"
+		node node2.magedu.com
+		primitive webip ocf:heartbeat:IPaddr \
+			params ip="172.16.100.51" \
+			op monitor interval="30s" timeout="20s" on-fail="restart"
+		primitive webserver lsb:httpd \
+			op monitor interval="30s" timeout="20s" on-fail="restart"
+		primitive webstore ocf:heartbeat:Filesystem \
+			params device="172.16.100.9:/www/htdocs" directory="/var/www/html" fstype="nfs" \
+			op monitor interval="20s" timeout="40s" \
+			op start timeout="60s" interval="0" \
+			op stop timeout="60s" on-fail="restart" interval="0"
+		group webservice webip webstore webserver
+		order webip_before_webstore_before_webserver inf: webip webstore webserver
+		property $id="cib-bootstrap-options" \
+			dc-version="1.1.10-14.el6-368c726" \
+			cluster-infrastructure="classic openais (with plugin)" \
+			expected-quorum-votes="2" \
+			stonith-enabled="false" \
+			no-quorum-policy="ignore" \
+			last-lrm-refresh="1397806865"
+		rsc_defaults $id="rsc-options" \
+			resource-stickiness="100"
+
+
+博客作业：基于corosync和NFS实现AMP的高可用，安装discuz验正其效果；
+
+
+	pacemaker配置接口:
+		CLI：
+			crmsh
+			pcs (pcs+pcsd)
+		GUI:
+			hawk
+			LCMC
+			pyGUI
+			Conga
+
+
+RHEL 6.5 use CMAN+PaceMaker+Corosync. To config CMAN use ccs, and use ricci for replicate settings of file cluster.conf to all nodes; and use pcs to config resource on pacemaker.
+
+RHEL 7 use PaceMaker+Corosync with pcs config cluster and resource, and pcsd to replicate settings nodes.
+
+Conga: ricci+luci
+pcs+pcsd：集群的全生命周期管理
+
+pcs
+	pcs status
+    
+    property
+		pcs property set [--force] <property>=[<value>]
+		unset <property>
+		list|show [property] [--all | --defaults]
+
+	显示RA classes：
+	# pcs resource standards
+
+	显示OCF的providers:
+	# pcs resource providers
+
+	显示某类别下所有RA例子：
+	# pcs resource agents ocf:heartbeat
+
+	显示某RA的属性信息例子：
+	pcs resource describe ocf:heartbeat:IPaddr
+
+
+RPM包搜索站点：http://pkgs.org/
+

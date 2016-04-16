@@ -1,0 +1,261 @@
+REmote DIctionary Server 远程字典服务器提供数据结构的远程存储.KV cache and store.内存存储
+redis和memcache都基于键值(KEY-VALUE)存储的Nosql技术,memcache没有持久存储能力,而redis能够做到持久存储,(形象一点就是,一个是内存存储,一个是硬盘存储)2009年发布,redis除了可以存储KS,还可以存储列表,集合,字典,哈希表的数据结构,性能上相当cache,存储在内存中,会周期性将数据写入磁盘,保证数据存储持久性,但是这种写入操作只是为了保证下一次redis重启后依然有数据,而不是为了数据访问.简单来说就是数据存在内存,在硬盘上做备份,但是硬盘存储数据只是做备份恢复到内存中,而直接提供访问.redis是单线程程序,为了提供更多数据功能,支持在服务端运行lua脚本来完成复杂工作.redis还支持主从模式(通过sentinel程序高可用). 在3.0版本中支持Clustering分布式集群服务,
+
+redis的数据持久化方式分为(可以同时使用两种方式)
+	快照 RDB
+	追加份文件 append only file  AOF
+安装方式
+	yum info redis
+	如果版本太低就下载源码,源码安装只用使用make && makeinstall
+		
+	vi /etc/redis.conf
+		port 6379 
+		tcp-backlog 511  #tcp监听队列长度,等待队列大小 额外的.
+		bind 127.0.0.1 #监听地址
+		unixsocketperm 700 #本地文件访问权限
+		timeout 0  #客户端连接超时时间
+		#syslog-enabled no #基于系统日志来记录日志
+		#syslog-ident redis 
+		#syslog-facility local10
+		databases 16  #支持多少个数据库,分布式场景不支持只能使用一个
+		save 900 1   #900秒有1个文件改变就进行备份,多个save字段做综合条件判断进行存储持久化
+		save ""  #禁用RDB的快照方式做持久化
+		slaveof <masterip> <masterport> #如果启用此项表示为从服务器,并需要指定主服务器,不启用注释掉则默认为主服务器
+		slave-read-only yes #从服务器是否只读
+		maxclients  10000 #客户端数量
+		maxmemory <bytes>  #使用多少内存
+		appendonly no #使用文件追加方式的持久化
+		
+		masterauth <masterpass>   #服务器端密码
+	service redis start
+
+		
+	redis-cli -h #查看客户端连接命令的帮助,直接输入redis-cli就连上127.0.0.1,redis-cli -h 192.168.10.11,连接上192.168.10.11.连接上以后有很多子命令可以使用.help 跟上TAB可以自动切换那些可用命令组
+		help @<group>
+			help @STRING 字符所支持的操作命令 ,命令有很多组,可以查看有那些命令
+		help command
+			help append
+	名称空间的创建方式,最多创建16个0-15,使用多个名称空间可以按照应用进行key的区分,分布式场景中只能使用0号名称空间,所以给不同的应用key进行区分,
+	SELECT 1  #打开1号名称空间默认使用0号
+	SELECT 2  #打开2号名称空间	
+	
+	Keys:支持ASCII字符集,支持多名称空间(多个库),在同一个名称空间key不能重复,key可以实现自动过期
+		STRING类型操作
+			set <key> <value>
+			get <key>
+			append <key> <value>
+			incr <key>
+			... # help @STRING
+		Lists:
+			lpush
+			rpush
+			lpop
+			lindex
+			lset
+		Sets:
+			sadd
+			sinter
+			sunion
+			spop
+			sismember
+			...
+		Sorted sets:
+		Hashes
+		Bitmaps
+		Hyperloglog #一种数据统计方法.
+	###具体命令查看help
+	
+	redis认证功能
+	首先在服务端的/etc/redis.conf设置requirepass
+	在客户端在redis-cli工具中使用auth <pass>进行认证
+	
+	清空数据库
+		flushdb 清空当前数据库
+		flushall 清空所有数据库
+	事务:通过multi,exec,watch等命令实现事务功能:将多个命令请求打包成一个操作,而后一次性按顺序执行完毕,才会去处理其它的命令请求.一个事务中其它的请求都会被阻塞.如果事务中的命令要么都执行,要么都不执行.并且不支持回滚.
+		watch:乐观锁,在exec命令执行之前,用于监视指定数量键,如如果监视中的某任意键数据被修改,则服务器拒绝执行事务
+		multi 表示开始事务,此后输入的命令会进入队列中,并不马上执行在这个过程中服务端不阻塞其它请求
+		set ip *.*.*.* 
+		get ip
+		...
+		exec  表示执行本次事务,服务端会执行前面的所有命令,并返回结果.在这个过程中服务端阻塞其它请求
+		
+	connection的相关命令 help @connection
+		auth 
+		ping 
+		echo
+		quit
+		select
+		
+	Server组的相关命令 help @server
+		client getname 客户端的连接名
+		client kill <ip:port> 关闭对应的客户端
+		client setname <connection-name> 给连接的客户端设置名称
+		info 获取服务端状态信息
+		config resetstat 修改info中的信息
+		config get <parameter>获取/etc/redis.conf 中的参数配置
+		config set <parameter> <value> 设置/etc/redis.conf 中的参数配置
+		config rewrite 将config set设置的参数的新值同步到/etc/redis.conf中
+		dbsize 当前选中命名空间的所有键的数量
+		lastsave 获取最近一次save的时间戳
+		monitor 实时监控所获取的命令请求
+		shutdown 将数据安全的保存到磁盘中,然后关闭
+		slaveof
+		slowlog 
+		time
+		sync
+	
+	发布与订阅(publish/subscribe),即约定一个或多个消息队列,发布者产生的消息发布到指定频道,而接受者到指定频道去接受消息,当一个发布者向一个频道发布消息,订阅了这个频道的多个订阅者都会收到信息,发布者也可以有多个 help @pubsub
+		subscribe new:订阅一个或多个队列,此处为订阅了一个名为new的消息队列
+		publish new hello :向new的消息队列发布了一个hello的消息
+		unsubscribe new:退订一个频道new
+		psubscribe new.i* :模式订阅,订阅new.i所有后缀的频道
+		
+	redis的持久化因为所有的数据都放在内存中,遇到断电,重启等情况所有数据都会丢失,所以需要写到硬盘上最备份,下一次启动redis会预先将磁盘中的数据读取到内存中做默认数据
+		RDB:snopshot ,二进制格式的数据文件,默认模式,按事先定制的策略,周期性的将数据保存至磁盘,数据文件默认为dump.rdb  (save命令指定保存策略)客户端可以使用save或bgsave命令启动快照保存机制,无法恢复没有做快照的内存
+			save:同步,在主线程中保存快照,此时会阻塞所有客户端请求.因为是将整个内存数据完整保存到磁盘,所以数据大时会有很大的IO,严重影响性能,
+			bgsave:异步,主进程不会被阻塞,配置文件中定义的save其实是使用的bgsave
+		vi /etc/redis.conf
+			stop-writes-on-bgsave-error yes 在备份快照时发生错误是否停止备份
+			rdbcompression yes RDB文件是否执行压缩,压缩节约了空间,但是加大了CPU消耗
+			rdbchecksum yes 对RDB文件是否做检验码检测,重载rdb文件时可以检查保存的数据是否错误,但是会增加CPU消耗
+			dbfilename dump.rdb
+			dir /var/lib/redis 
+		
+		AOF:append only file ,记录每一次写操作都以附加的方式都存到指定的文件中,有可能造成这个文件过大.当redis重启时,可通过重新执行文件中的命令在内存中重建数据库.
+			
+			bgrewriteaof :AOF文件的重建过程(AOF文件过大,需要重建),在重建开始时,redis会生成子线程,子进程会根据内存中的数据现有的状态,保存为临时aof文件.父进程可以继续接受命令请求,这些请求会附加在原来的AOF文件尾部,并放在一个缓存队列中,当子进程完成新的AOF临时文件的写操作,会告诉主进程,主进程会将这个新的AOF文件替换原来的AOF文件,并将缓存队列中缓存的命令追加到新的AOF文件尾部,实现AOF文件的重建,避免文件过大
+				1)redis主进程通过fork创建子进程
+				2)子进程根据redis内存中的数据创建数据库重建命令序列域临时文件中
+				3)主进程继续接受client的请求,并会把这些请求中的写操作继续追加至原来的AOF文件(保证重写失败原来AOF可用),额外的,将这些写请求放置于一个缓冲队列中(确保新文件的一致性)
+				4)子进程重写完成,通知主进程并退出,主进程把缓冲的命令写到临时文件中
+				5)主进程用临时文件替换老的AOF文件
+				
+		vi /etc/redis.conf 
+			appendonly no #改为yes 启用
+			appendfilename "appendonly.aof"
+			#appendfsync always 每次收到写命令,都写入磁盘
+			appendfsync everysec  每秒钟写一次磁盘
+			#appendfsync no      程序不会做写操作到磁盘,而提交给操作系统,由操作系统决定何时写
+			no-appendfsync-on-rewrite no  如果设为yes重建时对新写操作不放到缓冲区,使用内存来保存,建议改为yes
+			auto-aof-rewrite-percentage 100   当前aof文件是上次重写时文件大小的时候自动启动重写过程
+			auto-aof-rewrite-min-size 64mb    当前aof文件启动aof重写的最小变化大小
+			
+		注意:
+		1)持久本身不能取代备份,还应该制定备份策略,对redis数据库定期进行备份.
+		2)由于RDB创建快照和,AOF重写都相当消耗IO,所以redis会拒绝这两个事件的同时发生,即使,是手动执行,程序只是会返回一个OK,但是其实是放在队列中,等待其中一个执行完毕,再执行另一个.
+		3)如果同时启用了RDB和AOF两种方式持久化,redis服务器启动时优先会以AOF的文件来恢复数据库.
+			
+	redis复制:
+		特点:
+			一个master可以有多个slave,
+			支持链式复制master的slave还可以有slave
+			master以非阻塞方式同步数据至slave,一个master可以同时同步多个slave,slave接受数据也使用非阻塞
+		扩展性:	
+			master只接受写操作,slave负责读操作
+			master可以禁用持久化,由slave来进行持久化,但是要注意,万一主服务器重启了,没有数据,这时同步会造成slave的数据也丢失,所以不建议使用
+		复制过程:
+			1)主从服务器检查对方是否在线,并发起同步请求
+			2)主服务器(master)从内存中读取数据保存为一个数据文件发送给从服务器(slave),
+			3)从服务器(slave)接受数据文件并保存在文件中
+			4)从服务器将接收到的文件装载到内存中
+			
+			
+		slaveof ip port  
+		
+		注意:
+		1)从服务器的.conf文件必须要将复制功能的ip填写在ip字段的第一个,或者是用0.0.0.0来监听
+		2)如果master使用了requirepass功能,从服务器要使用maseterauth <masterpass>来连入服务器认证
+			
+		new-57.2.120	
+	sentinel哨兵:redis高可用方案,通过sentinel监控redis主从架构,在主服务器离线时会提升一个从服务器为主服务器,一般建议为3个以上的sentinel节点同时工作,多个sentinel之间使用流言协议通信,通过投票协议做决策.
+		1)用于管理多个redis服务实现HA
+		2)主要监控主服务器,并且从主服务器获得从节点信息
+		3)自动故障转移,以及通知功能
+		启动方式
+		redis-sentinel /path/to/file.conf#必须要有sentinel专用配置文件
+		redis-server --sentinel /path/to/file.conf  /path/to/file.conf#必须要有sentinel专用配置文件
+		1)服务器自身初始化,运行redis-server 中专用于sentinel功能的代码
+		2)初始化sentinel状态,根据给定的配置文件,初始化监控的master服务器列表
+		3)创建连向master的连接
+		
+		专用配置文件
+		/etc/redis-setinel.conf
+			port 26379
+			sentinel monitor mymaster 127.0.0.1 6379 2 ###mymaster为主服务器命令,可以不是主机名,  主机ip 端口 和票数2#票数的意义为,要满足这么多票数,这个主从架构才是成立的.指定的sentinel票数达到这个数量才成立,可以配置多次,来监控多个redis主从架构集群.每一组通过主节点的命名来区分
+			sentinel down-after-milliseconds mymaster 30000  #判断mymaster节点离线多少毫秒以后为离线
+			sentinel parallel-syncs mymaster 1 #当刚刚提升一个从节点为主服务器时,允许多少个从节点同时来请求数据,(以防刚开始时,太多的从服务器请求,造成新的主服务器负载过大)
+			sentinel failover-timeout mymaster  180000  #当提升从服务器为新的主服务器时,超过多少毫秒没有成功,即判定提升操作失败
+			
+		主观下线,和客观下线 每个sentinel每秒向其它的server及server所属的slave和其它sentinel发起ping命令,进行心跳探测
+			主观下线: 一个sentinel实例判断出某节点下线;
+			客观下线: 多个sentinel节点判断出某节点下线
+			
+		专用命令
+			sentinel masters 列出主服务器列表
+			sentinel slave <master name>   获取指定主服务器的从节点
+			sentinel get-master-addr-by-name <master name>   根据master名字找地址
+			sentinel reset  清除sentinel的状态,包括正在执行的故障转移
+			sentinel failover <master name> 手动强行对某一组服务器进行故障转移
+			
+		在一台服务器上做一个sentinel和一主两从redis实验
+			mkdir /etc/redis
+			cp /etc/redis.conf /etc/redis/redis.conf.{0,1,2}
+			mkdir /redis/db{1,2}
+			chown redis.redis -R /redis/*
+			
+			vi /etc/redis/redis.conf.0
+				daemonize yes
+				bind 0.0.0.0
+				logfile /var/log/redis0.log
+				pidfiel /var/run/redis0.pid
+			vi /etc/redis/redis.conf.1
+				daemonize yes
+				bind 0.0.0.0
+				port 6380
+				dir /redis/db1
+				logfile /var/log/redis1.log
+				pidfiel /var/run/redis1.pid
+			vi /etc/redis/redis.conf.2
+				daemonize yes
+				bind 0.0.0.0
+				port 6381
+				dir /redis/db2
+				logfile /var/log/redis2.log
+				pidfiel /var/run/redis2.pid
+			
+			redis-server /etc/redis/redis0.conf
+			redis-server /etc/redis/redis1.conf
+			redis-server /etc/redis/redis2.conf
+			
+			redis-cli -h 192.168.10.11 -p 6379
+				info replication
+			redis-cli -h 192.168.10.11 -p 6380
+				info replication
+				slaveof 192.168.10.11 6379
+			redis-cli -h 192.168.10.11 -p 6381
+				slaveof 192.168.10.11 6379
+				keys *
+			
+			cp /etc/redis-sentinel.conf /etc/redis/
+			vi /etc/redis/redis-sentinel.conf
+				port 26379
+				sentinel monitor mymaster 192.168.10.11 6379 1
+				sentinel down-after-milliseconds mymaster 5000
+				sentinel parallel-syncs mymaster 1
+				sentinel failover-timeout mymaster  60000
+			redis-server /etc/redis/redis-sentinel.conf --sentinel
+			redis-cli -h 192.168.10.11 26379
+			info
+			sentinel masters
+			sentinel slave mymaster
+	
+	clustering:分布式数据库,通过分片机制进行数据分布,clustering内每个节点仅持有数据库的一部分数据.同时每一个节点都可以接受客户端的请求,接受用户请求的节点对整个集群的数据持有全局视角,每个节点持有分片后的数据库在所有节点上数据元数据,然后将用户请求被转移到持有数据的节点,
+		codis (豌豆荚)较成熟,不支持主从复制
+		redis cluster 官方
+		cerberus (芒果TV)
+	
+	
+	
+	www.redis.io
+	

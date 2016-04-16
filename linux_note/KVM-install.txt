@@ -1,0 +1,120 @@
+
+yum -y groupinstall "Desktop Platform Development" "Development tools" "Server Platform Development"
+yum -y install libvirt virt-manager virt-viewer python-virtinst qemu-kvm-tools tigervnc-server qemu-kvm
+qemu-img create -f qcow2 -o size=100G /vm/vm1/centos6.qcow2
+service libvirtd start
+virsh iface-bridge eth0 br0  #也可以桥接到virbr0上.virbr0是libvirtd生成的虚拟网关.安装过程一样,其它位置做响应修改
+
+virt-install -n "centos6" --vcpus 2 -r 1024 --cdrom=CentOS-6.7-x86_64-minimal.iso --connect qemu:///system --disk /vm/vm1/centos6.qcow2,bus=virtio,size=20,sparse,format=qcow2 --network bridge=br0,model=virtio --graphics vnc #virt-install -n "vmvpn" --vcpus 2 -r 768 --cdrom= --connect qemu:///system --disk /vm/vm1/svn.qcow2,bus=virtio,format=qcow2 --network bridge=br0,model=virtio --graphics vnc --boot hd 直接使用镜像
+virsh autostart centos6     ###建议用域名方式命名主机名..
+
+
+
+###HOST#conf
+修改 /etc/sysconfig/selinux
+SELINUX=disabled
+修改 /etc/sysconfig/vncserver 
+VNCSERVERS="1:jiangtao"
+修改 /etc/libvirt/qemu/centos6.xml
+   <input type=’tablet’ bus=’usb’/>
+修改 /etc/libvirt/qemu.conf 配置，把下面几个地方的注释去掉，然后把 dynamic_ownership 的值改成0，禁止 libvirtd 动态修改文件的归属：
+# vi /etc/libvirt/qemu.conf
+vnc_listen = "0.0.0.0"
+...
+user = "root"
+group = "root"
+dynamic_ownership = 0
+...
+###HOST#eth1,br0,virsh iface-bridge之前
+DEVICE="eth1"
+ONBOOT="yes"
+BOOTPROTO="none"
+IPADDR="192.168.12.1"
+NETMASK="255.255.255.0"
+
+###HOST#route
+192.168.2.0     *               255.255.255.0   U     0      0        0 br0
+192.168.10.0    *               255.255.255.0   U     0      0        0 eth0
+192.168.122.0   *               255.255.255.0   U     0      0        0 virbr0
+link-local      *               255.255.0.0     U     1002   0        0 eth0
+link-local      *               255.255.0.0     U     1004   0        0 br0
+default         192.168.10.1    0.0.0.0         UG    0      0        0 eth0
+
+
+###HOST#iptables
+-A FORWARD -d 192.168.2.0/24 -j ACCEPT
+-A FORWARD -s 192.168.2.0/24 -j ACCEPT
+-A PREROUTING -d 192.168.10.230/32 -p tcp -m tcp --dport 22022 -j DNAT --to-destination 192.168.2.100:22
+-A POSTROUTING -s 192.168.2.0/24 ! -d 192.168.2.0/24 -j MASQUERADE
+
+
+###VM#ifcfg-eth0
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+BOOTPROTO=none
+HWADDR=52:54:00:B6:5D:7F
+IPADDR=192.168.2.100
+PREFIX=24
+GATEWAY=192.168.2.1
+DNS1=61.139.2.69
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME="System eth0"
+
+###yum
+base.repo
+[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+baseurl=http://mirrors.aliyun.com/centos/6.7/os/x86_64/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+#released updates 
+[updates]
+name=CentOS-$releasever - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+baseurl=http://mirrors.aliyun.com/centos/6.7/updates/x86_64/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+baseurl=http://mirrors.aliyun.com/centos/6.7/extras/x86_64/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+#baseurl=http://mirror.centos.org/centos/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+#contrib - packages by Centos Users
+[contrib]
+name=CentOS-$releasever - Contrib
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
+#baseurl=http://mirror.centos.org/centos/$releasever/contrib/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+
+
+epel.repo
+[epel]
+name=epel
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+baseurl=http://mirrors.aliyun.com/epel/6Server/x86_64/
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+
+yum install acpid  #虚拟机电源控制

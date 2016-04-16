@@ -1,0 +1,95 @@
+定制Linux：
+
+	arm, kernel + busybox
+	内核+根文件系统(shell, init)
+
+	busybox: shell, init, getty, login
+
+	系统启动流程：
+		POST + Boot Sequence (MBR) + BootLoader + kernel (initramfs(initrd)) + /sbin/init (/etc/inittab + /etc/init/*.conf)
+
+
+			initramfs: 文件系统
+			initrd: ram disk
+				虚根
+
+			SysV init
+			upstart (DBUS)
+			systemd
+
+			/sbin/init
+				设定默认运行级别
+				系统初始化：rc.sysinit
+				启动指定运行级别（rcN.d）所有以S开头的脚本，关闭所有K开头的服务；
+					S99 --> /etc/rc.d/rc.local
+				启动虚拟终端(login)
+				启动图形终端
+
+	编译内核 + Busybox
+		kernel + busybox(initrd) + busybox(rootfs)
+
+	编译安装busybox，需要先安装glibc-static，对于CentOS来说，位于DVD2上
+	libmcrypt-devel
+
+	/mnt/sysroot/etc/inittab
+	::sysinit:/etc/rc.d/rc.sysinit
+	console::respawn:-/bin/sh
+	::ctrlaltdel:/bin/reboot
+	::shutdown:/bin/umount -a -r
+
+	dropbear:
+	1、编译程序并移植
+	2、生成密钥文件
+	3、提供devpts文件系统
+	4、nsswitch：库和配置文件
+	5、安全shell
+
+	
+	
+		wget linux-3.13.6.tar.xz
+		tar xf linux-3.13.6.tar.xz -C /usr/src   
+		ln -sv linux-3.13.6 linux
+		cd linux
+		make all noconfig
+		make menuconfig #编辑配置文件
+			Processor type and features 选择CPU类型 Processor family,多核心symmetric multi-processing support
+			Enable the block layer
+			Enable loadable module suppor 支持动态模块装卸载
+			Bus options (PCI etc) pci 总线配置 pci support
+			Device drivers 硬件驱动
+29.1.39		
+	大体步骤：
+	1、准备目标磁盘
+	2、提供bzImage
+	3、提供busybox
+		建议静态编译：事先安装glibc-static
+	4、准备根文件系统
+		(1) 复制编译安装完成的busybox
+		(2) 补全所需要的其它目录
+	5、为init提供配置文件
+		etc/inittab
+		etc/rc.d/rc.sysint
+	6、提供虚拟终端，同时帐号密钥等文件
+		(1)编辑etc/inittab
+		::respawn:/sbin/getty 19200 tty1
+		::respawn:/sbin/getty 19200 tty2
+		(2)为目标系统提供passwd, group, shadow
+	7、主机名和banner
+		(1) /etc/sysconfig/network文件
+			编辑rc.sysinit，添加
+			[ -r /etc/sysconfig/network ] && . /etc/sysconfig/network
+			[ -z "$HOSTNAME" -o "$HOSTNAME" == "(none)" ] && HOSTNAME="localhost"
+			/bin/hostname $HOSTNAME
+		(2) 编辑/etc/issue
+		Welcome to MageEdu MiniLinux
+		kernel \r
+	8、提供ssh服务
+		(1) 
+	9、提供nginx服务
+		(1) 编辑安装并移植nginx
+		(2) 为目标系统上的nginx提供配置文件
+		(3) 提供测试网页
+		
+
+
+

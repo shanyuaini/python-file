@@ -1,0 +1,143 @@
+#!/bin/bash
+#date:20151224
+#version:1.0
+#auth:jiangtao
+#description: Auto update script for code.Sourcecode in the windows,Manager is Linux. Manager server with Rsync pull windows code . Then,Manager use ansible-tool to push to web,update can choose version, rollback only back last version.
+
+###script arg
+opTion=$1
+verNu=$2
+###web dir
+webDir=/root/code/www
+backUp=/code/backup
+###source dir
+srcDir=/code/source
+###web use source dir
+srcWeb=/code/webcode
+srcWconf=/code/webconf
+### test use source dir
+srcTest=/code/testcode
+srcTconf=/code/testconf
+###ERROR,
+error_ALL() {
+cat << EOF
+	0)
+		"Update no errors! "
+			
+	20)
+		 "Error happened in SVN source-->localhost source dir "
+	21)
+		 "Error happened in _UPSRC localhost source-->localhost update dir "
+	22)
+		 "Error happened in _UPSRC CONF  "
+
+	32)
+		 "Error happened in _CMD remoteserver update. "
+	40) 
+		 "rollback error""
+EOF
+}
+
+
+
+###SVN-DOWN,and version list
+svn_DOWN() {
+        rsync -acz --stats --password-file=/etc/rsyncd.passwd serup@172.17.24.100::test $srcDir
+        if [ $? -ne 0 ];then exit 20;fi
+        versionDir=`ls $srcDir`
+        printf "localhost have version:\n$versionDir\n"
+        echo -e "$srcDir\033[31;1;42m Update Code is Read,\033[0m READY UPDATing,example :testup 2.96 or webup 2.96"
+}
+
+###localost update command
+##pull localhost sourcecode to localhost /code/webcode and /code/testcode
+web_UPSRC() {
+	echo -e "\033[31;1;42mCP CP CP CP CP localhost $srcWeb begin.\033[0m"
+	cp -a $srcDir/oto-beta$verNu/. $srcWeb
+	if [ $? -ne 0 ];then exit 21;fi
+	sleep 10
+	cp -a $srcWconf/. $srcWeb
+	if [ $? -ne 0 ];then exit 22;fi
+	touch $srcWeb/$verNu
+	echo -e "\033[31;1;42m localhost update is finish! $srcWeb\033[0m"
+	
+}
+##localhost test update dir
+test_UPSRC() {
+	echo -e "\033[31;1;42mCP CP CP CP CP localhost $srcTest begin.\033[0m"
+	sleep 10
+	cp -a $srcDir/oto-beta$verNu/. $srcTest
+	if [ $? -ne 0 ];then exit 21;fi
+	cp -a $srcTconf/. $srcTest
+	if [ $? -ne 0 ];then exit 22;fi
+	touch $srcTest/$verNu
+	echo -e "\033[31;1;42;5m Ready update remote server  $srcTest.\033[0m"
+}
+
+###利用ansible在远程执行命令,先将服务器上代码归档打包,然后执行更新
+###remote server update by ansible-tool, backup tar and cp /code/back 
+webup_CMD() {
+	web_UPSRC
+	echo -e "You chosen \033[31;1;42;5mUpdate\033[0m.remote server is \033[31;1;42m$opTion\033[0m.\033[0m.Version is \033[31;1;42m$verNu\033[0m."
+	ansible $opTion -a "mkdir $backUp -pv"
+	sleep 10
+	ansible $opTion -a "cp -a $webDir/. $backUp/" 
+	if [ $? -ne 0 ];then exit 32;fi
+	sleep 10
+	ansible $opTion -a "rsync -acz --stats --password-file=/etc/rsyncd.passwd serup@182.137.20.53::$opTioncode $webDir/"
+	if [ $? -ne 0 ];then exit 32;fi
+	ansible $opTion -a "ls $webDir/"	
+#ansible $opTion -a "bash /code/update.sh"
+	sleep 10
+	echo -e "\033[31;1;42m Remoteserver update is finish! .\033[0m"
+	ansible $opTion -a "chmod -R 777 $webDir"
+	ansible $opTion -a "chown -R www.www $webDir"	
+	ansible $opTion -a "ls $webDir" |grep $verNu
+}
+
+
+####rollback opertions##
+
+web_RB() {
+	echo "Rollback last version is running"
+	sleep 10
+	ansible $opTion -a "cp -a $backUp/. $webDir/"	
+	if [ $? -ne 0 ];then exit 40;fi
+}
+
+
+###main according to the user input keywords, update the different
+main(){
+	
+	case $opTion in
+	q) 
+		echo -e "You chosen \033[31;1;42;5mQuit\033[0m."
+		;;
+	rb)
+		web_RB
+		;;
+
+	web|test)
+		webup_CMD
+		;;
+	svn)
+		svn_DOWN
+		;;
+	error)
+		error_ALL
+		;;
+	*)	
+		        cat << EOF
+                q) Quit.
+                rb) Rollback last version.
+			example: "rb web" exec remote webserver rollback.
+			example: "rb test" exec remote testserver rollback.
+                number) Update version number.
+	                example: "testup 1.11"  #test is remote update test server.   
+	                example: "webup 1.11"   #web is remote update web server
+		error)errorstatus.
+EOF
+		;;
+	esac
+}
+main

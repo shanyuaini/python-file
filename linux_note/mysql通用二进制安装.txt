@@ -1,0 +1,165 @@
+通用二进制格式mysql安装
+http://dev.mysql.com/downloads/mysql/5.5.html#downloads  
+http://mirrors.sohu.com/mysql/MySQL-5.5/mysql-5.5.46-linux2.6-x86_64.tar.gz  #本机glibc版本过低不支持高版本的.
+yum install libaio
+groupadd -r mysql
+useradd -g mysql -r -s /sbin/nologin mysql #创建一个无法登录的安全账户运行mysql
+tar xf mysql***.tar.gz -C /usr/local/   #解压压缩包
+ln -sv mysql*** mysql   #给mysql建立链接目录
+cd /usr/local/mysql  #less INSTALL_BINARY 查看安装帮助文档
+chown -R mysql.mysql ./*
+#为mysql创建单独的数据存储分区
+#fdisk /dev/sda  (p>n>3>+10g>w)  #划分新的分区
+#fdisk /dev/sda  (t>3>8e>w)      #修改分区属性改为支持逻辑卷分区
+#kpartx -af /dev/sda
+#partx -a /dev/sda
+#pvcreate /dev/sda3              
+#vgcreate mydata /dev/sda3       创建物理卷mydata
+#lvcreate -L 6G -nmysqldata mydata     #在逻辑卷上创建6G的逻辑卷分区mysqldata
+#mke2fs -t ext4 /dev/mydata/mysqldata 格式化mysqldata
+#echo "/dev/mydata/mysqldata	/datamysql 	ext4	defaults,noatime	0 0"  >> /etc/fstab #开机自动挂载逻辑卷到/datamysql目录
+#mkdir /datamysql #创建目录
+#mount -a #手动挂载
+#mkdir /datamysql/mydata
+#chown -R mysql.mysql /datamysql/mydata
+#
+scripts/mysql_install_db --datadir=/datamysql/mydata --user=mysql #--help查看安装选项.--basedir=指定mysql程序路径,--datadir=指定数据存储路径(建议修改),--user=已那个用户身份运行
+#mysql数据库目录下默认会创建3个库mysql,performance_schema, test
+#以.frm结尾的文件是存储表格式定义,.myd数据,.myi索引 MYISAM引擎的文件结构.
+chown -R root  #安装后程序属主改为root.数据库文件(/datamysql/mydata属主需要改否暂时没闹明白)
+cp support-files/mysql.server /etc/rc.d/init.d/mysqld #为mysql自动开机启动的服务脚本
+chkconfig --add mysqld
+cp support-files/my-large.cnf /etc/my.cnf  #为mysql创建配置文件如果服务器上已安装有MYSQL.将会覆盖,建议合并两个文件内容
+vim /etc/my.cnf #mysql有[mysql][mysqld][client]3个配置字段[mysql]字段是配置本机客户端配置,[mysqld]配置本机服务端配置,[client]配置所有连入的客户端配置.
+#检查配置文件中是否指明数据库文件存储目录如没有添加[mysqld]字段下配置.datadir = /datamysql/mydata,thread_concurrency = 8 mysql进程的后台线程数一般改为cpu核心数*2默认为8
+service mysqld start #如果不能成功启动查看数据库文件目录下的mysql服务错误日志
+#此时默认底层存储引擎的日志在数据库文件目录下 InnoDB(闭源)升级版XtraDB(percona开源)
+#ibdata1 #InnoDB存储引擎文件也称表空间文件
+#ib_logile0 #ib_logile1 #InnoDB事务日志文件
+#mysql-bin.000001 mysql二进制滚动日志重开一次就创建一个
+#mysql-bin.index #mysql二进制日志索引,记录一共有多少个日志文件,当前使用的是那个日志
+#hostname.err   #mysql服务错误日志包括了启动和关闭日志.以服务器名称+.err命名
+#hostname.pid   #
+touch /etc/profile.d/mysql.sh
+echo "export PATH= /usr/local/mysql/bin:$PATH" >> /etc/profile.d/mysql.sh #给mysql客户端建立环境变量
+. /etc/profile.d/mysql.sh
+ldconfig -p | grep mysql #查看mysql库文件是否添加,注意与工作目录下的lib对比版本好,本例中是/usr/local/mysql/lib
+echo "/usr/local/mysql/lib" >> /etc/ld.so.conf.d/mysql.conf
+ldconfig -v  #刷新库缓存
+#ln -sv /usr/local/mysql/include/ /usr/include/mysql #导出头文件,给依赖mysql开发人员使用
+echo "MANPATH /usr/local/mysql/man" >> /etc/man.config  #添加man文档
+ss -tnl 检查mysql是否工作在正确的3306端口
+mysql -uroot -p -hlocalhost #以默认管理员登录本机,此时无密码 登录后使用\h获取帮助信息.可以使用 help set passwd或许set passwd命令的详细用法. 可以看到\g|\G可以代替默认的;号结束符显示方式不同,\c取消命令执行(写错命令的情景下使用)
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpasswd');#将root用户密码改为newpasswd
+SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('newpasswd');
+#localhost和127.0.0.1在mysql被识别成同一用户不同帐号,都要修改才能登录.
+SHOW DATABASES; #查看有权限使用的所有库 ,DATABASES(库)|TABLES(表).SELECT DATABASE();查看当前默认使用的操作库.SELECT USER();查看当前登录用户
+USE mysql   #将mysql默认库设置为当前操作的库,
+DESC user;  #查看mysql库中的user表属性.没有设定操作库的时候可以使用DESC mysql.user进行查看
+SELECT User,Host,Password FROM user; #查看user表中的User,Host,Password几个字段的数据,此时可以看到root用户分别有localhost,hostname(主机机器名),127.0.0.1,::1(IPv6地址)的4个帐号和2个匿名帐号
+DROP USER 'root'@'::1' , ''@'localhost' , 'root'@'hostname' , ''@'hostname'  # #删除无用的用户帐号或设置密码
+
+
+
+
+mysql自身的命令语法和函数不区分大小写,但是涉及到数据库中的数据要区分大小写
+SELECT用法:可执行函数(BIF),运行算数运算
+1,执行函数:SELECT USER(); #执行mysql的user函数 select current_time();
+2,执行运算:SELECT 3+2;
+3,挑选数据:SELECT co1(字段1),(字段2) ... FROM tb1(表1),tb2(表2) ... ;
+#SELECT * FROM mysql.user #选择mysql库中user表的所有字段和所有行
+查询表中的字段分为选取和投影,(可以理解为对数据或字段进行操作)
+投影:从一个表中的n个字段挑选某几个字段,(可以理解为从表中只选择部分字段,或只挑选指定字段的操作)#SELECT User FROM mysql.user  #选择mysql库中user表的所有字段
+选取:从一个表中的n个行挑选某几个行(可以理解为从表中只选择部分行,或只挑选指定行(既数据)的操作),这时就需要where子句进行控制
+SELECT co1(字段1),(字段2) ... FROM tb1(表1),tb2(表2) ... where clause(子句:查询条件 某个字段和自己设定的条件进行逻辑运算,符合条件的输出,不满足条件的不输出)
+#SELECT User FROM mysql.user where User ='root' #选择只输出root用户
+CREATE DATABASE database_name(库名); 创建库
+DROP DATABASE database_name; 删除库
+CREATE TABLES tb_name(表名) (col1_name(字段名) col1_type(字段类型) ...);
+
+CREATE TABLES students (Name varchar(30), Age tinyint, Gender ENUM('F','M'));#创建有个3个字段的表
+CREATE TABLES students (StuID int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, Name varchar(30) NOT NULL, Age tinyint UNSIGNED NOT NULL, Gender ENUM('F','M') NOT NULL DEFAULT 'M' );
+#创建表students,字段StuID设置为int类型 不能为负,不能为空,自动增长的主键,Name为30个字符不能为空,Age不能为负不能为空,Gender可以选择F或者M不能为空默认为M
+
+INSERT INTO tb_name (col1, col2, ...) VALUE|VALUES (1, 2 ..)多字段赋值
+INSERT INTO students(Name,Age,Gender) VALUES ('aila',17,'F');
+INSERT INTO students(Name,Age,Gender) VALUES ('TOM',17,'F'),('bob',19,'F');
+INSERT INTO students(Name,Age) VALUES ('LL',20),('HY',19);
+
+SELECT Name, Age FROM students WHERE Age > 20;
+SELECT Name, Age FROM students WHERE Gender = 'F';
+SELECT Name, Age FROM students WHERE Gender = 'F' AND Age > 20;
+
+UPDATE students SET Age = 65 WHERE Name = 'aila';
+
+
+DELETE FROM tb_name WHERE clause
+DELETE FROM tb_name LIKE clause   #LIKE 可以使用mysql的通配符
+DELETE FROM tb_name RLIKE clause 	#基于正则表达式的通配符
+DELETE FROM students WHERE Name LIKE 'H%';
+DELETE FROM students WHERE Name RLIKE '^[[:upper:]].*';
+
+SHOW CREATE TABLE students;
+SHOW ENGINES; 
+# Transactions 支持事务 A：原子性C: 一致性I：隔离性	D：持久性,   
+#XA 是否支持分布式事务,    
+#Savepoints 是否支持保存点 前置需要支持XA
+SHOW TABLE STATUS [LIKE 's%']\G;
+SHOW CHARACTER SET; #字符集 常用GBK,GB2312,GB18030,UTF-8
+SHOW COLLATION; #字符集排序规则每种字符集有多种不同的排序规则
+SHOW {GLOBAL|SESSION} VARIABLES [LIKE clause]; #MySQL服务器的工作特性的定义是通过服务器变量实现的
+SHOW {GLOBAL|SESSION} STATUS [LIKE clause]; #而MySQL服务器运行中的状态是通过状态变量输出的,缓存命中的命令不会记录
+
+
+mysql分为交互式模式和批处理模式:
+登录mysql执行命令为交互式模式
+不用登录执行命令,批处理模式(从文件中读取sql语句).不用使用服务器的用户创建库目录,否则权限有问题
+mysql -uroot -hlocalhost -ppasswd -e 'SELECT USER();'
+echo "CREATE DATABASE database_name" >> a.sql #
+mysql -uroot -hlocalhost -ppasswd < a.sql #从文件中读取执行sql语句
+
+约束:constraint 限定数据的内容,比如一个字段是让用户填写年龄,年龄不能为负数也不可能大于200.
+主键约束:主键只能有个一个,符合主键的条件,唯一,不能为空的条件
+外键约束:引用了另外一个表中的某个字段数据,对应字段条件约束
+唯一键约束:要求和主键相同,可以为空.可以有多个,填入的数据是唯一的!
+检查是约束:用户自定义有效取值范围!
+非空约束:
+
+键:key选取出来具有特殊意义的字段,用来当作查找标准和处理标准使用
+候选键:能唯一标识表中每一个记录(数据)的字段或字段的组合,例如常用的ID,一个字段不能标识,就组合几个字段!
+主键:候选键中挑选出来作为定义为标识数据的字段或字段的组合,主键不能为空
+定义主键单字段是在数据类型后面定义PRIMARY KEY,多字段就在SQL语句最后面定义PRIMARY KEY()填入多个字段
+唯一键:UNIQ KEY
+
+字段或字段类型可以有修饰符
+定义能不能为空NOT NULL,NULL,
+UNSIGNED无符号整型(不能为负),
+DEFAULT可以设置一个默认值,数值绝对不能加引号,字符需要加单双引号,
+AUTO_INCREMENT自动增长类型的字段必须为主键或唯一键,而且删除数据后,不会被自动重置
+
+#视频的第22天第3段35分钟左右,重要!
+创建表
+字段,字段名,键(约束),字段(数据)类型(int,double..)
+
+字段类型的可以决定数据如何排序,如何比较,能参与的比较运算
+数据类型分为:
+字符型:
+char(#),varchar(#)  #可以填入多字符不区分字符大小写  
+binary(#), varbinary(#) #编码字符集,区分大小写和char,varchar对应
+text,blob #基于对象的存储,把数据存储在表外,做一个数据对象,表中存指针指向数据,text不区分大小写,blob区分大小写!
+数字型
+精确数字型: int整型 tinyint(微1字节) smallint(小2) mediumint(中4) int bigint(大8) 
+decimal,
+近似数值型float,double 浮点型
+日期时间型date(3) time(3) datetime(8)8, timestamp(时间戳)
+布尔型用tinyint表示,
+NULL:什么都没有,空白字符不算空
+内置字符类型:
+ENUM枚举类型只能填入事先定义好的字符,单选项,
+SET 集合型,设置的类型可以组合使用,但不能超出范围外,多选项
+
+通配符
+%:任意长度任意字符
+_:单个字符
+
+

@@ -1,0 +1,61 @@
+
+vi /etc/selinux
+service iptables stop ##先停止这两个服务.
+yum install cobbler cobbler-web pykickstart debmirror   #4个包有依赖关系
+cd /etc/cobbler/
+vi users.digest #web界面帐号密码, htdigest生成
+
+service httpd start
+service cobblerd start
+cobbler check  #不同步骤都需要check来检查修改配置,服务才能正常启动
+cd /etc/cobbler/
+1,vi settings
+next-server:192.168.122.100
+server: 192.168.122.100
+2,cobbler get-loaders  #下载各种系统bootloader#/var/lib/cobbler/loaders
+3,vi /etc/xinetd.d/rsync
+disable=no
+chkconfig rsync
+4,vi /etc/debmirror.conf
+dists
+arches	#注释这两个选项,
+
+service cobblerd restart
+cobbler check
+
+
+openssl passwd -1 -salt $(openssl rand -hex 4)  #openssl passwd -1 -salt `openssl rand -hex 4
+vi /etc/settings
+default_password_crypted:""			#将密码粘贴到此处
+
+cobbler sync
+vi /var/lib/tftpboot/pxelinux.cfg/default   #cobbler默认菜单
+
+vi /etc/cobbler/modules.conf 
+[dns]
+module = manage_dnsmasq
+[dhcp]
+module = manage_dnsmasq
+[tftp]
+module =manager_in_tftpd #这是使用单独的tftp,在settings中要做相应的配置.也可以改成manager_tftpd_py使用cobbler的tftp 此处都没有使用单独DNS DHCP
+
+vi /etc/cobbler/settings
+manage_dhcp: 0
+manage_dns: 0
+manage_tftpd: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,953 @@
+LB解决方案Load Balancing
+硬件:F5 big-ip,Cotrox Metscaler,A10,Array,Redware,深信服
+软件:LVS Linux Virtual Server(章文嵩,阿里),HAproxy(四层七层),Nginx(七层)
+F5能够识别应用的转发,例如基于cookie的转发.所以四层七层都能转发
+LVS:ipvs+ipvsadm 工作在TCP/UDP的四层,可以根据ip+端口(套接字)进行转发,以及定义向何处转发.无法识别应用层的转发,通常称之为四层交换,四层路由
+
+技术有点类似iptables的工作机制,ipvs工作在INput链,依赖于规则进行转发,当匹配到相依规则,将input链上的请求,强行转发至内部某一网络.(目标地址可能更改,也可能不改).所以iptables和LVS的过滤机制有冲突.
+	ipvs用来定义集群服务,定义后端一个或多个服务器.
+	ipvsadm:LVS的管理工具
+	LVS能够转发400W个请求,HAproxy上限65535(基于套接字)一般3-5W,F5600-700W个
+	
+	一般入口设备用LVS调度,内部小规模集群可用HAproxy,LVS
+	
+	LVS工作机制
+	Director:调度器,提供LVS服务主机,也称为分发器(Dispatcher),负载均衡器(Load Balancing)
+	VIP:LVS主机的IP,提供响应用户请求服务的虚拟IP,可以做IP转移,
+	CIP:发起请求客户端IP
+	Real Server:后端真正处理用户请求的服务器
+	DIP:Director IP,LVS主机通往后端Real Server的网卡IP地址
+	RIP:Real Server的网卡地址
+	
+		CIP<-->VIP<-->DIP<-->RIP
+	  客户端   LVS服务器    后端服务器
+	LVS类型:
+		1,NAT:(多目标)相当于iptables的DNAT,将用户请求,进行分析,将请求的IP地址修改为后端一个服务器集群,由一定规则进行修改,有可能每一次挑选的服务器都是不同的,从而实现负载均衡功能.iptables的NAT机制是修改为明确的后端服务器,没有负载均衡的功能
+		2,DR,(Direct Routing)发送响应时,不再经过Director,由RS在响应时伪装为VIP封装响应报文,直接发到路由.分为两种:RIP可使用私有地址也可使用公网地址,当RIP(公网地址)和VIP在一个网段内是走同一个路由,当RIP(私有地址)和VIP不在一个网段内,接受请求和发送响应是走的不同路由,
+		3,TUN
+		4,FULLNAT
+	
+	LVS NAT的特性,
+		1,RS应该使用私有地址
+		2,RS的网关必须要只想DIP
+		3,RIP和DIP必须在同一网段内,不能垮网段
+		4,进出的报文,请求和响应的报文都的经过Director,在高负载场景中,Director有可能成为性能瓶颈
+		5,支持端口映射,
+		6,RS可以使用任意支持集群服务的OS(windows,bsd)
+		由于响应报文也都有Director来构建,构建响应负载很大,(例如,用户发来一个请求只是一个URL,而Director却要响应一个几M几十M的页面,用户发来一个查询请求,我们需要响应的是成百上千行内容)性能瓶颈只能支持10个服务器
+		
+	LVS DR类型,
+		让前端路由将请求发往VIP时只能是Director的vip,
+		解决方案
+			(1)静态地址绑定,在前端路由上实现静态MAC地址绑定VIP,缺点,未必有路由器的配置权限,Director故障转移时静态绑定难以适用
+			(2)arptables,在各RS安装arptables程序,并编写arptables规则,缺点依赖于独特功能的应用
+			(3)修改Linux内核参数,将RS上的vip配置在lo接口的别名上;限制Linux仅对对应接口的ARP请求做响应.缺点,只能用在Linux服务器中,适应性差
+	LVS DR的特性	
+		1,RS可以使用私有地址,但也可以使用公网地址,如果使用公网地址,可以直接通过互联网连入RS以实现配置,监控等
+		2,RS的网关一定不能只想DIP,
+		3,RS跟Director要在同一物理网络内(不能由路由器分隔,也不能垮VLAN)
+		4,请求报文经过Director,但响应报文一定不能经过Director,
+		5,因为是基于MAC,不支持端口映射
+		6,RS可以使用大多数的操作系统.
+	
+	LVS tun类型:IP隧道,扩展的DR模型,可以垮互联网工作.类似DR的第二种类型,但是这时候使用的RIP必须是公网地址.
+	1,RIP,VIP都得是公网地址,DIP一般来讲也要求公网地址,但是DIP不接受响应,所以也可用私有地址
+	2,RS的网关不会指向也不可能指向DIP
+	3,请求报文经过Director,但响应报文一定不经过Director
+	4,不支持端口映射
+	5,RS的OS必须得支持隧道功能.在报文IP首部能多加IP
+	
+	LVS FULLNAT类型可以垮网络的NAT模型,向后发送时把报文ip首部改为DIP+RIP,向外发送时将IP首部改为CIP+VIP以实现垮网络通信.必须,修改内核.
+###35天第二段,后半段.
+			
+				
+	LVS的调度方法:调度算法 Scheduling Method
+		前端的Director是否考虑后端的每一个RS当前正处于活动及非活动状态,或只考虑活动状态,将请求转发至相应的RS
+		
+		静态方法,仅根据算法本身进行调度,不考虑RS当前是不是承载的有很多的用户请求
+			rr:轮询,rr和wrr无法解决session,只能用session复制或session服务器
+			wrr:Weighted RR:加权轮询.根据服务器性能等指标给服务器一个权重(weight),根据其权重比例分配.权重越高,分配到的处理请求越多(能者多劳).
+			sh:source hashing :能够将同一个ip的用户定向至同一个服务器
+			dh:destination hashing :对目标地址进行hash,(作用在防火墙的目标追踪功能下)
+			
+		动态方法,根据算法及RS当前的负载状态
+			lc:Least Connection:后端服务器哪一个服务器连接少,Overhead=Active(活动连接)*256+Inactive(非活动连接),结果小的overhead值获得分配
+			wlc:Weighted LC,Overhead=Active*256+Inactive/weight,结果小的overhead值获得分配.存在问题,权重分配不合理,不能合理分配连接
+			sed:Shortest Expect Delay,最小期望延迟.Overhead=(Active+1)*256/weight,结果小的overhead值获得分配.
+			nq:Nerver Queue,永不排队,在sed算法基础上考虑权重,让分配更合理.
+			lblc:Locality-based Least Connection,类似于dh+lc算法,用于后端是缓存服务器时,将同一个请求定位至同一个RS
+			lblcr:Replicated and Locality-based Least Connection,用于后端是缓存服务器时,将同一个请求定位至同一个RS
+		LVS缺陷,不会检测后端服务器的健康状态,所以每种算法都不能避免将请求调度到坏的RS上
+		
+		grep -E -i "ipvs|IP_VS" /boot/config-2.6.32-431.el6.x86_64(查看内核配置文件,支持的LVS支持的协议,集群服务,调度算法)
+		
+LVS的集群服务,四层路由,四层交换:根据请求目标的套接字(第四层协议,ip+port,包括端口的端口协议类型tcp|udp)来实现转发.ipvs在INPUT链上匹配规则,匹配到的请求,强行转发到FORWARD,再交到POSTROUTING转发到后端,LVS不能和iptables的Filter和NAT一块来工作,可以和mangle表一起工作.
+	
+	ipvsadm -A|E -t|u|f service-address [-s scheduler][-p [timeout]] [-M netmask]:
+		-A :添加一个集群服务 
+			-t,tcp协议 -u,udp协议 -f,firewall mark,防火墙标记,通常用于将两个或以上的服务绑定为一个服务进行处理时使用(例如,支付切换需要从80转换到443,把80和443标记为一个集群)
+			service-address: -t ip:port  -u ip:port  -f firewall_mark(用iptables打上的自定义数字一般为1-99)
+			-s:调度方法,默认为wlc,实际场景中效果最好的
+			-p timeout:persistent connection,持久连接,
+		-E :修改集群服务选项和-A一样
+	RS相关
+	ipvsadm -a|e -t|u|f service-address -r server-address [-g|i|m] [-w weight] [-x upper] [-y lower]
+		-a :向指定的CS集群中添加RS
+			-t|u|f service-address,指明将RS添加至哪个Cluster Service中
+			-r:指定RS,可以包含ip:[port],只有支持端口映射的LVS的类型才允许使用跟集群服务中不同的端口
+			-g|i|m:指定LVS类型默认是DR类型,-g DR   -i ipip LVSTUN   -m masquerade NAT
+			-w:指定权重,默认为1
+			-x|y :最少连接数
+		-e:修改指定的RS属性
+	ipvsadm -D -t|u|f service-address:删除指定的集群服务
+	ipvsadm -d -t|u|f service-address -r server-address:删除指定集群服务中的RS
+	
+	ipvsadm -C:清空所有的规则
+	ipvsadm -S >> /etc/ipvs.conf, 相当于ipvsadm-save,只不过要用输出重定向指定保存的文件
+	ipvsadm -R  << /etc/ipvs.conf    相当于ipvsadm-restor,只不过要用输入重定向指定保存的文件
+	ipvsadm -L [option]:显示ipvs规则,相当于iptables -L
+		-n :数字格式显示ip地址
+		-c :显示连接数相关信息
+		--stats :显示统计数据,每个RS接受过多少连接,请求(响应)报文数,请求(响应)的字节数.Conns连接数,InPKts进入的报文数, OutPkts响应的报文数,InBytes进入的字节数,OutBytes响应的字节数
+		--rate :平均数据 CPS平均每秒的连接数,  InPPs平均每秒的进入报文数, OutPPs平均每秒的响应报文数, InBPS平均每秒的进入字节数, OutBPS平均每秒的响应字节数,
+		--timeout :显示tcp会话时长
+		--daemon :显示ipvs集群服务的状态和多播接口
+		--sort:进行协议,ip,端口排序
+		--exact :对输出数据不做单位换算,显示精确值
+	ipvsadm -Z [-t|u|f service-address]:清空所有规则的计数器,清零-L查看的所有数据
+使用ipvs前要清空iptables的规则iptables -F 或者iptables -F -t filter
+
+NAT模型实验			
+          |                           
+     VIP=172.16.100.8 (eth0)             
+        ____________                      
+       |            |                     
+       |  director  |                     
+       |____________|                     
+     DIP=192.168.12.1 (eth1)         
+              |                           
+           (switch)------------------------
+              |                           |
+     RIP=192.168.12.11 (eth0)       RIP=192.168.12.12(eth0)
+        _____________               _____________
+       |             |             |             |
+       | realserver1 |             | realserver2 |
+       |_____________|             |_____________|  
+		
+	realserver1:
+		yum install httpd
+		vi /etc/httpd.conf
+		ifconfig eth0 192.168.12.11/24
+		route add default gw 192.168.12.1
+	realserver2:
+		yum install httpd
+		vi /etc/httpd.conf
+		ifconfig eth0 192.168.12.12/24
+		route add default gw 192.168.12.1
+	director:
+		yum install -y ipvsadm
+		ifconfig eth0 172.16.100.8/16
+		ifconfig eth1 192.168.12.1/24
+			vim /etc/sysctl.conf
+			net.ipv4.ip_forward = 1
+		sysctl -p
+		curl http://192.168.12.11
+		curl http://192.168.12.12
+		ifconfig eth0:0 172.16.100.8/16
+		
+		ipvsadm -A -t 172.16.100.8:80 -s rr
+		ipvsadm -L -n
+		ipvsadm -a -t 172.16.100.8 -r 192.168.12.11 -m
+		ipvsadm -a -t 172.16.100.8 -r 192.168.12.12 -m
+		ipvsadm -L -nc
+		ipvsadm -Z
+		ipvsadm -L -n --stats 
+		ipvsadm -E -t 172.16.100.8:80 -s wrr
+		ipvsadm -e -t 172.16.100.8:80 -r 192.168.12.11 -m -w 3
+		ipvsadm -L -nc
+		ipvsadm -L -n --stats 
+		ipvsadm -L -c
+		
+		
+		
+		
+DR模型的 
+
+	Director两个地址VIP,DIP还有一个面向外部的地址.
+	RS有两个地址:VIP,RIP,但是RS的VIP不响应用户请求,只是在发送响应的时候以VIP来封装报文,如果RIP是有外网地址,就直接通过RIP的网络返回给用户,就不在经过Director,如果RIP是内网地址,不能走Director的VIP所在的路由出去,就必须经由其它的路由器转发,
+	伪装VIP:	
+		调整RS的VIP的arp问题
+	    由Linux的ip是属于主机内核的,而非某特定网卡,所以只要有请求就会响应对应的网卡	
+
+					____________            ____________           
+				   |            |          |            □  eth2 10.0.0.1           
+				   |        y   □〈------〉□       x    |            
+				   |____________|  		   |____________□  eth1 192.168.10.1                      
+				eth0 172.16.100.7		eth0 172.16.100.8
+
+			当y主机发起arp请求要求 x主机的网卡MAC地址,X主机会把eth0,eth1,eth2的MAC都会给y
+			arp_announce  定义收到arp请求时的响应模式(接受响应arp请求时的行为)
+				1尽力避免发送无关网络的网卡MAC
+				2,仅拿同一网络的网卡MAC通告给arp请求
+			arp_ignore 定义通告模式,向局域网发送arp信息,(主动发送arp请求时的行为)
+				1,仅响应接受到报文的网卡接口,
+				2,仅响应接受到报文的网卡接口,而且检查是否同一网络
+			arp_announce = 2   arp_ignore = 1
+			必须要对两类接口做限制全局,和指定网卡同时修改才能生效,先配置参数再配置IP
+		配置专用路由,以使得响应报文首先通过VIP所配置的lo上的别名.VIP的保持,由于Linux响应报文会由那个接口出去,就会修改,IP首部为那个接口的IP,所以,响应报文从RIP出去会把伪装好的VIP修改为VIP,
+两种模型
+
+	1,Director和RS的网关都指向同一个路由器IIP,	RIP,IIP,VIP都是公网地址,在Director和RS上配置VIP要使用如下格式:
+		ifconfig ALIAS VIP netmask 255.255.255.255 broadcast VIP up
+		route add -host VIP dev ALIAS
+                     __________
+                     |        |
+                     | client |
+                     |________| 
+ 	                       |		
+                      (router)					
+                         |					
+                         |					
+                         |						
+           				 ∨		 	
+                         |  	
+                         |	
+                         |                        
+                         |						 
+       --------------------------------------	
+       |                 |                |		
+       |                 |                |			
+   RIP1, VIP         RIP2, VIP        RIP3, VIP
+ ______□_______    ______□_______    _____□________
+|              |  |              |  |              |
+| director     |  | realserver1  |  | realserver2  |
+|______________|  |______________|  |______________|
+
+		CIP 172.16.100.177 VIP 172.16.100.18  DIP 172.16.100.13 RS1 RIP 172.16.100.9  RS2 172.16.100.10
+	
+		RS1:
+		ifconfig eth0 172.16.100.9/16 up
+		ls /proc/sys/net/ipv4/all
+		ls /proc/sys/net/ipv4/eth0
+		echo 1 /proc/sys/net/ipv4/conf/all/arp_ignore
+		echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore
+		echo 2 /proc/sys/net/ipv4/conf/all/arp_annouce
+		echo 2 /proc/sys/net/ipv4/conf/eth0/arp_annouce
+		ifocnfig lo:0 172.16.100.18 netmask 255.255.255.255 broadcast 172.16.100.18     #####给RS配置VIP时一定不能让VIP广播,只让RS的VIP给自己发广播
+		route add -host 172.16.100.18 dev lo:0
+		
+		RS2
+		ifconfig eth0 172.16.100.10/16 up
+		echo 1 /proc/sys/net/ipv4/conf/all/arp_ignore
+		echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore
+		echo 2 /proc/sys/net/ipv4/conf/all/arp_annouce
+		echo 2 /proc/sys/net/ipv4/conf/eth0/arp_annouce  
+		ifocnfig lo:0 172.16.100.18 netmask 255.255.255.255 broadcast 172.16.100.18    #####给RS配置VIP时一定不能让VIP广播,只让RS的VIP给自己发广播
+		route add -host 172.16.100.18 dev lo:0
+		
+		Director:
+		iptables -t filter -F
+		ifocnfig eth0 172.16.100.7/16
+		ifocnfig eth0:0 172.16.100.18 
+		route add -host 172.16.100.18 dev lo:0
+		curl http://172.16.100.9
+		curl http://172.16.100.10
+		yum -y install ipvsadm
+		ipvsadm -A -t 172.16.18:80 -s rr
+		ipvsadm -a -t 172.16.100.18:80 -r 172.16.100.9 -g
+		ipvsadm -a -t 172.16.100.18:80 -r 172.16.100.10 -g
+		
+		
+
+
+	2,Director有公网地址和RS使用内网地址	路由IIP,Director的VIP都是公网地址,在同一网络中.DIP,RIP都是私有地址,route1,route2可以用两个网卡的一台Linux机器.
+                     __________
+                     |        |
+                     | client |
+                     |________| ------------------
+ 	                     |						  |
+                         |					      |
+                         |						  |
+                         |						  |	
+                         |						  |
+					(router1)	      	 		(router2)	
+                     ____□_____                   |
+                     |        |                   |
+                     | route  □------------------
+                     |________|        
+
+                         |						  
+                         |                        
+                         |						 
+       --------------------------------------	
+       |                 |                |		
+       |                 |                |			
+   VIP, DIP         RIP1, VIP        RIP2, VIP
+ ______□_______    ______□_______    _____□________
+|              |  |              |  |              |
+| director     |  | realserver1  |  | realserver2  |
+|______________|  |______________|  |______________|
+
+
+                     __________
+                     |        |
+                     | client |
+                     |________| ------------------
+ 	                     |						  |
+                         |					      |
+                         |						  |
+                         |						  |	
+                         |						  |
+					(router1)	      	 		(router2)	
+                     ____□_____              ____□_____ 
+                     |        |              |        |
+                     | switch □--------------□ switch |
+                     |________|              |________|
+
+                         |						  
+                         |                        
+                         |						 
+       --------------------------------------	
+       |                 |                |		
+       |                 |                |			
+   VIP, DIP         RIP1, VIP        RIP2, VIP
+ ______□_______    ______□_______    _____□________
+|              |  |              |  |              |
+| director     |  | realserver1  |  | realserver2  |
+|______________|  |______________|  |______________|
+
+		CIP=192.168.1.30  VIP=172.16.100.8  DIP=192.168.0.170   RIP1=192.168.0.171   RIP2=192.168.0.172  route1=172.16.0.1   route2=192.168.0.254
+		CIP-->route1-->VIP--director--DIP-->RIP1(RIP2)--RS1--VIP(或RS2的lo接口上的VIP)-->route2-->CIP	#实验环境用172.168.0.0和192.168.0.0模拟外网环境而且是同一路由器的两个外网IP,可以给RS的192.168.0.0网络单独使用路由
+		
+		RS1
+		ifconfig eth0 192.168.0.171/24 up
+		route add default gw 192.168.0.254
+		echo 1 /proc/sys/net/ipv4/conf/all/arp_ignore
+		echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore
+		echo 2 /proc/sys/net/ipv4/conf/all/arp_annouce
+		echo 2 /proc/sys/net/ipv4/conf/eth0/arp_annouce
+		ifocnfig lo:0 172.16.100.8 netmask 255.255.255.255 broadcast 172.16.100.8 
+		route add -host 172.16.100.8 dev lo:0
+				
+		RS2
+		ifconfig eth0 192.168.0.172/24 up
+		route add default gw 192.168.0.254
+		echo 1 /proc/sys/net/ipv4/conf/all/arp_ignore
+		echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore
+		echo 2 /proc/sys/net/ipv4/conf/all/arp_annouce
+		echo 2 /proc/sys/net/ipv4/conf/eth0/arp_annouce
+		ifocnfig lo:0 172.16.100.8 netmask 255.255.255.255 broadcast 172.16.100.8 
+		route add -host 172.16.100.8 dev lo:0
+		
+		director
+		iptables -t filter -F
+		ifconfig eth0 192.168.0.170/24 up
+		ifconfig eth0:0 172.16.100.8/16 up
+		route add -host 172.16.100.8 dev eth0:0
+		ipvsadm -A -t 172.16.100.8:80 -s rr
+		ipvsadm -a -t 172.16.100.8:80 -r 192.168.0.171
+		ipvsadm -a -t 172.16.100.8:80 -r 192.168.0.172
+		
+LVS持久连接		
+	在一定时间内无论使用任何算法都定向来自同一个IP的用户回话连接到同一个服务器,以保证session不丢失.ipvs使用连接模版记录这个超时时间,分为三种
+		ipvsadm -L -c  #查看模版中记录的持久连接
+		pro(协议) expiry(到期时间) state(状态信息) source(源地址既客户IP) virtual(访问地址) destination(后端访问的真实地址既RS)
+		
+		在定义集群服务器使用-p来指定这个时间默认300秒
+		ipvsadm -E -t 172.16.100.8:80 -s wlc -p 120(以秒为单位)
+	PCC:持久客户端连接,将来至于同一个客户端发往VIP的所有请求通通定向至同一个RS,不区别请求的端口,只要是VIP的任意端口都定向.例如第一次用户访问了172.168.100.8:80,DR分配到RS1并记录下来以后.第二次用户要访问172.16.100.8:443,在一定时间内无论用户请求那个端口的服务都会给RS1
+	PPC:将来自于一个客户端发往某端口某VIP的所有请求通通定向至同一个RS.对端口的服务也会进行检查.在上一个例子中,用户请求443端口的时候DR会根据规则重新分配
+	PFMC:端口绑定,将客户端请求时,发往后端RS时会做一个防火墙标记,只要有同一个来源并有防火墙标记请求就定向到一个RS(电商网站最好是用PFMC,当然RS1必须要同时有HTTP和HTTPS)基于防火墙标记,将两个或以上的端口绑定为同一个服务
+	
+		pcc
+		ipvsadm -A -t 172.16.100.8:80 -s rr  #PCC模式下没定义22的服务,会访问DR
+		ipvsadm -a -t 172.16.100.8:80 -r 172.16.100.11 -g
+		ipvsadm -a -t 172.16.100.8:80 -r 172.16.100.12 -g
+		ipvsadm -E -t 172.16.100.8:80 -s rr -p
+
+		ipvsadm -A -t 172.16.100.8:22 -s rr -p       #PCC模式定义22的服务,才会访问RS,这样的话,有可能不能访问DR的22端口
+		ipvsadm -a -t 172.16.100.8:22 -r 172.16.100.11 -g
+		ipvsadm -a -t 172.16.100.8:22 -r 172.16.100.12 -g
+		
+	ipvsadm -L -n --persistent-conn 显示持久连接统计信息
+	
+LVS持久防火墙标记(通常用于http和https)
+	打防火墙标记在Director上
+		iptables -t mangle -A PREROUTING -d 172.16.100.8 -p tcp --dport 80 -j MARK --set-mark 10
+		iptables -t mangle -A PREROUTING -d 172.16.100.8 -p tcp --dport 443 -j MARK --set-mark 10        #对同一个VIP的80和443端口的访问做防火墙标记,标记为10(可自定义0-99)
+		service iptables save
+		ipvsadm -A -f 10 -s rr         #将标记10定义为一个新的LVS集群服务
+		ipvsadm -a -f 10 -r 172.16.100.11 -g     #在新的集群中加入后端服务器
+		ipvsadm -a -f 10 -r 172.16.100.12 -g
+		ipvsadm -E -f 10 -s rr -p 1200  #修改10集群的持久连接时间
+	LVS被动模式:例如FTP的被动模式的集群.可实现,但是没有找到资料
+	
+LVS健康状态检测
+	1,后端RS的健康状态检测,  1)脚本检测 2)keepalived,ldirectord
+	2,DR自身的可用性, 1)ldirectord, heartbeat和corosync都带有 3)keepalived
+	写脚本性能不好,不建议
+	
+	怎么算完整的健康检测
+		1)主机是否在线,主机在线是否有请求的服务 2)服务进程在线,是否能够正常服务, 3)进程能够正常服务,提供的服务是否正确,比如http主页文件? 4)主页存在,提供的数据是否正确.
+	检查的越仔细,性能差一点,准确性越好!采样时间长.机器越多遍历一轮时间越长
+	需要检测几次?是不是检测到一次错误,就判断未不在.什么时候要重新检测,状态改变时,状态没改变不要重试,
+	
+	给需要检测的机器放一个健康测试页 echo OK > /var/www/html/.health.html
+
+		vi healthcheck.sh
+			#!/bin/bash
+			#
+			CS='-f 10
+ 			RS1=172.16.100.11
+			RS2=172.16.100.12
+			
+			checkRS() {
+				curl -s http://${1}/.health.html |grep "OK" &> /dev/null
+				RetVal=$?
+				if [ $RetVal -ne 0 ] && ipvsadm -L -n | grep "$1" &> /dev/null; then
+				ipvsadm -d $CS -r $1
+				fi 
+				
+				if [ $RetVal -eq 0 ] && ! ipvsadm -L -n | grep "$1" &> /dev/null; then
+					ipvsadm -a $CS -r $1 -g 
+				fi 
+			}
+			while true; do
+				checkRS $RS1
+				checkRS $RS2
+				sleep 3 
+			done
+	
+	1,用一个备用服务器提供所有RS下线的时候提供一个错误页面,提示用户正在维护.也可以在DR上做
+	2,某RS故障时,要检测至少三次才让其下线,而重新上线时,只需要检测一次
+	3,如何让脚本有更好的适应性	如何高效加入机器,等
+	
+	案例需求 Discuz论坛,LAMP,并发请求1200,服务器能提供700个并发请求,不考虑高可能
+	一个负载均衡,2个http,2个mysql
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+网站进化
+     	____________ 		____________     ____________                
+       |            |                     
+       |  NGINX     |           PHP          	MYSQL
+       |____________|  		____________	 ____________
+
+
+	    ____________ 		____________     ____________    ____________                
+                                        
+          NGINX +FS            PHP             MEMECACHE	       MYSQL
+        ____________  		____________	 ____________    ____________
+		   
+	    ____________ 		____________     ____________    ____________       ____________       
+                                        
+          NGINX                  FS            N*PHP             MEMECACHE	       N*MYSQL
+        ____________  		____________	 ____________    ____________		____________
+		   	
+	    ____________ 		____________     ____________    ____________       ____________      ____________ 
+                                        
+          负载均衡            N*NGINX              FS            N*PHP             MEMECACHE	       N*MYSQL
+        ____________  		____________	 ____________    ____________		____________	  ____________
+		   		
+	
+	
+	36,3,27
+
+
+
+
+	
+	
+	
+	
+	
+DR类型中，Director和RealServer的配置脚本示例：
+
+	Director脚本:
+	#!/bin/bash
+	#
+	# LVS script for VS/DR
+	# chkconfig: - 90 10
+	#
+	. /etc/rc.d/init.d/functions
+	#
+	VIP=172.16.100.1
+	DIP=172.16.100.2
+	RIP1=172.16.100.7
+	RIP2=172.16.100.8
+	PORT=80
+	RSWEIGHT1=2
+	RSWEIGHT2=5
+
+	#
+	case "$1" in
+	start)           
+
+	  /sbin/ifconfig eth0:1 $VIP broadcast $VIP netmask 255.255.255.255 up
+	  /sbin/route add -host $VIP dev eth0:1
+
+	# Since this is the Director we must be able to forward packets
+	  echo 1 > /proc/sys/net/ipv4/ip_forward
+
+	# Clear all iptables rules.
+	  /sbin/iptables -F
+
+	# Reset iptables counters.
+	  /sbin/iptables -Z
+
+	# Clear all ipvsadm rules/services.
+	  /sbin/ipvsadm -C
+
+	# Add an IP virtual service for VIP 192.168.0.219 port 80
+	# In this recipe, we will use the round-robin scheduling method. 
+	# In production, however, you should use a weighted, dynamic scheduling method. 
+	  /sbin/ipvsadm -A -t $VIP:80 -s wlc
+
+	# Now direct packets for this VIP to
+	# the real server IP (RIP) inside the cluster
+	  /sbin/ipvsadm -a -t $VIP:80 -r $RIP1 -g -w $RSWEIGHT1
+	  /sbin/ipvsadm -a -t $VIP:80 -r $RIP2 -g -w $RSWEIGHT2
+
+	  /bin/touch /var/lock/subsys/ipvsadm &> /dev/null
+	;; 
+
+	stop)
+	# Stop forwarding packets
+	  echo 0 > /proc/sys/net/ipv4/ip_forward
+
+	# Reset ipvsadm
+	  /sbin/ipvsadm -C
+
+	# Bring down the VIP interface
+	  /sbin/ifconfig eth0:0 down
+	  /sbin/route del $VIP
+	  
+	  /bin/rm -f /var/lock/subsys/ipvsadm
+	  
+	  echo "ipvs is stopped..."
+	;;
+
+	status)
+	  if [ ! -e /var/lock/subsys/ipvsadm ]; then
+	    echo "ipvsadm is stopped ..."
+	  else
+	    echo "ipvs is running ..."
+	    ipvsadm -L -n
+	  fi
+	;;
+	*)
+	  echo "Usage: $0 {start|stop|status}"
+	;;
+	esac
+
+
+	RealServer脚本:
+
+	#!/bin/bash
+	#
+	# Script to start LVS DR real server.
+	# chkconfig: - 90 10
+	# description: LVS DR real server
+	#
+	.  /etc/rc.d/init.d/functions
+
+	VIP=172.16.100.1
+
+	host=`/bin/hostname`
+
+	case "$1" in
+	start)
+	       # Start LVS-DR real server on this machine.
+	        /sbin/ifconfig lo down
+	        /sbin/ifconfig lo up
+	        echo 1 > /proc/sys/net/ipv4/conf/lo/arp_ignore
+	        echo 2 > /proc/sys/net/ipv4/conf/lo/arp_announce
+	        echo 1 > /proc/sys/net/ipv4/conf/all/arp_ignore
+	        echo 2 > /proc/sys/net/ipv4/conf/all/arp_announce
+
+	        /sbin/ifconfig lo:0 $VIP broadcast $VIP netmask 255.255.255.255 up
+	        /sbin/route add -host $VIP dev lo:0
+
+	;;
+	stop)
+
+	        # Stop LVS-DR real server loopback device(s).
+	        /sbin/ifconfig lo:0 down
+	        echo 0 > /proc/sys/net/ipv4/conf/lo/arp_ignore
+	        echo 0 > /proc/sys/net/ipv4/conf/lo/arp_announce
+	        echo 0 > /proc/sys/net/ipv4/conf/all/arp_ignore
+	        echo 0 > /proc/sys/net/ipv4/conf/all/arp_announce
+
+	;;
+	status)
+
+	        # Status of LVS-DR real server.
+	        islothere=`/sbin/ifconfig lo:0 | grep $VIP`
+	        isrothere=`netstat -rn | grep "lo:0" | grep $VIP`
+	        if [ ! "$islothere" -o ! "isrothere" ];then
+	            # Either the route or the lo:0 device
+	            # not found.
+	            echo "LVS-DR real server Stopped."
+	        else
+	            echo "LVS-DR real server Running."
+	        fi
+	;;
+	*)
+	            # Invalid entry.
+	            echo "$0: Usage: $0 {start|status|stop}"
+	            exit 1
+	;;
+	esac
+
+
+
+curl命令选项：
+		--cacert <file> CA证书 (SSL)
+		--capath <directory> CA目录 (made using c_rehash) to verify peer against (SSL)
+		--compressed 要求返回是压缩的形势 (using deflate or gzip)
+		--connect-timeout <seconds> 设置最大请求时间
+		-H/--header <line>自定义头信息传递给服务器
+		-i/--include 输出时包括protocol头信息
+		-I/--head 只显示文档信息
+		--interface <interface> 使用指定网络接口/地址
+		-s/--silent静音模式。不输出任何东西
+		-u/--user <user[:password]>设置服务器的用户和密码
+		-p/--proxytunnel 使用HTTP代理
+
+
+
+RS健康状态检查脚本示例第一版：
+		#!/bin/bash
+		#
+		VIP=192.168.10.3
+		CPORT=80
+		FAIL_BACK=127.0.0.1
+		FBSTATUS=0
+		RS=("192.168.10.7" "192.168.10.8")
+		RSTATUS=("1" "1")
+		RW=("2" "1")
+		RPORT=80
+		TYPE=g
+
+		add() {
+		  ipvsadm -a -t $VIP:$CPORT -r $1:$RPORT -$TYPE -w $2
+		  [ $? -eq 0 ] && return 0 || return 1
+		}
+
+		del() {
+		  ipvsadm -d -t $VIP:$CPORT -r $1:$RPORT
+		  [ $? -eq 0 ] && return 0 || return 1
+		}
+
+		while :; do
+		  let COUNT=0
+		  for I in ${RS[*]}; do
+		    if curl --connect-timeout 1 http://$I &> /dev/null; then
+		      if [ ${RSTATUS[$COUNT]} -eq 0 ]; then
+		         add $I ${RW[$COUNT]}
+		         [ $? -eq 0 ] && RSTATUS[$COUNT]=1
+		      fi
+		    else
+		      if [ ${RSTATUS[$COUNT]} -eq 1 ]; then
+		         del $I
+		         [ $? -eq 0 ] && RSTATUS[$COUNT]=0
+		      fi
+		    fi
+		    let COUNT++
+		  done
+		  sleep 5
+		done
+
+
+RS健康状态检查脚本示例第二版：
+		#!/bin/bash
+		#
+		VIP=192.168.10.3
+		CPORT=80
+		FAIL_BACK=127.0.0.1
+		RS=("192.168.10.7" "192.168.10.8")
+		declare -a RSSTATUS
+		RW=("2" "1")
+		RPORT=80
+		TYPE=g
+		CHKLOOP=3
+		LOG=/var/log/ipvsmonitor.log
+
+		addrs() {
+		  ipvsadm -a -t $VIP:$CPORT -r $1:$RPORT -$TYPE -w $2
+		  [ $? -eq 0 ] && return 0 || return 1
+		}
+
+		delrs() {
+		  ipvsadm -d -t $VIP:$CPORT -r $1:$RPORT 
+		  [ $? -eq 0 ] && return 0 || return 1
+		}
+
+		checkrs() {
+		  local I=1
+		  while [ $I -le $CHKLOOP ]; do 
+		    if curl --connect-timeout 1 http://$1 &> /dev/null; then
+		      return 0
+		    fi
+		    let I++
+		  done
+		  return 1
+		}
+
+		initstatus() {
+		  local I
+		  local COUNT=0;
+		  for I in ${RS[*]}; do
+		    if ipvsadm -L -n | grep "$I:$RPORT" && > /dev/null ; then
+		      RSSTATUS[$COUNT]=1
+		    else 
+		      RSSTATUS[$COUNT]=0
+		    fi
+		  let COUNT++
+		  done
+		}
+
+		initstatus
+		while :; do
+		  let COUNT=0
+		  for I in ${RS[*]}; do
+		    if checkrs $I; then
+		      if [ ${RSSTATUS[$COUNT]} -eq 0 ]; then
+		         addrs $I ${RW[$COUNT]}
+		         [ $? -eq 0 ] && RSSTATUS[$COUNT]=1 && echo "`date +'%F %H:%M:%S'`, $I is back." >> $LOG
+		      fi
+		    else
+		      if [ ${RSSTATUS[$COUNT]} -eq 1 ]; then
+		         delrs $I
+		         [ $? -eq 0 ] && RSSTATUS[$COUNT]=0 && echo "`date +'%F %H:%M:%S'`, $I is gone." >> $LOG
+		      fi
+		    fi
+		    let COUNT++
+		  done 
+		  sleep 5
+		done
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Session持久绑定:
+			1,session绑定,始终将同一个请求者的连接定向至同一个RS(第一次请求仍由调度方法选择),没有容错能力,有损均衡效果
+			2,session复制:在RS之间同步session,因此每个RS持有集群中的所有session;对大规模集群环境不适用
+			3,session服务器,利用单独不熟的服务器来统一管理session;必须做高可用,不然有
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

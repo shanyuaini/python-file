@@ -1,0 +1,38 @@
+﻿;同一行执行两个命令
+hwclock ; date
+
+(ls -l /etc) 在括号中执行的命令默认在子shell执行,其中申明的变量不会对当前shell生效
+grep ssh /etc/services 名称解析库,常用端口和进程协议信息不是正在使用的端口
+
+tcpdump -i eth0 -nn -X tcp port 80 抓80端口数据报文
+
+curl -I http://xxx 获取响应首部
+watch -n 'netstat -na |grep ESTABLISHED'
+
+启动服务时的最后一个服务通常是/etc/rc.d/rc.local (/etc/rc.local)，这事实上是一个脚本，但凡写在此脚本中的命令或脚本调用都在系统运行至此服务被执行；
+
+
+RPM包搜索站点pkgs.org
+
+percano-tools的工具
+	pt-summary:检查主机性能
+	pt-ioprofile:io性能评估
+
+src.rpm(为编译源码+specs源码编译规范)
+
+内核源码的document有内核文档
+
+screen命令：
+	screen：打开一个新的screen
+	隐藏：Ctrl+a, d
+	重新打开隐藏的screen:
+		显示各screen ID: screen -ls
+		重新打开： # screen -r Screen_ID
+		
+		
+实践成功拷贝当前目录的隐藏文件如下
+cp -a  testFolder/. testFolder2/   必须带点
+
+
+nmap -sP 192.168.10.0/24
+date +%F-%M-%S

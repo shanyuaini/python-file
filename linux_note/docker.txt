@@ -1,0 +1,6 @@
+wget http://www.hop5.in/yum/el6/hop5.repo
+yum install kernel-ml-aufs kernel-ml-aufs-devel
+vi /etc/grub.conf #将新内核选择为首选启动项
+echo "none                    /sys/fs/cgroup          cgroup  defaults        0 0" >> /etc/fstab
+yum install docker-io
+service docker start

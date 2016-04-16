@@ -1,0 +1,121 @@
+sudo:
+	su: switch user 临时切换用户
+		-
+		-l
+		-c
+
+	root: 需要进行权限配置时例如有两个用户有不同功能
+		tom: 用户管理：
+			useradd, userdel, usermod, passwd
+		jerry: 网络管理：
+			ifconfig, ifup, ifdown, ip, route, netstat
+
+	sudo:
+		授权工具：
+			把有限的管理操作授权给某普通用户，并且还能限定其仅能够在某些主机上执行此类的命令；
+			操作过程还会被记录于日志中，以便于日后审计,无需管理员帐号密码,以sudo执行的命令都以管理员身份执行,不管是sudo到那个用户
+
+	使用sudo的过程：普通用户可能没有管理员的$PATH路径, 所以最好指定命令的全路径
+		1、定义sudo授权，/etc/sudoers(如果语法错误,可能造成打不开这个文件,) visudo 授权命令,
+
+			who which_host=(whom) command
+			谁   那些主机	以谁的身份	命令
+			
+			别名：sudoers别名,相当于各种属性组,别名可以嵌套
+				仅能使用大写字母
+				Host_Alias 主机别名
+				User_Alias  用户别名
+				Runas_Alias  以谁的身份别名
+				Cmnd_Alias  命令别名
+					memcache	127.0.0.1 = (root) ALL, ! /usr/bin/passwd   #授权给用户所有的root权限 但是不允许修改root的密码
+					Runas_Alias MASTER = root, mysql, www  #MASTER别名可以执行root, mysql, www的权限
+					Runas_Alias OP = MASTER, nginx   #OP别名有MASTER和nginx的权限
+					memcache	127.0.0.1 = (OP) ALL #给memcache用户授权OP组的所有权限 
+					
+				
+					
+			tag:标签
+				NOPASSWD:
+					hadoop	ALL=(ALL)	NOPASSWD: ALL
+				PASSWD:如果没有设置NOPASSWD,用户操作命令需要输入用户自己的密码默认sudo保存密码倒计时5分钟,
+
+				hadoop	ALL=(ALL)	ALL 	#单个用户以所有权限执行
+				%wheel	ALL=(ALL)	NOPASSWD: ALL 	#wheel组的用户获得所有权限并不输入密码
+
+		2、普通用户执行可以执行管理命令,
+			# sudo command
+				-l: 查看可以sudo模式执行的命令
+				-k: 强迫用户输入密码
+	
+
+	练习：授权jerry用户能够以管理员的身份基于sudo执行ifconfig、route、ip、netstat命令；后面两个命令在执行时需要输入密码，而前两个不需要。
+
+
+Host-based Access Control
+	iptables
+	tcp_wrapper
+	xinetd
+
+		守护进程：
+			stand alone的守护进程：httpd, vsftpd
+			transient守护进程：rsync, tftp, telnet, swat	
+
+tcp_wrapper
+
+	tcpd: 
+
+	/etc/hosts.allow, /etc/hosts.deny
+
+	注意：
+	1、并非所有服务均能由tcp_wrapper
+	2、判断某服务程序是否能够由tcp_wrapper
+		动态编译：
+		ldd 命令检测其是否链接至libwrap库上即可
+			libwrap.so.0 => /lib64/libwrap.so.0
+		静态编译：
+		strings /path/to/program
+			hosts.allow
+			hosts.deny
+
+	配置文件语法格式：
+		daemon_list: client_list [:options]
+
+			daemon_list: 
+				应用程序名称；
+				应用程序列表：如果有多个，用逗号分隔即可；
+				ALL：匹配所有进程
+
+			client_list:
+				IP地址：172.16.100.100
+				主机名：www.magedu.com
+				网络地址/子网掩码：掩码仅允许使用长格式，不允许使用CIDR格式
+					172.16. 表示 172.16.0.0/255.255.0.0
+
+			tcp_wrapper有几个内置的Macro 
+				用于client_list的有：ALL, KNOWN, UNKNOWN, PARANOID
+				用于daemon_list的有：ALL
+
+			EXCEPT: 可以用于client或daemon之中，起到排除功能
+
+		[:options]
+			在hosts.allow文件使用deny选项: 在hosts.allow文件定义拒绝规则
+			在hosts.deny文件使用allow选项：在hosts.deny文件定义放行规则
+
+			spawn
+				echo
+					%c: user@host
+					%s: server@host
+					%h: 客户端主机名
+					%p: 服务器上的进程的PID
+
+				man 5 hosts_access：获取其完整帮助信息
+
+			注意：echo的信息无需加引号，否则，命令替换可能不会进行
+
+				in.telnetd:     ALL : spawn echo `date` login attempt from %c to %s >> /var/log/tcp_wrapper.log
+
+	练习：使用tcp_wrapper控制vsftpd服务仅允许172.16.0.0网络中的主机访问；但要拒绝172.16.200.中的所有主机；
+		对所有的拒绝访问尝试都记录日志;
+
+
+

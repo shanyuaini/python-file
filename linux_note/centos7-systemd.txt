@@ -1,0 +1,115 @@
+centos7和以前版本启动的区别使用grub2引导,没有init.并且会自动安装一个紧急救援模式的内核
+systemd 是centos7使用的新的init程序,并行执行启动服务管理 ,特性引入服务单元的概念,将每一个服务定义为一个单元进行管理.按需启动,这意味着服务在首次被用到的时候才会真正启动,而非在系统引导期间启动@1
+在centos的systemd的程序依然使用init为程序名称
+rpm -qf /sbin/init
+rpm -ql systemd
+/etc/systemd  #/etc/systemd/system/runlevel*   #系统级别
+/usr/lib/systemd/system/*.target    #启动服务的脚本
+
+1systemd基础命令和配置
+systemctl [genera OPTIONS#通用选项] subcommand#子命令 [subcommand OPTIONS] 
+
+Unit Commands
+	list-units 列出所有单元,可以被启动的服务  #相当于chkconfig   LOAD字段表示一个服务是否被正确装载	loaded为已装载,但是要在真正有用户访问才会启动. ACTIVE 较高级别的单元的激活状态 activew为激活 SUB 在较低级别被激活,
+	list-sockets 列出所有套接字,可以被装载的套接字
+	start [NAME..]  
+	stop [NAME..] 
+	reload [NAME..] 
+	restart [NAME..]
+	try-restart [NAME..] 条件式重启,即重启运行中的服务,对没有运行的服务不执行任何操作
+	reload-or-restart [NAME..] 重新装载或重启,支持reload就reload,不支持reload就restart
+	reload-or-try-restart [NAME..]
+	isolate [NAME..]
+	kill [NAME..]
+	is-active [NAME..]   #判断服务是否在运行状态
+	is-failed [NAME..]
+	status [NAME..|PID...] 获取服务运行状态,systemd会输出详细信息
+	show [NAME..|JOB..]     
+	set-property [NAME..] [ASSIGNMENT]
+
+###.service为服务,不是系统的功能 systemctl可以一次启动多个服务,systemctl start nu1.service nu2.service
+
+服务脚本解释 vi /usr/lib/systemd/system/crond.service
+[Unit]#在systemd中每个服务被定义为一个单元,这里就是定义服务的单元信息
+Description=Command Scheduler   #这个单元的说明
+After=syslog.target auditd.service systemd-user-sessions.service time-sync.target #依赖于那些服务单元
+
+[Service]#定义本服务单元的可执行程序
+EnviromnmentFile=/etc/sysconfig/crond  #配置文件
+ExecStart=/usr/sbin/crond -n $CRONDARGS   #执行启动程序时的命令参数
+KillMode=process  #kill方式
+
+[Install]#在什么情况下装载这个服务单元
+WantedBy=multi-user.target   #多用户级别
+
+2服务调试
+systemd 在服务启动成功是不会输出任何信息,而失败时也仅仅输出简单信息,如果想获取相关详细信息,使用systemctl status命令来查看这些信息,而且可以通过选项来调整要查看的内容
+	--last=# 指定显示信息的行数,默认为最后10行
+	--follow 实时跟随新产生的信息,类似于tail命令的-f
+	--output=MODE 指定服务信息的输出模式,常用模式有
+		short 简要模式,系统默认
+		verbose 详细模式
+		cat 无时间戳模式 不显示status记录的服务器记录的操作
+
+3 启用/禁用服务,使用start,stop,等命令只是控制服务当下状态,相当于centos6的service,系统重启就不生效,systemd也可以控制服务的永久目标状态,而且对当下状态无影响,因此必要时可能需要两类操作同时完成(centos6的service和chkconfig结合)
+	enable			启用服务
+	disable			禁用服务
+	is-enabled   	查看启用的服务
+	reenable		重新启用服务,即先禁用而后再启用
+	mask			处于禁用状态的服务不能手动启用, 
+	unmask			处于禁用状态的服务依然可以手动启用, #并不会影响服务的开机自动启动,
+
+4system start and target management
+centos6 在引导系统时有运行级别的概念,用于定义系统如何启动以及哪些服务被启动,而systemd引入了一个全新的概念称作"target units(目标单元)",而且与运行级别完全兼容,不同于运行级别的数字表示格式,target units使用名称来表示
+
+常用target units
+	default.target 系统引导时使用的target,是一个指定真正target的符号链接
+	emergency.target 在console上启动一个emergency shell的target 常用于系统修复时
+	graphical.target GUI界面的完全多用户模式,相当于运行级别5
+	halt.target 运行级别0
+	mail-transfer-agent.target 启动保证邮件收发功能所必须的所有服务
+	multi-user.target 运行级别3
+	reboot.target 运行级别6
+	rescue.target 紧急救援模式相当于运行级别1
+	为了与sysV init兼容 systemd的target units 还拥有runlevelx.target的别名,不过systemd不会使用/etc/inittab配置文件
+	0 			runlevel0.target,halt.target,poweroff.target	关机
+	1,S 		runlevel1.target,rescue.target					单用户模式
+	2			runlevel2.target,multi-user.target				不带网络功能的本地多用户模式
+	3			runlevel3.target,multi-user.target				完全多用户模式
+	4			runlevel4.target								预留
+	5			runlevel5.target,graphical.target				带GUI的完全多用户模式
+	6			runlevel6.target,reboot.target
+	
+target修改#即改变运行级别 此处为了方便理解使用runlevel*.target来简单描述,但是还有很多其它target可以使用,
+	systemctl isolate runlevel*.target			修改当前级别相当于init *
+	systemctl default							切换至默认级别
+	systemctl list-units --type=target 			显示当前级别
+		
+	ln -sf /lib/systemd/system/runlevel3.target /etc/systemd/default.target #将3级别设置为默认级别
+	systemd.units=runlevel*.target
+	
+	systemctl show -p "Requires|Wants" <my_target.target> 	显示target的依赖关系
+	
+引导过程调试信息
+	不带任何参数和选项的systemctl命令可以列出当前系统在引导期间所启动的服务和简要信息,用--failed选项可用于仅列出有错误发生的服务的相关信息
+	
+	systemd-analyze命令用于显示系统引导所经过的总体时长,附带blame参数可以获取各服务在系统引导时所历经的时长
+
+systemd快照
+	systemd当前的状态信息可以被快照保存,并在必要时使用isolate命令回复,不过快照仅在当前系统上可用,这意味着系统重启后所有快照通通会被删除,所有快照必须使用.snapshot后缀
+		创建快照 systemctl snapshot <my_snapshot>.snapshot
+		删除快照 systemctl delete <my_snapshot>.snapshot
+		查看快照 systemctl show <my_snapshot>.snapshot
+		激活快照 systemctl isolate <my_snapshot>.snapshot
+	
+/etc/systemd/system/*.wants/ 在不同的启动目录下管理着启动脚本,通过想这里链接文件也可以做到开机启动
+
+	
+	
+	
+	
+
+
+
+
+@1 http://www.freedesktop.org/wiki/software/systemd/

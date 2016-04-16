@@ -1,0 +1,95 @@
+
+bash -n 执行语法错误检测,但是不能检测类似于引用错误的变量的操作
+
+FOR 循环:事先知道循环次数的遍历数据的循环语句(第三天)
+	for var_name in 列表;do
+		循环体
+	done
+	首先把列表赋值给varname 执行循环体.每赋值一次执行一次当遍历列表完成,循环结束
+	
+	for userName in gentoo mandriva debian; do
+		useradd #userName
+	done
+	
+	列表的生成方法:
+		1,生成数字序列:{start..end}  {1..10} 就生成了1-10
+		2,使用文件名通配生成列表
+		3,seq [start] [step] end 生成数字的命令 可以省略起始数和步长 seq 1 2 10 生成13579
+			for userName in $(seq 101 110); do echo user$userName; done
+			
+			#!/bin/bash
+			for userName in `seq 101 110`; do
+				useradd user$userName
+				echo "Add user$userName successfully"
+			done
+		4,使用其它命令生成
+		
+		
+(if第7天)
+
+bash编程之条件判断：判定后续操作的前提条件是否满足。
+
+
+mkdir /tmp/scripttest
+
+条件判断的常用测试类型：
+	整数测试
+	字符测试
+	文件测试
+
+$?:
+	0
+	1-255	
+
+布尔值：
+	真，假
+	逻辑运算：
+		与运算：
+			真 && 真 = 真
+			真 && 假 = 假
+			假 && 真 = 假
+			假 && 假 = 假
+		或运算：
+			真 || 真 = 真
+			真 || 假 = 真
+			假 || 真 = 真
+			假 || 假 = 假
+		非运算：
+			! 真 = 假
+			! 假 = 真
+
+	bash中如何做测试：
+		test EXPRESSION
+		[ EXPRESSION ]
+		[[ EXPRESSION ]]
+
+	bash中条件判断使用if：
+		单分支：
+			if 条件; then
+				分支1; 
+			fi
+
+		双分支：
+			if 条件; then
+				分支1;
+			else
+				分支2;
+			fi
+
+		多分支：
+			if 条件1; then
+				分支1;
+			elif 条件2; then
+				分支2;
+			elif 条件3; then
+				分支3;
+			...
+			else
+				分支n;
+			fi
+
+
+(while第八天)
+(break,continue)第十天
+
+(case)第14天

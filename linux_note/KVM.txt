@@ -1,0 +1,521 @@
+KVM
+
+cat /proc/cpuinfo  #flag中有
+grep -Ei --color=auto "vmx|svm" /proc/cpuinfo
+grep --color=auto -i "kvm" /boot/config-2.6.32.el6.x86_64
+modprobe kvm
+modprobe kvm_intel
+lsmod |grep kvm
+ls /dev/kvm
+yum -y install qemu-kvm qemu-kvm-tools   #yum grouplist |grep -i "Virtualization"   #yum groupinfo "VIrtualization"
+ln -sv /usr/libexec/qemu-kvm /usr/sbin/			qemu-kvm #kvm管理工具
+qemu-kvm -h
+qemu-kvm -cpu ?
+mkdir /images/vm1 -pv		
+###1,实验安装一个ubuntu
+qemu-img create -f qcow2 -o size=100G /imges/vm1/ubuntu.qcow2 
+qemu-kvm -name "ubuntu" -m 1024 -smp 2 -hda /imges/vm1/ubuntu.qcow2 -cdrom ubuntu-12.04.iso -boot order=dc,once=d 
+VNC server running on::1:5900	##此时会显示VNC的端口
+
+ps aux| grep kvm
+yum install -y tigervnc-server
+###2,windows
+qemu-kvm -name "winxp" -m 1024 -smp 2 -hda /images/vm1/ubuntu.qcow2 -cdrom winxp.iso -boot order=dc
+###3,windows优化网卡设置
+qemu-kvm -name "winxp" -m 1024 -smp 2 -drive file=/images/vm1/ubuntu.qcow2,cache=writeback,if=virtio,index=0,media=disk,format=qcow2 -drive file=winxp.iso,index=1,media=cdrom -boot order=c -net nic,model=virtio -net tap,ifname=vnet0,script=/etc/qemu-ifup,downscript=no
+###网络启动
+qemu-kvm -name "winxp" -m 1024 -smp 2 -drive file=/images/vm1/ubuntu.qcow2,if=ide,index=0,media=disk,format=qcow2 -boot order=nc -net nic -net tap,ifname=vnet0,script=/etc/qemu-ifup,downscript=no
+
+
+
+
+###设置网络连接脚本
+cp ifcfg-eth0 ifcfg-br0
+vim ifcfg-br0
+	DEVICR=br0
+	BOOTPROTO=none
+	NM_CONTROLLED=no
+	ONBOOT=yes
+	TYPE=Bridge
+	IPADDR=
+	NETMASK
+	GATEWAY
+	DNS1
+	IPV6INIT=no
+	USERCTL=no
+vim ifcfg-eth0
+	DEVICR=eth0
+	BOOTPROTO=none
+	NM_CONTROLLED=no
+	ONBOOT=yes
+	TYPE=Ethernet
+	IPV6INIT=no
+	USERCTL=no
+	BRIDGE=br0
+	
+vim /etc/qemu-ifup
+	#!/bin/bash
+	switch=br0 
+	if[ -n "$1"]; then
+		ip link set $1 up   #$1是调用tap中的name=的参数
+		sleep 0.5s
+		brctl addif $switch $1
+		exit 0
+	else
+		echo"Error: no specifed interface."
+		exit 1
+	fi
+
+###vnc 连接
+vncserver :1   #此时可以用VNC在宿主机登录(因为没有网卡)
+yum install tigervnc
+vncviewer :5900
+
+
+
+qemu-kvm命令使用格式为“qemu-kvm  [options]  [disk_image]”，其选项非常多，不过，大致可分为如下几类。
+
+◇	标准选项；
+◇	USB选项；
+◇	显示选项；
+◇	i386平台专用选项；
+◇	网络选项；
+◇	字符设备选项；
+◇	蓝牙相关选项；
+◇	Linux系统引导专用选项；
+◇	调试/专家模式选项；
+◇	PowerPC专用选项；
+◇	Sparc32专用选项；
+
+考虑到篇幅及使用需要，这里介绍的选项主要涉及到标准选项、显示选项、i386平台专用选项及Linux系统引导专用选项等相关的选项。
+
+2.5.6.1.2 qemu-kvm的标准选项
+
+qemu-kvm的标准选项主要涉及指定主机类型、CPU模式、NUMA、软驱设备、光驱设备及硬件设备等。
+◇	-name name：设定虚拟机名称；
+◇	-M machine：指定要模拟的主机类型，如Standard PC、ISA-only PC或Intel-Mac等，可以使用“qemu-kvm -M ?”获取所支持的所有类型；
+◇	-m megs：设定虚拟机的RAM大小；
+◇	-cpu model：设定CPU模型，如coreduo、qemu64等，可以使用“qemu-kvm -cpu ?”获取所支持的所有模型；
+◇	-smp n[,cores=cores][,threads=threads][,sockets=sockets][,maxcpus=maxcpus]：设定模拟的SMP架构中CPU的个数等、每个CPU的核心数及CPU的socket数目等；PC机上最多可以模拟255颗CPU；maxcpus用于指定热插入的CPU个数上限；
+◇	-numa opts：指定模拟多节点的numa设备；numa cpu专用内存模式
+◇	-fda file
+◇	-fdb file：使用指定文件(file)作为软盘镜像，file为/dev/fd0表示使用物理软驱；
+◇	-hda file  IDE硬盘
+◇	-hdb file
+◇	-hdc file
+◇	-hdd file：使用指定file作为硬盘镜像；
+◇	-cdrom file：使用指定file作为CD-ROM镜像，需要注意的是-cdrom和-hdc不能同时使用；将file指定为/dev/cdrom可以直接使用物理光驱；
+◇	-drive option[,option[,option[,...]]]：定义一个硬盘设备；可用子选项有很多。
+	file=/path/to/somefile：硬件映像文件路径；
+	if=interface：指定硬盘设备所连接的接口类型，即控制器类型，如ide、scsi、sd、mtd、floppy、pflash及virtio等；一般硬盘用ide或virtio
+	index=index：设定同一种控制器类型中不同设备的索引号，即标识号；
+	media=media：定义介质类型为硬盘(disk)还是光盘(cdrom)；
+	snapshot=snapshot：指定当前硬盘设备是否支持快照功能：on或off；
+	cache=cache：定义如何使用物理机缓存来访问块数据，其可用值有none、writeback、unsafe和writethrough四个；
+	format=format：指定映像文件的格式，具体格式可参见qemu-img命令；
+◇	-boot [order=drives][,once=drives][,menu=on|off]：定义启动设备的引导次序，每种设备使用一个字符表示；不同的架构所支持的设备及其表示字符不尽相同，在x86 PC架构上，a、b表示软驱、c表示第一块硬盘，d表示第一个光驱设备，n-p表示网络适配器；默认为硬盘设备；once只为第一次引导使用
+	-boot order=dc,once=d
+
+2.5.6.1.3 qemu-kvm的显示选项
+
+显示选项用于定义虚拟机启动后的显示接口相关类型及属性等。
+
+◇	-nographic：默认情况下，qemu使用SDL来显示VGA输出；而此选项用于禁止图形接口，此时,qemu类似一个简单的命令行程序，其仿真串口设备将被重定向到控制台；
+◇	-curses：禁止图形接口，并使用curses/ncurses作为交互接口；用文本输出
+◇	-alt-grab：使用Ctrl+Alt+Shift组合键释放鼠标；
+◇	-ctrl-grab：使用右Ctrl键释放鼠标；
+◇	-sdl：启用SDL；
+◇	-spice option[,option[,...]]：启用spice远程桌面协议；其有许多子选项，具体请参照qemu-kvm的手册；
+◇	-vga type：指定要仿真的VGA接口类型，常见类型有：
+		cirrus：Cirrus Logic GD5446显示卡；
+		std：带有Bochs VBI扩展的标准VGA显示卡；
+		vmware：VMWare SVGA-II兼容的显示适配器；
+		qxl：QXL半虚拟化显示卡；与VGA兼容；在Guest中安装qxl驱动后能以很好的方式工作，在使用spice协议时推荐使用此类型；
+		none：禁用VGA卡；
+◇	-vnc display[,option[,option[,...]]]：默认情况下，qemu使用SDL显示VGA输出；使用-vnc选项，可以让qemu监听在VNC上，并将VGA输出重定向至VNC会话；使用此选项时，必须使用-k选项指定键盘布局类型；其有许多子选项，具体请参照qemu-kvm的手册；
+
+	display:
+		（1）host:N
+			172.16.100.7:1, 监听于172.16.100.7主的5900+N的端口上
+		(2) unix:/path/to/socket_file
+		(3) none
+
+	options:
+		password: 连接时需要验正密码；设定密码通过monitor接口使用change
+		reverse: “反向”连接至某处于监听状态的vncview上；
+
+	-monitor stdio：表示在标准输入输出上显示monitor界面
+	-nographic 直接输出到终端:
+		Ctrl-a, c: 在console和monitor之间切换
+		Ctrl-a, h: 显示帮助信息
+		Ctrl-a, s: 后台
+		Ctrl-a, x: 关闭
+
+
+SDL: Simple Directmedia Layer
+VNC: Virtual Network Computing，基于RFB
+
+monitor:
+	help
+	info
+
+		cpus
+
+		kvm
+
+
+	Ha, Hb
+		Hb:
+			qemu-kvm                  -incoming tcp:0:6767	
+			
+		Ha: 
+			monitor: migrate tcp:Hb:6767	
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.5.6.1.4 i386平台专用选项
+
+◇	-no-acpi：禁用ACPI功能，GuestOS与ACPI出现兼容问题时使用此选项；
+◇	-balloon none：禁用balloon设备；
+◇	-balloon virtio[,addr=addr]：启用virtio balloon设备；
+
+2.5.6.1.5 网络属性相关选项
+
+网络属性相关选项用于定义网络设备接口类型及其相关的各属性等信息。这里只介绍nic、tap和user三种类型网络接口的属性，其它类型请参照qemu-kvm手册。
+
+◇	-net nic[,vlan=n][,macaddr=mac][,model=type][,name=name][,addr=addr][,vectors=v]：创建一个新的网卡设备并连接至vlan n中；PC架构上默认的NIC为e1000，macaddr用于为其指定MAC地址，name用于指定一个在监控时显示的网上设备名称；qemu可以模拟多个类型的网卡设备，如virtio、i82551、i82557b、i82559er、ne2k_isa、pcnet、rtl8139、e1000、smc91c111、lance及mcf_fec等；不过，不同平台架构上，其支持的类型可能只包含前述列表的一部分，可以使用“qemu-kvm -net nic,model=?”来获取当前平台支持的类型；
+◇	-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]：通过物理机的TAP桥接网络接口连接至vlan n中，使用script=file指定的脚本(默认为/etc/qemu-ifup)来配置当前网络接口，并使用downscript=file指定的脚本(默认为/etc/qemu-ifdown)来撤消接口配置；使用script=no和downscript=no可分别用来禁止执行脚本；脚本需要自己创建 name指定在kvm的CTRL+ALT+R监控模式中info network显示的名字,ifname是设备在虚拟机中显示的名字
+◇	-net user[,option][,option][,...]：在用户模式配置网络栈，其不依赖于管理权限；有效选项有：
+	vlan=n：连接至vlan n，默认n=0；
+	name=name：指定接口的显示名称，常用于监控模式中；
+	net=addr[/mask]：设定GuestOS可见的IP网络，掩码可选，默认为10.0.2.0/8；
+	host=addr：指定GuestOS中看到的物理机的IP地址，默认为指定网络中的第二个，即x.x.x.2；
+	dhcpstart=addr：指定DHCP服务地址池中16个地址的起始IP，默认为第16个至第31个，即x.x.x.16-x.x.x.31；
+	dns=addr：指定GuestOS可见的dns服务器地址；默认为GuestOS网络中的第三个地址，即x.x.x.3；
+	tftp=dir：激活内置的tftp服务器，并使用指定的dir作为tftp服务器的默认根目录；
+	bootfile=file：BOOTP文件名称，用于实现网络引导GuestOS；如：qemu -hda linux.img -boot n -net user,tftp=/tftpserver/pub,bootfile=/pxelinux.0
+
+brctl addbr br0
+brctl addif br0 eth0
+
+brctl addbr br1
+
+
+
+2.5.6.1.6 一个使用示例
+
+下面的命令创建了一个名为rhel5.8的虚拟机，其RAM大小为512MB，有两颗CPU的SMP架构，默认引导设备为硬盘，有一个硬盘设备和一个光驱设备，网络接口类型为virtio，VGA模式为cirrus，并启用了balloon功能。
+
+# qemu-kvm -name "rhel5.8" -m 512 \
+-smp 2 -boot d \
+-drive file=/VM/images/rhel5.8/hda,if=virtio,index=0,media=disk,format=qcow2 \
+-drive file=/isos/rhel-5.8.iso,index=1,media=cdrom \
+-net nic,model=virtio,macaddr=52:54:00:A5:41:1E \
+-vga cirrus -balloon virtio
+
+需要注意的是，上述命令中使用的硬盘映像文件/VM/images/rhel5.8/hda需要事先使用qemu-img命令创建，其具体使用格式请见下节介绍。
+
+在虚拟机创建并安装GuestOS完成之后，可以免去光驱设备直接启动之。命令如下所示。
+
+# qemu-kvm -name "rhel5.8" -m 512 \
+-smp 2 -boot d \
+-drive file=/VM/images/rhel5.8/hda,if=virtio,index=0,media=disk,format=qcow2 \
+-net nic,model=virtio,macaddr=52:54:00:A5:41:1E \
+-vga cirrus -balloon virtio
+
+2.5.6.1.7 使用qemu-img管理磁盘映像
+
+qemu-img是qemu用来实现磁盘映像管理的工具组件，其有许多子命令，分别用于实现不同的管理功能，而每一个子命令也都有一系列不同的选项。其使用语法格式为“qemu-img  subcommand  [options]”，支持的子命令如下。
+
+◇	create：创建一个新的磁盘映像文件；
+◇	check：检查磁盘映像文件中的错误；
+◇	convert：转换磁盘映像的格式；
+◇	info：显示指定磁盘映像的信息；
+◇	snapshot：管理磁盘映像的快照；
+◇	commit：提交磁盘映像的所有改变；
+◇	rbase：基于某磁盘映像创建新的映像文件；
+◇	resize：增大或缩减磁盘映像文件的大小；
+
+使用create子命令创建磁盘映像的命令格式为“create [-f fmt] [-o options] filename [size]”，例如下面的命令创建了一个格式为qcow2的120G的稀疏磁盘映像文件。
+
+# qemu-img create -f qcow2  /VM/images/rhel5.8/hda 120G
+Formatting '/VM/images/rhel5.8/hda', fmt=qcow2 size=128849018880 encryption=off cluster_size=65536
+qemu-img create -f vmdk -o ? test.vmdk#虚拟一个文件查看命令参数,
+
+更进一步的使用信息请参照手册页。
+
+系统影响模版http://launchpad.net/cirros/+download
+
+
+
+tap: 二层虚拟通道 
+tun：三层虚拟通道
+
+
+qemu-kvm的其它的用到的参数：
+	动态迁移时用到的选项：-incoming tcp:0:PORT
+	让qemu-kvm进程运行于后台：-daemonize
+	开启USB总线：-usb 
+		GuestOS为Windows时，-usb -usbdevice tablet  用于实现鼠标定位
+	打开KVM的支持：qemu-kvm默认就启用了此选项
+		-enable-kvm
+	打声音设备：-soundhw
+
+	设定iscsi存储设备：
+		-iscsi [user=USERNAME][,password=PASSWORD][,initiator-name=iqn]
+		通过URL指定使用的iscsi设备
+			iscsi://<target_ip>[:port]/<target_iqn>/<lun>
+
+		# qemu-kvm  -iscsi initiator-name=    -drive file=iscsi://tgt.magedu.com/iqn.2014-05.com.magedu.tgt1/1
+
+	指定使用的bios文件：
+		-bios /path/to/some_bios_program
+
+	使用外部内核及ramdisk文件：
+		-kernel
+		-initrd
+		-append: 向内核传递的参数列表
+
+
+libvirt: 工具实现虚拟机管理：
+	装系统：virt-manager, virt-install, virsh
+	使用virt-install创建虚拟机并安装GuestOS
+
+virt-install是一个命令行工具，它能够为KVM、Xen或其它支持libvrit API的hypervisor创建虚拟机并完成GuestOS安装；此外，它能够基于串行控制台、VNC或SDL支持文本或图形安装界面。安装过程可以使用本地的安装介质如CDROM，也可以通过网络方式如NFS、HTTP或FTP服务实现。对于通过网络安装的方式，virt-install可以自动加载必要的文件以启动安装过程而无须额外提供引导工具。当然，virt-install也支持PXE方式的安装过程，也能够直接使用现有的磁盘映像直接启动安装过程。
+
+		yum -y install libvirt virt-manager virt-viewer python-virtinst
+		service libvirtd start
+		virsh help iface-bridge
+		virsh iface-bridge eth0 br0  #将eth0桥接到br0
+		virsh uri  #virsh回车再输入uri    
+		virt-install -n "centos6" --vcpus 2 -r 1024 -l http://172.16.0.1/path/to/centos-6.5-x86_64 --disk /images/vm3/centos.qcow2.bus=virio,size=120,sparse,format=qcow2 --network bridge=br0,model=virio --force
+		virsh dumpxml centos6 > /etc/libvirt/qemu/cirros.xml      #dumpxml 使用已生成的虚拟机做模版   name uuid sourefile等唯一属性要修改
+		virsh create /etc/libvirt/qemu/cirros.xml --console
+		virsh undefine cirros   #删除
+		virsh list
+		virt-install -name "cirros" -r 1024 --vcpus=2 --disk path=images/vm4/cirros.img --network bridge=br0,model=virio --import
+		
+virt-install命令有许多选项，这些选项大体可分为下面几大类，同时对每类中的常用选项也做出简单说明。
+◇	一般选项：指定虚拟机的名称、内存大小、VCPU个数及特性等；
+	-n NAME, --name=NAME：虚拟机名称，需全局惟一；
+	-r MEMORY, --ram=MEMORY：虚拟机内在大小，单位为MB；
+	--vcpus=VCPUS[,maxvcpus=MAX][,sockets=#][,cores=#][,threads=#]：VCPU个数及相关配置；
+	--cpu=CPU：CPU模式及特性，如coreduo等；可以使用qemu-kvm -cpu ?来获取支持的CPU模式；
+◇	安装方法：指定安装方法、GuestOS类型等；
+	-c CDROM, --cdrom=CDROM：光盘安装介质；
+	-l LOCATION, --location=LOCATION：安装源URL，支持FTP、HTTP及NFS等，如ftp://172.16.0.1/pub；
+	--pxe：基于PXE完成安装；
+	--livecd: 把光盘当作LiveCD；
+	--os-type=DISTRO_TYPE：操作系统类型，如linux、unix或windows等；
+	--os-variant=DISTRO_VARIANT：某类型操作系统的变体，如rhel5、fedora8等；
+	-x EXTRA, --extra-args=EXTRA：根据--location指定的方式安装GuestOS时，用于传递给内核的额外选项，例如指定kickstart文件的位置，--extra-args "ks=http://172.16.0.1/class.cfg"
+	--boot=BOOTOPTS：指定安装过程完成后的配置选项，如指定引导设备次序、使用指定的而非安装的kernel/initrd来引导系统启动等 ；例如：
+	--boot  cdrom,hd,network：指定引导次序；
+	--boot kernel=KERNEL,initrd=INITRD,kernel_args=”console=/dev/ttyS0”：指定启动系统的内核及initrd文件；
+◇	存储配置：指定存储类型、位置及属性等；
+	--disk=DISKOPTS：指定存储设备及其属性；格式为--disk /some/storage/path,opt1=val1，opt2=val2等；常用的选项有：
+	device：设备类型，如cdrom、disk或floppy等，默认为disk；
+	bus：磁盘总结类型，其值可以为ide、scsi、usb、virtio或xen；
+	perms：访问权限，如rw、ro或sh（共享的可读写），默认为rw；
+	size：新建磁盘映像的大小，单位为GB；
+	cache：缓存模型，其值有none、writethrouth（缓存读）及writeback（缓存读写）；
+	format：磁盘映像格式，如raw、qcow2、vmdk等；
+	sparse：磁盘映像使用稀疏格式，即不立即分配指定大小的空间；
+	--nodisks：不使用本地磁盘，在LiveCD模式中常用；
+◇	网络配置：指定网络接口的网络类型及接口属性如MAC地址、驱动模式等；
+	-w NETWORK, --network=NETWORK,opt1=val1,opt2=val2：将虚拟机连入宿主机的网络中，其中NETWORK可以为：
+	bridge=BRIDGE：连接至名为“BRIDEG”的桥设备；
+	network=NAME：连接至名为“NAME”的网络；
+其它常用的选项还有：
+	model：GuestOS中看到的网络设备型号，如e1000、rtl8139或virtio等；
+	mac：固定的MAC地址；省略此选项时将使用随机地址，但无论何种方式，对于KVM来说，其前三段必须为52:54:00；
+	--nonetworks：虚拟机不使用网络功能；
+◇	图形配置：定义虚拟机显示功能相关的配置，如VNC相关配置；
+	--graphics TYPE,opt1=val1,opt2=val2：指定图形显示相关的配置，此选项不会配置任何显示硬件（如显卡），而是仅指定虚拟机启动后对其进行访问的接口；
+	TYPE：指定显示类型，可以为vnc、sdl、spice或none等，默认为vnc；
+	port：TYPE为vnc或spice时其监听的端口；
+	listen：TYPE为vnc或spice时所监听的IP地址，默认为127.0.0.1，可以通过修改/etc/libvirt/qemu.conf定义新的默认值；
+	password：TYPE为vnc或spice时，为远程访问监听的服务进指定认证密码；
+	--noautoconsole：禁止自动连接至虚拟机的控制台；
+◇	设备选项：指定文本控制台、声音设备、串行接口、并行接口、显示接口等；
+	--serial=CHAROPTS：附加一个串行设备至当前虚拟机，根据设备类型的不同，可以使用不同的选项，格式为“--serial type,opt1=val1,opt2=val2,...”，例如：
+	--serial pty：创建伪终端；
+	--serial dev,path=HOSTPATH：附加主机设备至此虚拟机；
+	--video=VIDEO：指定显卡设备模型，可用取值为cirrus、vga、qxl或vmvga；
+
+◇	虚拟化平台：虚拟化模型（hvm或paravirt）、模拟的CPU平台类型、模拟的主机类型、hypervisor类型（如kvm、xen或qemu等）以及当前虚拟机的UUID等；
+	-v, --hvm：当物理机同时支持完全虚拟化和半虚拟化时，指定使用完全虚拟化；
+	-p, --paravirt：指定使用半虚拟化；
+	--virt-type：使用的hypervisor，如kvm、qemu、xen等；所有可用值可以使用’virsh capabilities’命令获取；
+◇	其它：
+	--autostart：指定虚拟机是否在物理启动后自动启动；
+	--print-xml：如果虚拟机不需要安装过程(--import、--boot)，则显示生成的XML而不是创建此虚拟机；默认情况下，此选项仍会创建磁盘映像；
+	--force：禁止命令进入交互式模式，如果有需要回答yes或no选项，则自动回答为yes；
+	--dry-run：执行创建虚拟机的整个过程，但不真正创建虚拟机、改变主机上的设备配置信息及将其创建的需求通知给libvirt；
+	-d, --debug：显示debug信息；
+
+尽管virt-install命令有着类似上述的众多选项，但实际使用中，其必须提供的选项仅包括--name、--ram、--disk（也可是--nodisks）及安装过程相关的选项。此外，有时还需要使用括--connect=CONNCT选项来指定连接至一个非默认的hypervisor。
+
+下面这个示例创建一个名为rhel5的虚拟机，其hypervisor为KVM，内存大小为512MB，磁盘为8G的映像文件/var/lib/libvirt/images/rhel5.8.img，通过boot.iso光盘镜像来引导启动安装过程。
+
+# virt-install \
+   --connect qemu:///system \
+   --virt-type kvm \
+   --name rhel5 \
+   --ram 512 \
+   --disk path=/var/lib/libvirt/images/rhel5.img,size=8 \
+   --graphics vnc \
+   --cdrom /tmp/boot.iso \
+   --os-variant rhel5
+
+下面的示例将创建一个名为rhel6的虚拟机，其有两个虚拟CPU，安装方法为FTP，并指定了ks文件的位置，磁盘映像文件为稀疏格式，连接至物理主机上的名为brnet0的桥接网络：
+
+# virt-install \
+    --connect qemu:///system \
+    --virt-type kvm \
+    --name rhel6 \
+    --ram 1024 \
+    --vcpus 2 \
+    --network bridge=brnet0 \
+    --disk path=/VMs/images/rhel6.img,size=120,sparse \
+    --location ftp://172.16.0.1/rhel6/dvd \
+    --extra_args “ks=http://172.16.0.1/rhel6.cfg” \
+    --os-variant rhel6 \
+    --force 
+
+下面的示例将创建一个名为rhel5.8的虚拟机，磁盘映像文件为稀疏模式的格式为qcow2且总线类型为virtio，安装过程不启动图形界面（--nographics），但会启动一个串行终端将安装过程以字符形式显示在当前文本模式下，虚拟机显卡类型为cirrus：
+
+# virt-install \
+--connect qemu:///system \
+--virt-type kvm \ 
+--name rhel5.8 \ 
+--vcpus 2,maxvcpus=4 \
+--ram 512 \ 
+--disk path=/VMs/images/rhel5.8.img,size=120,format=qcow2,bus=virtio,sparse \ 
+--network bridge=brnet0,model=virtio
+--nographics \
+--location ftp://172.16.0.1/pub \ 
+--extra-args "ks=http://172.16.0.1/class.cfg  console=ttyS0  serial" \
+--os-variant rhel5 \
+--force  \
+--video=cirrus
+
+下面的示例则利用已经存在的磁盘映像文件（已经有安装好的系统）创建一个名为rhel5.8的虚拟机：
+
+# virt-install \
+    --name rhel5.8
+    --ram 512
+    --disk /VMs/rhel5.8.img
+    --import
+
+每个虚拟机创建后，其配置信息保存在/etc/libvirt/qemu目录中，文件名与虚拟机相同，格式为XML。
+
+
+
+virsh uri: 查看当前主机上hypervisor的连接路径；
+virsh connect:
+virsh define: 创建一个虚拟机，根据事先定义的xml格式的配置文件；创建以后不会自动启动；
+virsh create: 创建，创建完成后会自动启动；
+virsh undefine: 删除
+
+
+
+
+--boot kernel=KERNEL,initrd=INITRD,kernel_args="console=/dev/ttyS0"
+
+
+
+virt-install --connect qemu:///system --ram 128 --name rhel6 --os-type=linux --os-variant=rhel5 --disk path=/kvm/vm1/rhel6.img,device=disk,format=raw --vcpus=2 --vnc --noautoconsole --import
+
+virt-install \
+              --name mykernel
+              --ram 512
+              --disk /home/user/VMs/mydisk.img
+              --boot kernel=/tmp/mykernel,initrd=/tmp/myinitrd,kernel_args="console=ttyS0"
+              --serial pty
+
+
+
+
+
+
+# virt-install \
+    --connect qemu:///system \
+    --virt-type kvm \
+    --name rhel6 \
+    --ram 512 \
+    --vcpus 2 \
+    --network bridge=br0 \
+    --disk path=/VMs/images/centos6.img,size=120,sparse \
+    --location http://172.16.0.1/cobbler/ks_mirror/centos-6.4-x86_64/ \
+    --extra-args “ks=http://172.16.0.1/centos6.x86_64.cfg” \
+    --os-variant rhel6 \
+    --force 
+
+
+
+virsh的几个常用命令：
+创建虚拟机：事先准备好xml格式的配置文件，可以dump其它已运行的虚拟机的；
+create: 创建并启动；
+defince: 仅创建
+
+删除虚拟机：destroy --> undefine --> delete 相关的各文件; 
+
+
+动态改变CPU和memory：
+vcpucount, vcpuinfo
+setmem, setvcpu
+
+事先定义好硬盘：qemu-img
+attach-disk, detach-disk
+
+
+显示虚拟相关信息：
+cpustats: 需要事先开启cgroup中CPUACCT功能; 
+list: 
+desc
+
+domdisplay：显示虚拟机的URI；
+vncdisplay: 显示虚拟机的vnc连接地址；
+
+
+virt-install \
+--connect qemu:///system \
+--virt-type kvm \
+--name rhel5.8 \
+--vcpus 1,maxvcpus=2 \
+--ram 512 \
+--disk "path=/VMs/images/rhel5.8.img,size=120,format=qcow2" --network "bridge=br0,model=virtio" \
+--nographics \
+--location http://172.16.0.1/cobbler/ks_mirror/rhel-5.8-i386/ \
+--extra-args "ks=http://172.16.0.1/workstation.cfg  console=ttyS0  serial" \
+--os-variant rhel5 \
+--force  \
+--video=cirrus
+
+
+
+
+
+
+
+
+
+
+
+(dashboard,cli)-->keystone(验正用户，返回nova-api的URI)
+dashboard, cli --> nova-api --> keystone 
+nova-api --> nova-db (返回正常信息)
+nova-api --> queue
+queue --> nova-scheduler（挑选nova-compute，并放回队列服务器上另外的调度完成的队列）--> nova-compute(收到queue的通知，取得相关请求)
+ 
