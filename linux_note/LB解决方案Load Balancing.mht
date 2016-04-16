@@ -1,0 +1,1488 @@
+From: WizMime<support@wiz.cn>
+Subject: =?gb2312?B?TEK94r72t72wuExvYWQgQmFsYW5jaW5n?=
+Date: Date: Sat, 16 Apr 2016 09:28:46 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="multipart/alternative";
+	boundary="----=_Next_Part_0012998313.902"
+
+This is a multi-part message in MIME format.
+
+------=_Next_Part_0012998313.902
+Content-Type: multipart/alternative;
+	boundary="----=_Next_Part_0004332771.153"
+
+
+------=_Next_Part_0004332771.153
+Content-Type: text/plain;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+
+This is a multi-part message in MIME format.
+
+------=_Next_Part_0004332771.153
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0A<html><head>=0D=0A<meta http-equiv=3D"Content-T=
+ype" content=3D"text/html; charset=3Dgb2312"><meta http-equiv=3D"=
+X-UA-Compatible" content=3D"IE=3D8" />=0A=0A<!--defaultCSS-->=0A<=
+title>LB=BD=E2=BE=F6=B7=BD=B0=B8Load Balancing</title>=0A=0A=0A=0A=
+=0A=0A<style type=3D"text/css" id=3D"wiz_todo_style_id" wiz_link_=
+version=3D"01.00.09">.wiz-todo, .wiz-todo-img {width: 16px; heigh=
+t: 16px; cursor: default; padding: 0 10px 0 2px; vertical-align:=20=
+-10%;-webkit-user-select: none;} .wiz-todo-label { display: inlin=
+e-block; padding-top: 7px; padding-bottom: 6px; line-height: 1.5;=
+} .wiz-todo-label-checked {  color: #666;} .wiz-todo-label-unchec=
+ked {text-decoration: initial;} .wiz-todo-completed-info {padding=
+-left: 44px; display: inline-block; } .wiz-todo-avatar { width:20=
+px; height: 20px; vertical-align: -20%; margin-right:10px; border=
+-radius: 2px;} .wiz-todo-account, .wiz-todo-dt { color: #666; }</=
+style>=0A=0A=0A=0A=0A=0A<style type=3D"text/css" id=3D"wiz_custom=
+_css">=0Abody=0A{=0A    font-family: =CE=A2=C8=ED=D1=C5=BA=DA,"Mi=
+crosoft YaHei", Georgia,Helvetica,Arial,sans-serif,=CB=CE=CC=E5,=20=
+PMingLiU,serif;=0A    font-size: 10.5pt;=0A    line-height: 1.5;=0A=
+}=0Ahtml, body=0A{=0A    =0A    =0A}=0Ah1 {=0A    font-size:1.5em=
+;=0A    font-weight:bold;=0A}=0Ah2 {=0A    font-size:1.4em;=0A  =20=
+ font-weight:bold;=0A}=0Ah3 {=0A    font-size:1.3em;=0A    font-w=
+eight:bold;=0A}=0Ah4 {=0A    font-size:1.2em;=0A    font-weight:b=
+old;=0A}=0Ah5 {=0A    font-size:1.1em;=0A    font-weight:bold;=0A=
+}=0Ah6 {=0A    font-size:1.0em;=0A    font-weight:bold;=0A}=0Aimg=
+ {=0A    border:0;=0A    max-width: 100%;=0A    height: auto !imp=
+ortant;=0A}=0Ablockquote {=0A    margin-top:0px;=0A    margin-bot=
+tom:0px;=0A}=0Atable {=0A    border-collapse:collapse;=0A    bord=
+er:1px solid #bbbbbb;=0A}=0Atd {=0A    border-collapse:collapse;=0A=
+    border:1px solid #bbbbbb;=0A}=0A</style>=0A</head>=0A=0A<body=
+ style=3D"" ><div>LB=BD=E2=BE=F6=B7=BD=B0=B8Load Balancing</div><=
+div>=D3=B2=BC=FE:F5 big-ip,Cotrox Metscaler,A10,Array,Redware,=C9=
+=EE=D0=C5=B7=FE</div><div>=C8=ED=BC=FE:LVS Linux Virtual Server(=D5=
+=C2=CE=C4=E1=D4,=B0=A2=C0=EF),HAproxy(=CB=C4=B2=E3=C6=DF=B2=E3),N=
+ginx(=C6=DF=B2=E3)</div><div>F5=C4=DC=B9=BB=CA=B6=B1=F0=D3=A6=D3=C3=
+=B5=C4=D7=AA=B7=A2,=C0=FD=C8=E7=BB=F9=D3=DAcookie=B5=C4=D7=AA=B7=A2=
+.=CB=F9=D2=D4=CB=C4=B2=E3=C6=DF=B2=E3=B6=BC=C4=DC=D7=AA=B7=A2</di=
+v><div>LVS:ipvs+ipvsadm =B9=A4=D7=F7=D4=DATCP/UDP=B5=C4=CB=C4=B2=E3=
+,=BF=C9=D2=D4=B8=F9=BE=DDip+=B6=CB=BF=DA(=CC=D7=BD=D3=D7=D6)=BD=F8=
+=D0=D0=D7=AA=B7=A2,=D2=D4=BC=B0=B6=A8=D2=E5=CF=F2=BA=CE=B4=A6=D7=AA=
+=B7=A2.=CE=DE=B7=A8=CA=B6=B1=F0=D3=A6=D3=C3=B2=E3=B5=C4=D7=AA=B7=A2=
+,=CD=A8=B3=A3=B3=C6=D6=AE=CE=AA=CB=C4=B2=E3=BD=BB=BB=BB,=CB=C4=B2=
+=E3=C2=B7=D3=C9</div><div><br></div><div>=BC=BC=CA=F5=D3=D0=B5=E3=
+=C0=E0=CB=C6iptables=B5=C4=B9=A4=D7=F7=BB=FA=D6=C6,ipvs=B9=A4=D7=F7=
+=D4=DAINput=C1=B4,=D2=C0=C0=B5=D3=DA=B9=E6=D4=F2=BD=F8=D0=D0=D7=AA=
+=B7=A2,=B5=B1=C6=A5=C5=E4=B5=BD=CF=E0=D2=C0=B9=E6=D4=F2,=BD=ABinp=
+ut=C1=B4=C9=CF=B5=C4=C7=EB=C7=F3,=C7=BF=D0=D0=D7=AA=B7=A2=D6=C1=C4=
+=DA=B2=BF=C4=B3=D2=BB=CD=F8=C2=E7.(=C4=BF=B1=EA=B5=D8=D6=B7=BF=C9=
+=C4=DC=B8=FC=B8=C4,=D2=B2=BF=C9=C4=DC=B2=BB=B8=C4).=CB=F9=D2=D4ip=
+tables=BA=CDLVS=B5=C4=B9=FD=C2=CB=BB=FA=D6=C6=D3=D0=B3=E5=CD=BB.<=
+/div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre=
+">	</span>ipvs=D3=C3=C0=B4=B6=A8=D2=E5=BC=AF=C8=BA=B7=FE=CE=F1,=B6=
+=A8=D2=E5=BA=F3=B6=CB=D2=BB=B8=F6=BB=F2=B6=E0=B8=F6=B7=FE=CE=F1=C6=
+=F7.</div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">	</span>ipvsadm:LVS=B5=C4=B9=DC=C0=ED=B9=A4=BE=DF</div><di=
+v><span class=3D"Apple-tab-span" style=3D"white-space:pre">	</spa=
+n>LVS=C4=DC=B9=BB=D7=AA=B7=A2400W=B8=F6=C7=EB=C7=F3,HAproxy=C9=CF=
+=CF=DE65535(=BB=F9=D3=DA=CC=D7=BD=D3=D7=D6)=D2=BB=B0=E33-5W,F5600=
+-700W=B8=F6</div><div><span class=3D"Apple-tab-span" style=3D"whi=
+te-space:pre">	</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">	</span>=D2=BB=B0=E3=C8=EB=BF=DA=C9=E8=B1=
+=B8=D3=C3LVS=B5=F7=B6=C8,=C4=DA=B2=BF=D0=A1=B9=E6=C4=A3=BC=AF=C8=BA=
+=BF=C9=D3=C3HAproxy,LVS</div><div><span class=3D"Apple-tab-span"=20=
+style=3D"white-space:pre">	</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">	</span>LVS=B9=A4=D7=F7=BB=FA=
+=D6=C6</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">	</span>Director:=B5=F7=B6=C8=C6=F7,=CC=E1=B9=A9LVS=B7=FE=
+=CE=F1=D6=F7=BB=FA,=D2=B2=B3=C6=CE=AA=B7=D6=B7=A2=C6=F7(Dispatche=
+r),=B8=BA=D4=D8=BE=F9=BA=E2=C6=F7(Load Balancing)</div><div><span=
+ class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>VIP:L=
+VS=D6=F7=BB=FA=B5=C4IP,=CC=E1=B9=A9=CF=EC=D3=A6=D3=C3=BB=A7=C7=EB=
+=C7=F3=B7=FE=CE=F1=B5=C4=D0=E9=C4=E2IP,=BF=C9=D2=D4=D7=F6IP=D7=AA=
+=D2=C6,</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">	</span>CIP:=B7=A2=C6=F0=C7=EB=C7=F3=BF=CD=BB=A7=B6=CBI=
+P</div><div><span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">	</span>Real Server:=BA=F3=B6=CB=D5=E6=D5=FD=B4=A6=C0=ED=D3=C3=
+=BB=A7=C7=EB=C7=F3=B5=C4=B7=FE=CE=F1=C6=F7</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span>DIP:Director I=
+P,LVS=D6=F7=BB=FA=CD=A8=CD=F9=BA=F3=B6=CBReal Server=B5=C4=CD=F8=BF=
+=A8IP=B5=D8=D6=B7</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">	</span>RIP:Real Server=B5=C4=CD=F8=BF=A8=B5=D8=
+=D6=B7</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">	</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>CIP&lt;--&gt;VIP&lt;--&gt;DIP&lt;--&gt=
+;RIP</div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">	</span> &nbsp;=BF=CD=BB=A7=B6=CB &nbsp; LVS=B7=FE=CE=F1=C6=
+=F7 &nbsp; &nbsp;=BA=F3=B6=CB=B7=FE=CE=F1=C6=F7</div><div><span c=
+lass=3D"Apple-tab-span" style=3D"white-space:pre">	</span>LVS=C0=E0=
+=D0=CD:</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">		</span>1,NAT:(=B6=E0=C4=BF=B1=EA)=CF=E0=B5=B1=D3=DAip=
+tables=B5=C4DNAT,=BD=AB=D3=C3=BB=A7=C7=EB=C7=F3,=BD=F8=D0=D0=B7=D6=
+=CE=F6,=BD=AB=C7=EB=C7=F3=B5=C4IP=B5=D8=D6=B7=D0=DE=B8=C4=CE=AA=BA=
+=F3=B6=CB=D2=BB=B8=F6=B7=FE=CE=F1=C6=F7=BC=AF=C8=BA,=D3=C9=D2=BB=B6=
+=A8=B9=E6=D4=F2=BD=F8=D0=D0=D0=DE=B8=C4,=D3=D0=BF=C9=C4=DC=C3=BF=D2=
+=BB=B4=CE=CC=F4=D1=A1=B5=C4=B7=FE=CE=F1=C6=F7=B6=BC=CA=C7=B2=BB=CD=
+=AC=B5=C4,=B4=D3=B6=F8=CA=B5=CF=D6=B8=BA=D4=D8=BE=F9=BA=E2=B9=A6=C4=
+=DC.iptables=B5=C4NAT=BB=FA=D6=C6=CA=C7=D0=DE=B8=C4=CE=AA=C3=F7=C8=
+=B7=B5=C4=BA=F3=B6=CB=B7=FE=CE=F1=C6=F7,=C3=BB=D3=D0=B8=BA=D4=D8=BE=
+=F9=BA=E2=B5=C4=B9=A6=C4=DC</div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span>2,DR,(Direct Routing)=B7=A2=
+=CB=CD=CF=EC=D3=A6=CA=B1,=B2=BB=D4=D9=BE=AD=B9=FDDirector,=D3=C9R=
+S=D4=DA=CF=EC=D3=A6=CA=B1=CE=B1=D7=B0=CE=AAVIP=B7=E2=D7=B0=CF=EC=D3=
+=A6=B1=A8=CE=C4,=D6=B1=BD=D3=B7=A2=B5=BD=C2=B7=D3=C9.=B7=D6=CE=AA=
+=C1=BD=D6=D6:RIP=BF=C9=CA=B9=D3=C3=CB=BD=D3=D0=B5=D8=D6=B7=D2=B2=BF=
+=C9=CA=B9=D3=C3=B9=AB=CD=F8=B5=D8=D6=B7,=B5=B1RIP(=B9=AB=CD=F8=B5=
+=D8=D6=B7)=BA=CDVIP=D4=DA=D2=BB=B8=F6=CD=F8=B6=CE=C4=DA=CA=C7=D7=DF=
+=CD=AC=D2=BB=B8=F6=C2=B7=D3=C9,=B5=B1RIP(=CB=BD=D3=D0=B5=D8=D6=B7=
+)=BA=CDVIP=B2=BB=D4=DA=D2=BB=B8=F6=CD=F8=B6=CE=C4=DA,=BD=D3=CA=DC=
+=C7=EB=C7=F3=BA=CD=B7=A2=CB=CD=CF=EC=D3=A6=CA=C7=D7=DF=B5=C4=B2=BB=
+=CD=AC=C2=B7=D3=C9,</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">		</span>3,TUN</div><div><span class=3D"App=
+le-tab-span" style=3D"white-space:pre">		</span>4,FULLNAT</div><d=
+iv><span class=3D"Apple-tab-span" style=3D"white-space:pre">	</sp=
+an></div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">	</span>LVS NAT=B5=C4=CC=D8=D0=D4,</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>1,RS=D3=A6=B8=
+=C3=CA=B9=D3=C3=CB=BD=D3=D0=B5=D8=D6=B7</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span>2,RS=B5=C4=CD=F8=
+=B9=D8=B1=D8=D0=EB=D2=AA=D6=BB=CF=EBDIP</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span>3,RIP=BA=CDDIP=
+=B1=D8=D0=EB=D4=DA=CD=AC=D2=BB=CD=F8=B6=CE=C4=DA,=B2=BB=C4=DC=BF=E5=
+=CD=F8=B6=CE</div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">		</span>4,=BD=F8=B3=F6=B5=C4=B1=A8=CE=C4,=C7=EB=C7=
+=F3=BA=CD=CF=EC=D3=A6=B5=C4=B1=A8=CE=C4=B6=BC=B5=C4=BE=AD=B9=FDDi=
+rector,=D4=DA=B8=DF=B8=BA=D4=D8=B3=A1=BE=B0=D6=D0,Director=D3=D0=BF=
+=C9=C4=DC=B3=C9=CE=AA=D0=D4=C4=DC=C6=BF=BE=B1</div><div><span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">		</span>5,=D6=A7=
+=B3=D6=B6=CB=BF=DA=D3=B3=C9=E4,</div><div><span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">		</span>6,RS=BF=C9=D2=D4=CA=B9=
+=D3=C3=C8=CE=D2=E2=D6=A7=B3=D6=BC=AF=C8=BA=B7=FE=CE=F1=B5=C4OS(wi=
+ndows,bsd)</div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span>=D3=C9=D3=DA=CF=EC=D3=A6=B1=A8=CE=C4=D2=B2=B6=
+=BC=D3=D0Director=C0=B4=B9=B9=BD=A8,=B9=B9=BD=A8=CF=EC=D3=A6=B8=BA=
+=D4=D8=BA=DC=B4=F3,(=C0=FD=C8=E7,=D3=C3=BB=A7=B7=A2=C0=B4=D2=BB=B8=
+=F6=C7=EB=C7=F3=D6=BB=CA=C7=D2=BB=B8=F6URL,=B6=F8Director=C8=B4=D2=
+=AA=CF=EC=D3=A6=D2=BB=B8=F6=BC=B8M=BC=B8=CA=AEM=B5=C4=D2=B3=C3=E6=
+,=D3=C3=BB=A7=B7=A2=C0=B4=D2=BB=B8=F6=B2=E9=D1=AF=C7=EB=C7=F3,=CE=
+=D2=C3=C7=D0=E8=D2=AA=CF=EC=D3=A6=B5=C4=CA=C7=B3=C9=B0=D9=C9=CF=C7=
+=A7=D0=D0=C4=DA=C8=DD)=D0=D4=C4=DC=C6=BF=BE=B1=D6=BB=C4=DC=D6=A7=B3=
+=D610=B8=F6=B7=FE=CE=F1=C6=F7</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">		</span></div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span>LVS DR=C0=E0=D0=
+=CD,</div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">		</span>=C8=C3=C7=B0=B6=CB=C2=B7=D3=C9=BD=AB=C7=EB=C7=F3=B7=
+=A2=CD=F9VIP=CA=B1=D6=BB=C4=DC=CA=C7Director=B5=C4vip,</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span=
+>=BD=E2=BE=F6=B7=BD=B0=B8</div><div><span class=3D"Apple-tab-span=
+" style=3D"white-space:pre">			</span>(1)=BE=B2=CC=AC=B5=D8=D6=B7=
+=B0=F3=B6=A8,=D4=DA=C7=B0=B6=CB=C2=B7=D3=C9=C9=CF=CA=B5=CF=D6=BE=B2=
+=CC=ACMAC=B5=D8=D6=B7=B0=F3=B6=A8VIP,=C8=B1=B5=E3,=CE=B4=B1=D8=D3=
+=D0=C2=B7=D3=C9=C6=F7=B5=C4=C5=E4=D6=C3=C8=A8=CF=DE,Director=B9=CA=
+=D5=CF=D7=AA=D2=C6=CA=B1=BE=B2=CC=AC=B0=F3=B6=A8=C4=D1=D2=D4=CA=CA=
+=D3=C3</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">			</span>(2)arptables,=D4=DA=B8=F7RS=B0=B2=D7=B0arptabl=
+es=B3=CC=D0=F2,=B2=A2=B1=E0=D0=B4arptables=B9=E6=D4=F2,=C8=B1=B5=E3=
+=D2=C0=C0=B5=D3=DA=B6=C0=CC=D8=B9=A6=C4=DC=B5=C4=D3=A6=D3=C3</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+	</span>(3)=D0=DE=B8=C4Linux=C4=DA=BA=CB=B2=CE=CA=FD,=BD=ABRS=C9=CF=
+=B5=C4vip=C5=E4=D6=C3=D4=DAlo=BD=D3=BF=DA=B5=C4=B1=F0=C3=FB=C9=CF=
+;=CF=DE=D6=C6Linux=BD=F6=B6=D4=B6=D4=D3=A6=BD=D3=BF=DA=B5=C4ARP=C7=
+=EB=C7=F3=D7=F6=CF=EC=D3=A6.=C8=B1=B5=E3,=D6=BB=C4=DC=D3=C3=D4=DA=
+Linux=B7=FE=CE=F1=C6=F7=D6=D0,=CA=CA=D3=A6=D0=D4=B2=EE</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>=
+LVS DR=B5=C4=CC=D8=D0=D4<span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">	</span></div><div><span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">		</span>1,RS=BF=C9=D2=D4=CA=B9=D3=C3=CB=
+=BD=D3=D0=B5=D8=D6=B7,=B5=AB=D2=B2=BF=C9=D2=D4=CA=B9=D3=C3=B9=AB=CD=
+=F8=B5=D8=D6=B7,=C8=E7=B9=FB=CA=B9=D3=C3=B9=AB=CD=F8=B5=D8=D6=B7,=
+=BF=C9=D2=D4=D6=B1=BD=D3=CD=A8=B9=FD=BB=A5=C1=AA=CD=F8=C1=AC=C8=EB=
+RS=D2=D4=CA=B5=CF=D6=C5=E4=D6=C3,=BC=E0=BF=D8=B5=C8</div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>2,=
+RS=B5=C4=CD=F8=B9=D8=D2=BB=B6=A8=B2=BB=C4=DC=D6=BB=CF=EBDIP,</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+</span>3,RS=B8=FADirector=D2=AA=D4=DA=CD=AC=D2=BB=CE=EF=C0=ED=CD=F8=
+=C2=E7=C4=DA(=B2=BB=C4=DC=D3=C9=C2=B7=D3=C9=C6=F7=B7=D6=B8=F4,=D2=
+=B2=B2=BB=C4=DC=BF=E5VLAN)</div><div><span class=3D"Apple-tab-spa=
+n" style=3D"white-space:pre">		</span>4,=C7=EB=C7=F3=B1=A8=CE=C4=BE=
+=AD=B9=FDDirector,=B5=AB=CF=EC=D3=A6=B1=A8=CE=C4=D2=BB=B6=A8=B2=BB=
+=C4=DC=BE=AD=B9=FDDirector,</div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span>5,=D2=F2=CE=AA=CA=C7=BB=F9=
+=D3=DAMAC,=B2=BB=D6=A7=B3=D6=B6=CB=BF=DA=D3=B3=C9=E4</div><div><s=
+pan class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>6=
+,RS=BF=C9=D2=D4=CA=B9=D3=C3=B4=F3=B6=E0=CA=FD=B5=C4=B2=D9=D7=F7=CF=
+=B5=CD=B3.</div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">	</span></div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">	</span>LVS tun=C0=E0=D0=CD:IP=CB=ED=B5=C0=
+,=C0=A9=D5=B9=B5=C4DR=C4=A3=D0=CD,=BF=C9=D2=D4=BF=E5=BB=A5=C1=AA=CD=
+=F8=B9=A4=D7=F7.=C0=E0=CB=C6DR=B5=C4=B5=DA=B6=FE=D6=D6=C0=E0=D0=CD=
+,=B5=AB=CA=C7=D5=E2=CA=B1=BA=F2=CA=B9=D3=C3=B5=C4RIP=B1=D8=D0=EB=CA=
+=C7=B9=AB=CD=F8=B5=D8=D6=B7.</div><div><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">	</span>1,RIP,VIP=B6=BC=B5=C3=CA=C7=
+=B9=AB=CD=F8=B5=D8=D6=B7,DIP=D2=BB=B0=E3=C0=B4=BD=B2=D2=B2=D2=AA=C7=
+=F3=B9=AB=CD=F8=B5=D8=D6=B7,=B5=AB=CA=C7DIP=B2=BB=BD=D3=CA=DC=CF=EC=
+=D3=A6,=CB=F9=D2=D4=D2=B2=BF=C9=D3=C3=CB=BD=D3=D0=B5=D8=D6=B7</di=
+v><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09=
+</span>2,RS=B5=C4=CD=F8=B9=D8=B2=BB=BB=E1=D6=B8=CF=F2=D2=B2=B2=BB=
+=BF=C9=C4=DC=D6=B8=CF=F2DIP</div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">	</span>3,=C7=EB=C7=F3=B1=A8=CE=C4=BE=
+=AD=B9=FDDirector,=B5=AB=CF=EC=D3=A6=B1=A8=CE=C4=D2=BB=B6=A8=B2=BB=
+=BE=AD=B9=FDDirector</div><div><span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">	</span>4,=B2=BB=D6=A7=B3=D6=B6=CB=BF=DA=D3=
+=B3=C9=E4</div><div><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">	</span>5,RS=B5=C4OS=B1=D8=D0=EB=B5=C3=D6=A7=B3=D6=CB=
+=ED=B5=C0=B9=A6=C4=DC.=D4=DA=B1=A8=CE=C4IP=CA=D7=B2=BF=C4=DC=B6=E0=
+=BC=D3IP</div><div><span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">	</span></div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">	</span>LVS FULLNAT=C0=E0=D0=CD=BF=C9=D2=D4=
+=BF=E5=CD=F8=C2=E7=B5=C4NAT=C4=A3=D0=CD,=CF=F2=BA=F3=B7=A2=CB=CD=CA=
+=B1=B0=D1=B1=A8=CE=C4ip=CA=D7=B2=BF=B8=C4=CE=AADIP+RIP,=CF=F2=CD=E2=
+=B7=A2=CB=CD=CA=B1=BD=ABIP=CA=D7=B2=BF=B8=C4=CE=AACIP+VIP=D2=D4=CA=
+=B5=CF=D6=BF=E5=CD=F8=C2=E7=CD=A8=D0=C5.=B1=D8=D0=EB,=D0=DE=B8=C4=
+=C4=DA=BA=CB.</div><div>###35=CC=EC=B5=DA=B6=FE=B6=CE,=BA=F3=B0=EB=
+=B6=CE.</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">			</span></div><div><span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">				</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">	</span>LVS=B5=C4=B5=F7=B6=C8=
+=B7=BD=B7=A8:=B5=F7=B6=C8=CB=E3=B7=A8 Scheduling Method</div><div=
+><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</spa=
+n>=C7=B0=B6=CB=B5=C4Director=CA=C7=B7=F1=BF=BC=C2=C7=BA=F3=B6=CB=B5=
+=C4=C3=BF=D2=BB=B8=F6RS=B5=B1=C7=B0=D5=FD=B4=A6=D3=DA=BB=EE=B6=AF=
+=BC=B0=B7=C7=BB=EE=B6=AF=D7=B4=CC=AC,=BB=F2=D6=BB=BF=BC=C2=C7=BB=EE=
+=B6=AF=D7=B4=CC=AC,=BD=AB=C7=EB=C7=F3=D7=AA=B7=A2=D6=C1=CF=E0=D3=A6=
+=B5=C4RS</div><div><span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">		</span></div><div><span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">		</span>=BE=B2=CC=AC=B7=BD=B7=A8,=BD=F6=B8=
+=F9=BE=DD=CB=E3=B7=A8=B1=BE=C9=ED=BD=F8=D0=D0=B5=F7=B6=C8,=B2=BB=BF=
+=BC=C2=C7RS=B5=B1=C7=B0=CA=C7=B2=BB=CA=C7=B3=D0=D4=D8=B5=C4=D3=D0=
+=BA=DC=B6=E0=B5=C4=D3=C3=BB=A7=C7=EB=C7=F3</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">			</span>rr:=C2=D6=D1=
+=AF,rr=BA=CDwrr=CE=DE=B7=A8=BD=E2=BE=F6session,=D6=BB=C4=DC=D3=C3=
+session=B8=B4=D6=C6=BB=F2session=B7=FE=CE=F1=C6=F7</div><div><spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">			</span>wr=
+r:Weighted RR:=BC=D3=C8=A8=C2=D6=D1=AF.=B8=F9=BE=DD=B7=FE=CE=F1=C6=
+=F7=D0=D4=C4=DC=B5=C8=D6=B8=B1=EA=B8=F8=B7=FE=CE=F1=C6=F7=D2=BB=B8=
+=F6=C8=A8=D6=D8(weight),=B8=F9=BE=DD=C6=E4=C8=A8=D6=D8=B1=C8=C0=FD=
+=B7=D6=C5=E4.=C8=A8=D6=D8=D4=BD=B8=DF,=B7=D6=C5=E4=B5=BD=B5=C4=B4=
+=A6=C0=ED=C7=EB=C7=F3=D4=BD=B6=E0(=C4=DC=D5=DF=B6=E0=C0=CD).</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+	</span>sh:source hashing :=C4=DC=B9=BB=BD=AB=CD=AC=D2=BB=B8=F6ip=
+=B5=C4=D3=C3=BB=A7=B6=A8=CF=F2=D6=C1=CD=AC=D2=BB=B8=F6=B7=FE=CE=F1=
+=C6=F7</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">			</span>dh:destination hashing :=B6=D4=C4=BF=B1=EA=B5=D8=
+=D6=B7=BD=F8=D0=D0hash,(=D7=F7=D3=C3=D4=DA=B7=C0=BB=F0=C7=BD=B5=C4=
+=C4=BF=B1=EA=D7=B7=D7=D9=B9=A6=C4=DC=CF=C2)</div><div><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">			</span></div><di=
+v><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</sp=
+an>=B6=AF=CC=AC=B7=BD=B7=A8,=B8=F9=BE=DD=CB=E3=B7=A8=BC=B0RS=B5=B1=
+=C7=B0=B5=C4=B8=BA=D4=D8=D7=B4=CC=AC</div><div><span class=3D"App=
+le-tab-span" style=3D"white-space:pre">			</span>lc:Least Connect=
+ion:=BA=F3=B6=CB=B7=FE=CE=F1=C6=F7=C4=C4=D2=BB=B8=F6=B7=FE=CE=F1=C6=
+=F7=C1=AC=BD=D3=C9=D9,Overhead=3DActive(=BB=EE=B6=AF=C1=AC=BD=D3)=
+*256+Inactive(=B7=C7=BB=EE=B6=AF=C1=AC=BD=D3),=BD=E1=B9=FB=D0=A1=B5=
+=C4overhead=D6=B5=BB=F1=B5=C3=B7=D6=C5=E4</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">			</span>wlc:Weighted=
+ LC,Overhead=3DActive*256+Inactive/weight,=BD=E1=B9=FB=D0=A1=B5=C4=
+overhead=D6=B5=BB=F1=B5=C3=B7=D6=C5=E4.=B4=E6=D4=DA=CE=CA=CC=E2,=C8=
+=A8=D6=D8=B7=D6=C5=E4=B2=BB=BA=CF=C0=ED,=B2=BB=C4=DC=BA=CF=C0=ED=B7=
+=D6=C5=E4=C1=AC=BD=D3</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">			</span>sed:Shortest Expect Delay,=D7=EE=
+=D0=A1=C6=DA=CD=FB=D1=D3=B3=D9.Overhead=3D(Active+1)*256/weight,=BD=
+=E1=B9=FB=D0=A1=B5=C4overhead=D6=B5=BB=F1=B5=C3=B7=D6=C5=E4.</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+	</span>nq:Nerver Queue,=D3=C0=B2=BB=C5=C5=B6=D3,=D4=DAsed=CB=E3=B7=
+=A8=BB=F9=B4=A1=C9=CF=BF=BC=C2=C7=C8=A8=D6=D8,=C8=C3=B7=D6=C5=E4=B8=
+=FC=BA=CF=C0=ED.</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">			</span>lblc:Locality-based Least Connection,=
+=C0=E0=CB=C6=D3=DAdh+lc=CB=E3=B7=A8,=D3=C3=D3=DA=BA=F3=B6=CB=CA=C7=
+=BB=BA=B4=E6=B7=FE=CE=F1=C6=F7=CA=B1,=BD=AB=CD=AC=D2=BB=B8=F6=C7=EB=
+=C7=F3=B6=A8=CE=BB=D6=C1=CD=AC=D2=BB=B8=F6RS</div><div><span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">			</span>lblcr:Re=
+plicated and Locality-based Least Connection,=D3=C3=D3=DA=BA=F3=B6=
+=CB=CA=C7=BB=BA=B4=E6=B7=FE=CE=F1=C6=F7=CA=B1,=BD=AB=CD=AC=D2=BB=B8=
+=F6=C7=EB=C7=F3=B6=A8=CE=BB=D6=C1=CD=AC=D2=BB=B8=F6RS</div><div><=
+span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>=
+LVS=C8=B1=CF=DD,=B2=BB=BB=E1=BC=EC=B2=E2=BA=F3=B6=CB=B7=FE=CE=F1=C6=
+=F7=B5=C4=BD=A1=BF=B5=D7=B4=CC=AC,=CB=F9=D2=D4=C3=BF=D6=D6=CB=E3=B7=
+=A8=B6=BC=B2=BB=C4=DC=B1=DC=C3=E2=BD=AB=C7=EB=C7=F3=B5=F7=B6=C8=B5=
+=BD=BB=B5=B5=C4RS=C9=CF</div><div><span class=3D"Apple-tab-span"=20=
+style=3D"white-space:pre">		</span></div><div><span class=3D"Appl=
+e-tab-span" style=3D"white-space:pre">		</span>grep -E -i "ipvs|I=
+P_VS" /boot/config-2.6.32-431.el6.x86_64(=B2=E9=BF=B4=C4=DA=BA=CB=
+=C5=E4=D6=C3=CE=C4=BC=FE,=D6=A7=B3=D6=B5=C4LVS=D6=A7=B3=D6=B5=C4=D0=
+=AD=D2=E9,=BC=AF=C8=BA=B7=FE=CE=F1,=B5=F7=B6=C8=CB=E3=B7=A8)</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+</span></div><div>LVS=B5=C4=BC=AF=C8=BA=B7=FE=CE=F1,=CB=C4=B2=E3=C2=
+=B7=D3=C9,=CB=C4=B2=E3=BD=BB=BB=BB:=B8=F9=BE=DD=C7=EB=C7=F3=C4=BF=
+=B1=EA=B5=C4=CC=D7=BD=D3=D7=D6(=B5=DA=CB=C4=B2=E3=D0=AD=D2=E9,ip+=
+port,=B0=FC=C0=A8=B6=CB=BF=DA=B5=C4=B6=CB=BF=DA=D0=AD=D2=E9=C0=E0=
+=D0=CDtcp|udp)=C0=B4=CA=B5=CF=D6=D7=AA=B7=A2.ipvs=D4=DAINPUT=C1=B4=
+=C9=CF=C6=A5=C5=E4=B9=E6=D4=F2,=C6=A5=C5=E4=B5=BD=B5=C4=C7=EB=C7=F3=
+,=C7=BF=D0=D0=D7=AA=B7=A2=B5=BDFORWARD,=D4=D9=BD=BB=B5=BDPOSTROUT=
+ING=D7=AA=B7=A2=B5=BD=BA=F3=B6=CB,LVS=B2=BB=C4=DC=BA=CDiptables=B5=
+=C4Filter=BA=CDNAT=D2=BB=BF=E9=C0=B4=B9=A4=D7=F7,=BF=C9=D2=D4=BA=CD=
+mangle=B1=ED=D2=BB=C6=F0=B9=A4=D7=F7.</div><div><span class=3D"Ap=
+ple-tab-span" style=3D"white-space:pre">	</span></div><div><span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>ipvsad=
+m -A|E -t|u|f service-address [-s scheduler][-p [timeout]] [-M ne=
+tmask]:</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">		</span>-A :=CC=ED=BC=D3=D2=BB=B8=F6=BC=AF=C8=BA=B7=FE=
+=CE=F1&nbsp;</div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">			</span>-t,tcp=D0=AD=D2=E9 -u,udp=D0=AD=D2=E9 -f=
+,firewall mark,=B7=C0=BB=F0=C7=BD=B1=EA=BC=C7,=CD=A8=B3=A3=D3=C3=D3=
+=DA=BD=AB=C1=BD=B8=F6=BB=F2=D2=D4=C9=CF=B5=C4=B7=FE=CE=F1=B0=F3=B6=
+=A8=CE=AA=D2=BB=B8=F6=B7=FE=CE=F1=BD=F8=D0=D0=B4=A6=C0=ED=CA=B1=CA=
+=B9=D3=C3(=C0=FD=C8=E7,=D6=A7=B8=B6=C7=D0=BB=BB=D0=E8=D2=AA=B4=D3=
+80=D7=AA=BB=BB=B5=BD443,=B0=D180=BA=CD443=B1=EA=BC=C7=CE=AA=D2=BB=
+=B8=F6=BC=AF=C8=BA)</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">			</span>service-address: -t ip:port &nbsp=
+;-u ip:port &nbsp;-f firewall_mark(=D3=C3iptables=B4=F2=C9=CF=B5=C4=
+=D7=D4=B6=A8=D2=E5=CA=FD=D7=D6=D2=BB=B0=E3=CE=AA1-99)</div><div><=
+span class=3D"Apple-tab-span" style=3D"white-space:pre">			</span=
+>-s:=B5=F7=B6=C8=B7=BD=B7=A8,=C4=AC=C8=CF=CE=AAwlc,=CA=B5=BC=CA=B3=
+=A1=BE=B0=D6=D0=D0=A7=B9=FB=D7=EE=BA=C3=B5=C4</div><div><span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">			</span>-p time=
+out:persistent connection,=B3=D6=BE=C3=C1=AC=BD=D3,</div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>-E=
+ :=D0=DE=B8=C4=BC=AF=C8=BA=B7=FE=CE=F1=D1=A1=CF=EE=BA=CD-A=D2=BB=D1=
+=F9</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">	</span>RS=CF=E0=B9=D8</div><div><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">	</span>ipvsadm -a|e -t|u|f servic=
+e-address -r server-address [-g|i|m] [-w weight] [-x upper] [-y l=
+ower]</div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span>-a :=CF=F2=D6=B8=B6=A8=B5=C4CS=BC=AF=C8=BA=D6=D0=
+=CC=ED=BC=D3RS</div><div><span class=3D"Apple-tab-span" style=3D"=
+white-space:pre">			</span>-t|u|f service-address,=D6=B8=C3=F7=BD=
+=ABRS=CC=ED=BC=D3=D6=C1=C4=C4=B8=F6Cluster Service=D6=D0</div><di=
+v><span class=3D"Apple-tab-span" style=3D"white-space:pre">			</s=
+pan>-r:=D6=B8=B6=A8RS,=BF=C9=D2=D4=B0=FC=BA=ACip:[port],=D6=BB=D3=
+=D0=D6=A7=B3=D6=B6=CB=BF=DA=D3=B3=C9=E4=B5=C4LVS=B5=C4=C0=E0=D0=CD=
+=B2=C5=D4=CA=D0=ED=CA=B9=D3=C3=B8=FA=BC=AF=C8=BA=B7=FE=CE=F1=D6=D0=
+=B2=BB=CD=AC=B5=C4=B6=CB=BF=DA</div><div><span class=3D"Apple-tab=
+-span" style=3D"white-space:pre">			</span>-g|i|m:=D6=B8=B6=A8LVS=
+=C0=E0=D0=CD=C4=AC=C8=CF=CA=C7DR=C0=E0=D0=CD,-g DR &nbsp; -i ipip=
+ LVSTUN &nbsp; -m masquerade NAT</div><div><span class=3D"Apple-t=
+ab-span" style=3D"white-space:pre">			</span>-w:=D6=B8=B6=A8=C8=A8=
+=D6=D8,=C4=AC=C8=CF=CE=AA1</div><div><span class=3D"Apple-tab-spa=
+n" style=3D"white-space:pre">			</span>-x|y :=D7=EE=C9=D9=C1=AC=BD=
+=D3=CA=FD</div><div><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">		</span>-e:=D0=DE=B8=C4=D6=B8=B6=A8=B5=C4RS=CA=F4=D0=
+=D4</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">	</span>ipvsadm -D -t|u|f service-address:=C9=BE=B3=FD=D6=B8=
+=B6=A8=B5=C4=BC=AF=C8=BA=B7=FE=CE=F1</div><div><span class=3D"App=
+le-tab-span" style=3D"white-space:pre">	</span>ipvsadm -d -t|u|f=20=
+service-address -r server-address:=C9=BE=B3=FD=D6=B8=B6=A8=BC=AF=C8=
+=BA=B7=FE=CE=F1=D6=D0=B5=C4RS</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">	</span></div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span>ipvsadm -C:=C7=
+=E5=BF=D5=CB=F9=D3=D0=B5=C4=B9=E6=D4=F2</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">	</span>ipvsadm -S &gt;=
+&gt; /etc/ipvs.conf, =CF=E0=B5=B1=D3=DAipvsadm-save,=D6=BB=B2=BB=B9=
+=FD=D2=AA=D3=C3=CA=E4=B3=F6=D6=D8=B6=A8=CF=F2=D6=B8=B6=A8=B1=A3=B4=
+=E6=B5=C4=CE=C4=BC=FE</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">	</span>ipvsadm -R &nbsp;&lt;&lt; /etc/ip=
+vs.conf &nbsp; &nbsp;=CF=E0=B5=B1=D3=DAipvsadm-restor,=D6=BB=B2=BB=
+=B9=FD=D2=AA=D3=C3=CA=E4=C8=EB=D6=D8=B6=A8=CF=F2=D6=B8=B6=A8=B1=A3=
+=B4=E6=B5=C4=CE=C4=BC=FE</div><div><span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">	</span>ipvsadm -L [option]:=CF=D4=CA=BE=
+ipvs=B9=E6=D4=F2,=CF=E0=B5=B1=D3=DAiptables -L</div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>-n :=CA=
+=FD=D7=D6=B8=F1=CA=BD=CF=D4=CA=BEip=B5=D8=D6=B7</div><div><span c=
+lass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>-c :=CF=
+=D4=CA=BE=C1=AC=BD=D3=CA=FD=CF=E0=B9=D8=D0=C5=CF=A2</div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>--=
+stats :=CF=D4=CA=BE=CD=B3=BC=C6=CA=FD=BE=DD,=C3=BF=B8=F6RS=BD=D3=CA=
+=DC=B9=FD=B6=E0=C9=D9=C1=AC=BD=D3,=C7=EB=C7=F3(=CF=EC=D3=A6)=B1=A8=
+=CE=C4=CA=FD,=C7=EB=C7=F3(=CF=EC=D3=A6)=B5=C4=D7=D6=BD=DA=CA=FD.C=
+onns=C1=AC=BD=D3=CA=FD,InPKts=BD=F8=C8=EB=B5=C4=B1=A8=CE=C4=CA=FD=
+, OutPkts=CF=EC=D3=A6=B5=C4=B1=A8=CE=C4=CA=FD,InBytes=BD=F8=C8=EB=
+=B5=C4=D7=D6=BD=DA=CA=FD,OutBytes=CF=EC=D3=A6=B5=C4=D7=D6=BD=DA=CA=
+=FD</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">		</span>--rate :=C6=BD=BE=F9=CA=FD=BE=DD CPS=C6=BD=BE=F9=C3=
+=BF=C3=EB=B5=C4=C1=AC=BD=D3=CA=FD, &nbsp;InPPs=C6=BD=BE=F9=C3=BF=C3=
+=EB=B5=C4=BD=F8=C8=EB=B1=A8=CE=C4=CA=FD, OutPPs=C6=BD=BE=F9=C3=BF=
+=C3=EB=B5=C4=CF=EC=D3=A6=B1=A8=CE=C4=CA=FD, InBPS=C6=BD=BE=F9=C3=BF=
+=C3=EB=B5=C4=BD=F8=C8=EB=D7=D6=BD=DA=CA=FD, OutBPS=C6=BD=BE=F9=C3=
+=BF=C3=EB=B5=C4=CF=EC=D3=A6=D7=D6=BD=DA=CA=FD,</div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>--timeo=
+ut :=CF=D4=CA=BEtcp=BB=E1=BB=B0=CA=B1=B3=A4</div><div><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">		</span>--daemon :=
+=CF=D4=CA=BEipvs=BC=AF=C8=BA=B7=FE=CE=F1=B5=C4=D7=B4=CC=AC=BA=CD=B6=
+=E0=B2=A5=BD=D3=BF=DA</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span>--sort:=BD=F8=D0=D0=D0=AD=D2=E9,=
+ip,=B6=CB=BF=DA=C5=C5=D0=F2</div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span>--exact :=B6=D4=CA=E4=B3=F6=
+=CA=FD=BE=DD=B2=BB=D7=F6=B5=A5=CE=BB=BB=BB=CB=E3,=CF=D4=CA=BE=BE=AB=
+=C8=B7=D6=B5</div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">	</span>ipvsadm -Z [-t|u|f service-address]:=C7=E5=
+=BF=D5=CB=F9=D3=D0=B9=E6=D4=F2=B5=C4=BC=C6=CA=FD=C6=F7,=C7=E5=C1=E3=
+-L=B2=E9=BF=B4=B5=C4=CB=F9=D3=D0=CA=FD=BE=DD</div><div>=CA=B9=D3=C3=
+ipvs=C7=B0=D2=AA=C7=E5=BF=D5iptables=B5=C4=B9=E6=D4=F2iptables -F=
+ =BB=F2=D5=DFiptables -F -t filter</div><div><br></div><div>NAT=C4=
+=A3=D0=CD=CA=B5=D1=E9<span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">			</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; &nb=
+sp;VIP=3D172.16.100.8 (eth0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp;&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ____________ &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp;&nbsp;<span style=3D"font-family: =CE=A2=C8=ED=D1=
+=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nb=
+sp;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; f=
+ont-size: 10.5pt; line-height: 1.5;">&nbsp; </span><span style=3D=
+"font-size: 10.5pt; line-height: 1.5;">&nbsp;| &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><=
+/div><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;director &nbsp; | &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p;&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp;|____________| &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+&nbsp;</div><div>&nbsp; &nbsp; &nbsp;DIP=3D192.168.12.1 (eth1) &n=
+bsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>=
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(switch)-----------=
+-------------</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</div><div>&nbsp; &nbsp; &nb=
+sp;RIP=3D192.168.12.11 (eth0) &nbsp; &nbsp; &nbsp; RIP=3D192.168.=
+12.12(eth0)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; _____________ &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _____________</di=
+v><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp;&nbsp;<span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=
+=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</s=
+pan><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-si=
+ze: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;</span><span style=3D=
+"font-size: 10.5pt; line-height: 1.5;">| &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbs=
+p;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; fo=
+nt-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><sp=
+an style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.=
+5pt; line-height: 1.5;">&nbsp; &nbsp;</span><span style=3D"font-s=
+ize: 10.5pt; line-height: 1.5;">|</span></div><div>&nbsp; &nbsp;=20=
+&nbsp; &nbsp;| realserver1 | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; | realserver2 &nbsp;|</div><div>&nbsp; &nbsp; &nbsp; &nbsp;=
+|_____________| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |______=
+________| &nbsp;</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">	</span>realserver1:</div><div><spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>yum=
+ install httpd</div><div><span class=3D"Apple-tab-span" style=3D"=
+white-space:pre">		</span>vi /etc/httpd.conf</div><div><span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ifconfig=20=
+eth0 192.168.12.11/24</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span>route add default gw 192.168.12.=
+1</div><div><span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">	</span>realserver2:</div><div><span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">		</span>yum install httpd</div><div><=
+span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>=
+vi /etc/httpd.conf</div><div><span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">		</span>ifconfig eth0 192.168.12.12/24</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+</span>route add default gw 192.168.12.1</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span>director:</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+</span>yum install -y ipvsadm</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">		</span>ifconfig eth0 172.16.100=
+.8/16</div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span>ifconfig eth1 192.168.12.1/24</div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">			</span>vim /e=
+tc/sysctl.conf</div><div><span class=3D"Apple-tab-span" style=3D"=
+white-space:pre">			</span>net.ipv4.ip_forward =3D 1</div><div><s=
+pan class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>s=
+ysctl -p</div><div><span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">		</span>curl http://192.168.12.11</div><div><span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">		</span>curl htt=
+p://192.168.12.12</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>ifconfig eth0:0 172.16.100.8/16</div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span>ipvsadm -A -t 172.16.100.8:80 -s rr</div><div><s=
+pan class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>i=
+pvsadm -L -n</div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">		</span>ipvsadm -a -t 172.16.100.8 -r 192.168.12.=
+11 -m</div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span>ipvsadm -a -t 172.16.100.8 -r 192.168.12.12 -m</=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span>ipvsadm -L -nc</div><div><span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">		</span>ipvsadm -Z</div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm=
+ -L -n --stats&nbsp;</div><div><span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">		</span>ipvsadm -E -t 172.16.100.8:80 -s=20=
+wrr</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">		</span>ipvsadm -e -t 172.16.100.8:80 -r 192.168.12.11 -m=20=
+-w 3</div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">		</span>ipvsadm -L -nc</div><div><span class=3D"Apple-tab=
+-span" style=3D"white-space:pre">		</span>ipvsadm -L -n --stats&n=
+bsp;</div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">		</span>ipvsadm -L -c</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">		</span></div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span></div><div><s=
+pan class=3D"Apple-tab-span" style=3D"white-space:pre">		</span><=
+/div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre=
+">		</span></div><div>DR=C4=A3=D0=CD=B5=C4&nbsp;</div><div><br></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>	</span>Director=C1=BD=B8=F6=B5=D8=D6=B7VIP,DIP=BB=B9=D3=D0=D2=BB=
+=B8=F6=C3=E6=CF=F2=CD=E2=B2=BF=B5=C4=B5=D8=D6=B7.</div><div><span=
+ class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>RS=D3=
+=D0=C1=BD=B8=F6=B5=D8=D6=B7:VIP,RIP,=B5=AB=CA=C7RS=B5=C4VIP=B2=BB=
+=CF=EC=D3=A6=D3=C3=BB=A7=C7=EB=C7=F3,=D6=BB=CA=C7=D4=DA=B7=A2=CB=CD=
+=CF=EC=D3=A6=B5=C4=CA=B1=BA=F2=D2=D4VIP=C0=B4=B7=E2=D7=B0=B1=A8=CE=
+=C4,=C8=E7=B9=FBRIP=CA=C7=D3=D0=CD=E2=CD=F8=B5=D8=D6=B7,=BE=CD=D6=
+=B1=BD=D3=CD=A8=B9=FDRIP=B5=C4=CD=F8=C2=E7=B7=B5=BB=D8=B8=F8=D3=C3=
+=BB=A7,=BE=CD=B2=BB=D4=DA=BE=AD=B9=FDDirector,=C8=E7=B9=FBRIP=CA=C7=
+=C4=DA=CD=F8=B5=D8=D6=B7,=B2=BB=C4=DC=D7=DFDirector=B5=C4VIP=CB=F9=
+=D4=DA=B5=C4=C2=B7=D3=C9=B3=F6=C8=A5,=BE=CD=B1=D8=D0=EB=BE=AD=D3=C9=
+=C6=E4=CB=FC=B5=C4=C2=B7=D3=C9=C6=F7=D7=AA=B7=A2,</div><div><span=
+ class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>=CE=B1=
+=D7=B0VIP:<span class=3D"Apple-tab-span" style=3D"white-space:pre=
+">	</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span>=B5=F7=D5=FBRS=B5=C4VIP=B5=C4arp=CE=CA=CC=E2=
+</div><div><span class=3D"Apple-tab-span" style=3D"white-space:pr=
+e">	</span> &nbsp; &nbsp;=D3=C9Linux=B5=C4ip=CA=C7=CA=F4=D3=DA=D6=
+=F7=BB=FA=C4=DA=BA=CB=B5=C4,=B6=F8=B7=C7=C4=B3=CC=D8=B6=A8=CD=F8=BF=
+=A8,=CB=F9=D2=D4=D6=BB=D2=AA=D3=D0=C7=EB=C7=F3=BE=CD=BB=E1=CF=EC=D3=
+=A6=B6=D4=D3=A6=B5=C4=CD=F8=BF=A8<span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">	</span></div><div><br></div><div><span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">					</span>__=
+__________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style=3D=
+"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-h=
+eight: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-family=
+: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;"=
+>&nbsp; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=ED=
+=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; </span=
+><span style=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp;_____=
+_______ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></div><div=
+><span class=3D"Apple-tab-span" style=3D"white-space:pre">				</s=
+pan> &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style=
+=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; lin=
+e-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-fam=
+ily: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.=
+5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=
+=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nb=
+sp;&nbsp;</span><span style=3D"font-size: 10.5pt; line-height: 1.=
+5;">&nbsp;|</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=
+=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</s=
+pan><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-si=
+ze: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><span st=
+yle=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp;&nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp;|</span><span style=3D"font-size: 10.5pt; lin=
+e-height: 1.5; font-family: =CE=A2=C8=ED=D1=C5=BA=DA;">&nbsp; &nb=
+sp;</span><span style=3D"font-size: 10.5pt; line-height: 1.5; fon=
+t-family: =CE=A2=C8=ED=D1=C5=BA=DA;">&nbsp; &nbsp;&nbsp;</span><s=
+pan style=3D"font-size: 10.5pt; line-height: 1.5; font-family: =CE=
+=A2=C8=ED=D1=C5=BA=DA;">&nbsp; &nbsp;&nbsp;</span><span style=3D"=
+font-size: 10.5pt; line-height: 1.5; font-family: =CE=A2=C8=ED=D1=
+=C5=BA=DA;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-size: 1=
+0.5pt; line-height: 1.5; font-family: =CE=A2=C8=ED=D1=C5=BA=DA;">=
+&nbsp; </span><span style=3D"font-size: 10.5pt; line-height: 1.5;=
+">&nbsp;=A1=F5 &nbsp;eth2 10.0.0.1 &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp;&nbsp;</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">				</span> &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp=
+;y&nbsp;<span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; fon=
+t-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><spa=
+n style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5=
+pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"f=
+ont-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-hei=
+ght: 1.5;">&nbsp; &nbsp;</span><span style=3D"font-size: 10.5pt;=20=
+line-height: 1.5;">&nbsp; =A1=F5=A1=B4------=A1=B5=A1=F5 &nbsp; &=
+nbsp; &nbsp; x &nbsp;&nbsp;</span><span style=3D"font-family: =CE=
+=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbs=
+p; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=
+=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; </span><s=
+pan style=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp;| &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">				</span> &nbsp; |__=
+______________| &nbsp;<span class=3D"Apple-tab-span" style=3D"whi=
+te-space:pre">		</span>&nbsp;&nbsp;<span style=3D"font-family: =CE=
+=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbs=
+p; &nbsp;&nbsp;</span><span style=3D"font-size: 10.5pt; line-heig=
+ht: 1.5;">&nbsp;|____________=A1=F5 &nbsp;eth1 192.168.10.1 &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp;</span></div><div><span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">				</span>eth0 172.16.100.7<span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span>eth0 172.16.100.8</d=
+iv><div><br></div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">			</span>=B5=B1y=D6=F7=BB=FA=B7=A2=C6=F0arp=C7=EB=
+=C7=F3=D2=AA=C7=F3 x=D6=F7=BB=FA=B5=C4=CD=F8=BF=A8MAC=B5=D8=D6=B7=
+,X=D6=F7=BB=FA=BB=E1=B0=D1eth0,eth1,eth2=B5=C4MAC=B6=BC=BB=E1=B8=F8=
+y</div><div><span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">			</span>arp_announce &nbsp;=B6=A8=D2=E5=CA=D5=B5=BDarp=C7=EB=
+=C7=F3=CA=B1=B5=C4=CF=EC=D3=A6=C4=A3=CA=BD(=BD=D3=CA=DC=CF=EC=D3=A6=
+arp=C7=EB=C7=F3=CA=B1=B5=C4=D0=D0=CE=AA)</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">				</span>1=BE=A1=C1=A6=
+=B1=DC=C3=E2=B7=A2=CB=CD=CE=DE=B9=D8=CD=F8=C2=E7=B5=C4=CD=F8=BF=A8=
+MAC</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">				</span>2,=BD=F6=C4=C3=CD=AC=D2=BB=CD=F8=C2=E7=B5=C4=CD=F8=
+=BF=A8MAC=CD=A8=B8=E6=B8=F8arp=C7=EB=C7=F3</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">			</span>arp_ignore =B6=
+=A8=D2=E5=CD=A8=B8=E6=C4=A3=CA=BD,=CF=F2=BE=D6=D3=F2=CD=F8=B7=A2=CB=
+=CDarp=D0=C5=CF=A2,(=D6=F7=B6=AF=B7=A2=CB=CDarp=C7=EB=C7=F3=CA=B1=
+=B5=C4=D0=D0=CE=AA)</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">				</span>1,=BD=F6=CF=EC=D3=A6=BD=D3=CA=DC=
+=B5=BD=B1=A8=CE=C4=B5=C4=CD=F8=BF=A8=BD=D3=BF=DA,</div><div><span=
+ class=3D"Apple-tab-span" style=3D"white-space:pre">				</span>2,=
+=BD=F6=CF=EC=D3=A6=BD=D3=CA=DC=B5=BD=B1=A8=CE=C4=B5=C4=CD=F8=BF=A8=
+=BD=D3=BF=DA,=B6=F8=C7=D2=BC=EC=B2=E9=CA=C7=B7=F1=CD=AC=D2=BB=CD=F8=
+=C2=E7</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">			</span>arp_announce =3D 2 &nbsp; arp_ignore =3D 1</di=
+v><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09=
+		</span>=B1=D8=D0=EB=D2=AA=B6=D4=C1=BD=C0=E0=BD=D3=BF=DA=D7=F6=CF=
+=DE=D6=C6=C8=AB=BE=D6,=BA=CD=D6=B8=B6=A8=CD=F8=BF=A8=CD=AC=CA=B1=D0=
+=DE=B8=C4=B2=C5=C4=DC=C9=FA=D0=A7,=CF=C8=C5=E4=D6=C3=B2=CE=CA=FD=D4=
+=D9=C5=E4=D6=C3IP</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>=C5=E4=D6=C3=D7=A8=D3=C3=C2=B7=D3=C9,=D2=
+=D4=CA=B9=B5=C3=CF=EC=D3=A6=B1=A8=CE=C4=CA=D7=CF=C8=CD=A8=B9=FDVI=
+P=CB=F9=C5=E4=D6=C3=B5=C4lo=C9=CF=B5=C4=B1=F0=C3=FB.VIP=B5=C4=B1=A3=
+=B3=D6,=D3=C9=D3=DALinux=CF=EC=D3=A6=B1=A8=CE=C4=BB=E1=D3=C9=C4=C7=
+=B8=F6=BD=D3=BF=DA=B3=F6=C8=A5,=BE=CD=BB=E1=D0=DE=B8=C4,IP=CA=D7=B2=
+=BF=CE=AA=C4=C7=B8=F6=BD=D3=BF=DA=B5=C4IP,=CB=F9=D2=D4,=CF=EC=D3=A6=
+=B1=A8=CE=C4=B4=D3RIP=B3=F6=C8=A5=BB=E1=B0=D1=CE=B1=D7=B0=BA=C3=B5=
+=C4VIP=D0=DE=B8=C4=CE=AAVIP,</div><div>=C1=BD=D6=D6=C4=A3=D0=CD</=
+div><div><br></div><div><span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">	</span>1,Director=BA=CDRS=B5=C4=CD=F8=B9=D8=B6=BC=
+=D6=B8=CF=F2=CD=AC=D2=BB=B8=F6=C2=B7=D3=C9=C6=F7IIP,	RIP,IIP,VIP=B6=
+=BC=CA=C7=B9=AB=CD=F8=B5=D8=D6=B7,=D4=DADirector=BA=CDRS=C9=CF=C5=
+=E4=D6=C3VIP=D2=AA=CA=B9=D3=C3=C8=E7=CF=C2=B8=F1=CA=BD:&nbsp;</di=
+v><div><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font=
+-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><span=
+ style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5p=
+t; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"fo=
+nt-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-heig=
+ht: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-size: 10.=
+5pt; line-height: 1.5;">&nbsp;ifconfig ALIAS VIP netmask 255.255.=
+255.255 broadcast VIP up</span></div><div><span style=3D"font-fam=
+ily: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.=
+5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=
+=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nb=
+sp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=
+=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</s=
+pan><span style=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp;ro=
+ute add -host VIP dev ALIAS</span></div><div>&nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;_________=
+_</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+;|</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp;| client &nbsp;|</div><div>&nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|__=
+______|&nbsp;</div><div>&nbsp;<span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">	</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span></div><div>&nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; (router)<span class=3D"Apple-tab-span" style=3D"white-space:pr=
+e">					</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">					</span></div><div=
+>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">					</span></div><div>&nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+;|<span class=3D"Apple-tab-span" style=3D"white-space:pre">					=09=
+</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">				</span> =A1=
+=C5<span class=3D"Apple-tab-span" style=3D"white-space:pre">		</s=
+pan> <span class=3D"Apple-tab-span" style=3D"white-space:pre">	</=
+span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;<span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">	</span></div><div>&nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">	</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">						</span>&nbsp;</div=
+><div>&nbsp; &nbsp; &nbsp; &nbsp;--------------------------------=
+------<span class=3D"Apple-tab-span" style=3D"white-space:pre">	<=
+/span></div><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style=3D"font-family: =CE=
+=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbs=
+p; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=
+=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nb=
+sp;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; f=
+ont-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;</span><span st=
+yle=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp;| &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style=3D"=
+font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-he=
+ight: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-family:=
+ =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">=
+&nbsp; &nbsp;</span><span style=3D"font-size: 10.5pt; line-height=
+: 1.5;">|</span><span class=3D"Apple-tab-span" style=3D"font-size=
+: 10.5pt; line-height: 1.5; white-space: pre;">		</span></div><di=
+v>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;<span style=3D"font-family: =CE=A2=C8=ED=D1=C5=
+=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;=
+</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font=
+-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><span=
+ style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5p=
+t; line-height: 1.5;">&nbsp; &nbsp;</span><span style=3D"font-siz=
+e: 10.5pt; line-height: 1.5;">&nbsp;| &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;</span><span style=3D"font-family: =CE=A2=C8=
+=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nb=
+sp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=
+=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;</span><s=
+pan style=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp; |</span=
+><span class=3D"Apple-tab-span" style=3D"font-size: 10.5pt; line-=
+height: 1.5; white-space: pre;">			</span></div><div>&nbsp; &nbsp=
+;RIP1, VIP &nbsp; &nbsp; &nbsp; &nbsp; RIP2, VIP &nbsp; &nbsp; &n=
+bsp; &nbsp;RIP3, VIP</div><div>&nbsp;______=A1=F5_______ &nbsp; _=
+_____=A1=F5_______ &nbsp; &nbsp;_____=A1=F5________</div><div>| &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style=3D"font=
+-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height=
+: 1.5;">&nbsp; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=
+=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbs=
+p; &nbsp;</span><span style=3D"font-size: 10.5pt; line-height: 1.=
+5;">&nbsp;| &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbs=
+p;</span><span style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; fo=
+nt-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;&nbsp;</span><sp=
+an style=3D"font-family: =CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.=
+5pt; line-height: 1.5;">&nbsp; &nbsp;</span><span style=3D"font-s=
+ize: 10.5pt; line-height: 1.5;">&nbsp;| &nbsp;| &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style=3D"font-family:=20=
+=CE=A2=C8=ED=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&=
+nbsp; &nbsp;&nbsp;</span><span style=3D"font-family: =CE=A2=C8=ED=
+=D1=C5=BA=DA; font-size: 10.5pt; line-height: 1.5;">&nbsp; &nbsp;=
+</span><span style=3D"font-size: 10.5pt; line-height: 1.5;">&nbsp=
+;|</span></div><div>| director &nbsp; &nbsp; &nbsp; | &nbsp;| rea=
+lserver1 &nbsp;| &nbsp;| realserver2 &nbsp;|</div><div>|_________=
+_____| &nbsp;|______________| &nbsp;|______________|</div><div><b=
+r></div><div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">		</span>CIP 172.16.100.177 VIP 172.16.100.18 &nbsp;DIP=
+ 172.16.100.13 RS1 RIP 172.16.100.9 &nbsp;RS2 172.16.100.10</div>=
+<div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span>RS1:</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span>ifconfig eth0 172.16.100.9/16</d=
+iv><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=
+		</span>ls /proc/sys/net/ipv4/all</div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span>ls /proc/sys/net/ip=
+v4/eth0</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">		</span>echo 1 /proc/sys/net/ipv4/conf/all/arp_ignore<=
+/div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre=
+">		</span>echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore</div><d=
+iv><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</s=
+pan>echo 2 /proc/sys/net/ipv4/conf/all/arp_annouce</div><div><spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ech=
+o 2 /proc/sys/net/ipv4/conf/eth0/arp_annouce</div><div><span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ifconfig=20=
+eth0 172.16.100.9/16 up&nbsp;</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">		</span>ifocnfig lo:0 172.16.100=
+.18 netmask 255.255.255.255 broadcast 172.16.100.18 &nbsp; &nbsp;=
+ #####=B8=F8RS=C5=E4=D6=C3VIP=CA=B1=D2=BB=B6=A8=B2=BB=C4=DC=C8=C3=
+VIP=B9=E3=B2=A5,=D6=BB=C8=C3RS=B5=C4VIP=B8=F8=D7=D4=BC=BA=B7=A2=B9=
+=E3=B2=A5</div><div><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">		</span>route add -host 172.16.100.18 dev lo:0</div>=
+<div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		<=
+/span></div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">		</span>RS2</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span>ifconfig eth0 172.16.100.10/16</=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span>echo 1 /proc/sys/net/ipv4/conf/all/arp_ignore</div><div=
+><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</spa=
+n>echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore</div><div><span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>echo=20=
+2 /proc/sys/net/ipv4/conf/all/arp_annouce</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>echo 2 /proc/=
+sys/net/ipv4/conf/eth0/arp_annouce &nbsp;</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>ifconfig eth0=
+ 172.16.100.10/16 up&nbsp;</div><div><span class=3D"Apple-tab-spa=
+n" style=3D"white-space:pre">		</span>ifocnfig lo:0 172.16.100.18=
+ netmask 255.255.255.255 broadcast 172.16.100.18 &nbsp; &nbsp;###=
+##=B8=F8RS=C5=E4=D6=C3VIP=CA=B1=D2=BB=B6=A8=B2=BB=C4=DC=C8=C3VIP=B9=
+=E3=B2=A5,=D6=BB=C8=C3RS=B5=C4VIP=B8=F8=D7=D4=BC=BA=B7=A2=B9=E3=B2=
+=A5</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">		</span>route add -host 172.16.100.18 dev lo:0</div><div><=
+span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>=
+</div><div><span class=3D"Apple-tab-span" style=3D"white-space:pr=
+e">		</span>Director:</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span>iptables -t filter -F</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span=
+>ifocnfig eth0 172.16.100.7/16</div><div><span class=3D"Apple-tab=
+-span" style=3D"white-space:pre">		</span>ifocnfig eth0:0 172.16.=
+100.18 netmask 255.255.255.255 broadcast 172.16.100.18</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span=
+>route add -host 172.16.100.18 dev lo:0</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span>curl http://17=
+2.16.100.9</div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span>curl http://172.16.100.10</div><div><span c=
+lass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>yum -y=
+ install ipvsadm</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>ipvsadm -A -t 172.16.18:80 -s rr</div>=
+<div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		<=
+/span>ipvsadm -a -t 172.16.100.18:80 -r 172.16.100.9 -g</div><div=
+><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</spa=
+n>ipvsadm -a -t 172.16.100.18:80 -r 172.16.100.10 -g</div></div><=
+div><br></div><div><br></div><div><br></div><div><br></div><div><=
+br></div><div><br></div><div><br></div><div><br></div><div><span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div=
+><div><br></div><div><br></div><div><span class=3D"Apple-tab-span=
+" style=3D"white-space:pre"></span></div><div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span>2,Director=D3=D0=
+=B9=AB=CD=F8=B5=D8=D6=B7=BA=CDRS=CA=B9=D3=C3=C4=DA=CD=F8=B5=D8=D6=
+=B7<span class=3D"Apple-tab-span" style=3D"white-space:pre">	</sp=
+an>=C2=B7=D3=C9IIP,Director=B5=C4VIP=B6=BC=CA=C7=B9=AB=CD=F8=B5=D8=
+=D6=B7,=D4=DA=CD=AC=D2=BB=CD=F8=C2=E7=D6=D0.DIP,RIP=B6=BC=CA=C7=CB=
+=BD=D3=D0=B5=D8=D6=B7,route1,route2=BF=C9=D2=D4=D3=C3=C1=BD=B8=F6=
+=CD=F8=BF=A8=B5=C4=D2=BB=CC=A8Linux=BB=FA=C6=F7.</div><div>&nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp;__________</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp=
+;|</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp;| client |</div><div>&nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|________=
+| ------------------</div><div>&nbsp;<span class=3D"Apple-tab-spa=
+n" style=3D"white-space:pre">	</span> &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">						</span> &nbsp;|</div><d=
+iv>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">					</span> &nbsp; &nbsp; &nbsp;|</div><div=
+>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">						</span> &nbsp;|</div><div>&nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp;|<span class=3D"Apple-tab-span" style=3D"white-space:pr=
+e">						</span> &nbsp;|<span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">	</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">						</span=
+> &nbsp;|</div><div><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">					</span>(router1)<span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">	</span> &nbsp; &nbsp; &nbsp;<span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">	</span> <span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">		</span>(router2)=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>=
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp;____=A1=F5_____ &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |</div><div>&nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbs=
+p; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; |</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| route &nbsp;=A1=F5=
+------------------</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|________| &nbsp; &nbsp;=20=
+&nbsp; &nbsp;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">						</=
+span> &nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">						</span>&nbsp;</div><div>&nb=
+sp; &nbsp; &nbsp; &nbsp;--------------------------------------<sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">	</span></d=
+iv><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Appl=
+e-tab-span" style=3D"white-space:pre">			</span></div><div>&nbsp;=
+ &nbsp;VIP, DIP &nbsp; &nbsp; &nbsp; &nbsp; RIP1, VIP &nbsp; &nbs=
+p; &nbsp; &nbsp;RIP2, VIP</div><div>&nbsp;______=A1=F5_______ &nb=
+sp; &nbsp;______=A1=F5_______ &nbsp; &nbsp;_____=A1=F5________</d=
+iv><div>| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp=
+;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;| &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|</div><div>| directo=
+r &nbsp; &nbsp; | &nbsp;| realserver1 &nbsp;| &nbsp;| realserver2=
+ &nbsp;|</div><div>|______________| &nbsp;|______________| &nbsp;=
+|______________|</div><div><br></div><div><br></div><div>&nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp;__________</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp;|=
+</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp;| client |</div><div>&nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|________|=20=
+------------------</div><div>&nbsp;<span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">	</span> &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">						</span> &nbsp;|</div><div=
+>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">					</span> &nbsp; &nbsp; &nbsp;|</div><div>&n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">						</span> &nbsp;|</div><div>&nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp;|<span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>						</span> &nbsp;|<span class=3D"Apple-tab-span" style=3D"whi=
+te-space:pre">	</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">						</span>=20=
+&nbsp;|</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">					</span>(router1)<span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">	</span> &nbsp; &nbsp; &nbsp;<span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span> <span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>(router2)<spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">	</span></di=
+v><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp;____=A1=F5_____ &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp;____=A1=F5_____&nbsp;</div><div>&nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nb=
+sp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp;|</div><div>&nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| sw=
+itch =A1=F5--------------=A1=F5 switch |</div><div>&nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|__=
+______| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|________=
+|</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">						</span> &nbsp;</=
+div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div><div>=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">						</span>&nbsp;</div><div>&nbsp; &nbsp; &nb=
+sp; &nbsp;--------------------------------------<span class=3D"Ap=
+ple-tab-span" style=3D"white-space:pre">	</span></div><div>&nbsp;=
+ &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp;|<span class=3D"Apple-tab-span" style=3D"white-space:pre">=09=
+	</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp;|<span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">			</span></div><div>&nbsp; &nbsp;VIP, DI=
+P &nbsp; &nbsp; &nbsp; &nbsp; RIP1, VIP &nbsp; &nbsp; &nbsp; &nbs=
+p;RIP2, VIP</div><div>&nbsp;______=A1=F5_______ &nbsp; &nbsp;____=
+__=A1=F5_______ &nbsp; &nbsp;_____=A1=F5________</div><div>| &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;| &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;| &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp;|</div><div>| director &nbsp; &nbsp=
+; | &nbsp;| realserver1 &nbsp;| &nbsp;| realserver2 &nbsp;|</div>=
+<div>|______________| &nbsp;|______________| &nbsp;|_____________=
+_|</div><div><br></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>CIP=3D192.168.1.30 &nbsp;VIP=3D172.16.=
+100.8 &nbsp;DIP=3D192.168.0.170 &nbsp; RIP1=3D192.168.0.171 &nbsp=
+; RIP2=3D192.168.0.172 &nbsp;route1=3D172.16.0.1 &nbsp; route2=3D=
+192.168.0.254</div><div><span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">		</span>CIP--&gt;route1--&gt;VIP--director--DIP-=
+-&gt;RIP1(RIP2)--RS1--VIP(=BB=F2RS2=B5=C4lo=BD=D3=BF=DA=C9=CF=B5=C4=
+VIP)--&gt;route2--&gt;CIP<span class=3D"Apple-tab-span" style=3D"=
+white-space:pre">	</span>#=CA=B5=D1=E9=BB=B7=BE=B3=D3=C3172.168.0=
+.0=BA=CD192.168.0.0=C4=A3=C4=E2=CD=E2=CD=F8=BB=B7=BE=B3=B6=F8=C7=D2=
+=CA=C7=CD=AC=D2=BB=C2=B7=D3=C9=C6=F7=B5=C4=C1=BD=B8=F6=CD=E2=CD=F8=
+IP,=BF=C9=D2=D4=B8=F8RS=B5=C4192.168.0.0=CD=F8=C2=E7=B5=A5=B6=C0=CA=
+=B9=D3=C3=C2=B7=D3=C9</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span></div><div><span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span>RS1</div><div><span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ifcon=
+fig eth0 192.168.0.171/24 up</div><div><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">		</span>route add default gw 192.=
+168.0.254</div><div><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">		</span>echo 1 /proc/sys/net/ipv4/conf/all/arp_ignor=
+e</div><div><span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">		</span>echo 1 /proc/sys/net/ipv4/conf/eth0/arp_ignore</div>=
+<div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		<=
+/span>echo 2 /proc/sys/net/ipv4/conf/all/arp_annouce</div><div><s=
+pan class=3D"Apple-tab-span" style=3D"white-space:pre">		</span>e=
+cho 2 /proc/sys/net/ipv4/conf/eth0/arp_annouce</div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ifocnfi=
+g lo:0 172.16.100.8 netmask 255.255.255.255 broadcast 172.16.100.=
+8&nbsp;</div><div><span class=3D"Apple-tab-span" style=3D"white-s=
+pace:pre">		</span>route add -host 172.16.100.8 dev lo:0</div><di=
+v><span class=3D"Apple-tab-span" style=3D"white-space:pre">				</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span>RS2</div><div><span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">		</span>ifconfig eth0 192.168.0.172/24 up=
+</div><div><span class=3D"Apple-tab-span" style=3D"white-space:pr=
+e">		</span>route add default gw 192.168.0.254</div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>echo 1=20=
+/proc/sys/net/ipv4/conf/all/arp_ignore</div><div><span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">		</span>echo 1 /proc/sy=
+s/net/ipv4/conf/eth0/arp_ignore</div><div><span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">		</span>echo 2 /proc/sys/net/i=
+pv4/conf/all/arp_annouce</div><div><span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">		</span>echo 2 /proc/sys/net/ipv4/con=
+f/eth0/arp_annouce</div><div><span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">		</span>ifocnfig lo:0 172.16.100.8 netmask=20=
+255.255.255.255 broadcast 172.16.100.8&nbsp;</div><div><span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">		</span>route add=
+ -host 172.16.100.8 dev lo:0</div><div><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">		</span></div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>director</div=
+><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+</span>iptables -t filter -F</div><div><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">		</span>ifconfig eth0 192.168.0.1=
+70/24 up</div><div><span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">		</span>ifconfig eth0:0 172.16.100.8/16 up</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">		</span=
+>route add -host 172.16.100.8 dev eth0:0</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm -A -t=
+ 172.16.100.8:80 -s rr</div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span>ipvsadm -a -t 172.16.100.8:80 -=
+r 192.168.0.171</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>ipvsadm -a -t 172.16.100.8:80 -r 192.1=
+68.0.172</div><div><span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">		</span></div><div>LVS=B3=D6=BE=C3=C1=AC=BD=D3<span c=
+lass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div>=
+<div><span class=3D"Apple-tab-span" style=3D"white-space:pre">	</=
+span>=D4=DA=D2=BB=B6=A8=CA=B1=BC=E4=C4=DA=CE=DE=C2=DB=CA=B9=D3=C3=
+=C8=CE=BA=CE=CB=E3=B7=A8=B6=BC=B6=A8=CF=F2=C0=B4=D7=D4=CD=AC=D2=BB=
+=B8=F6IP=B5=C4=D3=C3=BB=A7=BB=D8=BB=B0=C1=AC=BD=D3=B5=BD=CD=AC=D2=
+=BB=B8=F6=B7=FE=CE=F1=C6=F7,=D2=D4=B1=A3=D6=A4session=B2=BB=B6=AA=
+=CA=A7.ipvs=CA=B9=D3=C3=C1=AC=BD=D3=C4=A3=B0=E6=BC=C7=C2=BC=D5=E2=
+=B8=F6=B3=AC=CA=B1=CA=B1=BC=E4,=B7=D6=CE=AA=C8=FD=D6=D6</div><div=
+><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</spa=
+n>ipvsadm -L -c &nbsp;#=B2=E9=BF=B4=C4=A3=B0=E6=D6=D0=BC=C7=C2=BC=
+=B5=C4=B3=D6=BE=C3=C1=AC=BD=D3</div><div><span class=3D"Apple-tab=
+-span" style=3D"white-space:pre">		</span>pro(=D0=AD=D2=E9) expir=
+y(=B5=BD=C6=DA=CA=B1=BC=E4) state(=D7=B4=CC=AC=D0=C5=CF=A2) sourc=
+e(=D4=B4=B5=D8=D6=B7=BC=C8=BF=CD=BB=A7IP) virtual(=B7=C3=CE=CA=B5=
+=D8=D6=B7) destination(=BA=F3=B6=CB=B7=C3=CE=CA=B5=C4=D5=E6=CA=B5=
+=B5=D8=D6=B7=BC=C8RS)</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span></div><div><span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span>=D4=DA=B6=A8=D2=E5=BC=
+=AF=C8=BA=B7=FE=CE=F1=C6=F7=CA=B9=D3=C3-p=C0=B4=D6=B8=B6=A8=D5=E2=
+=B8=F6=CA=B1=BC=E4=C4=AC=C8=CF300=C3=EB</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm -E -t=20=
+172.16.100.8:80 -s wlc -p 120(=D2=D4=C3=EB=CE=AA=B5=A5=CE=BB)</di=
+v><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09=
+</span>PCC:=B3=D6=BE=C3=BF=CD=BB=A7=B6=CB=C1=AC=BD=D3,=BD=AB=C0=B4=
+=D6=C1=D3=DA=CD=AC=D2=BB=B8=F6=BF=CD=BB=A7=B6=CB=B7=A2=CD=F9VIP=B5=
+=C4=CB=F9=D3=D0=C7=EB=C7=F3=CD=A8=CD=A8=B6=A8=CF=F2=D6=C1=CD=AC=D2=
+=BB=B8=F6RS,=B2=BB=C7=F8=B1=F0=C7=EB=C7=F3=B5=C4=B6=CB=BF=DA,=D6=BB=
+=D2=AA=CA=C7VIP=B5=C4=C8=CE=D2=E2=B6=CB=BF=DA=B6=BC=B6=A8=CF=F2.=C0=
+=FD=C8=E7=B5=DA=D2=BB=B4=CE=D3=C3=BB=A7=B7=C3=CE=CA=C1=CB172.168.=
+100.8:80,DR=B7=D6=C5=E4=B5=BDRS1=B2=A2=BC=C7=C2=BC=CF=C2=C0=B4=D2=
+=D4=BA=F3.=B5=DA=B6=FE=B4=CE=D3=C3=BB=A7=D2=AA=B7=C3=CE=CA172.16.=
+100.8:443,=D4=DA=D2=BB=B6=A8=CA=B1=BC=E4=C4=DA=CE=DE=C2=DB=D3=C3=BB=
+=A7=C7=EB=C7=F3=C4=C7=B8=F6=B6=CB=BF=DA=B5=C4=B7=FE=CE=F1=B6=BC=BB=
+=E1=B8=F8RS1</div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">	</span>PPC:=BD=AB=C0=B4=D7=D4=D3=DA=D2=BB=B8=F6=BF=
+=CD=BB=A7=B6=CB=B7=A2=CD=F9=C4=B3=B6=CB=BF=DA=C4=B3VIP=B5=C4=CB=F9=
+=D3=D0=C7=EB=C7=F3=CD=A8=CD=A8=B6=A8=CF=F2=D6=C1=CD=AC=D2=BB=B8=F6=
+RS.=B6=D4=B6=CB=BF=DA=B5=C4=B7=FE=CE=F1=D2=B2=BB=E1=BD=F8=D0=D0=BC=
+=EC=B2=E9.=D4=DA=C9=CF=D2=BB=B8=F6=C0=FD=D7=D3=D6=D0,=D3=C3=BB=A7=
+=C7=EB=C7=F3443=B6=CB=BF=DA=B5=C4=CA=B1=BA=F2DR=BB=E1=B8=F9=BE=DD=
+=B9=E6=D4=F2=D6=D8=D0=C2=B7=D6=C5=E4</div><div><span class=3D"App=
+le-tab-span" style=3D"white-space:pre">	</span>PFMC:=B6=CB=BF=DA=B0=
+=F3=B6=A8,=BD=AB=BF=CD=BB=A7=B6=CB=C7=EB=C7=F3=CA=B1,=B7=A2=CD=F9=
+=BA=F3=B6=CBRS=CA=B1=BB=E1=D7=F6=D2=BB=B8=F6=B7=C0=BB=F0=C7=BD=B1=
+=EA=BC=C7,=D6=BB=D2=AA=D3=D0=CD=AC=D2=BB=B8=F6=C0=B4=D4=B4=B2=A2=D3=
+=D0=B7=C0=BB=F0=C7=BD=B1=EA=BC=C7=C7=EB=C7=F3=BE=CD=B6=A8=CF=F2=B5=
+=BD=D2=BB=B8=F6RS(=B5=E7=C9=CC=CD=F8=D5=BE=D7=EE=BA=C3=CA=C7=D3=C3=
+PFMC,=B5=B1=C8=BBRS1=B1=D8=D0=EB=D2=AA=CD=AC=CA=B1=D3=D0HTTP=BA=CD=
+HTTPS)=BB=F9=D3=DA=B7=C0=BB=F0=C7=BD=B1=EA=BC=C7,=BD=AB=C1=BD=B8=F6=
+=BB=F2=D2=D4=C9=CF=B5=C4=B6=CB=BF=DA=B0=F3=B6=A8=CE=AA=CD=AC=D2=BB=
+=B8=F6=B7=FE=CE=F1</div><div><span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">	</span></div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">		</span>pcc</div><div><span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm -=
+A -t 172.16.100.8:80 -s rr &nbsp;#PCC=C4=A3=CA=BD=CF=C2=C3=BB=B6=A8=
+=D2=E522=B5=C4=B7=FE=CE=F1,=BB=E1=B7=C3=CE=CADR</div><div><span c=
+lass=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ipvsad=
+m -a -t 172.16.100.8:80 -r 172.16.100.11 -g</div><div><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm -a=
+ -t 172.16.100.8:80 -r 172.16.100.12 -g</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm -E -t=20=
+172.16.100.8:80 -s rr -p</div><div><br></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span>ipvsadm -A -t=20=
+172.16.100.8:22 -s rr -p &nbsp; &nbsp; &nbsp; #PCC=C4=A3=CA=BD=B6=
+=A8=D2=E522=B5=C4=B7=FE=CE=F1,=B2=C5=BB=E1=B7=C3=CE=CARS,=D5=E2=D1=
+=F9=B5=C4=BB=B0,=D3=D0=BF=C9=C4=DC=B2=BB=C4=DC=B7=C3=CE=CADR=B5=C4=
+22=B6=CB=BF=DA</div><div><span class=3D"Apple-tab-span" style=3D"=
+white-space:pre">		</span>ipvsadm -a -t 172.16.100.8:22 -r 172.16=
+.100.11 -g</div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span>ipvsadm -a -t 172.16.100.8:22 -r 172.16.100=
+.12 -g</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">		</span></div><div><span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">	</span>ipvsadm -L -n --persistent-conn =CF=D4=
+=CA=BE=B3=D6=BE=C3=C1=AC=BD=D3=CD=B3=BC=C6=D0=C5=CF=A2</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>=
+</div><div>LVS=B3=D6=BE=C3=B7=C0=BB=F0=C7=BD=B1=EA=BC=C7(=CD=A8=B3=
+=A3=D3=C3=D3=DAhttp=BA=CDhttps)</div><div><span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">	</span>=B4=F2=B7=C0=BB=F0=C7=BD=
+=B1=EA=BC=C7=D4=DADirector=C9=CF</div><div><span class=3D"Apple-t=
+ab-span" style=3D"white-space:pre">		</span>iptables -t mangle -A=
+ PREROUTING -d 172.16.100.8 -p tcp --dport 80 -j MARK --set-mark=20=
+10</div><div><span class=3D"Apple-tab-span" style=3D"white-space:=
+pre">		</span>iptables -t mangle -A PREROUTING -d 172.16.100.8 -p=
+ tcp --dport 443 -j MARK --set-mark 10 &nbsp; &nbsp; &nbsp; &nbsp=
+;#=B6=D4=CD=AC=D2=BB=B8=F6VIP=B5=C480=BA=CD443=B6=CB=BF=DA=B5=C4=B7=
+=C3=CE=CA=D7=F6=B7=C0=BB=F0=C7=BD=B1=EA=BC=C7,=B1=EA=BC=C7=CE=AA1=
+0(=BF=C9=D7=D4=B6=A8=D2=E50-99)</div><div><span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">		</span>service iptables save<=
+/div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre=
+">		</span>ipvsadm -A -f 10 -s rr &nbsp; &nbsp; &nbsp; &nbsp; #=BD=
+=AB=B1=EA=BC=C710=B6=A8=D2=E5=CE=AA=D2=BB=B8=F6=D0=C2=B5=C4LVS=BC=
+=AF=C8=BA=B7=FE=CE=F1</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span>ipvsadm -a -f 10 -r 172.16.100.1=
+1 -g &nbsp; &nbsp; #=D4=DA=D0=C2=B5=C4=BC=AF=C8=BA=D6=D0=BC=D3=C8=
+=EB=BA=F3=B6=CB=B7=FE=CE=F1=C6=F7</div><div><span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span>ipvsadm -a -f 10 -r=20=
+172.16.100.12 -g</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span>ipvsadm -E -f 10 -s rr -p 1200 &nbsp;#=
+=D0=DE=B8=C410=BC=AF=C8=BA=B5=C4=B3=D6=BE=C3=C1=AC=BD=D3=CA=B1=BC=
+=E4</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">	</span>LVS=B1=BB=B6=AF=C4=A3=CA=BD:=C0=FD=C8=E7FTP=B5=C4=B1=
+=BB=B6=AF=C4=A3=CA=BD=B5=C4=BC=AF=C8=BA.=BF=C9=CA=B5=CF=D6,=B5=AB=
+=CA=C7=C3=BB=D3=D0=D5=D2=B5=BD=D7=CA=C1=CF</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span></div><div>LVS=
+=BD=A1=BF=B5=D7=B4=CC=AC=BC=EC=B2=E2</div><div><span class=3D"App=
+le-tab-span" style=3D"white-space:pre">	</span>1,=BA=F3=B6=CBRS=B5=
+=C4=BD=A1=BF=B5=D7=B4=CC=AC=BC=EC=B2=E2, &nbsp;1)=BD=C5=B1=BE=BC=EC=
+=B2=E2 2)keepalived,ldirectord</div><div><span class=3D"Apple-tab=
+-span" style=3D"white-space:pre">	</span>2,DR=D7=D4=C9=ED=B5=C4=BF=
+=C9=D3=C3=D0=D4, 1)ldirectord, heartbeat=BA=CDcorosync=B6=BC=B4=F8=
+=D3=D0 3)keepalived</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">	</span>=D0=B4=BD=C5=B1=BE=D0=D4=C4=DC=B2=BB=
+=BA=C3,=B2=BB=BD=A8=D2=E9</div><div><span class=3D"Apple-tab-span=
+" style=3D"white-space:pre">	</span></div><div><span class=3D"App=
+le-tab-span" style=3D"white-space:pre">	</span>=D4=F5=C3=B4=CB=E3=
+=CD=EA=D5=FB=B5=C4=BD=A1=BF=B5=BC=EC=B2=E2</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">		</span>1)=D6=F7=BB=FA=
+=CA=C7=B7=F1=D4=DA=CF=DF,=D6=F7=BB=FA=D4=DA=CF=DF=CA=C7=B7=F1=D3=D0=
+=C7=EB=C7=F3=B5=C4=B7=FE=CE=F1 2)=B7=FE=CE=F1=BD=F8=B3=CC=D4=DA=CF=
+=DF,=CA=C7=B7=F1=C4=DC=B9=BB=D5=FD=B3=A3=B7=FE=CE=F1, 3)=BD=F8=B3=
+=CC=C4=DC=B9=BB=D5=FD=B3=A3=B7=FE=CE=F1,=CC=E1=B9=A9=B5=C4=B7=FE=CE=
+=F1=CA=C7=B7=F1=D5=FD=C8=B7,=B1=C8=C8=E7http=D6=F7=D2=B3=CE=C4=BC=
+=FE? 4)=D6=F7=D2=B3=B4=E6=D4=DA,=CC=E1=B9=A9=B5=C4=CA=FD=BE=DD=CA=
+=C7=B7=F1=D5=FD=C8=B7.</div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">	</span>=BC=EC=B2=E9=B5=C4=D4=BD=D7=D0=CF=
+=B8,=D0=D4=C4=DC=B2=EE=D2=BB=B5=E3,=D7=BC=C8=B7=D0=D4=D4=BD=BA=C3=
+!=B2=C9=D1=F9=CA=B1=BC=E4=B3=A4.=BB=FA=C6=F7=D4=BD=B6=E0=B1=E9=C0=
+=FA=D2=BB=C2=D6=CA=B1=BC=E4=D4=BD=B3=A4</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">	</span>=D0=E8=D2=AA=BC=
+=EC=B2=E2=BC=B8=B4=CE?=CA=C7=B2=BB=CA=C7=BC=EC=B2=E2=B5=BD=D2=BB=B4=
+=CE=B4=ED=CE=F3,=BE=CD=C5=D0=B6=CF=CE=B4=B2=BB=D4=DA.=CA=B2=C3=B4=
+=CA=B1=BA=F2=D2=AA=D6=D8=D0=C2=BC=EC=B2=E2,=D7=B4=CC=AC=B8=C4=B1=E4=
+=CA=B1,=D7=B4=CC=AC=C3=BB=B8=C4=B1=E4=B2=BB=D2=AA=D6=D8=CA=D4,</d=
+iv><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=
+	</span></div><div><span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">	</span>=B8=F8=D0=E8=D2=AA=BC=EC=B2=E2=B5=C4=BB=FA=C6=F7=
+=B7=C5=D2=BB=B8=F6=BD=A1=BF=B5=B2=E2=CA=D4=D2=B3 echo OK &gt; /va=
+r/www/html/.health.html</div><div><br></div><div><span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">		</span>vi healthcheck.=
+sh</div><div><span class=3D"Apple-tab-span" style=3D"white-space:=
+pre">			</span>#!/bin/bash</div><div><span class=3D"Apple-tab-spa=
+n" style=3D"white-space:pre">			</span>#</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">			</span>CS=3D'-f 10<=
+/div><div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">			</span>RS1=3D172.16.100.11</div><div><span class=3D"Ap=
+ple-tab-span" style=3D"white-space:pre">			</span>RS2=3D172.16.10=
+0.12</div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">			</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">			</span>checkRS() {</div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">				</span>curl -s http=
+://${1}/.health.html |grep "OK" &amp;&gt; /dev/null</div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">				</span>=
+RetVal=3D$?</div><div><span class=3D"Apple-tab-span" style=3D"whi=
+te-space:pre">				</span>if [ $RetVal -ne 0 ] &amp;&amp; ipvsadm=20=
+-L -n | grep "$1" &amp;&gt; /dev/null; then</div><div><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">				</span>ipvsadm=20=
+-d $CS -r $1</div><div><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">				</span>fi&nbsp;</div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">				</span></div><div><span=20=
+class=3D"Apple-tab-span" style=3D"white-space:pre">				</span>if=20=
+[ $RetVal -eq 0 ] &amp;&amp; ! ipvsadm -L -n | grep "$1" &amp;&gt=
+; /dev/null; then</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">					</span>ipvsadm -a $CS -r $1 -g&nbsp;</div>=
+<div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		=09=
+	</span>fi&nbsp;</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">			</span>}</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">			</span>while true; do</div><di=
+v><span class=3D"Apple-tab-span" style=3D"white-space:pre">				</=
+span>checkRS $RS1</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">				</span>checkRS $RS2</div><div><span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">				</span>sleep 3&nbs=
+p;</div><div><span class=3D"Apple-tab-span" style=3D"white-space:=
+pre">			</span>done</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">	</span></div><div><span class=3D"Apple-tab=
+-span" style=3D"white-space:pre">	</span>1,=D3=C3=D2=BB=B8=F6=B1=B8=
+=D3=C3=B7=FE=CE=F1=C6=F7=CC=E1=B9=A9=CB=F9=D3=D0RS=CF=C2=CF=DF=B5=
+=C4=CA=B1=BA=F2=CC=E1=B9=A9=D2=BB=B8=F6=B4=ED=CE=F3=D2=B3=C3=E6,=CC=
+=E1=CA=BE=D3=C3=BB=A7=D5=FD=D4=DA=CE=AC=BB=A4.=D2=B2=BF=C9=D2=D4=D4=
+=DADR=C9=CF=D7=F6</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">	</span>2,=C4=B3RS=B9=CA=D5=CF=CA=B1,=D2=AA=BC=EC=
+=B2=E2=D6=C1=C9=D9=C8=FD=B4=CE=B2=C5=C8=C3=C6=E4=CF=C2=CF=DF,=B6=F8=
+=D6=D8=D0=C2=C9=CF=CF=DF=CA=B1,=D6=BB=D0=E8=D2=AA=BC=EC=B2=E2=D2=BB=
+=B4=CE</div><div><span class=3D"Apple-tab-span" style=3D"white-sp=
+ace:pre">	</span>3,=C8=E7=BA=CE=C8=C3=BD=C5=B1=BE=D3=D0=B8=FC=BA=C3=
+=B5=C4=CA=CA=D3=A6=D0=D4<span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">	</span>=C8=E7=BA=CE=B8=DF=D0=A7=BC=D3=C8=EB=BB=FA=
+=C6=F7,=B5=C8</div><div><span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">	</span></div><div><span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">	</span>=B0=B8=C0=FD=D0=E8=C7=F3 Discu=
+z=C2=DB=CC=B3,LAMP,=B2=A2=B7=A2=C7=EB=C7=F31200,=B7=FE=CE=F1=C6=F7=
+=C4=DC=CC=E1=B9=A9700=B8=F6=B2=A2=B7=A2=C7=EB=C7=F3,=B2=BB=BF=BC=C2=
+=C7=B8=DF=BF=C9=C4=DC</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">	</span>=D2=BB=B8=F6=B8=BA=D4=D8=BE=F9=BA=
+=E2,2=B8=F6http,2=B8=F6mysql</div><div><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">	</span>&nbsp;</div><div><br></div=
+><div><br></div><div><br></div><div><br></div><div><br></div><div=
+><br></div><div><br></div><div><br></div><div><br></div><div><br>=
+</div><div><br></div><div><br></div><div>=CD=F8=D5=BE=BD=F8=BB=AF=
+</div><div>&nbsp; &nbsp; &nbsp;<span class=3D"Apple-tab-span" sty=
+le=3D"white-space:pre">	</span>____________ <span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span>____________ &nbsp;=20=
+&nbsp; ____________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp;NGINX &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; PHP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">	</span>MYSQL</div><div>=
+&nbsp; &nbsp; &nbsp; &nbsp;|____________| &nbsp;<span class=3D"Ap=
+ple-tab-span" style=3D"white-space:pre">		</span>____________<spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">	</span> ___=
+_________</div><div><br></div><div><br></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">	</span> &nbsp; &nbsp;_=
+___________ <span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">		</span>____________ &nbsp; &nbsp; ____________ &nbsp; &nbsp=
+;____________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; NGINX +FS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PHP=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MEMECACHE<span class=3D=
+"Apple-tab-span" style=3D"white-space:pre">	</span> &nbsp; &nbsp;=
+ &nbsp; MYSQL</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ____________=20=
+&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre">	=09=
+</span>____________<span class=3D"Apple-tab-span" style=3D"white-=
+space:pre">	</span> ____________ &nbsp; &nbsp;____________</div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span> &nbsp;&nbsp;</div><div><span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">	</span> &nbsp; &nbsp;____________ <span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">		</span>________=
+____ &nbsp; &nbsp; ____________ &nbsp; &nbsp;____________ &nbsp;=20=
+&nbsp; &nbsp; ____________ &nbsp; &nbsp; &nbsp;&nbsp;</div><div>&=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NGINX=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;FS=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;N*PHP &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; MEMECACHE<span class=3D"Apple-tab-span"=20=
+style=3D"white-space:pre">	</span> &nbsp; &nbsp; &nbsp; N*MYSQL</=
+div><div>&nbsp; &nbsp; &nbsp; &nbsp; ____________ &nbsp;<span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">		</span>________=
+____<span class=3D"Apple-tab-span" style=3D"white-space:pre">	</s=
+pan> ____________ &nbsp; &nbsp;____________<span class=3D"Apple-t=
+ab-span" style=3D"white-space:pre">		</span>____________</div><di=
+v><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</sp=
+an> &nbsp; <span class=3D"Apple-tab-span" style=3D"white-space:pr=
+e">	</span></div><div><span class=3D"Apple-tab-span" style=3D"whi=
+te-space:pre">	</span> &nbsp; &nbsp;____________ <span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">		</span>____________ &n=
+bsp; &nbsp; ____________ &nbsp; &nbsp;____________ &nbsp; &nbsp;=20=
+&nbsp; ____________ &nbsp; &nbsp; &nbsp;____________&nbsp;</div><=
+div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+&nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20=
+=B8=BA=D4=D8=BE=F9=BA=E2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+;N*NGINX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;FS &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;N*PHP &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; MEMECACHE<span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">	</span> &nbsp; &nbsp; &nbsp; N*MYSQL</div><div=
+>&nbsp; &nbsp; &nbsp; &nbsp; ____________ &nbsp;<span class=3D"Ap=
+ple-tab-span" style=3D"white-space:pre">		</span>____________<spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">	</span> ___=
+_________ &nbsp; &nbsp;____________<span class=3D"Apple-tab-span"=
+ style=3D"white-space:pre">		</span>____________<span class=3D"Ap=
+ple-tab-span" style=3D"white-space:pre">	</span> &nbsp;__________=
+__</div><div><span class=3D"Apple-tab-span" style=3D"white-space:=
+pre">		</span> &nbsp; <span class=3D"Apple-tab-span" style=3D"whi=
+te-space:pre">		</span></div><div><span class=3D"Apple-tab-span"=20=
+style=3D"white-space:pre">	</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">	</span></div></div><div><br=
+></div><div><br></div><div><br></div><div><br></div><div><br></di=
+v><div><br></div><div><br></div><div><br></div><div><br></div><di=
+v><br></div><div><br></div><div><br></div><div><br></div><div><br=
+></div><div><br></div><div><br></div><div><br></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">	</span>Session=B3=
+=D6=BE=C3=B0=F3=B6=A8:</div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">			</span>1,session=B0=F3=B6=A8,=CA=BC=D6=
+=D5=BD=AB=CD=AC=D2=BB=B8=F6=C7=EB=C7=F3=D5=DF=B5=C4=C1=AC=BD=D3=B6=
+=A8=CF=F2=D6=C1=CD=AC=D2=BB=B8=F6RS(=B5=DA=D2=BB=B4=CE=C7=EB=C7=F3=
+=C8=D4=D3=C9=B5=F7=B6=C8=B7=BD=B7=A8=D1=A1=D4=F1),=C3=BB=D3=D0=C8=
+=DD=B4=ED=C4=DC=C1=A6,=D3=D0=CB=F0=BE=F9=BA=E2=D0=A7=B9=FB</div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">			<=
+/span>2,session=B8=B4=D6=C6:=D4=DARS=D6=AE=BC=E4=CD=AC=B2=BDsessi=
+on,=D2=F2=B4=CB=C3=BF=B8=F6RS=B3=D6=D3=D0=BC=AF=C8=BA=D6=D0=B5=C4=
+=CB=F9=D3=D0session;=B6=D4=B4=F3=B9=E6=C4=A3=BC=AF=C8=BA=BB=B7=BE=
+=B3=B2=BB=CA=CA=D3=C3</div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">			</span>3,session=B7=FE=CE=F1=C6=F7,=C0=
+=FB=D3=C3=B5=A5=B6=C0=B2=BB=CA=EC=B5=C4=B7=FE=CE=F1=C6=F7=C0=B4=CD=
+=B3=D2=BB=B9=DC=C0=EDsession;=B1=D8=D0=EB=D7=F6=B8=DF=BF=C9=D3=C3=
+,=B2=BB=C8=BB=D3=D0</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">		</span></div><div><span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">		</span></div><div><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><div=
+><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</spa=
+n></div><div><span class=3D"Apple-tab-span" style=3D"white-space:=
+pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D"=
+white-space:pre">		</span></div><div><span class=3D"Apple-tab-spa=
+n" style=3D"white-space:pre">		</span></div><div><span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">		</span></div><div><spa=
+n class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></d=
+iv><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=
+		</span></div><div><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">		</span></div><div><span class=3D"Apple-tab-span" st=
+yle=3D"white-space:pre">		</span></div><div><span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">		</span></div><div><span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><d=
+iv><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</s=
+pan></div><div><span class=3D"Apple-tab-span" style=3D"white-spac=
+e:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div><div><span class=3D"=
+Apple-tab-span" style=3D"white-space:pre">		</span></div><div><sp=
+an class=3D"Apple-tab-span" style=3D"white-space:pre">		</span></=
+div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre"=
+>		</span></div><div><span class=3D"Apple-tab-span" style=3D"whit=
+e-space:pre">		</span></div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">		</span></div><div><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre">		</span></div><div><span cl=
+ass=3D"Apple-tab-span" style=3D"white-space:pre">		</span></div><=
+div><span class=3D"Apple-tab-span" style=3D"white-space:pre">		</=
+span></div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">		</span></div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">		</span></div><div><span class=3D"Apple-tab-sp=
+an" style=3D"white-space:pre">		</span></div></body></html>
+
+------=_Next_Part_0004332771.153--
+
+------=_Next_Part_0012998313.902--
+

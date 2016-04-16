@@ -1,0 +1,585 @@
+From: WizMime<support@wiz.cn>
+Subject: =?gb2312?B?emFiYml4LXNldHVw?=
+Date: Date: Sat, 16 Apr 2016 09:28:38 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="multipart/alternative";
+	boundary="----=_Next_Part_0012973977.436"
+
+This is a multi-part message in MIME format.
+
+------=_Next_Part_0012973977.436
+Content-Type: multipart/alternative;
+	boundary="----=_Next_Part_0004324659.391"
+
+
+------=_Next_Part_0004324659.391
+Content-Type: text/plain;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+
+This is a multi-part message in MIME format.
+
+------=_Next_Part_0004324659.391
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0A<html><head>=0D=0A<meta http-equiv=3D"Content-T=
+ype" content=3D"text/html; charset=3Dgb2312"><meta http-equiv=3D"=
+X-UA-Compatible" content=3D"IE=3D8" />=0A=0A<!--defaultCSS-->=0A<=
+title>zabbix-setup</title>=0A=0A=0A=0A<style type=3D"text/css" id=
+=3D"wiz_custom_css">=0Abody=0A{=0A    font-family: =CE=A2=C8=ED=D1=
+=C5=BA=DA,"Microsoft YaHei", Georgia,Helvetica,Arial,sans-serif,=CB=
+=CE=CC=E5, PMingLiU,serif;=0A    font-size: 10.5pt;=0A    line-he=
+ight: 1.5;=0A}=0Ahtml, body=0A{=0A    =0A    =0A}=0Ah1 {=0A    fo=
+nt-size:1.5em;=0A    font-weight:bold;=0A}=0Ah2 {=0A    font-size=
+:1.4em;=0A    font-weight:bold;=0A}=0Ah3 {=0A    font-size:1.3em;=
+=0A    font-weight:bold;=0A}=0Ah4 {=0A    font-size:1.2em;=0A   =20=
+font-weight:bold;=0A}=0Ah5 {=0A    font-size:1.1em;=0A    font-we=
+ight:bold;=0A}=0Ah6 {=0A    font-size:1.0em;=0A    font-weight:bo=
+ld;=0A}=0Aimg {=0A    border:0;=0A    max-width: 100%;=0A    heig=
+ht: auto !important;=0A}=0Ablockquote {=0A    margin-top:0px;=0A=20=
+   margin-bottom:0px;=0A}=0Atable {=0A    border-collapse:collaps=
+e;=0A    border:1px solid #bbbbbb;=0A}=0Atd {=0A    border-collap=
+se:collapse;=0A    border:1px solid #bbbbbb;=0A}=0A</style>=0A=0A=
+<style type=3D"text/css" id=3D"wiz_todo_style_id" wiz_link_versio=
+n=3D"01.00.09">.wiz-todo, .wiz-todo-img {width: 16px; height: 16p=
+x; cursor: default; padding: 0 10px 0 2px; vertical-align: -10%;-=
+webkit-user-select: none;} .wiz-todo-label { display: inline-bloc=
+k; padding-top: 7px; padding-bottom: 6px; line-height: 1.5;} .wiz=
+-todo-label-checked {  color: #666;} .wiz-todo-label-unchecked {t=
+ext-decoration: initial;} .wiz-todo-completed-info {padding-left:=
+ 44px; display: inline-block; } .wiz-todo-avatar { width:20px; he=
+ight: 20px; vertical-align: -20%; margin-right:10px; border-radiu=
+s: 2px;} .wiz-todo-account, .wiz-todo-dt { color: #666; }</style>=
+<link type=3D"text/css" rel=3D"stylesheet" id=3D"wiz_code_highlig=
+ht_link" href=3D"wiz_code_highlight.css"></head>=0A=0A<body  styl=
+e=3D""><p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-=
+size:10.0pt;font-family:&quot;DejaVu Sans Mono&quot;"><o:p>&nbsp;=
+</o:p></span></p><p class=3D"MsoNormal"><div><pre class=3D"pretty=
+print linenums prettyprinted"><ol class=3D"linenums" style=3D"pad=
+ding-left: 0px;"><li style=3D"list-style-type: none; padding-left=
+: 0px;" class=3D"L0"><code class=3D"language-c"><span class=3D"pl=
+n">&nbsp;</span></code></li><li style=3D"list-style-type: none; p=
+adding-left: 0px;" class=3D"L1"><code class=3D"language-c"></code=
+></li><li style=3D"list-style-type: none; padding-left: 0px;" cla=
+ss=3D"L2"><code class=3D"language-c"><span class=3D"pln">tar zxf=20=
+zabbix</span><span class=3D"pun">-</span><span class=3D"lit">2.4<=
+/span><span class=3D"pun">.</span><span class=3D"lit">7.tar</span=
+><span class=3D"pun">.</span><span class=3D"pln">gz</span></code>=
+</li><li style=3D"list-style-type: none; padding-left: 0px;" clas=
+s=3D"L3"><code class=3D"language-c"></code></li><li style=3D"list=
+-style-type: none; padding-left: 0px;" class=3D"L4"><code class=3D=
+"language-c"><span class=3D"pln">cd zabbix</span><span class=3D"p=
+un">-</span><span class=3D"lit">2.4</span><span class=3D"pun">.</=
+span><span class=3D"lit">7</span></code></li><li style=3D"list-st=
+yle-type: none; padding-left: 0px;" class=3D"L5"><code class=3D"l=
+anguage-c"></code></li><li style=3D"list-style-type: none; paddin=
+g-left: 0px;" class=3D"L6"><code class=3D"language-c"><span class=
+=3D"pln">groupadd </span><span class=3D"pun">-</span><span class=3D=
+"pln">r zabbix</span></code></li><li style=3D"list-style-type: no=
+ne; padding-left: 0px;" class=3D"L7"><code class=3D"language-c"><=
+/code></li><li style=3D"list-style-type: none; padding-left: 0px;=
+" class=3D"L8"><code class=3D"language-c"><span class=3D"pln">use=
+radd </span><span class=3D"pun">-</span><span class=3D"pln">r </s=
+pan><span class=3D"pun">-</span><span class=3D"pln">g zabbix</spa=
+n></code></li><li style=3D"list-style-type: none; padding-left: 0=
+px;" class=3D"L9"><code class=3D"language-c"></code></li><li styl=
+e=3D"list-style-type: none; padding-left: 0px;" class=3D"L0"><cod=
+e class=3D"language-c"><span class=3D"pln">yum </span><span class=
+=3D"typ">list</span><span class=3D"pln"> net</span><span class=3D=
+"pun">-</span><span class=3D"pln">snmp libssh2</span><span class=3D=
+"pun">-</span><span class=3D"pln">devel</span></code></li><li sty=
+le=3D"list-style-type: none; padding-left: 0px;" class=3D"L1"><co=
+de class=3D"language-c"></code></li><li style=3D"list-style-type:=
+ none; padding-left: 0px;" class=3D"L2"><code class=3D"language-c=
+"><span class=3D"pun">./</span><span class=3D"pln">configure </sp=
+an><span class=3D"pun">--</span><span class=3D"pln">enable</span>=
+<span class=3D"pun">-</span><span class=3D"pln">server </span><sp=
+an class=3D"pun">--</span><span class=3D"pln">enable</span><span=20=
+class=3D"pun">-</span><span class=3D"pln">agent </span><span clas=
+s=3D"pun">--</span><span class=3D"pln">with</span><span class=3D"=
+pun">-</span><span class=3D"pln">mysql </span><span class=3D"pun"=
+>--</span><span class=3D"pln">with</span><span class=3D"pun">-</s=
+pan><span class=3D"pln">net</span><span class=3D"pun">-</span><sp=
+an class=3D"pln">snmp </span><span class=3D"pun">--</span><span c=
+lass=3D"pln">with</span><span class=3D"pun">-</span><span class=3D=
+"pln">libxml2 </span><span class=3D"pun">--</span><span class=3D"=
+pln">with</span><span class=3D"pun">-</span><span class=3D"pln">l=
+ibcurl </span><span class=3D"pun">--</span><span class=3D"pln">wi=
+th</span><span class=3D"pun">-</span><span class=3D"pln">ssh2</sp=
+an></code></li><li style=3D"list-style-type: none; padding-left:=20=
+0px;" class=3D"L3"><code class=3D"language-c"></code></li><li sty=
+le=3D"list-style-type: none; padding-left: 0px;" class=3D"L4"><co=
+de class=3D"language-c"><span class=3D"pln">make </span><span cla=
+ss=3D"pun">&amp;&amp;</span><span class=3D"pln"> make install</sp=
+an></code></li><li style=3D"list-style-type: none; padding-left:=20=
+0px;" class=3D"L5"><code class=3D"language-c"></code></li><li sty=
+le=3D"list-style-type: none; padding-left: 0px;" class=3D"L6"><co=
+de class=3D"language-c"><span class=3D"pln">&nbsp;</span></code><=
+/li><li style=3D"list-style-type: none; padding-left: 0px;" class=
+=3D"L7"><code class=3D"language-c"></code></li><li style=3D"list-=
+style-type: none; padding-left: 0px;" class=3D"L8"><code class=3D=
+"language-c"><span class=3D"pln">&nbsp;</span></code></li><li sty=
+le=3D"list-style-type: none; padding-left: 0px;" class=3D"L9"><co=
+de class=3D"language-c"></code></li><li style=3D"list-style-type:=
+ none; padding-left: 0px;" class=3D"L0"><code class=3D"language-c=
+"><span class=3D"pln">mysql </span><span class=3D"pun">-</span><s=
+pan class=3D"pln">uroot </span><span class=3D"pun">=A8C</span><sp=
+an class=3D"pln">p</span></code></li><li style=3D"list-style-type=
+: none; padding-left: 0px;" class=3D"L1"><code class=3D"language-=
+c"></code></li><li style=3D"list-style-type: none; padding-left:=20=
+0px;" class=3D"L2"><code class=3D"language-c"><span class=3D"pln"=
+>mysql</span><span class=3D"pun">&gt;</span><span class=3D"pln">=20=
+CREATE DATABASE zabbicmd</span></code></li><li style=3D"list-styl=
+e-type: none; padding-left: 0px;" class=3D"L3"><code class=3D"lan=
+guage-c"></code></li><li style=3D"list-style-type: none; padding-=
+left: 0px;" class=3D"L4"><code class=3D"language-c"><span class=3D=
+"pln">x CHARACTER SET utf8 COLLATE utf8_bin</span><span class=3D"=
+pun">;</span></code></li><li style=3D"list-style-type: none; padd=
+ing-left: 0px;" class=3D"L5"><code class=3D"language-c"></code></=
+li><li style=3D"list-style-type: none; padding-left: 0px;" class=3D=
+"L6"><code class=3D"language-c"><span class=3D"pln">GRANT ALL PRI=
+VILEGES ON zabbix</span><span class=3D"pun">.*</span><span class=3D=
+"pln"> TO zbuser@</span><span class=3D"str">'localhost'</span><sp=
+an class=3D"pln"> IDENTIFIED BY </span><span class=3D"str">'zbpas=
+s'</span><span class=3D"pun">;</span></code></li><li style=3D"lis=
+t-style-type: none; padding-left: 0px;" class=3D"L7"><code class=3D=
+"language-c"></code></li><li style=3D"list-style-type: none; padd=
+ing-left: 0px;" class=3D"L8"><code class=3D"language-c"><span cla=
+ss=3D"pln">mysql</span><span class=3D"pun">&gt;</span><span class=
+=3D"pln"> FLUSH PRIVILEGES</span><span class=3D"pun">;</span></co=
+de></li><li style=3D"list-style-type: none; padding-left: 0px;" c=
+lass=3D"L9"><code class=3D"language-c"></code></li><li style=3D"l=
+ist-style-type: none; padding-left: 0px;" class=3D"L0"><code clas=
+s=3D"language-c"><span class=3D"pln">ln </span><span class=3D"pun=
+">-</span><span class=3D"pln">sv </span><span class=3D"pun">/</sp=
+an><span class=3D"pln">alidata</span><span class=3D"pun">/</span>=
+<span class=3D"pln">server</span><span class=3D"pun">/</span><spa=
+n class=3D"pln">mysql</span><span class=3D"pun">/</span><span cla=
+ss=3D"pln">lib</span><span class=3D"pun">/</span><span class=3D"p=
+ln">libmysqlclient</span><span class=3D"pun">.</span><span class=3D=
+"pln">so</span><span class=3D"pun">.</span><span class=3D"lit">18=
+</span><span class=3D"pln"> </span><span class=3D"pun">/</span><s=
+pan class=3D"pln">usr</span><span class=3D"pun">/</span><span cla=
+ss=3D"pln">lib64</span><span class=3D"pun">/</span></code></li><l=
+i style=3D"list-style-type: none; padding-left: 0px;" class=3D"L1=
+"><code class=3D"language-c"></code></li><li style=3D"list-style-=
+type: none; padding-left: 0px;" class=3D"L2"><code class=3D"langu=
+age-c"><span class=3D"pln">mysql </span><span class=3D"pun">-</sp=
+an><span class=3D"pln">uzbuser </span><span class=3D"pun">-</span=
+><span class=3D"pln">pzbpass zabbix </span><span class=3D"pun">&l=
+t;</span><span class=3D"pln"> database</span><span class=3D"pun">=
+/</span><span class=3D"pln">mysql</span><span class=3D"pun">/</sp=
+an><span class=3D"pln">schema</span><span class=3D"pun">.</span><=
+span class=3D"pln">sql</span></code></li><li style=3D"list-style-=
+type: none; padding-left: 0px;" class=3D"L3"><code class=3D"langu=
+age-c"></code></li><li style=3D"list-style-type: none; padding-le=
+ft: 0px;" class=3D"L4"><code class=3D"language-c"><span class=3D"=
+pln">mysql </span><span class=3D"pun">-</span><span class=3D"pln"=
+>uzbuser </span><span class=3D"pun">-</span><span class=3D"pln">p=
+zbpass zabbix </span><span class=3D"pun">&lt;</span><span class=3D=
+"pln"> database</span><span class=3D"pun">/</span><span class=3D"=
+pln">mysql</span><span class=3D"pun">/</span><span class=3D"pln">=
+images</span><span class=3D"pun">.</span><span class=3D"pln">sql<=
+/span></code></li><li style=3D"list-style-type: none; padding-lef=
+t: 0px;" class=3D"L5"><code class=3D"language-c"></code></li><li=20=
+style=3D"list-style-type: none; padding-left: 0px;" class=3D"L6">=
+<code class=3D"language-c"><span class=3D"pln">mysql </span><span=
+ class=3D"pun">-</span><span class=3D"pln">uzbuser </span><span c=
+lass=3D"pun">-</span><span class=3D"pln">pzbpass zabbix </span><s=
+pan class=3D"pun">&lt;</span><span class=3D"pln"> database</span>=
+<span class=3D"pun">/</span><span class=3D"pln">mysql</span><span=
+ class=3D"pun">/</span><span class=3D"pln">data</span><span class=
+=3D"pun">.</span><span class=3D"pln">sql</span></code></li><li st=
+yle=3D"list-style-type: none; padding-left: 0px;" class=3D"L7"><c=
+ode class=3D"language-c"></code></li><li style=3D"list-style-type=
+: none; padding-left: 0px;" class=3D"L8"><code class=3D"language-=
+c"><span class=3D"pln">&nbsp;</span></code></li><li style=3D"list=
+-style-type: none; padding-left: 0px;" class=3D"L9"><code class=3D=
+"language-c"></code></li><li style=3D"list-style-type: none; padd=
+ing-left: 0px;" class=3D"L0"><code class=3D"language-c"><span cla=
+ss=3D"pln">cp </span><span class=3D"pun">/</span><span class=3D"p=
+ln">usr</span><span class=3D"pun">/</span><span class=3D"pln">loc=
+al</span><span class=3D"pun">/</span><span class=3D"pln">php</spa=
+n><span class=3D"pun">/</span><span class=3D"pln">phpize </span><=
+span class=3D"pun">/</span><span class=3D"pln">soure</span><span=20=
+class=3D"pun">/</span><span class=3D"pln">php</span><span class=3D=
+"pun">/</span><span class=3D"pln">ext</span><span class=3D"pun">/=
+</span><span class=3D"pln">gettext</span><span class=3D"pun">/</s=
+pan></code></li><li style=3D"list-style-type: none; padding-left:=
+ 0px;" class=3D"L1"><code class=3D"language-c"></code></li><li st=
+yle=3D"list-style-type: none; padding-left: 0px;" class=3D"L2"><c=
+ode class=3D"language-c"><span class=3D"pun">/</span><span class=3D=
+"pln">soure</span><span class=3D"pun">/</span><span class=3D"pln"=
+>php</span><span class=3D"pun">/</span><span class=3D"pln">ext</s=
+pan><span class=3D"pun">/</span><span class=3D"pln">gettext</span=
+><span class=3D"pun">/</span><span class=3D"pln">phpize</span></c=
+ode></li><li style=3D"list-style-type: none; padding-left: 0px;"=20=
+class=3D"L3"><code class=3D"language-c"></code></li><li style=3D"=
+list-style-type: none; padding-left: 0px;" class=3D"L4"><code cla=
+ss=3D"language-c"><span class=3D"pln">phpize</span></code></li><l=
+i style=3D"list-style-type: none; padding-left: 0px;" class=3D"L5=
+"><code class=3D"language-c"></code></li><li style=3D"list-style-=
+type: none; padding-left: 0px;" class=3D"L6"><code class=3D"langu=
+age-c"><span class=3D"pun">./</span><span class=3D"pln">configure=
+ </span><span class=3D"pun">--</span><span class=3D"pln">with</sp=
+an><span class=3D"pun">-</span><span class=3D"pln">php</span><spa=
+n class=3D"pun">-</span><span class=3D"pln">config</span><span cl=
+ass=3D"pun">=3D/</span><span class=3D"pln">usr</span><span class=3D=
+"pun">/</span><span class=3D"pln">local</span><span class=3D"pun"=
+>/</span><span class=3D"pln">php</span><span class=3D"pun">/</spa=
+n><span class=3D"pln">bin</span><span class=3D"pun">/</span><span=
+ class=3D"pln">php</span><span class=3D"pun">-</span><span class=3D=
+"pln">config</span></code></li><li style=3D"list-style-type: none=
+; padding-left: 0px;" class=3D"L7"><code class=3D"language-c"></c=
+ode></li><li style=3D"list-style-type: none; padding-left: 0px;"=20=
+class=3D"L8"><code class=3D"language-c"><span class=3D"pln">make=20=
+</span><span class=3D"pun">&amp;&amp;</span><span class=3D"pln">=20=
+make install</span></code></li><li style=3D"list-style-type: none=
+; padding-left: 0px;" class=3D"L9"><code class=3D"language-c"></c=
+ode></li><li style=3D"list-style-type: none; padding-left: 0px;"=20=
+class=3D"L0"><code class=3D"language-c"><span class=3D"pln">vi </=
+span><span class=3D"pun">/</span><span class=3D"pln">etc</span><s=
+pan class=3D"pun">/</span><span class=3D"pln">php</span><span cla=
+ss=3D"pun">.</span><span class=3D"pln">ini</span></code></li><li=20=
+style=3D"list-style-type: none; padding-left: 0px;" class=3D"L1">=
+<code class=3D"language-c"></code></li><li style=3D"list-style-ty=
+pe: none; padding-left: 0px;" class=3D"L2"><code class=3D"languag=
+e-c"><span class=3D"pln">extension</span><span class=3D"pun">=3D/=
+</span><span class=3D"pln">alidata</span><span class=3D"pun">/</s=
+pan><span class=3D"pln">server</span><span class=3D"pun">/</span>=
+<span class=3D"pln">php</span><span class=3D"pun">/</span><span c=
+lass=3D"pln">lib</span><span class=3D"pun">/</span><span class=3D=
+"pln">php</span><span class=3D"pun">/</span><span class=3D"pln">e=
+xtensions</span><span class=3D"pun">/</span><span class=3D"pln">n=
+o</span><span class=3D"pun">-</span><span class=3D"pln">debug</sp=
+an><span class=3D"pun">-</span><span class=3D"pln">non</span><spa=
+n class=3D"pun">-</span><span class=3D"pln">zts</span><span class=
+=3D"pun">-</span><span class=3D"lit">20100525</span><span class=3D=
+"pun">/</span><span class=3D"pln">gettext</span><span class=3D"pu=
+n">.</span><span class=3D"pln">so</span></code></li><li style=3D"=
+list-style-type: none; padding-left: 0px;" class=3D"L3"><code cla=
+ss=3D"language-c"></code></li><li style=3D"list-style-type: none;=
+ padding-left: 0px;" class=3D"L4"><code class=3D"language-c"><spa=
+n class=3D"pln">&nbsp;</span></code></li><li style=3D"list-style-=
+type: none; padding-left: 0px;" class=3D"L5"><code class=3D"langu=
+age-c"></code></li><li style=3D"list-style-type: none; padding-le=
+ft: 0px;" class=3D"L6"><code class=3D"language-c"><span class=3D"=
+pln">cp misc</span><span class=3D"pun">/</span><span class=3D"pln=
+">init</span><span class=3D"pun">.</span><span class=3D"pln">d</s=
+pan><span class=3D"pun">/</span><span class=3D"pln">fedora</span>=
+<span class=3D"pun">/</span><span class=3D"pln">core</span><span=20=
+class=3D"pun">/</span><span class=3D"pln">zabbix_</span><span cla=
+ss=3D"pun">*</span><span class=3D"pln"> </span><span class=3D"pun=
+">/</span><span class=3D"pln">etc</span><span class=3D"pun">/</sp=
+an><span class=3D"pln">init</span><span class=3D"pun">.</span><sp=
+an class=3D"pln">d</span><span class=3D"pun">/</span></code></li>=
+<li style=3D"list-style-type: none; padding-left: 0px;" class=3D"=
+L7"><code class=3D"language-c"></code></li><li style=3D"list-styl=
+e-type: none; padding-left: 0px;" class=3D"L8"><code class=3D"lan=
+guage-c"><span class=3D"pln">\cp </span><span class=3D"pun">-</sp=
+an><span class=3D"pln">rf frontends</span><span class=3D"pun">/</=
+span><span class=3D"pln">php </span><span class=3D"pun">/</span><=
+span class=3D"pln">var</span><span class=3D"pun">/</span><span cl=
+ass=3D"pln">www</span><span class=3D"pun">/</span></code></li><li=
+ style=3D"list-style-type: none; padding-left: 0px;" class=3D"L9"=
+><code class=3D"language-c"></code></li><li style=3D"list-style-t=
+ype: none; padding-left: 0px;" class=3D"L0"><code class=3D"langua=
+ge-c"><span class=3D"typ">Chown</span><span class=3D"pln"> </span=
+><span class=3D"pun">-</span><span class=3D"pln">R www</span><spa=
+n class=3D"pun">.</span><span class=3D"pln">www </span><span clas=
+s=3D"pun">/</span><span class=3D"pln">var</span><span class=3D"pu=
+n">/</span><span class=3D"pln">www</span></code></li><li style=3D=
+"list-style-type: none; padding-left: 0px;" class=3D"L1"><code cl=
+ass=3D"language-c"></code></li><li style=3D"list-style-type: none=
+; padding-left: 0px;" class=3D"L2"><code class=3D"language-c"><sp=
+an class=3D"pln">&nbsp;</span></code></li><li style=3D"list-style=
+-type: none; padding-left: 0px;" class=3D"L3"><code class=3D"lang=
+uage-c"></code></li><li style=3D"list-style-type: none; padding-l=
+eft: 0px;" class=3D"L4"><code class=3D"language-c"><span class=3D=
+"pln">vi </span><span class=3D"pun">/</span><span class=3D"pln">u=
+sr</span><span class=3D"pun">/</span><span class=3D"pln">local</s=
+pan><span class=3D"pun">/</span><span class=3D"pln">etc</span><sp=
+an class=3D"pun">/</span><span class=3D"pln">zabbix_server</span>=
+<span class=3D"pun">.</span><span class=3D"pln">conf</span></code=
+></li><li style=3D"list-style-type: none; padding-left: 0px;" cla=
+ss=3D"L5"><code class=3D"language-c"></code></li><li style=3D"lis=
+t-style-type: none; padding-left: 0px;" class=3D"L6"><code class=3D=
+"language-c"><span class=3D"typ">StartDiscoverers</span><span cla=
+ss=3D"pun">=3D</span><span class=3D"lit">0</span></code></li><li=20=
+style=3D"list-style-type: none; padding-left: 0px;" class=3D"L7">=
+<code class=3D"language-c"></code></li><li style=3D"list-style-ty=
+pe: none; padding-left: 0px;" class=3D"L8"><code class=3D"languag=
+e-c"><span class=3D"typ">DBname</span><span class=3D"pun">=3D</sp=
+an><span class=3D"pln">zabbix</span></code></li><li style=3D"list=
+-style-type: none; padding-left: 0px;" class=3D"L9"><code class=3D=
+"language-c"></code></li><li style=3D"list-style-type: none; padd=
+ing-left: 0px;" class=3D"L0"><code class=3D"language-c"><span cla=
+ss=3D"typ">DBuser</span><span class=3D"pun">=3D</span><span class=
+=3D"pln">zbuser</span></code></li><li style=3D"list-style-type: n=
+one; padding-left: 0px;" class=3D"L1"><code class=3D"language-c">=
+</code></li><li style=3D"list-style-type: none; padding-left: 0px=
+;" class=3D"L2"><code class=3D"language-c"><span class=3D"typ">DB=
+password</span><span class=3D"pun">=3D</span><span class=3D"pln">=
+zbpass</span></code></li><li style=3D"list-style-type: none; padd=
+ing-left: 0px;" class=3D"L3"><code class=3D"language-c"></code></=
+li><li style=3D"list-style-type: none; padding-left: 0px;" class=3D=
+"L4"><code class=3D"language-c"><span class=3D"typ">DBHost</span>=
+<span class=3D"pun">=3D</span><span class=3D"pln">localhost</span=
+></code></li><li style=3D"list-style-type: none; padding-left: 0p=
+x;" class=3D"L5"><code class=3D"language-c"></code></li><li style=
+=3D"list-style-type: none; padding-left: 0px;" class=3D"L6"><code=
+ class=3D"language-c"><span class=3D"typ">DBPort</span><span clas=
+s=3D"pun">=3D</span><span class=3D"lit">3306</span></code></li><l=
+i style=3D"list-style-type: none; padding-left: 0px;" class=3D"L7=
+"><code class=3D"language-c"></code></li><li style=3D"list-style-=
+type: none; padding-left: 0px;" class=3D"L8"><code class=3D"langu=
+age-c"><span class=3D"typ">Vi</span><span class=3D"pln"> </span><=
+span class=3D"pun">/</span><span class=3D"pln">etc</span><span cl=
+ass=3D"pun">/</span><span class=3D"pln">php</span><span class=3D"=
+pun">.</span><span class=3D"pln">ini</span></code></li><li style=3D=
+"list-style-type: none; padding-left: 0px;" class=3D"L9"><code cl=
+ass=3D"language-c"></code></li><li style=3D"list-style-type: none=
+; padding-left: 0px;" class=3D"L0"><code class=3D"language-c"><sp=
+an class=3D"pln">max_input_time </span><span class=3D"pun">=3D</s=
+pan><span class=3D"pln"> </span><span class=3D"lit">300</span></c=
+ode></li><li style=3D"list-style-type: none; padding-left: 0px;"=20=
+class=3D"L1"><code class=3D"language-c"></code></li><li style=3D"=
+list-style-type: none; padding-left: 0px;" class=3D"L2"><code cla=
+ss=3D"language-c"><span class=3D"pln">&nbsp;</span></code></li><l=
+i style=3D"list-style-type: none; padding-left: 0px;" class=3D"L3=
+"><code class=3D"language-c"></code></li><li style=3D"list-style-=
+type: none; padding-left: 0px;" class=3D"L4"><code class=3D"langu=
+age-c"><span class=3D"pun">/</span><span class=3D"pln">etc</span>=
+<span class=3D"pun">/</span><span class=3D"pln">init</span><span=20=
+class=3D"pun">.</span><span class=3D"pln">d</span><span class=3D"=
+pun">/</span><span class=3D"pln">zabbix_server start</span></code=
+></li><li style=3D"list-style-type: none; padding-left: 0px;" cla=
+ss=3D"L5"><code class=3D"language-c"></code></li><li style=3D"lis=
+t-style-type: none; padding-left: 0px;" class=3D"L6"><code class=3D=
+"language-c"><span class=3D"pln">chkconfig </span><span class=3D"=
+pun">--</span><span class=3D"pln">add zabbix_server</span></code>=
+</li><li style=3D"list-style-type: none; padding-left: 0px;" clas=
+s=3D"L7"><code class=3D"language-c"></code></li><li style=3D"list=
+-style-type: none; padding-left: 0px;" class=3D"L8"><code class=3D=
+"language-c"><span class=3D"pln">chkconfig zabbix_server on</span=
+></code></li><li style=3D"list-style-type: none; padding-left: 0p=
+x;" class=3D"L9"><code class=3D"language-c"></code></li><li style=
+=3D"list-style-type: none; padding-left: 0px;" class=3D"L0"><code=
+ class=3D"language-c"><span class=3D"pun">/</span><span class=3D"=
+pln">etc</span><span class=3D"pun">/</span><span class=3D"pln">in=
+it</span><span class=3D"pun">.</span><span class=3D"pln">d</span>=
+<span class=3D"pun">/</span><span class=3D"pln">zabbix_agentd sta=
+rt</span></code></li><li style=3D"list-style-type: none; padding-=
+left: 0px;" class=3D"L1"><code class=3D"language-c"></code></li><=
+li style=3D"list-style-type: none; padding-left: 0px;" class=3D"L=
+2"><code class=3D"language-c"><span class=3D"pln">chkconfig </spa=
+n><span class=3D"pun">--</span><span class=3D"pln">add zabbix_age=
+ntd</span></code></li><li style=3D"list-style-type: none; padding=
+-left: 0px;" class=3D"L3"><code class=3D"language-c"></code></li>=
+<li style=3D"list-style-type: none; padding-left: 0px;" class=3D"=
+L4"><code class=3D"language-c"><span class=3D"pln">chkconfig&nbsp=
+; zabbix_agentd on</span></code></li></ol></pre></div><div><br></=
+div></p><p class=3D"MsoNormal" align=3D"left" style=3D"text-inden=
+t: 21pt;"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-fam=
+ily:&quot;DejaVu Sans Mono&quot;"><o:p>&nbsp;</o:p></span></p><p=20=
+class=3D"MsoNormal" align=3D"left" style=3D"text-indent: 21pt;"><=
+span lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;D=
+ejaVu Sans Mono&quot;"><o:p>&nbsp;</o:p></span></p><p class=3D"Ms=
+oNormal" align=3D"left" style=3D"text-indent: 21pt;"><span lang=3D=
+"EN-US" style=3D"font-size:10.0pt;font-family:&quot;DejaVu Sans M=
+ono&quot;"><o:p>&nbsp;</o:p></span></p><p class=3D"MsoNormal" ali=
+gn=3D"left" style=3D"text-indent: 21pt;"><span lang=3D"EN-US" sty=
+le=3D"font-size:10.0pt;font-family:&quot;DejaVu Sans Mono&quot;">=
+###1###<o:p></o:p></span></p><p class=3D"MsoNormal" align=3D"left=
+" style=3D"text-indent: 21pt;"><span style=3D"font-size:10.0pt;fo=
+nt-family:=CB=CE=CC=E5;mso-ascii-font-family:&quot;DejaVu Sans Mo=
+no&quot;;=0Amso-fareast-font-family:=CB=CE=CC=E5;mso-fareast-them=
+e-font:minor-fareast;mso-hansi-font-family:=0A&quot;DejaVu Sans M=
+ono&quot;;mso-bidi-font-family:&quot;DejaVu Sans Mono&quot;">=B7=D6=
+=B2=BC=CA=BD=BF=AA=D4=B4=BC=E0=BF=D8=B7=FE=CE=F1=C6=F7</span><spa=
+n lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;Deja=
+Vu Sans Mono&quot;">zabbix </span><span style=3D"font-size:10.0pt=
+;font-family:=CB=CE=CC=E5;mso-ascii-font-family:&quot;DejaVu Sans=
+ Mono&quot;;=0Amso-fareast-font-family:=CB=CE=CC=E5;mso-fareast-t=
+heme-font:minor-fareast;mso-hansi-font-family:=0A&quot;DejaVu San=
+s Mono&quot;;mso-bidi-font-family:&quot;DejaVu Sans Mono&quot;">=D7=
+=EE=D0=C2=BC=E0=BF=D8=C4=A3=B0=E5=A3=AC=C7=EB=B7=C3=CE=CA=A3=BA</=
+span><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&=
+quot;DejaVu Sans Mono&quot;"><o:p></o:p></span></p><p class=3D"Ms=
+oNormal" align=3D"left" style=3D"text-indent: 21pt;"><span lang=3D=
+"EN-US" style=3D"font-size:10.0pt;font-family:&quot;DejaVu Sans M=
+ono&quot;">www.zabbix.org/wiki/Zabbix_Templates<o:p></o:p></span>=
+</p><p class=3D"MsoNormal" align=3D"left" style=3D"text-indent: 2=
+1pt;"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:=
+&quot;DejaVu Sans Mono&quot;">###2####<o:p></o:p></span></p><p cl=
+ass=3D"MsoNormal" align=3D"left" style=3D"text-indent: 21pt;"><sp=
+an lang=3D"EN-US" style=3D"font-size:10.0pt;font-family:&quot;Dej=
+aVu Sans Mono&quot;">Iptables -A=0A10050,10051<o:p></o:p></span><=
+/p></body></html>
+
+------=_Next_Part_0004324659.391--
+
+------=_Next_Part_0012973977.436
+Content-Type: text/css;
+	name="wiz_code_highlight.css"
+Content-Transfer-Encoding: base64
+Content-ID: <wiz_code_highlight.css>
+Content-Location: wiz_code_highlight.css
+
+//4NAAoADQAKAA0ACgAuAGgAbABqAHMAIAB7AA0ACgAgACAAZABpAHMAcABsAGEAeQA6ACAAYgBs
+AG8AYwBrADsAIABwAGEAZABkAGkAbgBnADoAIAAwAC4ANQBlAG0AOwANAAoAIAAgAGIAYQBjAGsA
+ZwByAG8AdQBuAGQAOgAgACMARgAwAEYAMABGADAAOwANAAoAfQANAAoADQAKAC4AaABsAGoAcwAs
+AA0ACgAuAGgAbABqAHMALQBzAHUAYgBzAHQALAANAAoALgBoAGwAagBzAC0AdABhAGcAIAAuAGgA
+bABqAHMALQB0AGkAdABsAGUALAANAAoALgBsAGkAcwBwACAALgBoAGwAagBzAC0AdABpAHQAbABl
+ACwADQAKAC4AYwBsAG8AagB1AHIAZQAgAC4AaABsAGoAcwAtAGIAdQBpAGwAdABfAGkAbgAsAA0A
+CgAuAG4AZwBpAG4AeAAgAC4AaABsAGoAcwAtAHQAaQB0AGwAZQAgAHsADQAKACAAIABjAG8AbABv
+AHIAOgAgAGIAbABhAGMAawA7AA0ACgB9AA0ACgANAAoALgBoAGwAagBzAC0AcwB0AHIAaQBuAGcA
+LAANAAoALgBoAGwAagBzAC0AdABpAHQAbABlACwADQAKAC4AaABsAGoAcwAtAGMAbwBuAHMAdABh
+AG4AdAAsAA0ACgAuAGgAbABqAHMALQBwAGEAcgBlAG4AdAAsAA0ACgAuAGgAbABqAHMALQB0AGEA
+ZwAgAC4AaABsAGoAcwAtAHYAYQBsAHUAZQAsAA0ACgAuAGgAbABqAHMALQByAHUAbABlAHMAIAAu
+AGgAbABqAHMALQB2AGEAbAB1AGUALAANAAoALgBoAGwAagBzAC0AcgB1AGwAZQBzACAALgBoAGwA
+agBzAC0AdgBhAGwAdQBlACAALgBoAGwAagBzAC0AbgB1AG0AYgBlAHIALAANAAoALgBoAGwAagBz
+AC0AcAByAGUAcAByAG8AYwBlAHMAcwBvAHIALAANAAoALgBoAGwAagBzAC0AcAByAGEAZwBtAGEA
+LAANAAoALgBoAGEAbQBsACAALgBoAGwAagBzAC0AcwB5AG0AYgBvAGwALAANAAoALgByAHUAYgB5
+ACAALgBoAGwAagBzAC0AcwB5AG0AYgBvAGwALAANAAoALgByAHUAYgB5ACAALgBoAGwAagBzAC0A
+cwB5AG0AYgBvAGwAIAAuAGgAbABqAHMALQBzAHQAcgBpAG4AZwAsAA0ACgAuAGgAbABqAHMALQBh
+AGcAZwByAGUAZwBhAHQAZQAsAA0ACgAuAGgAbABqAHMALQB0AGUAbQBwAGwAYQB0AGUAXwB0AGEA
+ZwAsAA0ACgAuAGQAagBhAG4AZwBvACAALgBoAGwAagBzAC0AdgBhAHIAaQBhAGIAbABlACwADQAK
+AC4AcwBtAGEAbABsAHQAYQBsAGsAIAAuAGgAbABqAHMALQBjAGwAYQBzAHMALAANAAoALgBoAGwA
+agBzAC0AYQBkAGQAaQB0AGkAbwBuACwADQAKAC4AaABsAGoAcwAtAGYAbABvAHcALAANAAoALgBo
+AGwAagBzAC0AcwB0AHIAZQBhAG0ALAANAAoALgBiAGEAcwBoACAALgBoAGwAagBzAC0AdgBhAHIA
+aQBhAGIAbABlACwADQAKAC4AYQBwAGEAYwBoAGUAIAAuAGgAbABqAHMALQB0AGEAZwAsAA0ACgAu
+AGEAcABhAGMAaABlACAALgBoAGwAagBzAC0AYwBiAHIAYQBjAGsAZQB0ACwADQAKAC4AdABlAHgA
+IAAuAGgAbABqAHMALQBjAG8AbQBtAGEAbgBkACwADQAKAC4AdABlAHgAIAAuAGgAbABqAHMALQBz
+AHAAZQBjAGkAYQBsACwADQAKAC4AZQByAGwAYQBuAGcAXwByAGUAcABsACAALgBoAGwAagBzAC0A
+ZgB1AG4AYwB0AGkAbwBuAF8AbwByAF8AYQB0AG8AbQAsAA0ACgAuAGEAcwBjAGkAaQBkAG8AYwAg
+AC4AaABsAGoAcwAtAGgAZQBhAGQAZQByACwADQAKAC4AbQBhAHIAawBkAG8AdwBuACAALgBoAGwA
+agBzAC0AaABlAGEAZABlAHIALAANAAoALgBjAG8AZgBmAGUAZQBzAGMAcgBpAHAAdAAgAC4AaABs
+AGoAcwAtAGEAdAB0AHIAaQBiAHUAdABlACAAewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAIwA4ADAA
+MAA7AA0ACgB9AA0ACgANAAoALgBzAG0AYQByAHQAcQB1AG8AdABlACwADQAKAC4AaABsAGoAcwAt
+AGMAbwBtAG0AZQBuAHQALAANAAoALgBoAGwAagBzAC0AYQBuAG4AbwB0AGEAdABpAG8AbgAsAA0A
+CgAuAGgAbABqAHMALQB0AGUAbQBwAGwAYQB0AGUAXwBjAG8AbQBtAGUAbgB0ACwADQAKAC4AZABp
+AGYAZgAgAC4AaABsAGoAcwAtAGgAZQBhAGQAZQByACwADQAKAC4AaABsAGoAcwAtAGMAaAB1AG4A
+awAsAA0ACgAuAGEAcwBjAGkAaQBkAG8AYwAgAC4AaABsAGoAcwAtAGIAbABvAGMAawBxAHUAbwB0
+AGUALAANAAoALgBtAGEAcgBrAGQAbwB3AG4AIAAuAGgAbABqAHMALQBiAGwAbwBjAGsAcQB1AG8A
+dABlACAAewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAIwA4ADgAOAA7AA0ACgB9AA0ACgANAAoALgBo
+AGwAagBzAC0AbgB1AG0AYgBlAHIALAANAAoALgBoAGwAagBzAC0AZABhAHQAZQAsAA0ACgAuAGgA
+bABqAHMALQByAGUAZwBlAHgAcAAsAA0ACgAuAGgAbABqAHMALQBsAGkAdABlAHIAYQBsACwADQAK
+AC4AaABsAGoAcwAtAGgAZQB4AGMAbwBsAG8AcgAsAA0ACgAuAHMAbQBhAGwAbAB0AGEAbABrACAA
+LgBoAGwAagBzAC0AcwB5AG0AYgBvAGwALAANAAoALgBzAG0AYQBsAGwAdABhAGwAawAgAC4AaABs
+AGoAcwAtAGMAaABhAHIALAANAAoALgBnAG8AIAAuAGgAbABqAHMALQBjAG8AbgBzAHQAYQBuAHQA
+LAANAAoALgBoAGwAagBzAC0AYwBoAGEAbgBnAGUALAANAAoALgBsAGEAcwBzAG8AIAAuAGgAbABq
+AHMALQB2AGEAcgBpAGEAYgBsAGUALAANAAoALgBtAGEAawBlAGYAaQBsAGUAIAAuAGgAbABqAHMA
+LQB2AGEAcgBpAGEAYgBsAGUALAANAAoALgBhAHMAYwBpAGkAZABvAGMAIAAuAGgAbABqAHMALQBi
+AHUAbABsAGUAdAAsAA0ACgAuAG0AYQByAGsAZABvAHcAbgAgAC4AaABsAGoAcwAtAGIAdQBsAGwA
+ZQB0ACwADQAKAC4AYQBzAGMAaQBpAGQAbwBjACAALgBoAGwAagBzAC0AbABpAG4AawBfAHUAcgBs
+ACwADQAKAC4AbQBhAHIAawBkAG8AdwBuACAALgBoAGwAagBzAC0AbABpAG4AawBfAHUAcgBsACAA
+ewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAIwAwADgAMAA7AA0ACgB9AA0ACgANAAoALgBoAGwAagBz
+AC0AbABhAGIAZQBsACwADQAKAC4AaABsAGoAcwAtAGoAYQB2AGEAZABvAGMALAANAAoALgByAHUA
+YgB5ACAALgBoAGwAagBzAC0AcwB0AHIAaQBuAGcALAANAAoALgBoAGwAagBzAC0AZABlAGMAbwBy
+AGEAdABvAHIALAANAAoALgBoAGwAagBzAC0AZgBpAGwAdABlAHIAIAAuAGgAbABqAHMALQBhAHIA
+ZwB1AG0AZQBuAHQALAANAAoALgBoAGwAagBzAC0AbABvAGMAYQBsAHYAYQByAHMALAANAAoALgBo
+AGwAagBzAC0AYQByAHIAYQB5ACwADQAKAC4AaABsAGoAcwAtAGEAdAB0AHIAXwBzAGUAbABlAGMA
+dABvAHIALAANAAoALgBoAGwAagBzAC0AaQBtAHAAbwByAHQAYQBuAHQALAANAAoALgBoAGwAagBz
+AC0AcABzAGUAdQBkAG8ALAANAAoALgBoAGwAagBzAC0AcABpACwADQAKAC4AaABhAG0AbAAgAC4A
+aABsAGoAcwAtAGIAdQBsAGwAZQB0ACwADQAKAC4AaABsAGoAcwAtAGQAbwBjAHQAeQBwAGUALAAN
+AAoALgBoAGwAagBzAC0AZABlAGwAZQB0AGkAbwBuACwADQAKAC4AaABsAGoAcwAtAGUAbgB2AHYA
+YQByACwADQAKAC4AaABsAGoAcwAtAHMAaABlAGIAYQBuAGcALAANAAoALgBhAHAAYQBjAGgAZQAg
+AC4AaABsAGoAcwAtAHMAcQBiAHIAYQBjAGsAZQB0ACwADQAKAC4AbgBnAGkAbgB4ACAALgBoAGwA
+agBzAC0AYgB1AGkAbAB0AF8AaQBuACwADQAKAC4AdABlAHgAIAAuAGgAbABqAHMALQBmAG8AcgBt
+AHUAbABhACwADQAKAC4AZQByAGwAYQBuAGcAXwByAGUAcABsACAALgBoAGwAagBzAC0AcgBlAHMA
+ZQByAHYAZQBkACwADQAKAC4AaABsAGoAcwAtAHAAcgBvAG0AcAB0ACwADQAKAC4AYQBzAGMAaQBp
+AGQAbwBjACAALgBoAGwAagBzAC0AbABpAG4AawBfAGwAYQBiAGUAbAAsAA0ACgAuAG0AYQByAGsA
+ZABvAHcAbgAgAC4AaABsAGoAcwAtAGwAaQBuAGsAXwBsAGEAYgBlAGwALAANAAoALgB2AGgAZABs
+ACAALgBoAGwAagBzAC0AYQB0AHQAcgBpAGIAdQB0AGUALAANAAoALgBjAGwAbwBqAHUAcgBlACAA
+LgBoAGwAagBzAC0AYQB0AHQAcgBpAGIAdQB0AGUALAANAAoALgBhAHMAYwBpAGkAZABvAGMAIAAu
+AGgAbABqAHMALQBhAHQAdAByAGkAYgB1AHQAZQAsAA0ACgAuAGwAYQBzAHMAbwAgAC4AaABsAGoA
+cwAtAGEAdAB0AHIAaQBiAHUAdABlACwADQAKAC4AYwBvAGYAZgBlAGUAcwBjAHIAaQBwAHQAIAAu
+AGgAbABqAHMALQBwAHIAbwBwAGUAcgB0AHkALAANAAoALgBoAGwAagBzAC0AcABoAG8AbgB5ACAA
+ewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAIwA4ADgARgANAAoAfQANAAoADQAKAC4AaABsAGoAcwAt
+AGsAZQB5AHcAbwByAGQALAANAAoALgBoAGwAagBzAC0AaQBkACwADQAKAC4AaABsAGoAcwAtAHQA
+aQB0AGwAZQAsAA0ACgAuAGgAbABqAHMALQBiAHUAaQBsAHQAXwBpAG4ALAANAAoALgBoAGwAagBz
+AC0AYQBnAGcAcgBlAGcAYQB0AGUALAANAAoALgBjAHMAcwAgAC4AaABsAGoAcwAtAHQAYQBnACwA
+DQAKAC4AaABsAGoAcwAtAGoAYQB2AGEAZABvAGMAdABhAGcALAANAAoALgBoAGwAagBzAC0AcABo
+AHAAZABvAGMALAANAAoALgBoAGwAagBzAC0AeQBhAHIAZABvAGMAdABhAGcALAANAAoALgBzAG0A
+YQBsAGwAdABhAGwAawAgAC4AaABsAGoAcwAtAGMAbABhAHMAcwAsAA0ACgAuAGgAbABqAHMALQB3
+AGkAbgB1AHQAaQBsAHMALAANAAoALgBiAGEAcwBoACAALgBoAGwAagBzAC0AdgBhAHIAaQBhAGIA
+bABlACwADQAKAC4AYQBwAGEAYwBoAGUAIAAuAGgAbABqAHMALQB0AGEAZwAsAA0ACgAuAGcAbwAg
+AC4AaABsAGoAcwAtAHQAeQBwAGUAbgBhAG0AZQAsAA0ACgAuAHQAZQB4ACAALgBoAGwAagBzAC0A
+YwBvAG0AbQBhAG4AZAAsAA0ACgAuAGEAcwBjAGkAaQBkAG8AYwAgAC4AaABsAGoAcwAtAHMAdABy
+AG8AbgBnACwADQAKAC4AbQBhAHIAawBkAG8AdwBuACAALgBoAGwAagBzAC0AcwB0AHIAbwBuAGcA
+LAANAAoALgBoAGwAagBzAC0AcgBlAHEAdQBlAHMAdAAsAA0ACgAuAGgAbABqAHMALQBzAHQAYQB0
+AHUAcwAgAHsADQAKACAAIABmAG8AbgB0AC0AdwBlAGkAZwBoAHQAOgAgAGIAbwBsAGQAOwANAAoA
+fQANAAoADQAKAC4AYQBzAGMAaQBpAGQAbwBjACAALgBoAGwAagBzAC0AZQBtAHAAaABhAHMAaQBz
+ACwADQAKAC4AbQBhAHIAawBkAG8AdwBuACAALgBoAGwAagBzAC0AZQBtAHAAaABhAHMAaQBzACAA
+ewANAAoAIAAgAGYAbwBuAHQALQBzAHQAeQBsAGUAOgAgAGkAdABhAGwAaQBjADsADQAKAH0ADQAK
+AA0ACgAuAG4AZwBpAG4AeAAgAC4AaABsAGoAcwAtAGIAdQBpAGwAdABfAGkAbgAgAHsADQAKACAA
+IABmAG8AbgB0AC0AdwBlAGkAZwBoAHQAOgAgAG4AbwByAG0AYQBsADsADQAKAH0ADQAKAA0ACgAu
+AGMAbwBmAGYAZQBlAHMAYwByAGkAcAB0ACAALgBqAGEAdgBhAHMAYwByAGkAcAB0ACwADQAKAC4A
+agBhAHYAYQBzAGMAcgBpAHAAdAAgAC4AeABtAGwALAANAAoALgBsAGEAcwBzAG8AIAAuAG0AYQBy
+AGsAdQBwACwADQAKAC4AdABlAHgAIAAuAGgAbABqAHMALQBmAG8AcgBtAHUAbABhACwADQAKAC4A
+eABtAGwAIAAuAGoAYQB2AGEAcwBjAHIAaQBwAHQALAANAAoALgB4AG0AbAAgAC4AdgBiAHMAYwBy
+AGkAcAB0ACwADQAKAC4AeABtAGwAIAAuAGMAcwBzACwADQAKAC4AeABtAGwAIAAuAGgAbABqAHMA
+LQBjAGQAYQB0AGEAIAB7AA0ACgAgACAAbwBwAGEAYwBpAHQAeQA6ACAAMAAuADUAOwANAAoAfQAN
+AAoADQAKAHAAcgBlACAAewANAAoAIAAgAGYAbwBuAHQALQBzAGkAegBlADoAIAAxADMAcAB4ADsA
+DQAKAH0ADQAKAA0ACgBwAHIAZQAsACAAYwBvAGQAZQAgAHsADQAKACAAIABmAG8AbgB0AC0AZgBh
+AG0AaQBsAHkAOgAgAEMAbwBuAHMAbwBsAGEAcwAsACAAIgBMAGkAYgBlAHIAYQB0AGkAbwBuACAA
+TQBvAG4AbwAiACwAIABNAGUAbgBsAG8ALAAgAEMAbwB1AHIAaQBlAHIALAAgAG0AbwBuAG8AcwBw
+AGEAYwBlADsADQAKACAAIAB3AG8AcgBkAC0AdwByAGEAcAA6ACAAYgByAGUAYQBrAC0AdwBvAHIA
+ZAA7AA0ACgB9AA0ACgANAAoALgBwAGwAbgAgAHsADQAKACAAIABjAG8AbABvAHIAOgAgACMANAA4
+ADQAOAA0AEMAOwAgAH0ADQAKAA0ACgAuAHMAdAByACAAewANAAoAIAAgAGMAbwBsAG8AcgA6ACAA
+IwBEAEQAMQAxADQANAA7ACAAfQANAAoADQAKAC4AawB3AGQAIAB7AA0ACgAgACAAYwBvAGwAbwBy
+ADoAIAAjADEARQAzADQANwBCADsAIAB9AA0ACgANAAoALgBjAG8AbQAgAHsADQAKACAAIABjAG8A
+bABvAHIAOgAgACMAOQAzAEEAMQBBADEAOwAgAH0ADQAKAA0ACgAuAHQAeQBwACAAewANAAoAIAAg
+AGMAbwBsAG8AcgA6ACAAdABlAGEAbAA7ACAAfQANAAoADQAKAC4AbABpAHQAIAB7AA0ACgAgACAA
+YwBvAGwAbwByADoAIAAjADEAOQA1AEYAOQAxADsAIAB9AA0ACgANAAoALgBwAHUAbgAgAHsADQAK
+ACAAIABjAG8AbABvAHIAOgAgACMAOQAzAEEAMQBBADEAOwAgAH0ADQAKAA0ACgAuAG8AcABuACAA
+ewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAIwA5ADMAQQAxAEEAMQA7ACAAfQANAAoADQAKAC4AYwBs
+AG8AIAB7AA0ACgAgACAAYwBvAGwAbwByADoAIAAjADkAMwBBADEAQQAxADsAIAB9AA0ACgANAAoA
+LgB0AGEAZwAgAHsADQAKACAAIABjAG8AbABvAHIAOgAgACMAMAAwADgAOwAgAH0ADQAKAA0ACgAu
+AGEAdABuACAAewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAdABlAGEAbAA7ACAAfQANAAoADQAKAC4A
+YQB0AHYAIAB7AA0ACgAgACAAYwBvAGwAbwByADoAIAAjAEQARAAxADEANAA0ADsAIAB9AA0ACgAN
+AAoALgBkAGUAYwAgAHsADQAKACAAIABjAG8AbABvAHIAOgAgAHQAZQBhAGwAOwAgAH0ADQAKAA0A
+CgAuAHYAYQByACAAewANAAoAIAAgAGMAbwBsAG8AcgA6ACAAdABlAGEAbAA7ACAAfQANAAoADQAK
+AC4AZgB1AG4AIAB7AA0ACgAgACAAYwBvAGwAbwByADoAIAAjAEQAQwAzADIAMgBGADsAIAB9AA0A
+CgANAAoADQAKAHAAcgBlAC4AcAByAGUAdAB0AHkAcAByAGkAbgB0ACAAewANAAoAIAAgAGIAYQBj
+AGsAZwByAG8AdQBuAGQALQBjAG8AbABvAHIAOgAgACMARgA3AEYANwBGADkAOwANAAoAIAAgAHAA
+YQBkAGQAaQBuAGcAOgAgADEAMABwAHgAOwANAAoAIAAgAGIAbwByAGQAZQByADoAIAAxAHAAeAAg
+AHMAbwBsAGkAZAAgACMARQAxAEUAMQBFADgAOwAgAA0ACgAgACAAdABhAGIALQBzAGkAegBlADoA
+IAA0ADsAIAB9AA0ACgANAAoAcAByAGUALgBwAHIAZQB0AHQAeQBwAHIAaQBuAHQALgBsAGkAbgBl
+AG4AdQBtAHMAIAB7AA0ACgAgACAAYgBvAHgALQBzAGgAYQBkAG8AdwA6ACAANAAwAHAAeAAgADAA
+IAAwACAAIwBGAEIARgBCAEYAQwAgAGkAbgBzAGUAdAAsACAANAAxAHAAeAAgADAAIAAwACAAIwBF
+AEMARQBDAEYAMAAgAGkAbgBzAGUAdAA7ACAAfQANAAoADQAKAA0ACgBwAHIAZQAuAHAAcgBlAHQA
+dAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0AcwAg
+AHsADQAKACAAIABjAG8AbABvAHIAOgAgACMAMQBFADMANAA3AEIAOwANAAoAIAAgAHAAYQBkAGQA
+aQBuAGcALQBsAGUAZgB0ADoAIAAzADAAcAB4ACAAIQBpAG0AcABvAHIAdABhAG4AdAA7AA0ACgAg
+ACAAbQBhAHIAZwBpAG4ALQB0AG8AcAA6ACAAMAA7AA0ACgAgACAAbQBhAHIAZwBpAG4ALQBiAG8A
+dAB0AG8AbQA6ACAAMAA7AA0ACgB9AA0ACgANAAoAcAByAGUALgBwAHIAZQB0AHQAeQBwAHIAaQBu
+AHQALgBsAGkAbgBlAG4AdQBtAHMAIABvAGwALgBsAGkAbgBlAG4AdQBtAHMAIABsAGkAIAB7AA0A
+CgAgACAAYwBvAGwAbwByADoAIAAjAEIARQBCAEUAQwA1ADsADQAKACAAIABsAGkAbgBlAC0AaABl
+AGkAZwBoAHQAOgAgADEAOABwAHgAOwANAAoAIAAgAHAAYQBkAGQAaQBuAGcALQBsAGUAZgB0ADoA
+IAAxADIAcAB4ACAAIQBpAG0AcABvAHIAdABhAG4AdAA7ACAADQAKAH0ADQAKAA0ACgBwAHIAZQAu
+AHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUA
+bgB1AG0AcwAgAGwAaQAuAEwAMAAsAA0ACgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAu
+AGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAuAEwAMQAsAA0A
+CgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAu
+AGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAuAEwAMgAsAA0ACgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAA
+cgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAu
+AEwAMwAsAA0ACgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0A
+cwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAuAEwANAAsAA0ACgBwAHIAZQAuAHAAcgBl
+AHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0A
+cwAgAGwAaQAuAEwANQAsAA0ACgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBu
+AGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAuAEwANgAsAA0ACgBwAHIA
+ZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBu
+AGUAbgB1AG0AcwAgAGwAaQAuAEwANwAsAA0ACgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4A
+dAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8AbAAuAGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAuAEwAOAAs
+AA0ACgBwAHIAZQAuAHAAcgBlAHQAdAB5AHAAcgBpAG4AdAAuAGwAaQBuAGUAbgB1AG0AcwAgAG8A
+bAAuAGwAaQBuAGUAbgB1AG0AcwAgAGwAaQAuAEwAOQAgAHsADQAKACAAIABsAGkAcwB0AC0AcwB0
+AHkAbABlAC0AdAB5AHAAZQA6ACAAZABlAGMAaQBtAGEAbAAgACEAaQBtAHAAbwByAHQAYQBuAHQA
+OwAgAA0ACgB9AA0ACgA=
+
+------=_Next_Part_0012973977.436--
+
