@@ -262,3 +262,4 @@ f1()   #Call_class()()   (Call_class()) 这两种写法都可以执行call
 
 
 
+

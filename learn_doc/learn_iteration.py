@@ -182,6 +182,9 @@ try:
 except myException, c:
     print '我自己做的异常'
 
+###断言,必须满足这个条件就会继续往下走,负责就引发一个异常
+#assert (1 == 1)
+
 
 
 
