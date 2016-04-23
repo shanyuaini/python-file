@@ -5,6 +5,7 @@ __author__ = 'sylar'
 进程下的线程是共享主进程的资源
 全局解释器锁:防止进程有多个线程同时被执行.同一个进程的子进程同一时间只有一个能获取CPU使用权限(python特有,解决方案就是多进程)
 io密集型用多线程,计算密集型用多进程,因为io操作不需要CPU参与,是由线程和硬件资源管理交互
+GIL globl interpreter lock 全局解释器锁
 
 ###threading.Thread模块多线程
 statr()

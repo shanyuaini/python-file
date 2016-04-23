@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta  http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>Title</title>  <!--浏览器标题-->
+
+</head>
+<body>
+
+
+<!--打印符号要用固定方式-->
+    常用符号 <a href="http://www.cnblogs.com/web-d/archive/2010/04/16/1713298.html">http://www.cnblogs.com/web-d/archive/2010/04/16/1713298.html</a>
+<!--块级标签,占用一整行-->
+    <div>块级标签1</div><div>块级标签2</div><!--div标签是万能标签可以伪造标签-->
+<!--行内标签,也称内联标签,只占标签自身长度,如果换行会有一个空格-->
+    <span>内联标签1</span><span>内联标签2</span>
+    <span>内联标签3</span>
+    <p>
+            p 和 br 和空格<br>
+        p表示段落，默认两个段落之间是有间隔一行的！
+        <br/>br是换行,不需要结束符号<!--空格&nbsp;有多少个空格就打多少个&nbsp;-->
+    </p>
+
+    <p>dddd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dddd</p>
+    <h1>h标签最大h1最小h6</h1><h2>h标签最大h1最小h6</h2><h6>h标签最大h1最小h6</h6>
+
+    <h2>select标签</h2>
+        select内,每一个option value="n" 表示第几个选项可以提交到后台 selected="selected"表示为默认选项<br/>
+        <select>
+            <option value="1">成都</option>
+            <option value="2" selected="selected">绵阳</option>
+            <option value="3">广元</option>
+        </select>
+        <br>size="3"表示显示几个选项可以上下拖动<br>
+        <select size="3">
+            <option value="1">成都</option>
+            <option value="2" selected="selected">绵阳</option>
+            <option value="3">广元</option>
+            <option value="4">江油</option>
+        </select>
+        <br>multiple="multiple"表示CTRL可以多选<br>
+        <select multiple="multiple" size="3">
+            <option value="1">成都</option>
+            <option value="2" selected="selected">绵阳</option>
+            <option value="3">广元</option>
+            <option value="4">江油</option>
+        </select>
+        <br> optgrop label="xx" 以xx为组名给选项分组  <br>
+        <select>
+            <optgroup label="大城市">
+                <option value="1">成都</option>
+                <option value="2" selected="selected">绵阳</option>
+            </optgroup>
+            <optgroup label="小城市">
+                <option value="3">广元</option>
+                <option value="4">江油</option>
+            </optgroup>
+        </select>
+    <h2>input标签</h2>
+        写法&lt;input type=&gt; <br>
+        文本输入框: <input type="text" maxlength="5"/> type="text" maxlength="5"最多允许输入长度<br>
+        多行文本框: <textarea></textarea><br>
+        密码输入框: <input type="password"/><br>
+        勾选输入框: <input type="checkbox"/><br>
+        圆形勾选框: <input type="radio"/><br>
+        单选框:在勾选框加上相同的name属性,当name属性一样时,只能选中一个<br>
+        男<input type="radio" name="gender" />
+        女<input type="radio" name="gender" />
+        保密<input type="radio" name="gender" /> <br>
+        普通按钮 type=button value='xx' 要显示的字符为value 用来触发事件,比如更新删除<br>
+        <input type="button" value="更新" onclick="alert(123)" >在button使用其它标签出发事件<br>
+        提交文件按钮  <br>
+        <input type="file">  <br>
+        提交表单按钮,只能提交数据到后台.<br>
+        <input type="submit">
+
+    <h2>form标签</h2>
+        写法&lt;form action="url"&gt; &lt;/form&gt;  action="url"提交数据到获取信息的地址<br>
+        <form action="/getdata.py" method="post">
+            用户名:<input type="text" name="username" maxlength="10"/>
+            <br><br>
+            密&nbsp;码:<input type="password" name="passwd"  />
+            <br><br>
+            <input type="submit" value="submit" >  button不会提交表单,submit可以提交
+        </form>
+    <h2>label标签</h2>
+        在label标签中插入其它标签,点击label标签内任意位置都可以进行其它标签的操作,for和id标签对应<br>
+        <label for="name2">文本输入框: <input type="text" id="name2" /></label>
+
+    <h2>ul标签</h2>
+        <ul>
+            <li>ul段落1</li>
+            <li>ul段落2</li>
+            <li>ul段落3</li>
+        </ul>
+    <h2>ol标签</h2>
+        <ol>
+            <li>ol段落1</li>
+            <li>ol段落2</li>
+            <li>ol段落3</li>
+        </ol>
+    <h2>dl标签</h2>
+        <dl>
+            <dt>第一级第一项</dt>
+            <dd>第二级第一项</dd>
+            <dd>第二级第二项</dd>
+            <dt>第一级第二项</dt>
+            <dd>第二级第一项</dd>
+            <dd>第二级第二项</dd>
+        </dl>
+    <h2>table标签</h2>
+      展示一个表格 tr为每一行, td为每一列,th为粗体 border="1"边框, colspan='2'左右合并,rawspan向下合并
+        <table border="1">
+            <tr>
+                <th>IP</th>
+                <th>IDC</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>192.168.5.5</td>
+                <td>成都</td>
+                <td>online</td>
+            </tr>
+                <tr>
+                <td colspan="2">192.168.5.5</td>
+                <td>online</td>
+            </tr>
+            <tr>
+                <td rowspan="2">192.168.5.5</td>
+                <td>成都</td>
+                <td>online</td>
+            </tr>
+                <tr>
+
+                <td>成都</td>
+                <td>online</td>
+            </tr>
+
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>IDC</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>192.168.5.5</td>
+                    <td>成都</td>
+                    <td>online</td>
+                 </tr>
+                 <tr>
+                    <td>192.168.5.5</td>
+                    <td>成都</td>
+                    <td>online</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
