@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .show{
+
+        }
+        .hide{
+            display:none;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<fieldset>
+js文件都放在body的尾部
+<a href="http://www.w3school.com.cn/jsref/jsref_events.asp">js博文</a>
+<script src="js/learn_js.js"></script>
+<script type="text/javascript">alert('from:itself sylar');</script>
+<hr >
+
+<div id="t1">DOM编程<a></a></div>
+<div name="n1"><a>选择器:</a></div><hr>
+
+<div name="n1"><a>document.getElementById('id')   标签的id唯一</a></div><hr>
+<div id="t2">document.getElementsById('name') 标签的name属性,可以有多个</div><hr>
+document.getElementsById('tagname')  标签的名称div,a等
+<hr>
+document.createElement('a')    自定义标签
+<hr>
+</fieldset>
+<br>
+<fieldset>
+    <div id="t3" class="show" name="tom1">class修改样式</div>
+    <div id="t4" style="width:500px;height:300px;border:2px solid #333;">修改style样式的属性</div>
+
+</fieldset>
+
+<form id="F1" action="http://www.sogou.com/sogou?" method="GET">伪造提交
+    <input type="text" name="query"/>
+    <!--<input type="submit" value="提交">-->
+    <input type="button" value="伪提交" onclick="Foo();" /> 当点击这里的时候onclick会触发Foo()函数
+</form>
+
+<fieldset>
+    <legend>事件触发见day10\search.html</legend>
+
+</fieldset>
+
+
+<script type="text/javascript">
+/*
+//get id 根据ID属性找内容
+    var id = document.getElementById('t1');
+    console.log(id.innerText); //在console打印获取到的值
+    id.innerText = 'sylar' //修改id为t1的标签里的文本内容
+    console.log(id.innerHTML) //将HTML标签和文本都拿到
+    id.innerHTML = 'sylar'
+*/
+/*
+//get name  根据name属性找内容
+    var names = document.getElementsByName('n1')
+    console.log(name.innerText)
+    names[1].innerText = 'sylar'
+    for (var item in names ){names[item].innerText='sylar';}
+*/
+/*
+//get tagname  根据标签名找内容
+    var names = document.getElementsByTagName('div')
+    console.log(name.innerText)
+    for (var item in names ){names[item].innerText='sylar';}
+*/
+/*
+//自定义标签
+    var tag = document.createElement('a');
+    tag.href = 'http://www.sylar.gq';
+    tag.innerText = '点我'; //创建一个标签并定义属性
+
+    var id2 = document.getElementById('t2');
+    id2.appendChild(tag)  //append 追加
+*/
+
+/*
+//自定义标签2
+    var tag = "<a href='http://www.sylar.gq'>点我</a>";
+    var id2 = document.getElementById('t2');
+    id2.innerHTML = tag;
+*/
+
+/*
+//class修改样式
+    var id = document.getElementById('t3');
+    id.className = 'hide';//将默认t3的属性从show改为hide
+*/
+/*
+//class修改属性
+    var id = document.getElementById('t3');
+    console.log(id.getAttribute('name'));
+    id.setAttribute('name','sylar');
+    console.log(id.getAttribute('name'));
+*/
+/*
+//style修改属性
+    var id = document.getElementById('t4');
+    var width = id.style.width;
+    console.log(width);
+    id.style.width = '100px'
+    console.log(width);
+*/
+
+
+//伪造提交
+    function Foo(){
+        var id = document.getElementById('F1').submit();
+
+    }
+
+
+
+</script>
+</body>
+</html>

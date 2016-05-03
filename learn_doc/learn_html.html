@@ -6,8 +6,8 @@
 
 </head>
 <body>
-
-
+<br><br>
+------------------------------HTML--------------------------------<br>
 <!--打印符号要用固定方式-->
     常用符号 <a href="http://www.cnblogs.com/web-d/archive/2010/04/16/1713298.html">http://www.cnblogs.com/web-d/archive/2010/04/16/1713298.html</a>
 <!--块级标签,占用一整行-->
@@ -16,10 +16,12 @@
     <span>内联标签1</span><span>内联标签2</span>
     <span>内联标签3</span>
     <p>
-            p 和 br 和空格<br>
+            p 和 br 和空格 span<br>
         p表示段落，默认两个段落之间是有间隔一行的！
-        <br/>br是换行,不需要结束符号<!--空格&nbsp;有多少个空格就打多少个&nbsp;-->
-    </p>
+        <hr>分隔符,换行加一条实线
+        <br>br是换行,不需要结束符号<!--空格&nbsp;有多少个空格就打多少个&nbsp;-->
+        <span>span占位符 没有默认意义,只是占位定义属性</span>
+   </p>
 
     <p>dddd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dddd</p>
     <h1>h标签最大h1最小h6</h1><h2>h标签最大h1最小h6</h2><h6>h标签最大h1最小h6</h6>
@@ -83,6 +85,12 @@
             <br><br>
             <input type="submit" value="submit" >  button不会提交表单,submit可以提交
         </form>
+        提交文件
+        <form enctype="multipart/form-data" action="/getdata.py" method="post">
+            <input type="file">
+        </form>
+
+
     <h2>label标签</h2>
         在label标签中插入其它标签,点击label标签内任意位置都可以进行其它标签的操作,for和id标签对应<br>
         <label for="name2">文本输入框: <input type="text" id="name2" /></label>
@@ -109,7 +117,7 @@
             <dd>第二级第二项</dd>
         </dl>
     <h2>table标签</h2>
-      展示一个表格 tr为每一行, td为每一列,th为粗体 border="1"边框, colspan='2'左右合并,rawspan向下合并
+        展示一个表格 tr为每一行, td为每一列,th为粗体 border="1"边框, colspan='2'左右合并,rawspan向下合并
         <table border="1">
             <tr>
                 <th>IP</th>
@@ -151,14 +159,208 @@
                     <td>192.168.5.5</td>
                     <td>成都</td>
                     <td>online</td>
-                 </tr>
-                 <tr>
+                </tr>
+                <tr>
                     <td>192.168.5.5</td>
                     <td>成都</td>
                     <td>online</td>
                 </tr>
             </tbody>
         </table>
+    <h2>fieldset标签</h2>
+        边框栏
+        <fieldset>
+            <legend>登录</legend>
+        <form action="/getdata.py" method="post">
+            用户名:<input type="text" name="username" maxlength="10"/>
+            <br><br>
+            密&nbsp;码:<input type="password" name="passwd"  />
+            <br><br>
+            <input type="submit" value="submit" >
+        </form>
+
+        </fieldset>
+</body>
+</html>
+<br><br><br><br><br>
+------------------------------CSS--------------------------------<br>
+<fieldset>
+    <legend>CSS</legend>
+css层叠样式表分为三种方式结合HTML使用
+
+元素内联:直接写在html标签当中
+    <div style="backgroud-color;red">元素内联</div>
+页面嵌入:在页面头部嵌入代码块
+    <html>
+        <head>
+            <style>
+                .logo{
+                    backgroud-color:red;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="logo">在本页中引用</div>
+        </body>
+    </html>
+外部引入:直接在头部引入单独的CSS文件,所有的文件都可以引用
+    <link rel="stylesheet" href="common.css"><br>
+</fieldset>
+<fieldset>
+    <legend>css选择器代码块的定义</legend>
+
+    <h3>.logo{}  :  使用.开头的样式名在html使用class=样式名来引用<br></h3>
+    <h3>#logo{}  :  使用#开头的样式名在html使用id=样式名来引用<br></h3>
+    <h3>div{}    :  给所有div标签定义属性<br></h3>
+    <h3>a,div{}  :  给两种类型标签定义同一属性,组合关系<br></h3>
+    <h3>a div{}  :  a标签内的div标签定义属性,层级关系,可以多层<br></h3>
+    <h3>input[type='text']{} :  input标签当type=text的时候才会使用属性</h3>
+</fieldset>
+
+<fieldset>
+    <legend>css常用属性</legend>
+    <dl><a>background:背景相关</a>
+        <dd>background-color : 背景色</dd>
+        <dd>background-image : 背景图片</dd>
+        <dd>background-repeat : 默认重复的背景图片 no-repeat不重复 </dd>
+        <dd>background-position : 截取一段图片背景图片 url图片地址,高度,宽度 是否重复:backgroud-position: url(image/5.png) -100px -200px no-repeat</dd>
+    </dl>
+</fieldset>
+
+<fieldset>
+    <legend><a>css边框使用style定义,每个属性用;分开</a>    </legend>
+        <dl>
+            <dd>border 边框粗度</dd>
+            <dd>solid 边框实线</dd>
+            <dd>height 边框高度</dd>
+            <dd>margin 外边距</dd>
+            <dd>padding 内边距</dd>
+        </dl>
+<div style="border:1px solid red;height:200px;">
+    <div style="background-color: green; height:20; margin-top:50px; margin-left:40px; margin-right:40px" >外边框</div>
+</div>
+
+<div style="border:1px solid red;height:200px;">
+    <div style="background-color: green; height:20; padding-top:50px; padding-left:40px; padding-right:40px" >内边框</div>
+</div>
+<div style="width:500px;height:300px;border:1px;solid #ddd;margin:0 auto;background-color:red;" >窗体居中</div>
+</fieldset>
+
+<fieldset>
+    <legend>display属性</legend>
+    <dl>
+        <dd>none 隐藏属性</dd>
+        <dd>block 将内联变为块级标签</dd>
+        <dd>inline 将块级变为内联标签</dd>
+    </dl>
+</fieldset>
+<fieldset>
+    <legend>cursor鼠标样式</legend>
+    <span style="cursor:help">help</span>
+    <span style="cursor:pointer">伪造超链接</span>
+</fieldset>
+
+<fieldset>
+    <legend>float浮动,</legend>
+        <div style="background-color:red;">div1</div>
+        <div style="background-color:green;">div2</div>
+        <div style="background-color:yellow;float:left;width:50%;">div2</div>
+        <div style="background-color:yellow;float:right;">div2</div>
+        <br>
+
+    子标签使用浮动会覆盖父标签的属性
+        <div style="background-color:red;">
+            <div style="float:left">div1</div>
+            <div style="float:left">div2</div>
+        </div>
+        <br>
+    覆盖问题解决1:
+
+        <div style="background-color:red;">
+            <div style="float:left">divi1</div>
+            <div style="float:left">div2</div>
+            <div style="clear:both"></div>
+        </div>
+
+    覆盖问题解决2:
+
+        .clearfix:after{
+            content:".";
+            display: block;
+            height:0;
+            clear: both;
+            visibility: hidden;
+        }
+        <div style="background-color:red;" class="clearfix">
+            <div style="float:left">divi1</div>
+            <div style="float:left">div2</div>
+            <div style="clear:both"></div>
+        </div>
+
+</fieldset>
+<fieldset>
+
+    <legend>position<a href="http://www.cnblogs.com/canuseethat/archive/2010/09/16/1827804.html">相关网址</a> </legend>
+fixed属性固定
+<!--页面布局
+<div style="position:fixed;height:45px;background-color:red;width:100%;top:0px;">fixed属性顶部跟随栏</div>
+
+<div style="margin-top:52px;">
+    <div style="width:200px;background-color:#333;position:fixed;top:52px;bottom:0;" >左侧标题</div>
+    <div style="margin-left:220px;background-color:blue;" >右侧内容</div>
+</div>
+</fieldset>
+-->
+    absolute受relative的限制
+    <div style="position:relative;width:400px;height:200px;background-color:#ddd">
+        <div style="width:20px;height:20px;position:absolute;top:0;left:0;bottom:0;background-color:red;"></div>
+
+    </div>
+    </fieldset>
+
+
+蒙板见learn_css
+<!-- 遮罩层css,一般放在head-->
+<!--
+        .shade{
+            position:fixed;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            background-color:#333;
+            opacity:0.4;
+        }
+<table>
+    <tr>
+        <th>IP</th>
+        <th>编辑</th>
+    </tr>
+    <tr>
+        <td>192.168.1.1</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td>192.168.1.2</td>
+        <td>删除</td>
+    </tr>
+        <tr>
+        <td>192.168.1.3</td>
+        <td>删除</td>
+    </tr>
+        <tr>
+        <td>192.168.1.4</td>
+        <td>删除</td>
+    </tr>
+</table>
+-->
+<!-- 遮罩层开始-->
+<!--
+<div class="shade"></div>-->
+<!-- 遮罩层结束-->
+
+
+
 
 
 
@@ -187,5 +389,3 @@
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</body>
-</html>

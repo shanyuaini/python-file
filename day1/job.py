@@ -1,6 +1,6 @@
-import os
 #_*_coding:utf-8_*_
 #first version
+import os
 '''
 pwd_menu = { #account list ant count
     'alex' : ['123456',0],

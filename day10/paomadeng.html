@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<!-- www.cnblogs.com/wupeiqi/articles/4457274.html-->
+    <div style="width:500px;">
+        <div id ='process' style="width:10%;background-color:green;height:10px;"></div>
+    </div>
+    <script type="text/javascript">
+    pro = 10;
+    function Foo(){
+        var id = document.getElementById('process');
+        pro = pro +10;
+        if(pro > 100){
+            clearInterval(interval);
+        }
+        else{
+            id.style.width = pro + '%';
+        }
+    }
+    interval = setInterval('Foo()',500)
+
+
+
+    </script>
+
+</body>
+</html>
