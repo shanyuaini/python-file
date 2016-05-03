@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ol style="display: inline">
+    <li>首页</li>
+    <li>主机</li>
+    <li>资产</li>
+    <li>配置</li>
+</ol>
+{% block page-content %}  <!--声明从这里到endblock之间的内容在其它页面引用时可以不被继承-->
+
+First Page
+{{ yourPorn }}<!--django的html标记表示这里是要插入django的数据.-->
+{{ name_info }}
+<hr>
+<ul>
+{% for k,v in name_info.items %} <!--在html只能使用python的for和if循环-->
+    {% if k == 'job' %}   <!--早期版本if的写法是  ifequal k 'job'-->
+        <li style="background: greenyellow">{{ k }} :: {{ v }}</li>
+    {% else %}
+        <li>{{ k }} :: {{ v }}</li>
+    {% endif %}<!--在html中嵌入循环必须要用闭合标记-->
+{% endfor %}
+</ul>
+{% endblock %}
+
+<hr>
+footer
+</body>
+</html>

@@ -57,13 +57,6 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-
-
 '''
 import SocketServer
 class MyServer(SocketServer.BaseRequestHandler):
