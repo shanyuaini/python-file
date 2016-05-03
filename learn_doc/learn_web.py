@@ -1,6 +1,15 @@
 #_*_coding:utf-8 _*_
 __author__ = 'sylar'
 
+'''wsgi
+Python的标准web接口
+day11
+'''
+
+
+
+
+
 '''
 bootstrap
 前端设计
