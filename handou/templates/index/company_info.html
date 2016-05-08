@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+    <title>客户信息维护系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="static/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/#">客户管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/templates/index/index.html#">首页</a></li>
+            <li><a href="/templates/setting/setting.html">设置</a></li>
+            <li><a href="/templates/profile/profile.html">个人信息</a></li>
+
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="搜索">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/templates/index/index.html">客户信息 <span class="sr-only">(current)</span></a></li>
+            <!--
+            <li><a href="http://v3.bootcss.com/examples/dashboard/#">Reports</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/#">Analytics</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/#">Export</a></li>
+
+          </ul>
+          <ul class="nav nav-sidebar">
+
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">Nav item</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">Nav item again</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">One more nav</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">Another nav item</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">Nav item again</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">One more nav</a></li>
+            <li><a href="http://v3.bootcss.com/examples/dashboard/">Another nav item</a></li>
+            -->
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div align="center">
+          </div>
+          <div class="row placeholders">
+
+            <div align="center" class="col-xs-6 col-sm-3 placeholder">
+
+
+            </div>
+            <!--
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            -->
+
+          </div>
+
+          <h3 class="sub-header" align="center"><b>详细信息</b></h3>
+
+            <form class="form-inline">
+              <div class="table-bordered">
+                  <h4 align="center"><b>基本信息</b></h4>
+
+              <div class="form-group">
+                <label>公司名称:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>电话: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>地址: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>联系人:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>单位负责人:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>手机:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              </div>
+              <div class="table-bordered">
+              <div class="form-group">
+                <label>营业执照号:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>开户许可证:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputFile">合同上传</label>
+                <input type="file" id="exampleInputFile">
+
+              </div>
+              <button type="submit" class="btn btn-default">保存</button>
+              </div>
+            </form>
+
+
+            <form class="form-inline">
+              <div class="table-bordered">
+                  <h4 align="center"><b>资质</b></h4>
+              <div class="table-bordered">
+              <div class="form-group">
+                <label>主项:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>编号: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>有效期: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>预警时间:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">合同管理</label>
+                <input type="file" id="exampleInputFile">
+
+              </div>
+              </div>
+              <div class="table-bordered">
+              <div class="form-group">
+                <label>增项:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>编号:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>有效期:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>预警时间:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputFile">合同管理</label>
+                <input type="file" id="exampleInputFile">
+              </div>
+              </div>
+              <button type="submit" class="btn btn-default">添加</button>
+              <button type="submit" class="btn btn-default">保存</button>
+              </div>
+            </form>
+
+
+            <form class="form-inline">
+              <div class="table-bordered">
+                  <h4 align="center"><b>安许</b></h4>
+              <div class="table-bordered">
+              <div class="form-group">
+                <label>安许号:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>安许锁号: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>密码: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>有效期: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>预警时间:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">附件上传</label>
+                <input type="file" id="exampleInputFile">
+              </div>
+
+              </div>
+              <button type="submit" class="btn btn-default">添加</button>
+              <button type="submit" class="btn btn-default">保存</button>
+              </div>
+            </form>
+
+            <form class="form-inline">
+              <div class="table-bordered">
+                  <h4 align="center"><b>人员</b></h4>
+              <div class="table-bordered">
+              <div class="form-group">
+                <label>姓名:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>职务:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>证书名称:</label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>有效期: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label>预警时间: </label>
+                <input type="text" class="form-control" id="company_name" placeholder="公司名称">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">附件上传</label>
+                <input type="file" id="exampleInputFile">
+              </div>
+
+              </div>
+              <button type="submit" class="btn btn-default">添加</button>
+              <button type="submit" class="btn btn-default">保存</button>
+              </div>
+            </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/jquery.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="static/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html>

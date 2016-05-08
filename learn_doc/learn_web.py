@@ -14,7 +14,7 @@ day11
 bootstrap
 前端设计
 需要jquery支持
-
+fontawesome.dashgame.com  #图标
 '''
 '''
 MVC&MTV都分为三部分
@@ -57,4 +57,21 @@ script parameters:  runserver 127.0.0.1:8000
 '''基本用法
 查看learn_django项目和注释
 https://docs.djangoproject.com/en/1.9/
+'''
+'''
+DATABASES = {
+    'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'Name': os.path.join(BASE_DIR, 'db.sqlite3')
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 's10day12',
+        'USER':'root',
+        'PASSWORD':'123456',
+        'HOST':'127.0.0.1',
+        'PORT':3306
+    }
+}
+#python manage.py makemigrations appname #检查models.py语法是否有错误
+#python manage.py migrate   #更新models.py的语法到数据库
+
 '''
