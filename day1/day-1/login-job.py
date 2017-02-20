@@ -26,6 +26,7 @@ while retry_count < retry_limit:
             match_flag = True  #把标记改为True,然后跳出.
             break  #这个只是跳出这个for循环
     f.close()
+
     if match_flag == False:#没有匹配到就将count+1
         print "User unmatched"
         retry_count+=1
