@@ -1,5 +1,5 @@
-#Django入门(一)
-
+Django入门(一)
+=
 官方网站: [点击](https://www.djangoproject.com/)
 
 Django 项目是一个python定制框架，它源自一个在线新闻 Web 站点，于 2005 年以开源的形式被释放出来。Django 框架的核心组件有：  
@@ -9,7 +9,8 @@ Django 项目是一个python定制框架，它源自一个在线新闻 Web 站�
 - 设计者友好的模板语言  
 - 缓存系统。  
 
-###设计模式MVC和MTV
+设计模式MVC和MTV
+===
 简单来说就是按照不同的功能将文件打包归类的方法.
 
 - MVC: 大多数web框架使用的设计模式  
@@ -26,9 +27,12 @@ Views: web后台处理函数 (控制器)
 
 ![](http://7xread.com1.z0.glb.clouddn.com/eab4e97e-605b-4ce2-bda6-a9a38c480131)
 
-##基本操作
 
-###安装
+基本操作
+==
+
+安装
+===
 ```
 pip install django
 ```
@@ -54,7 +58,8 @@ manager.py: 项目主程序,封装了django的默认命令通过执行该文件�
 >>PS: 使用pycharm的时候最好用ide自己的创建newproject功能.在cmd创建的项目在pycharm会有一些路径问题.应该是pycharm的bug.不能正确读取项目的配置吧.也或许是settings某些配置需要手动配置.很早就发现这个问题,一直没有仔细研究
 
 
-###创建app
+创建app
+===
 
 ```
 cd  D:\git\Mysite
@@ -78,7 +83,8 @@ apps.py: APP的配置文件
 models.py: MTV中的models,只能是一个文件,不能动  
 views.py: MTV中的views,可以改为一个文件夹  
 
-###运行第一个APP
+运行第一个APP
+===
 
 ```
 (python3) D:\git\Mysite>python manage.py runserver 127.0.0.1:8000
@@ -112,7 +118,8 @@ def home(request):
 ![](http://7xread.com1.z0.glb.clouddn.com/180a1a79-ad7b-48bf-bbe4-dfe64f484e5d)
 
 
-###数据库操作
+数据库操作
+===
 djang的数据库在settings.py里的DATABASES()配置,默认使用sqlite,而数据库的管理是通过migrations,新建的models文件会经过migrations生成migrations代码文件,migrate通过migrations代码文件生成数据库的表数据.所以要先makemigrations再进行migrate
 
 - makemigrations生成migrations文件
@@ -135,7 +142,8 @@ migrate会根据当前的migrations代码和django已经使用中的migrations�
 
 >>PS: Django默认是依赖一些数据库表
 
-###默认admin
+默认admin
+===
 默认后台的管理员
 
 ```
@@ -147,7 +155,8 @@ migrate会根据当前的migrations代码和django已经使用中的migrations�
 ![](http://7xread.com1.z0.glb.clouddn.com/3341a4ac-72c8-4547-afe9-d19abacf4541)
 
 
-###静态文件设置,按照规范应该设置统一路径
+静态文件设置,按照规范应该设置统一路径
+===
 1. html在项目的settings.py里设定,应该设在templates
 ```
 TEMPLATES = [
@@ -165,13 +174,15 @@ STATICFILES_DIRS = (
 )
 ```
 
-###路由系统  urls.py 
+路由系统  urls.py 
+===
 将用户不同请求的发送到后端进行不同的处理,定义路由有两种方式
 
 - 根据路由规则对应views中函数,支持正则表达式
 
-#urls.py中定义
+
 ```
+#urls.py中定义
 url(r'^blogs/(\d*)', views.blogs),  
 url(r'^blogs/(?P<name>\w*)/(?P<id>\d*)', views.blogs),
 url(r'^blogs/(?P<name>\w*)', views.blogs,{'id':333}),
@@ -221,12 +232,14 @@ def myHome(request):
 
 
 
-###数据库的基本增删改查
+数据库的基本增删改查
+===
 django有自己的orm.简单来说就是在models.py创建一个类就是创建一张表,类里的字段就生成一个列(也就是数据库的字段),一般每个APP都有自己的models.py
 
 >>同样我也说不清楚这个,文档: [点击](http://www.open-open.com/lib/view/open1420814506140.html)
 
-#####创建表
+创建表
+=====
 1. 在app的models.py加入代码:  
 
 ```
@@ -244,7 +257,8 @@ class UserInfo(models.Model):
 ![](http://7xread.com1.z0.glb.clouddn.com/0ab196a4-7314-4686-9328-12bad92dffe1)
 
 
-#####增删改查
+增删改查
+=====
 ```
 #增
 models.UserInfo.objects.create(username='sylar',password='123456',age=73)
@@ -261,7 +275,8 @@ models.UserInfo.objects.filter(username='tom').update(age=80)
 user_list = models.UserInfo.objects.all()
 ```
 
-#####数据展示的小例
+数据展示的小例
+=====
 1. cmdb的views.py增加代码:
 
 ```
@@ -307,7 +322,8 @@ urlpatterns = [
 ```
 ![](http://7xread.com1.z0.glb.clouddn.com/9afee54e-0e07-4c8a-9c56-d2b1f67a177f)
 
-###用户数据提交 
+用户数据提交 
+===
 >>PS: 如果用post方式提交要将settings里的MIDDLEWARE:'django.middleware.csrf.CsrfViewMiddleware',注释
 
 db.html

@@ -1,8 +1,11 @@
-#CSS
+CSS
+=
 
-###一,书写规范
+一,书写规范
+===
 
-#####css代码的三种书写方式
+css代码的三种书写方式
+=====
 主要有三种:1代码段中定义,2在头部定义,3单独的css文件.后面两种主要是为了代码的复用.写在不同位置的css代码有细微的区别
 ```
 <!DOCTYPE html>
@@ -30,7 +33,8 @@
 </body>
 </html>
 ```
-#####css选择器
+css选择器
+=====
 1. class选择器, 在头部用.word定义一个css样式.在代码段中用class属性引用.  
 
 ```
@@ -129,9 +133,10 @@
 }
 ```
 
-###二,常用CSS样式
-
-#####display
+二,常用CSS样式
+===
+display
+=====
 
 定义标签类型:
 
@@ -151,7 +156,8 @@ inline:将标签定义为内联标签
 ```
 
 
-#####背景background
+背景background
+=====
 css: [点击](http://www.w3school.com.cn/css/css_background.asp)  
 css3:[点击](http://www.w3school.com.cn/css3/css3_background.asp)
 
@@ -165,7 +171,8 @@ css3:[点击](http://www.w3school.com.cn/css3/css3_background.asp)
 	background-position: 0 0;/* 图片蒙板移动*/
 }
 ```
-#####链接a: 系列
+链接a: 系列
+=====
 
 鼠标选中框. text-decoration去除下划线
 
@@ -208,7 +215,8 @@ a:active 是介于hover visited 之间的一个状态，可以说是链接被按
 </div>
 <a href="#">BBB</a>
 
-#####cursor鼠标样式
+cursor鼠标样式
+=====
 
 常用样式: pointer,help,wait,move,crosshair
 
@@ -228,7 +236,8 @@ a:active 是介于hover visited 之间的一个状态，可以说是链接被按
     鼠标cursor: 自定义
 </span>
 
-#####边框border  
+边框border  
+=====
 文档: [点击](http://www.w3school.com.cn/css/css_border.asp)
 1. 框体border-style
 
@@ -270,7 +279,8 @@ a:active 是介于hover visited 之间的一个状态，可以说是链接被按
 ![框图](http://7xread.com1.z0.glb.clouddn.com/9d0fd2cf-865e-4046-9b3b-71038f07bc46)
 
 
-#####定位position
+定位position
+=====
 div、h1 或 p 元素常常被称为块级元素(块级标签)。这意味着这些元素显示为一块内容，即“块框”。与之相反，span 和 strong 等元素称为“行内元素”(内联标签)，这是因为它们的内容显示在行中.即“行内框”
 position:有4个属性
 
@@ -340,7 +350,8 @@ left:20px
 <div style="background-color: green;height: 5000px"></div>
 ```
 
-#####层级 z-index
+层级 z-index
+=====
 不同页面的层级,数值越大的越上层,例如配合fixed做一个要求登录的窗口
 
 ```
@@ -360,7 +371,8 @@ left:20px
 
 
 
-##### 浮动 float
+浮动 float
+=====
 浮动是针对父框体对框体进行定位,
 
 >>父框体没有定义height,当子框体使用float时父框体就不会根据子框体增长(设置的背景色也不会生效),需要在子框体中定义一个clear:both的属性()
@@ -392,7 +404,8 @@ left:20px
 ------
 
 
-#####透明度opacity
+透明度opacity
+=====
 从0-1表示百分比  
 ```
 <div style="opacity: 0.4;background-color:red ; height: 100px;width: 100px;float: left;">
