@@ -1,11 +1,12 @@
-##bootstrap
 
-说了这么多,其实就是因为一直看不懂,玩不来bootstrap.所以从头学习了一下html到jquery.能看懂javascript和html可以理解了.
 
 中文网站: [点击](http://www.bootcss.com/)
-#jQuery 入门
 
-##jQuery
+jQuery 入门
+==
+jQuery
+==
+
 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 HTML 元素选取  
 HTML 元素操作  
@@ -18,7 +19,9 @@ Utilities
 
 官网: [点击](http://jquery.com/)  
 中文文档: [点击](http://www.php100.com/manual/jquery/)  
-##书写规范
+
+书写规范
+==
 ```
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 					 //代码不能写在引用文件这个容器里
@@ -30,10 +33,12 @@ Utilities
 
 >>PS:由于编辑器的JS编码问题中文在js编码过程中没有使用utf-8.显示乱码.实际代码和注释源码有区别
 
-##选择器和筛选器
+选择器和筛选器
+==
 类似JS有#id(id选择器),element(元素选择器即标签),class(class选择器),组合选择器(selector多种选择器组合),层级选择器,*(选择全部)... 
 
-#####基本选择器
+基本选择器
+=====
 在js基础上稍微修改了一下,是用#代表id, .class代表class,标签直接使用标签名
 
 >>PS:id选择器,使用任何的元字符（如 !"#$%&'()*+,./:;<=>?@[\]^`{|}~）作为名称的文本部分， 它必须被两个反斜杠转义：\\。 参见示例。
@@ -59,9 +64,9 @@ Utilities
         $('.testclass').text('.testclass like js: document.getElementByClassName("testclass")')
 </script>    
 
---------
 
-#####组合选择器
+组合选择器
+=====
 类似js定义
 
 ```
@@ -78,7 +83,8 @@ $('#testid1, .testclass1').text('Selected')
 </script>
 
 
-#####层级选择器
+层级选择器
+=====
 和JS一样通过空格隔开选择器表达层级路径
 
 ```
@@ -104,7 +110,8 @@ $('form #test p').text('层级选中')
 $('form #test p').text('Selected')
 </script>
 
-#####筛选器
+筛选器
+=====
 
 first选择匹配到的第一个
 
@@ -135,9 +142,11 @@ $('ul li').first().text('first')
 
 
 
-##属性选择器
+属性选择器
+==
 
-#####attr设置或返回被选元素的属性值。
+attr设置或返回被选元素的属性值
+=====
 
 ```
 <div id="testattr">testattr</div>
@@ -147,8 +156,8 @@ $('#testattr').attr('name','test')
 ```
 ![](http://7xread.com1.z0.glb.clouddn.com/fe249a58-88a2-47af-9532-f94f441f40ab)
 
-#####removeAttr从每一个匹配的元素中删除一个属性
-
+removeAttr从每一个匹配的元素中删除一个属性
+=====
 ```
 <div id="rmattr" name="test">rmattr</div>
 <script>
@@ -158,8 +167,9 @@ $('#rmattr').removeAttr('name')
 ![](http://7xread.com1.z0.glb.clouddn.com/21eae5e1-7871-4a19-bfe7-a40f65957dec)
 
 
-#####html和text
-js中的innerHtml和innerText
+html和text
+=====
+类似js中的innerHtml和innerText
 
 ```
 <p id="testtext">testtext</p>
@@ -177,7 +187,8 @@ js中的innerHtml和innerText
 </script>
 
 
-#####val
+val
+=====
 
 ```
 <input type="text" id="testval">testval</input>
@@ -193,7 +204,8 @@ js中的innerHtml和innerText
 </script>
 
 
-#####CSS
+CSS
+=====
 
 ```
 <div id="testcss">testcss</div>
@@ -211,12 +223,15 @@ js中的innerHtml和innerText
 
 >>jQuery还有很多选择器.慢慢看文档吧..很简单,把很多JS复杂的查找封装了很多易用方法,包括筛选器,属性也是类似的方法.
 
-#####事件和文档处理
+事件和文档处理
+=====
 不是专业做前端的话,东西看起来还是有点多,慢慢看吧,都是这么玩的.
 
-##jQuery小例
+jQuery小例
+==
 
-1. 菜单切换
+菜单切换
+=====
 
 ```
 <style>
@@ -324,7 +339,8 @@ js中的innerHtml和innerText
 </script>
 
 
-2. 循环each方法使用,全选,反选,取消
+循环each方法使用,全选,反选,取消
+=====
 
 
 ```
@@ -439,7 +455,8 @@ $.each(userList, function(i,item){ //i,item分别对应userList列表的index和
 > ```
 
 
-#####返回顶部
+返回顶部
+=====
 
 ```
 <style>
@@ -513,7 +530,8 @@ $.each(userList, function(i,item){ //i,item分别对应userList列表的index和
 </script>
 
 
-#####可移动pannal
+可移动pannal
+=====
 
 ```
 <div style="border: 1px solid #ddd;width: 600px;position: absolute;">
@@ -557,3 +575,8 @@ $.each(userList, function(i,item){ //i,item分别对应userList列表的index和
     })
 ```
 
+
+bootstrap
+==
+
+说了这么多,其实就是因为一直看不懂,玩不来bootstrap.所以从头学习了一下html到jquery.能看懂javascript和html可以理解了.

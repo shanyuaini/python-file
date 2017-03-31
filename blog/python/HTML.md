@@ -1,8 +1,10 @@
-#HTML
+HTML
+=
 超级文本标记语言是标准通用标记语言下的一个应用,也是一种规范,一种标准,它通过标记符号来标记要显示的网页中的各个部分.结构包括“头”部分（英语：Head）,和“主体”部分（英语：Body）,其中“头”部提供关于网页的信息,“主体”部分提供网页的具体内容。  
 html详细文档: [点击](http://www.runoob.com/html/html-tutorial.html)
 
-###书写规范
+书写规范
+==
 ```
 <!DOCTYPE html> 				#申明html版本
 <html lang="en"> 				#申明语言
@@ -21,9 +23,11 @@ html详细文档: [点击](http://www.runoob.com/html/html-tutorial.html)
 </html>
 ```
 
-###head头部内使用的标签
+head头部内使用的标签
+==
 
-#####meta标签  
+meta标签 
+=====
 HTML文档的元数据。元数据不会显示在客户端，但是会被浏览器解析。META元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者及其他元数据。  
 meta标签文档:[点击](http://www.w3school.com.cn/tags/tag_meta.asp)
 ```
@@ -31,13 +35,15 @@ meta标签文档:[点击](http://www.w3school.com.cn/tags/tag_meta.asp)
 ```
 
 
-#####title标签  
+title标签  
+=====
 定义网站标题
 ```
 <title>html入门</title>
 ```
 
-#####link标签  
+link标签  
+=====
 <link> 标签定义文档与外部资源的关系,通常用于引用icon和css  
 link标签文档:[点击](http://www.w3school.com.cn/tags/tag_link.asp)
 ```
@@ -45,11 +51,11 @@ link标签文档:[点击](http://www.w3school.com.cn/tags/tag_link.asp)
 <link rel="stylesheet" type="text/css" href="/html/csstest1.css" >
 ```
 
-#####style和script标签  
-可在head定义也可以写在body中style用于定义CSS代码,script用于定义JS代码.后面css和js中详细说.
+.
 
 
-###body中的标签分类  
+body中的标签分类  
+==
 
 
 1. 块级标签  
@@ -78,9 +84,11 @@ link标签文档:[点击](http://www.w3school.com.cn/tags/tag_link.asp)
     <em></em>
 ```
 
-###body中的常用标签  
+body中的常用标签  
+==
 
-#####p和br标签  
+p和br标签  
+=====
 p: 会自动在其前后创建一些空白。浏览器会自动添加这些空间，您也可以在样式表中规定。  
 br: 换行
 ```
@@ -90,7 +98,8 @@ br: 换行
 > <p>p标签一般用在段落中,表示一个段落的开始和结束</p>
 > <p>br标签则是在<br/>语句中的<br/>任意<br/>位置换行</p>
 
-#####a标签  
+a标签  
+=====
 
 相当于head中的link标签,但是会跳转页面而不是引用,主要作用有两个  
 
@@ -134,7 +143,8 @@ br: 换行
 > <h2><a name="C4">Chapter 4</a></h2>
 > <p>This chapter explains ba bla bla</p>
 
-#####img标签  
+img标签  
+=====
 相当于head中的link标签引用图片的功能,主要有两个属:src定义图片来源,title定义图片名称  
 ```
 <img title="百度首页图" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" style="height: 50px;width: 50px"/>
@@ -142,7 +152,8 @@ br: 换行
 > <img title="百度首页图" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" style="height: 50px;width: 50px"/>
 
 
-#####h系列标签
+h系列标签
+=====
 标题从h1-h6从大到小.  
 ```
 <h1>h1</h1>
@@ -158,7 +169,8 @@ br: 换行
 > <h6>h6</h6>
 
 
-#####select系列标签
+select系列标签
+=====
 select 可创建单选或多选菜单。selected定义默认选项,size属性定义可见的内容长度,multiple定义是否多选,optgroup label选项分组,可以用value定义返回值.
 
 单选:
@@ -222,7 +234,8 @@ select 可创建单选或多选菜单。selected定义默认选项,size属性定
 
 
 
-#####input系列标签
+input系列标签
+=====
 
 
 1. 复选框
@@ -283,7 +296,8 @@ submit 提交表单按钮,触发后会默认提交表单(即使绑定了事件�
 <input type="submit" value="提交"/>
 
 
-#####form标签
+form标签
+=====
 标签用于为用户输入创建 HTML 表单,action规定当提交表单时向何处发送表单数据,method规定用于发送 form-data 的 HTTP 方法(get,post)。name属性,将数据以字典方式提交
 ```
 <form action="http://127.0.0.1:8000/">
@@ -310,7 +324,8 @@ submit 提交表单按钮,触发后会默认提交表单(即使绑定了事件�
 ![](http://7xread.com1.z0.glb.clouddn.com/02223d0c-8141-41d2-b972-68d8ecaaedea)
 
 
-###label标签
+label标签
+=====
 点击文本跳转到对应选择框,使用id关联
 
 ```
@@ -320,8 +335,8 @@ submit 提交表单按钮,触发后会默认提交表单(即使绑定了事件�
 <label for="lb01">婚否</label>
 <input id="lb01" type="checkbox" />
 
-###ul系列标签
-
+ul系列标签
+=====
 ```
         <ul>
             <li>无序</li>
@@ -359,7 +374,8 @@ submit 提交表单按钮,触发后会默认提交表单(即使绑定了事件�
 </dl>
 
 
-###tab系列标签
+tab系列标签
+=====
 展示表格的标签,tr代表一行,th标题的列和td内容行表示列
 colspan属性定义占用行方向多少格(占用多少列), rowspan列方向上占用多少格(占用多少行)
 
@@ -420,7 +436,8 @@ colspan属性定义占用行方向多少格(占用多少列), rowspan列方向�
         </tr>
 </table>
 
-###fieldset系列标签
+fieldset系列标签
+=====
 无什么用
 ```
 <fieldset>
@@ -436,7 +453,8 @@ colspan属性定义占用行方向多少格(占用多少列), rowspan列方向�
     <p>密码</p>
 </fieldset>
 
-###html中的常用属性
+html中的常用属性
+=====
 所有的标签都可以定义的属性  
 id,不提交的数据,一般用id,用于html代码关联.  
 name,提交数据时用来标识数据,在input radio中有特殊作用  
@@ -446,7 +464,8 @@ class,引用代码
 
 
 
-###html中的常用符号  
+html中的常用符号  
+=====
 
 ```
 &lt;	<	小于号或显示标记

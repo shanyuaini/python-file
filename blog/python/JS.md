@@ -1,13 +1,16 @@
-#JavaScript Dom入门
+JavaScript Dom入门
+=
 
-##JavaScript 
+JavaScript 
+==
 JavaScript 是属于 web 的语言，它适用于 PC、笔记本电脑、平板电脑和移动电话。
 JavaScript 被设计为向 HTML 页面增加交互性。
 许多 HTML 开发者都不是程序员，但是 JavaScript 却拥有非常简单的语法。几乎每个人都有能力将小的 JavaScript 片段添加到网页中。
 
 中文文档: [点击](http://www.w3school.com.cn/js/index.asp)
 
-#####书写规范
+书写规范
+=====
 
 ```
 <!-- 方式一 -->
@@ -20,11 +23,12 @@ JavaScript 被设计为向 HTML 页面增加交互性。
 ```
 
 
-##HTML DOM
+HTML DOM
+==
 文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。  
 中文文档: [点击](http://www.w3school.com.cn/htmldom/index.asp)
-
-#####选择器
+选择器
+=====
 类似于CSS选择器,获取的为列表
 ```
 document.getElementById('id'); 				通过标签的ID查找
@@ -39,7 +43,8 @@ document.getElementsByTagName('tagname');	通过标签的标签名称查找
 
 
 
-#####事件
+事件
+=====
 当事件发生时，可以执行 JavaScript，比如当用户点击一个 HTML 元素时。如需在用户点击某个元素时执行代码，请把 JavaScript 代码添加到 HTML 事件属性中：
 onclick=JavaScript
 
@@ -53,11 +58,8 @@ onclick=JavaScript
 
 
 
---------
-
-
-
-#####改造默认标签
+改造默认标签
+=====
 html中一些标签有绑定一些默认事件,可以通过下面方式改造
 
 ```
@@ -83,7 +85,8 @@ html中一些标签有绑定一些默认事件,可以通过下面方式改造
 
 
 
-#####增加html标签
+增加html标签
+=====
 
 ```
 <div id="container"></div>
@@ -124,7 +127,8 @@ html中一些标签有绑定一些默认事件,可以通过下面方式改造
 --------
 
 
-#####修改标签属性
+修改标签属性
+=====
 
 ```
 <div id="dtest" style="width: 80px;font-size: 40px" >修改属性</div>
@@ -164,7 +168,8 @@ html中一些标签有绑定一些默认事件,可以通过下面方式改造
 
 
 
-#####内容获取和修改
+内容获取和修改
+=====
 innerText代表文本
 innerHTML代表html
 ```
@@ -313,8 +318,8 @@ obj.innerHTML = "<h1>asd</h1>"      # 设置HTML内容
 
 --------
 
-
-#####其他功能
+其他功能
+=====
 1. console.log(): 在客户端console打印
 2. alert(): 在客户端弹出窗口
 3. confirm(): 类似alert也弹出窗口并给返回值
@@ -396,7 +401,8 @@ clearTImeout(): 停止
 
 
 
-#####DOM小例
+DOM小例
+=====
 
 - 数字自增按钮
 
@@ -537,7 +543,8 @@ clearTImeout(): 停止
 
 
 
-##jQuery
+jQuery
+==
 jQuery 是一个 JavaScript 库。jQuery 极大地简化了 JavaScript 编程。jQuery 很容易学习。  
 中文文档: [点击](http://www.w3school.com.cn/jquery/index.asp)
 在实际使用中大多数是使用jQuery或者是bootstrap另外开一篇入门
