@@ -308,8 +308,150 @@ def index(request):
 {% include "base.html" %}
 
 
-django-admin简单的展示
+
+
+django的表单form
 ==
+官方文档: [点击](https://docs.djangoproject.com/en/1.11/topics/forms/)
+
+form
+======
+django默认的form表单可以生成前端的form表单元素,并对数据合法性进行验证,
+
+表单元素属性:
+
+1. required: 是否必须 
+2. max_length: 最大长度,
+3. min_length: 最少长度,
+4. error_messages: 自定义错误信息
+5. widget: 前端样式
+6. validators: 验证器,可以在这里设置一些方法对数据进行处理
+
+
+```
+#cmdb/urls.py
+url(r'^test/$', views.TestForm),
+
+#cmdb/views.py
+def TestForm(request):
+    form = formtest.TestForm
+    return render(request,'cmdb/testform.html',{'TestForm': form})
+
+#cmdb/formtest.py
+import re
+from django import forms
+from django.core.exceptions import ValidationError
+
+def mobile_validate(value):
+    mobile_re = re.compile(r'^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$')
+    if not mobile_re.match(value):
+        raise ValidationError('手机号码格式错误')
+#设置一个手机号验证的模块
+
+class TestForm(forms.Form):
+    user_type_choice = ((0, u'普通用户'),(1, u'高级用户'),)
+	#设置提供选项的变量
+    user_type = forms.IntegerField(widget=forms.widgets.Select(choices=user_type_choice,attrs={'class': "form-control"}))
+    #定义一个form表单元素select选择器.并将选项和样式传给前端页面
+
+    title = forms.CharField(max_length=20,			
+                            min_length=5,
+                            error_messages={'required': u'标题不能为空',
+                                            'min_length': u'标题最少为5个字符',
+                                            'max_length': u'标题最多为20个字符'},
+                            widget=forms.TextInput(attrs={'class': "form-control",'placeholder': u'标题5-20个字符'}))
+	
+    memo = forms.CharField(required=False,
+                           max_length=256,
+                           widget=forms.widgets.Textarea(attrs={'class': "form-control no-radius", 'placeholder': u'详细描述', 'rows': 3}))
+
+    phone = forms.CharField(validators=[mobile_validate, ],
+                            error_messages={'required': u'手机不能为空'},
+                            widget=forms.TextInput(attrs={'class': "form-control",
+                                                          'placeholder': u'手机号码'}))
+
+    email = forms.EmailField(required=False,
+                             error_messages={'required': u'邮箱不能为空', 'invalid': u'邮箱格式错误'},
+                             widget=forms.TextInput(attrs={'class': "form-control", 'placeholder': u'邮箱'}))
+                             
+                             
+#templates/cmdb/testform.html
+<form action="" method="post">{% csrf_token %}
+    {% for i in TestForm %}
+      <p>{{ i.name }}:{{ i }}</p> <br>
+    {% endfor %}
+    <hr>
+    <input type="submit" value="设置用户信息">
+</form>
+#前端页面获取form表单
+```
+>>PS: 缺点是不能直接引用展示数据库中的数据
+
+modelform
+======
+想对一些数据库的数据进行前端展示就要用到forms下的ModelForm(普通的数据可以直接使用form)
+
+modelform基本语法
+```
+#cmdb/formtest.py
+from django import forms   #forms模块
+from cmdb import models	   #应用数据库的
+class UserInfo(forms.ModelForm):
+
+    class Meta:            #申明应用哪些表或哪些字段
+        model = models.UserInfo
+        #申明应用哪些表
+        fields = ('username','password','age')
+        #或申明应用哪些字段
+        # exclude = ()   ModelForm要求fields或exclude必须要申明,如果不使用过滤显示所有字段可以将exclude设为空
+        
+		widgets = {'username' : forms.TextInput(attrs={'class':'form-control'}),}
+		#申明字段在前端展示的样式
+
+#cmdb/urls.py
+url(r'^testform/$', views.UserInfo), 	#定义路径
+
+#cmdb/views.py
+from cmdb import formtest
+def UserInfo(request):
+    form = formtest.UserForm()			#实例化表单
+    return render(request,'cmdb/formtest.html',{'UserForm':form})  #给前端返回
+
+#templates/cmdb/formtest.html
+    <form action="" method="post">{% csrf_token %}
+        {{ UserForm }}
+        //{{ UserForm.password.name }} 单独取表单中的一个元素名称
+        //{{ UserForm.password }}  单独取表单中的一个元素
+        
+        <input type="submit" value="设置用户信息">
+    </form>
+```
+
+添加前端验证功能
+
+```
+#cmdb/views.py
+from cmdb import formtest
+from cmdb import models
+def UserInfo(request):
+    form = formtest.UserForm()
+    if request.method == 'POST':  			   #如果是post提交
+        form = formtest.UserForm(request.POST) #获取用户输入
+        #form有一个cleaned_data 的方法可以清理用户请求中数据,比如html和一些元数据.使
+        if form.is_valid():					   #验证数据合法性
+            form.save()  					   #将用户的输入保存
+    return render(request,'cmdb/formtest.html',{'UserForm':form})
+
+```
+
+
+django-admin定制
+==
+
+
+
+启动
+======
 
 django的自带的默认数据后台.启用只需要简单的几步.
 
@@ -321,9 +463,20 @@ python manage.py createsuperuser
 #2. 项目里的usrls.py设置  
 url(r'^admin/', include(admin.site.urls))
 
-#3. app下的注册数据库cmdb/admin.py
+#3. 创建数据库app下的cmdb/models.py
+from django.db import models
+class UserInfo(models.Model):
+    username = models.CharField(max_length=32)
+    password = models.CharField(max_length=32)
+    age = models.IntegerField()
+    #def __str__(self):
+    #python版本:3.+使用__str__返回在web页面需要展示的数据, 2.+使用__unicode__ 这种方式比较丑low.  
+    class Meta():
+	    verbose_name_plural = '用户列表'
+	    #定义UserInfo这个表在web中的展示名
+
+#4. app下的注册数据库cmdb/admin.py
 from django.contrib import admin
-# Register your models here.
 from cmdb import models
 class UserInfoAdmin(admin.ModelAdmin):
     list_display = ('username', 'password', 'age')
@@ -332,26 +485,82 @@ class UserInfoAdmin(admin.ModelAdmin):
     list_filter = ('username', 'age')
     #search_fields和list_filter设置了就可以使用默认的搜索
 admin.site.register(models.UserInfo, UserInfoAdmin)
-#注册数据库和admin的内容
-	
-#4. app下的cmdb/models.py
-from django.db import models
-# Create your models here.
-class UserInfo(models.Model):
-    username = models.CharField(max_length=32)
-    password = models.CharField(max_length=32)
-    age = models.IntegerField()
-    #def __str__(self):
-    #    return 'username | %s --- password | %s' % (self.username, self.password)
-    #3.+使用__str__返回在web页面需要展示的数据, 2.+使用__unicode__ 这种方式比较丑low.  
-    class Meta():
-    verbose_name_plural = '用户列表'
-    #定义UserInfo这个表在web中的展示名
+#注册数据库和admin的web内容
 ```
 ![](http://7xread.com1.z0.glb.clouddn.com/35a189da-c412-4144-8398-a92d14526e3a)
 
 
+定制
+======
+
+在admin.py里面定义的类设置
+
+1. list_display: 需要显示的字段
+2. search_fields: 可搜索的字段,1,不能搜索manytomany的字段.2,有外键关联的字段要使用"local-fields__otherfields"自己的字段名和关联的字段名中间两个下划线
+3. list_fields: 过滤器根据不同字段属性过滤数据
+4. list_editable: 让字段可以在web中修改.web中展示的第一个字段不可修改
+5. list_per_date: 每页显示的数据条数
+6. filter_horizontal: 多对多的字段数据展示.
+7. raw_id_fields: 外键数据展示
+8. ordering: 按照哪个字段排序
+9. short_description: 设置元素在web中的展示名
+10. actions: 定义web中action的操作.可定制批量修改数据.
+
+
+```
+#cmdb/models.py
+from django.db import models
+from django.utils.html import format_html
+class UserInfo(models.Model):
+    username = models.CharField(max_length=32)
+    password = models.CharField(max_length=32)
+    age = models.IntegerField()
+    status_choices = (('yes',u"成功"),('no',u"失败"),('unkonw',u"未知"))
+    #设置状态信息
+    status = models.CharField(choices=status_choices,max_length=32,default='unkonw')
+    #添加状态字段
+    class Meta():
+        verbose_name_plural = '用户列表'
+    #设置数据库名在web中展示名
+    def colored_status(self):
+        if self.status == 'yes':
+            format_td = format_html('<span style="padding:2px;background-color:green;color:white">成功</span>')
+        elif self.status == 'no':
+            format_td = format_html('<span style="padding:2px;background-color:red;color:white">失败</span>')
+        elif self.status == 'unkonw':
+            format_td = format_html('<span style="padding:2px;background-color:yellow;color:black">未知</span>')
+        return format_td
+    #修改需要高亮字段的展示方式.根据status字段的值,展示一个高亮的html
 
 
 
+#cmdb/admin.py
+from django.contrib import admin
+from cmdb import models
 
+def make_yes(modelAdmin,request,queryset):
+    queryset.update(status='yes')
+make_yes.short_description = "设置为成功" 
+
+def make_no(modelAdmin,request,queryset):
+    queryset.update(status='no')
+make_no.short_description = "设置为失败"
+
+def make_unkonw(modelAdmin,request,queryset):
+    queryset.update(status='unkonw')
+make_unkonw.short_description = "设置为未知"
+
+class UserInfoAdmin(admin.ModelAdmin):
+    list_display = ('username', 'status','colored_status','password', 'age',)
+    search_fields = ('username', 'age')
+    list_filter = ('username', 'age')
+    actions = [make_yes,make_no,make_unkonw] 
+    #设置action的函数
+    models.UserInfo.colored_status.short_description = '状态'
+    #colored_status字段在web中的展示名
+admin.site.register(models.UserInfo, UserInfoAdmin)
+```
+
+![](http://7xread.com1.z0.glb.clouddn.com/8317662c-1335-4270-92f6-572fee9fd3ea)
+
+>> PS:  一个admin定制化的项目xadmin
