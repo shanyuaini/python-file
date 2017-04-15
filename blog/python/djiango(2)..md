@@ -469,8 +469,9 @@ class UserInfo(models.Model):
     username = models.CharField(max_length=32)
     password = models.CharField(max_length=32)
     age = models.IntegerField()
-    #def __str__(self):
-    #python版本:3.+使用__str__返回在web页面需要展示的数据, 2.+使用__unicode__ 这种方式比较丑low.  
+    def __str__(self):
+        return '<%s>'%(self.book_name)
+    #python版本:3.+使用__str__返回在web页面需要展示的数据, 2.+使用__unicode__,否则会返回数据的对象名   
     class Meta():
 	    verbose_name_plural = '用户列表'
 	    #定义UserInfo这个表在web中的展示名
@@ -564,3 +565,132 @@ admin.site.register(models.UserInfo, UserInfoAdmin)
 ![](http://7xread.com1.z0.glb.clouddn.com/8317662c-1335-4270-92f6-572fee9fd3ea)
 
 >> PS:  一个admin定制化的项目xadmin
+
+
+
+Django 配置文件
+==
+
+在项目中找到setting.py(直接copy我的一个学习目录.项目建错名了Mystie)
+
+```
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#定义项目路径,方便项目中文件和包的引用.
+
+DEBUG = True			#开发模式,如果改为Flase需要指定ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'cmdb',
+    'monitor',
+]
+#在项目中申明APP
+
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+#中间件系统
+
+ROOT_URLCONF = 'Mystie.urls'	#定义项目全局的urls.py入口
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', 
+        #这个默认是Django的模版引擎
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        ,
+        #定义html模版路径,[os.path.join(BASE_DIR, 'templates'),'/home/www/html'],默认会到这几个路径中寻找html文件
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+#html模版相关设置
+
+WSGI_APPLICATION = 'Mystie.wsgi.application'
+#wsgi插件引擎
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+#定义数据库的类型和链接信息
+
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+#密码验证相关
+
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+#时区,语言编码等设置
+
+STATIC_URL = '/static/' 		#定义静态文件引用的路径别名
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static')
+)
+#定义静态文件引用哪些文件夹,类似templates路径的作用
+
+
+```
+
+数据库的链接配置修改
+======
+
+默认使用的sqlite,mysql数据库的配置.
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_name', 
+        'HOST':'db_host',
+        'PORT':'db_port',
+        'USER':'db_user',
+        'PASSWORD':'db_password'
+    }
+}
+```
+
