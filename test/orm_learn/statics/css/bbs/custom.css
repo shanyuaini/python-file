@@ -1,0 +1,88 @@
+body {
+    color: rgb(51, 51, 51);
+    font-family: Arial, 微软雅黑, "Microsoft yahei", "Hiragino Sans GB", "冬青黑体简体中文 w3", "Microsoft Yahei", "Hiragino Sans GB", "冬青黑体简体中文 w3", STXihei, 华文细黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+}
+.page-container{
+    margin-top: 60px;
+    border: 1px dashed darkcyan;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.wrap-left{
+    width: 75%;
+    float: left;
+}
+.wrap-right{
+    width: 25%;
+    height: 700px;
+    float: left;
+
+}
+.clear-box{
+    clear: both;
+}
+.footer{
+    margin-top: 50px;
+    height: 150px;
+    background-color: #2d3237;
+}
+.article-head-img img{
+    width: 220px;
+    height: 125px;
+}
+.article-box{
+    padding-bottom: 10px;
+}
+.article-brief{
+    margin-left: -120px;
+}
+
+a:hover{
+    color: #333;
+    text-decoration: none
+}
+.article-title{
+    font-size: 20px;
+
+}
+.article-brief-text{
+    margin-top: 10px;
+    color: #999;
+}
+.article-content-title{
+    margin-top: 25px;
+    font-size: 30px;
+}
+.article-content-brief{
+
+    margin-top: 10px;
+    color: #999;
+}
+.article-detail-img{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.article-content-detail{
+    line-height: 30px;
+}
+.comment-button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.get-comment{
+    margin-left: 50%;
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 14px;
+    color: #999;
+}
+
+
+.comment-list{
+    border: 1px dashed darkcyan;
+    padding: 5px;
+}
+.root-comment{
+    border: 1px;
+    border-left-color: black;
+}

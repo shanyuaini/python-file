@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load custom %}  <!-- 引用自定义标签的python模块-->
+
+{% block page-container %}
+    <div class="wrap-left">
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ article_form }}
+            <input type="submit" class="btn btn-success" value="发帖"/>
+        </form>
+        <hr>
+        <form method="post" action="{% url 'file_upload' %}" enctype="multipart/form-data">{% csrf_token %}
+            <input name="filename" type="file" />
+            <input type="submit"/>
+        </form>
+        {#  大文件上传  #}
+
+    </div>
+    <div class="wrap-right">
+        right
+    </div>
+    <div class="clear-box">
+    </div>
+
+
+{% endblock %}
+{% block footer-js %}
+    <script src="/static/plugins/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('id_content')
+        //引用ckeditor富文本编辑器,替换默认form中的输入框id_content
+
+    </script>
+{% endblock %}

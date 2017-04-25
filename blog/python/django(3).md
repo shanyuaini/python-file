@@ -1,4 +1,4 @@
-django入门(三) ---Model
+django入门(三) 
 =
 
 入门概念:
@@ -122,6 +122,7 @@ Relationship fields(字段关系)
 
 - ForeignKey: (外键)一对多关系,
 - ManyToManyField: 多对多关系
+>> PS: OnetoOneField,这个还没怎么懂.Django特有的一种关系
 
 ```
 class Author(models.Model):
@@ -142,7 +143,36 @@ class Book(models.Model):
 #Book.authors可以有多个Author数据,Author也可以有多个Book.authors,书可以有多个作者,一个作者也可以有很多本书.
 ```
 
->> PS: 这个以我现在的智商还不能完全理顺.其实感觉简单讲就是一个单选和多选
+
+from django.db import models
+ 
+class Blog(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.TextField()
+
+    def __str__(self):              
+        return self.name
+
+class Author(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    def __str__(self):              
+        return self.name
+
+class Entry(models.Model):
+    blog = models.ForeignKey(Blog)
+    headline = models.CharField(max_length=255)
+    body_text = models.TextField()
+    pub_date = models.DateField()
+    mod_date = models.DateField()
+    authors = models.ManyToManyField(Author)
+    n_comments = models.IntegerField()
+    n_pingbacks = models.IntegerField()
+    rating = models.IntegerField()
+
+    def __str__(self):              
+        return self.headline
 
 
 
@@ -153,9 +183,54 @@ class Book(models.Model):
 
 
 
+CSRF
+==
+
+官网关于ajax自动发送csrf验证的代码也需要开启{% csrf_token %}
+
+```
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
 
 
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
 
+```
 
 
 

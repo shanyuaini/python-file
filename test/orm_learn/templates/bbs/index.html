@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load custom %}  <!-- 引用自定义标签的python模块-->
+
+{% block page-container %}
+    <div class="wrap-left">
+    <div class="new-article-notify hide">
+        <a href="{{ request.path }}">有<span></span>条新消息</a>
+        {#   当后端有新提示,定义信息对应的路径,这里是刷新本页面     #}
+    </div>
+        {% for article in article_list reversed %}
+            {#    reversed前端排序反转        #}
+        <div class="article-box row" article-id = "{{ article.id }}">
+            <div class="article-head-img col-md-4" >
+                <img src="/static/{{ article.title_img | truncate_url }}" href="{% url 'article_detail' article.id %}">
+                <!-- 用自定义标签的truncate_url处理 article.title_img做一下自定义标签重写一下路径-->
+            </div>
+            <div class="article-brief col-md-8">
+                <a class="article-title" href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
+                <!-- 点击文章标题跳转到文章内容的url,并将文章id穿给后端 -->
+                <div class="article-brief-info">
+                    <span> {{ article.author.name }} </span>
+                    <span>{{ article.pub_date }}</span>
+                    <span>{% filter_comment article as comments %}</span>
+                    <!-- 用自定义标签的filter_comment处理文章对象分别取出评论和点赞 -->
+                    <span class="glyphicon glyphicon-comment" aria-hidden="True"></span>
+                    {{ comments.comment_count }}
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="True"></span>
+                    {{ comments.thumb_count }}
+
+                </div>
+                <div class="article-brief-text">
+                    <span>{{ article.brief }}</span>
+                </div>
+            </div>
+        </div>
+    <hr>
+        {% endfor %}
+    </div>
+    <div class="wrap-right">
+        right
+    </div>
+    <div class="clear-box">
+    <!-- 清除格式 -->
+    </div>
+
+
+{% endblock %}
+{% block footer-js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var new_article_refresh = setInterval(function () {
+                var latest_article_id = $($('.wrap-left').children()[1]).attr('article-id')
+                //$('.wrap-left').children()[1]取到的是一个html元素,没有attr方法
+                //此时用$()包裹一层转换为JS对象在用attr方法取值
+                //获取当前页面article_id的最大值article
+                $.getJSON("{% url 'get_latest_article_count' %}",
+                        {latest_id:latest_article_id}, //把latest_id通过url:get_latest_article_count传给后端处理,并执行回调函数
+                        function (callback) {
+                            if(callback.new_article_count > 0 ){ //如果后端返回的new_article_count大于0标识有新文章
+                                //$('.new-article-notify').toggleClass('hide');
+                                if($('.new-article-notify').hasClass('hide')){
+                                $('.new-article-notify').removeClass('hide')
+                                //当有新文章就将hide的class标签去除
+                                }
+                                $('.new-article-notify span').html(callback.new_article_count)
+                                //后端取到的new_article_count放入new-article-notify 的span
+                            }
+                        });//function (callback){} end
+            },30000)//每30000毫秒执行一次setInterval(function () {}
+        })
+
+    </script>
+{% endblock %}

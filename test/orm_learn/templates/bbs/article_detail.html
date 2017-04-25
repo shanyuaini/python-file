@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% load custom %}  <!-- 引用自定义标签的python模块-->
+
+{% block page-container %}
+    <div class="wrap-left">
+        <div class="article-content-title text-center">
+           {{ article_obj.title }}
+        </div>
+        <div class="article-content-brief">
+            <span>作者: {{ article_obj.author.name }}</span>|
+            <span> {{ article_obj.pub_date }}</span>|
+            <span>{% filter_comment article_obj as comments %}</span>
+            <span class="glyphicon glyphicon-comment" aria-hidden="True"></span>
+            {{ comments.comment_count }} |
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="True"></span>
+            {{ comments.thumb_count }}|
+        </div>
+        <div class="article-content-detail">
+            <img class="article-detail-img" src="/static/{{ article_obj.title_img | truncate_url }}">
+            <hr>
+            {{ article_obj.content | safe }}
+            {#       safe方法正确的显示文本中的html标签     #}
+        </div>
+        <hr>
+
+        <div class="comment-box">
+                <button class="get-comment" type="button" onclick="GetComments()">获取评论</button>
+            {% if request.user.is_authenticated %}
+                <div class="new-comment-box">
+                    <textarea class="form-control" rows="3"></textarea>
+                    <div class="comment-button">
+                        <button type="button" class="btn btn-success">发表</button>
+                    </div>
+                </div>
+
+            {% else %}
+                <div class="jumbotron">
+                    <h4 class="text-center"><a href="{% url 'login' %}?next={{ request.path }}">登录</a>后评论</h4>
+                    {#   ?next={{ request.path }}将当前路径传给登录页面,在用户登录成功后返回本页面 #}
+                </div>
+            {% endif %}
+        </div>
+        <div class="comment-list"></div>
+
+    </div>
+    <div class="wrap-right">
+        right
+    </div>
+    <div class="clear-box">
+    </div>
+
+
+{% endblock %}
+{% block footer-js %}
+    <script>
+
+        function getCsrf() {
+            return $("input[name='csrfmiddlewaretoken']").val()
+        }//ajax获取csrf
+        $(document).ready(function () {
+            GetComments();
+
+
+            $(".comment-button").click(function () {
+                var comment_text = $('.new-comment-box textarea').val();
+
+                if (comment_text.trim().length < 5){
+                    alert('评论不能少于5个字');
+                }else {
+                    var parent_comment_id = $(this).parent().prev().attr('comment-id') //获取被回复的评论ID
+                    $.post("{% url 'post_comment' %}",
+                            {
+                                'comment_type' : 1,
+                                'article_id' : "{{ article_obj.id }}",
+                                'parent_comment_id' : parent_comment_id,
+                                'comment' : comment_text.trim(),
+                                'csrfmiddlewaretoken' : getCsrf(),
+                            },//提交评论的内容拼接
+                            function (callback) {
+                                //console.log(callback);
+                                if (callback= 'post-comment-success'){
+                                    $('.new-comment-box textarea').val('')
+                                    //清空评论框内文本.克隆的时候把评论框的用户输入也会复制了.
+                                    var new_comment_box_div = $('.new-comment-box').clone(true); // 克隆评论框
+                                    $('.get-comment').after(new_comment_box_div);
+                                    //把评论框放回原处
+
+                                    GetComments()
+                                }//刷新评论
+                    })//end post
+                }
+            })
+        })//提交评论的ajax
+
+
+    function GetComments(){
+            $.get("{% url 'get_comments' article_obj.id %}",
+            //从后端根据文章ID取回评论
+            function (callback) {
+                //console.log(callback);
+                $('.comment-list').html(callback);
+                //将后端传来的评论的html 放到<div class="comment-list"></div>中
+
+
+                //start add comment 给评论回复时克隆评论框移到当前位置
+                $(".add-comment").click(function () {
+
+                    var new_comment_box_div = $('.new-comment-box').clone(true); // 克隆评论框
+                    $('.new-comment-box').remove();  //删除之前的评论框
+                    $(this).parent().append(new_comment_box_div) //添加评论框到当前位置
+                })
+                //end add comment
+            })
+
+        }
+
+
+    </script>
+{% endblock %}

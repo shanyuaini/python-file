@@ -674,6 +674,9 @@ STATICFILES_DIRS = (
 )
 #定义静态文件引用哪些文件夹,类似templates路径的作用
 
+LOGIN_URL = '/login'
+#指定统一的longin链接
+
 
 ```
 
