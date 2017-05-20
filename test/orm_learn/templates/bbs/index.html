@@ -8,8 +8,7 @@
         <a href="{{ request.path }}">有<span></span>条新消息</a>
         {#   当后端有新提示,定义信息对应的路径,这里是刷新本页面     #}
     </div>
-        {% for article in article_list reversed %}
-            {#    reversed前端排序反转        #}
+        {% for article in article_list %}
         <div class="article-box row" article-id = "{{ article.id }}">
             <div class="article-head-img col-md-4" >
                 <img src="/static/{{ article.title_img | truncate_url }}" href="{% url 'article_detail' article.id %}">
@@ -36,6 +35,40 @@
         </div>
     <hr>
         {% endfor %}
+
+
+        <div class="pagination">
+            <nav aria-label="...">
+                <ul class="pagination">
+                {% if article_list.has_previous %}
+                    <li class=""><a href="?page={{ article_list.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                {% endif %}
+                {% for p in page_all_num %}
+                        {% if p == article_list.number %}
+                            <li class="active"><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% else %}
+                            <li class=""><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% endif %}
+
+                {% endfor %}
+                {% if article_list.has_next %}
+                    <li class=""><a href="?page={{ article_list.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                {% endif %}
+                </ul>
+            </nav>
+{#            <span class="step-links">#}
+{#                {% if article_list.has_previous %}#}
+{#                    <a href="?page={{ article_list.previous_page_number }}">previous</a>#}
+{#                {% endif %}#}
+{#                <span>#}
+{#                    Page {{ article_list.number }} of {{ article_list.paginator.num_pages }}#}
+{#                </span>#}
+{#                {% if article_list.has_next %}#}
+{#                    <a href="?page={{ article_list.next_page_number }}">next</a>#}
+{#                {% endif %}#}
+{#            </span>#}
+{#        原生的分页代码 #}
+        </div>
     </div>
     <div class="wrap-right">
         right
@@ -68,7 +101,7 @@
                             }
                         });//function (callback){} end
             },30000)//每30000毫秒执行一次setInterval(function () {}
-        })
+        })//end 新消息提醒
 
     </script>
 {% endblock %}

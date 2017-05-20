@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
     url(r'^bbs/', include('bbs.urls')),
+    url(r'^chat/', include('webchat.urls')),
     url(r'^login/', views.user_login,name='login'),
     url(r'^logout/', views.user_logout,name='logout'),
 ]

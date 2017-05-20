@@ -8,6 +8,7 @@
             {{ article_form }}
             <input type="submit" class="btn btn-success" value="发帖"/>
         </form>
+
         <hr>
         <form method="post" action="{% url 'file_upload' %}" enctype="multipart/form-data">{% csrf_token %}
             <input name="filename" type="file" />

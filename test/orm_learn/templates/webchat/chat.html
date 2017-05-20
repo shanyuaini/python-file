@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block head-css %}
+    <link href="/static/css/webchat/chat.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block page-container %}
+<h1 class="text-center">Welcome to chat!</h1>
+    <div class="chat-container">
+        <div class="left-contact-panel">
+            <div>
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#contact-tab"  role="tab" data-toggle="tab">好友</a></li>
+                <li role="presentation"><a href="#group-tab"  role="tab" data-toggle="tab">群组</a></li>
+              </ul>
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="contact-tab">
+                    <ul class="list-group">
+                    {% for friend in request.user.userprofile.friends.select_related %}
+                      <li contact-type="single" contact-id="{{ friend.id }}" onclick="OpenChatWindow(this)" class="list-group-item">
+                        <span class="badge">14</span>
+                        <span class="contact-name">{{ friend.name }}</span>
+                      </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="group-tab">group</div>
+              </div>
+            </div>
+        </div>
+        <div class="right-chat-panel">
+            <div class="chat-box-title" contact-type="" contact-id="">
+                title
+            </div>
+            <div class="chat-box-dialog">
+                dialog
+            </div>
+            <div class="chat-box-emoj">
+                emoj
+            </div>
+            <div class="chat-msg-box">
+                <textarea id="msg"></textarea>
+                <button style="margin-left: 90% ;" class=" btn btn-success">发送</button>
+            </div>
+        </div>
+
+    </div>
+
+<div class="clear-both"></div>
+
+
+
+{% endblock %}
+
+
+
+{% block footer-js %}
+    <script>
+        $(document).ready(function () {
+            $('#navbar a[href="{{ request.path }}"]').parent().addClass('active')//给聊天板块在navbar区域点击高亮
+                $("body").delegate("textarea", "keydown",function(e){
+                    if(e.which == 13){
+                        var msg_text = $("textarea").val();
+                        if($.trim(msg_text).length > 0){
+                            console.log(msg_text)
+                           // SendMsg(msg_text)//将聊天内容发送给后端处理
+                        }
+                        AddSentMsgIntoBox(msg_text)//将输入内容显示在聊天框
+                        $("textarea").val("")//清空textarea
+                    }
+                })//捕获回车键将输入内容发送给SendMsg函数处理
+        })
+
+        function OpenChatWindow(ele) {
+            $(ele).addClass("active");
+            $(ele).siblings().removeClass("active")
+            var contact_id = $(ele).attr("contact-id");
+            var contact_name = $(ele).find(".contact-name").text();
+            var contact_type = $(ele).attr("contact-type");
+            //获取点击的用户id和类型(好友还是群组)
+            var chat_box_title_content = "正在和" + contact_name + "聊天"
+            $(".chat-box-title").html(chat_box_title_content);
+            $(".chat-box-title").attr("contact-id",contact_id)
+            $(".chat-box-title").attr("contact-type",contact_type)//将当前点击的好友显示到回话列表
+        }//选择好友点击
+
+        function AddSentMsgIntoBox(msg_text) {
+            var new_msg_ele = "<div class='msg-item'>" +
+                    "<span>" + "{{ request.user.userprofile.name }}" + "</span>" +
+                    "<span>" + new Date().toLocaleDateString() + "</span>" +
+                    "<div class='msg-text'>" + msg_text + "</div>" + "</div>"
+            $(".chat-box-dialog").append(new_msg_ele)
+            $(".chat-box-dialog").animate({
+                scrollTop: $(".chat-box-dialog")[0].scrollHeight
+            },500)//配合css的overflow让聊天框自动滑动到最底部
+        }//将输入内容显示在聊天框
+
+        function SendMsg(msg_text){
+            var contact_type = $("chat-box-title").attr("contact-type");
+            var contact_id = $("chat-box-title").attr("contact-id");
+            if(contact_type && contact_id){
+                var msg_item = {
+                    'from' : "{{ request.user.userprofile.id }}",
+                    'to' : contact_id,
+                    'type' : contact_type,
+                    'msg' : msg_text
+                }
+                $.post("{% url 'send_msg' %}", msg_item,function(callback){
+
+                })
+            }//取到当前点击的好友,当好友id和类型都不为空才允许发送聊天内容到后端
+        }
+
+
+    </script>
+{% endblock %}

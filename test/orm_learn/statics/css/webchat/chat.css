@@ -1,0 +1,44 @@
+/*for chat css*/
+
+.chat-container{
+    width: 1600px;
+    height: 800px;
+    border: 1px dashed darkcyan;
+}
+.left-contact-panel{
+    width: 20%;
+    height: 100%;
+    border: 2px solid blueviolet;
+    float: left;
+}
+.right-chat-panel{
+    width: 80%;
+    height: 100%;
+    border: 2px solid blueviolet;
+    float: left;
+}
+.chat-box-title{
+    height: 5%;
+    border: 2px solid darkslategray;
+}
+.chat-box-dialog{
+    height: 60%;
+    border: 1px solid black;
+    overflow: auto;
+}
+.chat-box-emoj{
+    height: 5%;
+    border: 1px solid black;
+}
+.chat-msg-box{
+    height: 25%;
+}
+.chat-msg-box textarea{
+    width: 100%;
+    height: 95%;
+}
+.chat-msg-box button{
+    margin-left: 95%;
+}
+
+

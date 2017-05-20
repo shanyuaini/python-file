@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 
 from django import template
-from django.utils.html import format_html
+
 
 register = template.Library()
 
@@ -22,3 +22,13 @@ def filter_comment(article_obj):
     }
     return comments
 #分别计算评论数和点赞总数
+
+
+@register.filter
+def lower(val):
+    return val.lower()
+
+@register.simple_tag
+def handle_page_num(current_page,loop_num):
+    if current_page == loop_num:
+        return "active"

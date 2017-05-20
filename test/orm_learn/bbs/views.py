@@ -5,17 +5,53 @@ from django.contrib.auth.decorators import login_required
 from bbs import comment_handler
 from bbs import article_forms
 import json
+import datetime
+
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+
+
 # Create your views here.
 
 category_list = models.Category.objects.filter(set_as_top=True).order_by('position_index')
 # 通过 set_as_top取到要在前端顶部展示的板块
 
+
+def Mypaginator(request,queryset,display_amount=1,after_range_num=2,before_range_num = 1):
+    # display_amount默认每页显示多少条,after_range_num设置为比before_range_num大1就能获取到当前页面的前后页
+    # start前端分页
+    paginator = Paginator(queryset, display_amount)
+    try:
+        page = int(request.GET.get('page'))
+        # 获取前端点击页码
+    except:
+        page = 1
+        # 如果前端页码没获取到默认为1
+    try:
+        pagelist_obj = paginator.page(page)
+    except PageNotAnInteger:
+        pagelist_obj = paginator.page(1)
+    except EmptyPage:
+        pagelist_obj = paginator.page(paginator.num_pages)
+    if page >= after_range_num:
+        page_all_num = paginator.page_range[page - after_range_num:page + before_range_num]
+        # 显示
+    else:
+        page_all_num = paginator.page_range[0:page + before_range_num]
+        # end前端分页
+    return pagelist_obj,page_all_num
+
+
 def index(request):
     category_obj = models.Category.objects.get(position_index=1) #将首页定位到'全部'板块
-    article_list = models.Article.objects.filter(status=2)
+    article_list = models.Article.objects.filter(status=2).order_by('-pub_date')
+    #取出文章列表status=2的文章 order_by('-pub_date') -减号代表排序取反
+    pagelist_obj,page_all_num = Mypaginator(request,article_list)
+
     return render(request,'bbs/index.html',{'category_list':category_list,
                                             'category_obj':category_obj,
-                                            'article_list':article_list,})
+                                            'article_list':pagelist_obj,
+                                            'page_all_num':page_all_num})
+
 
 def category(request,id):
     category_obj = models.Category.objects.get(id=id)
@@ -25,10 +61,12 @@ def category(request,id):
     else:#如果是其他板块就值选择本板块的文章
         article_list = models.Article.objects.filter(category_id = category_obj.id, status=2)
     #获取板块所属的文章列表,并且状态为发布
+    pagelist_obj, page_all_num = Mypaginator(request, article_list)
 
     return render(request,'bbs/index.html',{'category_list':category_list,
                                             'category_obj':category_obj,
-                                            'article_list':article_list,})
+                                            'article_list':pagelist_obj,
+                                            'page_all_num':page_all_num})
 
 
 def user_login(request):
@@ -92,12 +130,14 @@ def new_article(request):
         if page_form.is_valid():
             data = page_form.cleaned_data
             data['author_id'] = request.user.userprofile.id
+            data['pub_date'] = datetime.datetime.now()
             article_obj = models.Article(**data)
             article_obj.save()
             #应为我们在article_forms.ArticleModelForm中隐藏了author,当前端传回的form时,page_form对象并没有author
             #然而page_form对象不能修改,author_id在models中又是必须的字段.使用cleaned_data将对象转为一个data字典.
             #因为用户以及验证过,直接将用户ID插入字典.
             #最后将字典转为一个models对象进行数据库操作
+            return HttpResponseRedirect('/bbs')
         else:
             return render(request, 'bbs/new_article.html', {'category_list': category_list,
                                                             'article_form': page_form})
@@ -120,3 +160,4 @@ def get_latest_article_count(request):
     else:
         new_article_count = 0
     return HttpResponse(json.dumps({'new_article_count' : new_article_count}))
+    #新消息提示

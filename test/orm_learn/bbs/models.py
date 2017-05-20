@@ -25,7 +25,7 @@ class Article(models.Model):
         if self.status == 1 and self.pub_date is not None:
             raise ValidationError(('草稿'))
         if self.status == 2 and self.pub_date is None:
-            self.pub_date= datetime.date.today()
+            self.pub_date= datetime.datetime.now()
     #djang的clean方法可以自定义检查方法
 
     def __str__(self):
@@ -68,6 +68,8 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=32)
     signature = models.TextField('个人介绍',null=True,blank=True,)
     head_img = models.ImageField(height_field=150,width_field=150,blank=True,null=True,upload_to='statics/images/uploads')#从filefield会验证是否为图片文件,可以设置图像大小
+    #for web qq
+    friends = models.ManyToManyField('self',related_name='my_friends',blank=True)
     def __str__(self):
         return '%s' % (self.name)
 
